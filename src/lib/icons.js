@@ -13,6 +13,7 @@ import {
   ImageIcon, ImageDown, Minimize2,
   ArrowLeftRight, Pipette, ScanLine,
   PenLine,
+  Globe2, Tag, Bot, BarChart2,
 } from 'lucide-react'
 
 export {
@@ -28,6 +29,7 @@ export {
   ImageIcon, ImageDown, Minimize2,
   ArrowLeftRight, Pipette, ScanLine,
   PenLine,
+  Globe2, Tag, Bot, BarChart2,
 }
 
 // Resolve a Lucide icon component by its string name.
@@ -45,6 +47,7 @@ const iconMap = {
   ImageIcon, ImageDown, Minimize2,
   ArrowLeftRight, Pipette, ScanLine,
   PenLine,
+  Globe2, Tag, Bot, BarChart2,
 }
 
 export function getIcon(name) {

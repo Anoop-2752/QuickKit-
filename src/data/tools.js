@@ -429,6 +429,56 @@ export const categories = [
       },
     ],
   },
+  {
+    id: 'seo',
+    name: 'SEO Tools',
+    slug: 'seo',
+    description: 'Free browser-based SEO utilities — generate meta tags, preview SERP snippets, check keyword density, and more.',
+    icon: 'Globe2',
+    color: 'cyan',
+    tools: [
+      {
+        id: 'meta-tag-generator',
+        name: 'Meta Tag Generator',
+        slug: 'meta-tag-generator',
+        description: 'Generate complete HTML meta tags — title, description, Open Graph, and Twitter Card — ready to copy.',
+        icon: 'Tag',
+        category: 'seo',
+      },
+      {
+        id: 'title-tag-checker',
+        name: 'Title Tag Checker',
+        slug: 'title-tag-checker',
+        description: 'Preview how your page title and meta description look in Google search results with live pixel-width feedback.',
+        icon: 'Eye',
+        category: 'seo',
+      },
+      {
+        id: 'og-preview',
+        name: 'Open Graph Preview',
+        slug: 'og-preview',
+        description: 'See how your page looks when shared on Facebook, Twitter/X, and LinkedIn — before you publish.',
+        icon: 'Globe2',
+        category: 'seo',
+      },
+      {
+        id: 'robots-txt-generator',
+        name: 'Robots.txt Generator',
+        slug: 'robots-txt-generator',
+        description: 'Generate a robots.txt file with presets for common bots including AI crawlers. Copy or download instantly.',
+        icon: 'Bot',
+        category: 'seo',
+      },
+      {
+        id: 'keyword-density-checker',
+        name: 'Keyword Density Checker',
+        slug: 'keyword-density-checker',
+        description: 'Analyse keyword density in your content — see occurrence count, density %, and top words at a glance.',
+        icon: 'BarChart2',
+        category: 'seo',
+      },
+    ],
+  },
 ]
 
 export const allTools = categories.flatMap((cat) => cat.tools)

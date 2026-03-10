@@ -267,6 +267,38 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- SEO tools -->
+  <url>
+    <loc>https://quickkit.dev/seo</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://quickkit.dev/seo/meta-tag-generator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quickkit.dev/seo/title-tag-checker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quickkit.dev/seo/og-preview</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quickkit.dev/seo/robots-txt-generator</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://quickkit.dev/seo/keyword-density-checker</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Career tools -->
   <url>
     <loc>https://quickkit.dev/career/ats-keyword-checker</loc>

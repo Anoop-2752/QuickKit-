@@ -52,6 +52,11 @@ const ImageToBase64               = lazy(() => import('../tools/image/ImageToBas
 const ImageConverter              = lazy(() => import('../tools/image/ImageConverter'))
 const ImageColorPicker            = lazy(() => import('../tools/image/ImageColorPicker'))
 const ImageMetadataViewer         = lazy(() => import('../tools/image/ImageMetadataViewer'))
+const MetaTagGenerator            = lazy(() => import('../tools/seo/MetaTagGenerator'))
+const TitleTagChecker             = lazy(() => import('../tools/seo/TitleTagChecker'))
+const OgPreview                   = lazy(() => import('../tools/seo/OgPreview'))
+const RobotsTxtGenerator          = lazy(() => import('../tools/seo/RobotsTxtGenerator'))
+const KeywordDensityChecker       = lazy(() => import('../tools/seo/KeywordDensityChecker'))
 
 const toolComponents = {
   'json-formatter':           JsonFormatter,
@@ -99,6 +104,11 @@ const toolComponents = {
   'image-converter':              ImageConverter,
   'image-color-picker':           ImageColorPicker,
   'image-metadata-viewer':        ImageMetadataViewer,
+  'meta-tag-generator':           MetaTagGenerator,
+  'title-tag-checker':            TitleTagChecker,
+  'og-preview':                   OgPreview,
+  'robots-txt-generator':         RobotsTxtGenerator,
+  'keyword-density-checker':      KeywordDensityChecker,
 }
 
 function ToolIcon({ name, className }) {

@@ -64,6 +64,15 @@ export const colorMap = {
     hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(139,92,246,0.07)]',
     hoverIcon: 'group-hover:text-violet-300',
   },
+  cyan: {
+    iconBg: 'bg-cyan-500/10',
+    iconColor: 'text-cyan-400',
+    badge: 'bg-cyan-500/10 text-cyan-400',
+    hoverBorder: 'hover:border-cyan-500/40',
+    hoverGlow: 'hover:shadow-[0_0_40px_rgba(6,182,212,0.07)]',
+    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(6,182,212,0.07)]',
+    hoverIcon: 'group-hover:text-cyan-300',
+  },
 }
 
 export function getColors(color) {
