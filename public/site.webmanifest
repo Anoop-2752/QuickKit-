@@ -1,0 +1,17 @@
+{
+  "name": "AllFix — Developer Tools & Utilities",
+  "short_name": "AllFix",
+  "description": "Free, fast, privacy-first developer utilities running in your browser.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
