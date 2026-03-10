@@ -129,6 +129,14 @@ export const categories = [
         icon: 'Calculator',
         category: 'hr',
       },
+      {
+        id: 'candidate-screener',
+        name: 'Candidate Screener',
+        slug: 'candidate-screener',
+        description: 'Screen candidates against a job description — get a Shortlist / Maybe / Reject verdict with fit score and skill gap analysis.',
+        icon: 'ClipboardCheck',
+        category: 'hr',
+      },
     ],
   },
   {

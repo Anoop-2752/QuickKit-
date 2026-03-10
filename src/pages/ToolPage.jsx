@@ -36,6 +36,7 @@ const OfferLetterGenerator        = lazy(() => import('../tools/hr/OfferLetterGe
 const ExperienceLetterGenerator   = lazy(() => import('../tools/hr/ExperienceLetterGenerator'))
 const ResignationLetterGenerator  = lazy(() => import('../tools/hr/ResignationLetterGenerator'))
 const CtcBreakupCalculator        = lazy(() => import('../tools/hr/CtcBreakupCalculator'))
+const CandidateScreener           = lazy(() => import('../tools/hr/CandidateScreener'))
 const EmiCalculator               = lazy(() => import('../tools/finance/EmiCalculator'))
 const IncomeTaxCalculator         = lazy(() => import('../tools/finance/IncomeTaxCalculator'))
 const SipCalculator               = lazy(() => import('../tools/finance/SipCalculator'))
@@ -75,6 +76,7 @@ const toolComponents = {
   'experience-letter-generator':  ExperienceLetterGenerator,
   'resignation-letter-generator': ResignationLetterGenerator,
   'ctc-breakup-calculator':       CtcBreakupCalculator,
+  'candidate-screener':           CandidateScreener,
   'emi-calculator':               EmiCalculator,
   'income-tax-calculator':        IncomeTaxCalculator,
   'sip-calculator':               SipCalculator,

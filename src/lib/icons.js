@@ -8,7 +8,7 @@ import {
   Briefcase, ScanSearch, LetterText, FileWarning, Zap, ClipboardList,
   FileType, Combine, Scissors, FileOutput, FileSearch,
   Users, Mail, MessageSquare, CalendarClock, Receipt, FileCheck, UserCheck, LogOut,
-  Calculator,
+  ClipboardCheck, Calculator,
   IndianRupee, TrendingUp, Percent, Home, Award, ArrowUpRight, PiggyBank, Landmark, CreditCard,
 } from 'lucide-react'
 
@@ -20,7 +20,7 @@ export {
   Briefcase, ScanSearch, LetterText, FileWarning, Zap, ClipboardList,
   FileType, Combine, Scissors, FileOutput, FileSearch,
   Users, Mail, MessageSquare, CalendarClock, Receipt, FileCheck, UserCheck, LogOut,
-  Calculator,
+  ClipboardCheck, Calculator,
   IndianRupee, TrendingUp, Percent, Home, Award, ArrowUpRight, PiggyBank, Landmark, CreditCard,
 }
 
@@ -34,7 +34,7 @@ const iconMap = {
   Briefcase, ScanSearch, LetterText, FileWarning, Zap, ClipboardList,
   FileType, Combine, Scissors, FileOutput, FileSearch,
   Users, Mail, MessageSquare, CalendarClock, Receipt, FileCheck, UserCheck, LogOut,
-  Calculator,
+  ClipboardCheck, Calculator,
   IndianRupee, TrendingUp, Percent, Home, Award, ArrowUpRight, PiggyBank, Landmark, CreditCard,
 }
 
