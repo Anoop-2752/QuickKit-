@@ -45,6 +45,12 @@ const HraCalculator               = lazy(() => import('../tools/finance/HraCalcu
 const GratuityCalculator          = lazy(() => import('../tools/finance/GratuityCalculator'))
 const SalaryHikeCalculator        = lazy(() => import('../tools/finance/SalaryHikeCalculator'))
 const FdRdCalculator              = lazy(() => import('../tools/finance/FdRdCalculator'))
+const ImageCompressor             = lazy(() => import('../tools/image/ImageCompressor'))
+const ImageResizer                = lazy(() => import('../tools/image/ImageResizer'))
+const ImageToBase64               = lazy(() => import('../tools/image/ImageToBase64'))
+const ImageConverter              = lazy(() => import('../tools/image/ImageConverter'))
+const ImageColorPicker            = lazy(() => import('../tools/image/ImageColorPicker'))
+const ImageMetadataViewer         = lazy(() => import('../tools/image/ImageMetadataViewer'))
 
 const toolComponents = {
   'json-formatter':           JsonFormatter,
@@ -85,6 +91,12 @@ const toolComponents = {
   'gratuity-calculator':          GratuityCalculator,
   'salary-hike-calculator':       SalaryHikeCalculator,
   'fd-rd-calculator':             FdRdCalculator,
+  'image-compressor':             ImageCompressor,
+  'image-resizer':                ImageResizer,
+  'image-to-base64':              ImageToBase64,
+  'image-converter':              ImageConverter,
+  'image-color-picker':           ImageColorPicker,
+  'image-metadata-viewer':        ImageMetadataViewer,
 }
 
 function ToolIcon({ name, className }) {

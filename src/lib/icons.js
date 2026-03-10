@@ -10,6 +10,8 @@ import {
   Users, Mail, MessageSquare, CalendarClock, Receipt, FileCheck, UserCheck, LogOut,
   ClipboardCheck, Calculator,
   IndianRupee, TrendingUp, Percent, Home, Award, ArrowUpRight, PiggyBank, Landmark, CreditCard,
+  ImageIcon, ImageDown, Minimize2,
+  ArrowLeftRight, Pipette, ScanLine,
 } from 'lucide-react'
 
 export {
@@ -22,6 +24,8 @@ export {
   Users, Mail, MessageSquare, CalendarClock, Receipt, FileCheck, UserCheck, LogOut,
   ClipboardCheck, Calculator,
   IndianRupee, TrendingUp, Percent, Home, Award, ArrowUpRight, PiggyBank, Landmark, CreditCard,
+  ImageIcon, ImageDown, Minimize2,
+  ArrowLeftRight, Pipette, ScanLine,
 }
 
 // Resolve a Lucide icon component by its string name.
@@ -36,6 +40,8 @@ const iconMap = {
   Users, Mail, MessageSquare, CalendarClock, Receipt, FileCheck, UserCheck, LogOut,
   ClipboardCheck, Calculator,
   IndianRupee, TrendingUp, Percent, Home, Award, ArrowUpRight, PiggyBank, Landmark, CreditCard,
+  ImageIcon, ImageDown, Minimize2,
+  ArrowLeftRight, Pipette, ScanLine,
 }
 
 export function getIcon(name) {

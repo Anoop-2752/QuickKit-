@@ -55,6 +55,15 @@ export const colorMap = {
     hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(245,158,11,0.07)]',
     hoverIcon: 'group-hover:text-amber-300',
   },
+  violet: {
+    iconBg: 'bg-violet-500/10',
+    iconColor: 'text-violet-400',
+    badge: 'bg-violet-500/10 text-violet-400',
+    hoverBorder: 'hover:border-violet-500/40',
+    hoverGlow: 'hover:shadow-[0_0_40px_rgba(139,92,246,0.07)]',
+    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(139,92,246,0.07)]',
+    hoverIcon: 'group-hover:text-violet-300',
+  },
 }
 
 export function getColors(color) {
