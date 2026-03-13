@@ -29,6 +29,7 @@ const CoverLetterFillerChecker = lazy(() => import('../tools/career/CoverLetterF
 const ActionVerbSuggester    = lazy(() => import('../tools/career/ActionVerbSuggester'))
 const JobApplicationTracker  = lazy(() => import('../tools/career/JobApplicationTracker'))
 const CoverLetterGenerator   = lazy(() => import('../tools/career/CoverLetterGenerator'))
+const ResumeBuilder          = lazy(() => import('../tools/career/ResumeBuilder'))
 const PdfMerger              = lazy(() => import('../tools/pdf/PdfMerger'))
 const PdfSplitter            = lazy(() => import('../tools/pdf/PdfSplitter'))
 const PdfToText              = lazy(() => import('../tools/pdf/PdfToText'))
@@ -50,6 +51,9 @@ const HraCalculator               = lazy(() => import('../tools/finance/HraCalcu
 const GratuityCalculator          = lazy(() => import('../tools/finance/GratuityCalculator'))
 const SalaryHikeCalculator        = lazy(() => import('../tools/finance/SalaryHikeCalculator'))
 const FdRdCalculator              = lazy(() => import('../tools/finance/FdRdCalculator'))
+const InvoiceGenerator            = lazy(() => import('../tools/finance/InvoiceGenerator'))
+const TaxSavingOptimizer          = lazy(() => import('../tools/finance/TaxSavingOptimizer'))
+const QrCodeGenerator             = lazy(() => import('../tools/developer/QrCodeGenerator'))
 const ImageCompressor             = lazy(() => import('../tools/image/ImageCompressor'))
 const ImageResizer                = lazy(() => import('../tools/image/ImageResizer'))
 const ImageToBase64               = lazy(() => import('../tools/image/ImageToBase64'))
@@ -61,6 +65,9 @@ const TitleTagChecker             = lazy(() => import('../tools/seo/TitleTagChec
 const OgPreview                   = lazy(() => import('../tools/seo/OgPreview'))
 const RobotsTxtGenerator          = lazy(() => import('../tools/seo/RobotsTxtGenerator'))
 const KeywordDensityChecker       = lazy(() => import('../tools/seo/KeywordDensityChecker'))
+const ReadabilityChecker          = lazy(() => import('../tools/text/ReadabilityChecker'))
+const SchemaMarkupGenerator       = lazy(() => import('../tools/seo/SchemaMarkupGenerator'))
+const PrivacyPolicyGenerator      = lazy(() => import('../tools/seo/PrivacyPolicyGenerator'))
 
 const toolComponents = {
   'json-formatter':           JsonFormatter,
@@ -81,6 +88,7 @@ const toolComponents = {
   'action-verb-suggester':    ActionVerbSuggester,
   'job-application-tracker':  JobApplicationTracker,
   'cover-letter-generator':   CoverLetterGenerator,
+  'resume-builder':           ResumeBuilder,
   'pdf-merger':               PdfMerger,
   'pdf-splitter':             PdfSplitter,
   'pdf-to-text':              PdfToText,
@@ -102,6 +110,9 @@ const toolComponents = {
   'gratuity-calculator':          GratuityCalculator,
   'salary-hike-calculator':       SalaryHikeCalculator,
   'fd-rd-calculator':             FdRdCalculator,
+  'invoice-generator':            InvoiceGenerator,
+  'tax-saving-optimizer':         TaxSavingOptimizer,
+  'qr-code-generator':            QrCodeGenerator,
   'image-compressor':             ImageCompressor,
   'image-resizer':                ImageResizer,
   'image-to-base64':              ImageToBase64,
@@ -113,6 +124,9 @@ const toolComponents = {
   'og-preview':                   OgPreview,
   'robots-txt-generator':         RobotsTxtGenerator,
   'keyword-density-checker':      KeywordDensityChecker,
+  'readability-checker':          ReadabilityChecker,
+  'schema-markup-generator':      SchemaMarkupGenerator,
+  'privacy-policy-generator':     PrivacyPolicyGenerator,
 }
 
 function ToolIcon({ name, className }) {

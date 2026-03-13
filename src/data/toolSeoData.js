@@ -1397,4 +1397,224 @@ export const toolSeoData = {
       },
     ],
   },
+
+  'invoice-generator': {
+    longDescription:
+      'Create professional GST invoices online for free with QuickKit\'s Invoice Generator. Add your business details, client information, and line items — the tool auto-calculates subtotals, CGST, SGST, and IGST, then generates a polished PDF invoice ready to send. No signup required, works entirely in your browser.',
+    keywords: [
+      'invoice generator free',
+      'gst invoice generator online',
+      'free invoice maker india',
+      'online invoice generator',
+      'create invoice online free',
+      'gst bill generator',
+      'professional invoice maker',
+      'invoice pdf generator india',
+    ],
+    faqs: [
+      {
+        q: 'How do I create a GST invoice online for free?',
+        a: 'Fill in your business details, client info, and line items. Select the GST rate (0%, 5%, 12%, 18%, or 28%) and choose CGST+SGST or IGST. The tool calculates all amounts automatically and lets you download a professional PDF invoice.',
+      },
+      {
+        q: 'Can I download the invoice as a PDF?',
+        a: 'Yes. Click the "Download PDF" button to generate and download a professional invoice as a PDF file. The PDF includes your business header, client details, itemised table, and GST breakdown.',
+      },
+      {
+        q: 'What is the difference between CGST+SGST and IGST?',
+        a: 'CGST and SGST apply to intra-state (within the same state) transactions, where GST is split equally between Central and State. IGST applies to inter-state transactions. Toggle between the two in the tax section based on your transaction.',
+      },
+      {
+        q: 'Is my invoice data stored anywhere?',
+        a: 'No. All processing happens locally in your browser. Your business and client details are never sent to any server, ensuring complete privacy.',
+      },
+    ],
+  },
+
+  'tax-saving-optimizer': {
+    longDescription:
+      'Discover exactly how much tax you can save under Section 80C, 80D, and NPS with QuickKit\'s Tax Saving Optimizer for FY 2024-25. Enter your income and existing investments to get a full deductions breakdown, estimated tax payable, and personalised recommendations — for both Old and New regimes. Free, no signup, runs in your browser.',
+    keywords: [
+      'tax saving calculator india',
+      '80c tax saving calculator',
+      'income tax saving tips india',
+      'tax deduction calculator india',
+      'how to save tax india',
+      'tax saving investments 2024-25',
+      '80d tax saving calculator',
+      'old vs new regime tax calculator',
+    ],
+    faqs: [
+      {
+        q: 'How much can I save under Section 80C?',
+        a: 'Section 80C allows a maximum deduction of ₹1,50,000 per year. Eligible investments include EPF, PPF, ELSS, LIC premiums, NSC, home loan principal repayment, and more. This tool shows how much of the ₹1,50,000 limit you have already used and how much room is left.',
+      },
+      {
+        q: 'What is the extra NPS deduction under Section 80CCD(1B)?',
+        a: 'Section 80CCD(1B) allows an additional deduction of up to ₹50,000 for contributions made to the National Pension System (NPS), over and above the ₹1,50,000 limit under 80C. This is available only under the old regime.',
+      },
+      {
+        q: 'Which is better — old regime or new regime in FY 2024-25?',
+        a: 'The new regime offers lower slab rates and a ₹75,000 standard deduction but does not allow 80C, 80D, or HRA deductions. The old regime is better if your total deductions exceed roughly ₹3-4 lakh. Use the regime toggle in this tool to compare both.',
+      },
+      {
+        q: 'Is the tax calculation here accurate?',
+        a: 'The tool uses official FY 2024-25 slab rates, standard deduction amounts, and section limits for a close estimate. It includes the 4% health & education cess and Section 87A rebate. For filing returns, always verify with a CA or the Income Tax portal.',
+      },
+    ],
+  },
+
+  'qr-code-generator': {
+    longDescription:
+      'Generate QR codes for any URL, text, or contact information instantly with QuickKit\'s free QR Code Generator. Customise foreground and background colours, choose your error correction level, and download the result as a high-quality PNG — no watermark, no signup, no server upload.',
+    keywords: [
+      'qr code generator free',
+      'qr code maker online',
+      'generate qr code for url',
+      'qr code generator no signup',
+      'free qr code maker',
+      'custom qr code generator',
+      'qr code download png',
+      'online qr code creator',
+    ],
+    faqs: [
+      {
+        q: 'How do I generate a QR code for a URL?',
+        a: 'Paste your URL into the text field and a QR code is generated instantly. Click "Download PNG" to save it. The QR code can be scanned with any smartphone camera.',
+      },
+      {
+        q: 'Can I customise the colours of my QR code?',
+        a: 'Yes. Use the foreground and background colour pickers to choose any colour combination. For best scannability, keep high contrast between the two — dark foreground on a light background.',
+      },
+      {
+        q: 'What does error correction level mean?',
+        a: 'Error correction allows a QR code to be scanned even if part of it is damaged or obscured. Level L recovers 7% data loss, M = 15%, Q = 25%, H = 30%. Use a higher level if you plan to print the QR code on surfaces that might get dirty or worn.',
+      },
+      {
+        q: 'Is there a character limit for QR codes?',
+        a: 'QR codes can technically store up to 4,296 alphanumeric characters, but codes with more than 500-1000 characters become very dense and harder to scan reliably. The tool warns you at 2000 characters.',
+      },
+    ],
+  },
+
+  'resume-builder': {
+    longDescription: 'Build a professional resume online for free with QuickKit\'s Resume Builder. Add your contact info, work experience, education, and skills — see a live preview as you type and download as a clean PDF. No signup required, everything runs in your browser.',
+    keywords: [
+      'resume builder free',
+      'resume builder online',
+      'free resume maker',
+      'resume creator',
+      'cv builder online free',
+      'professional resume builder',
+      'resume builder no signup',
+      'resume builder india',
+    ],
+    faqs: [
+      { q: 'Is this resume builder completely free?', a: 'Yes. QuickKit\'s Resume Builder is 100% free — no signup, no subscription, no watermark on your PDF. Everything runs in your browser.' },
+      { q: 'Can I download my resume as a PDF?', a: 'Yes. Click "Download PDF" to get a clean, ATS-friendly PDF of your resume. The PDF is generated locally in your browser so your data never leaves your device.' },
+      { q: 'Is my resume data saved?', a: 'Your data is only in memory while you\'re on the page. We recommend downloading your PDF or copying your content before leaving. Nothing is stored on any server.' },
+      { q: 'What should I write in my resume summary?', a: 'A good summary is 2-4 sentences covering your years of experience, key skills, and what makes you a strong candidate. Keep it specific and tailored to the role you\'re applying for.' },
+    ],
+  },
+
+  // ── TEXT ──────────────────────────────────────────────────────────────────
+  'readability-checker': {
+    longDescription:
+      'Analyse how readable your text is with this free online Readability Score Checker. Paste any article, essay, email, or document to instantly get Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, and Automated Readability Index scores — all calculated in your browser with no signup required. Ideal for writers, bloggers, content marketers, and students.',
+    keywords: [
+      'readability score checker',
+      'flesch kincaid calculator online',
+      'text readability analyzer free',
+      'gunning fog index calculator',
+      'flesch reading ease score',
+      'readability test online',
+      'automated readability index',
+      'check reading level of text',
+    ],
+    faqs: [
+      {
+        q: 'What is the Flesch Reading Ease score?',
+        a: 'The Flesch Reading Ease score rates text on a scale from 0 to 100 — the higher the score, the easier the text is to read. A score of 60–70 is considered standard (7th–8th grade level), while scores above 90 are very easy and below 30 are considered very difficult. It is calculated using average sentence length and average number of syllables per word.',
+      },
+      {
+        q: 'What is the Flesch-Kincaid Grade Level?',
+        a: 'The Flesch-Kincaid Grade Level translates the readability of text into a US school grade level. For example, a score of 8.0 means the text is appropriate for an 8th-grade student. Most general-audience web content aims for a grade level of 6–8.',
+      },
+      {
+        q: 'What is the Gunning Fog Index?',
+        a: 'The Gunning Fog Index estimates the years of formal education needed to understand a piece of writing on first reading. It penalises long sentences and complex words (three or more syllables). A score of 12 corresponds to high school level; below 8 is ideal for most audiences.',
+      },
+      {
+        q: 'How is reading time calculated?',
+        a: 'Reading time is estimated at 200 words per minute, which is an average silent reading speed for adults. For example, a 1,000-word article would have an estimated reading time of 5 minutes.',
+      },
+    ],
+  },
+
+  // ── SEO ──────────────────────────────────────────────────────────────────
+  'schema-markup-generator': {
+    longDescription:
+      'Generate valid JSON-LD structured data markup for your website with this free Schema Markup Generator. Choose from Article, FAQ, HowTo, LocalBusiness, Product, Person, and BreadcrumbList schema types — fill in the form and get ready-to-paste JSON-LD script tags instantly. No signup, no installation, runs entirely in your browser.',
+    keywords: [
+      'schema markup generator free',
+      'json-ld generator online',
+      'structured data generator',
+      'faq schema generator',
+      'article schema markup',
+      'local business schema generator',
+      'product schema markup generator',
+      'schema.org generator',
+    ],
+    faqs: [
+      {
+        q: 'What is schema markup and why does it matter for SEO?',
+        a: 'Schema markup (also called structured data) is code you add to your website to help search engines understand your content better. It can enable rich results in Google Search — such as star ratings, FAQ dropdowns, and breadcrumbs — which can increase click-through rates significantly.',
+      },
+      {
+        q: 'What is JSON-LD and how do I add it to my website?',
+        a: 'JSON-LD (JavaScript Object Notation for Linked Data) is Google\'s recommended format for structured data. You add it by pasting a <script type="application/ld+json"> block inside the <head> section of your HTML page. Use the "Copy Script Tag" button to get the complete tag ready to paste.',
+      },
+      {
+        q: 'Which schema type should I use for my FAQ page?',
+        a: 'Use the FAQPage schema type. Add your questions and answers in the form — Google may display them as expandable FAQ snippets directly in search results, which can dramatically improve visibility without requiring a click to your site.',
+      },
+      {
+        q: 'Can I validate the generated schema markup?',
+        a: 'Yes. After copying the generated JSON-LD, you can paste it into Google\'s Rich Results Test (search.google.com/test/rich-results) or Schema.org Validator to check for errors and preview how it might appear in search results.',
+      },
+    ],
+  },
+
+  'privacy-policy-generator': {
+    longDescription:
+      'Generate a free, comprehensive privacy policy for your website or app in seconds with QuickKit\'s Privacy Policy Generator. Enter your site details, select what data you collect (analytics, payments, newsletter, etc.), choose your country for GDPR, CCPA, or India DPDP compliance — and get a ready-to-use policy you can copy or download as a .txt file. No signup required.',
+    keywords: [
+      'privacy policy generator free',
+      'free privacy policy for website',
+      'privacy policy template',
+      'gdpr privacy policy generator',
+      'privacy policy generator india',
+      'website privacy policy creator',
+      'free privacy policy maker',
+      'privacy policy generator no signup',
+    ],
+    faqs: [
+      {
+        q: 'Do I really need a privacy policy for my website?',
+        a: 'Yes. If your website collects any personal data — even just IP addresses via server logs or analytics — most privacy laws (GDPR, CCPA, India\'s DPDP Act) require you to have a privacy policy. Using Google Analytics or AdSense also requires one per Google\'s own terms of service.',
+      },
+      {
+        q: 'Is the generated privacy policy legally binding?',
+        a: 'The generated policy is a solid starting template based on common legal requirements, but it is not a substitute for professional legal advice. Requirements vary by country, industry, and the specific data you collect. We strongly recommend consulting a qualified legal professional for your specific situation.',
+      },
+      {
+        q: 'How does the GDPR option change the policy?',
+        a: 'Selecting EU/GDPR or UK as your country adds a dedicated section covering GDPR and UK GDPR rights — including the right to access, erasure, data portability, and the right to lodge a complaint with a supervisory authority. It also mentions lawful bases for processing.',
+      },
+      {
+        q: 'Can I customise the generated policy after downloading?',
+        a: 'Absolutely. The .txt file or copied text is fully editable. You can open it in any text editor, word processor, or CMS and tailor the language, add your specific data practices, or have a lawyer review and modify it before publishing.',
+      },
+    ],
+  },
 }

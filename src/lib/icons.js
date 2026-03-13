@@ -14,6 +14,9 @@ import {
   ArrowLeftRight, Pipette, ScanLine,
   PenLine,
   Globe2, Tag, Bot, BarChart2,
+  LayoutTemplate,
+  FileSpreadsheet, Wallet, QrCode,
+  BookOpen, ShieldCheck,
 } from 'lucide-react'
 
 export {
@@ -30,6 +33,9 @@ export {
   ArrowLeftRight, Pipette, ScanLine,
   PenLine,
   Globe2, Tag, Bot, BarChart2,
+  LayoutTemplate,
+  FileSpreadsheet, Wallet, QrCode,
+  BookOpen, ShieldCheck,
 }
 
 // Resolve a Lucide icon component by its string name.
@@ -48,6 +54,9 @@ const iconMap = {
   ArrowLeftRight, Pipette, ScanLine,
   PenLine,
   Globe2, Tag, Bot, BarChart2,
+  LayoutTemplate,
+  FileSpreadsheet, Wallet, QrCode,
+  BookOpen, ShieldCheck,
 }
 
 export function getIcon(name) {
