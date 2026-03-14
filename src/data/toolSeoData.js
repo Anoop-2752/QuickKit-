@@ -26,6 +26,12 @@ export const toolSeoData = {
         a: 'Absolutely. Everything runs client-side in your browser. No data is sent to any server, so your API keys, tokens, and private data stay private.',
       },
     ],
+    howToSteps: [
+      { title: 'Paste your JSON', detail: 'Copy raw, minified, or broken JSON from your API response or config file and paste it into the input box.' },
+      { title: 'Click Format', detail: 'The tool instantly beautifies and validates your JSON with proper indentation and syntax highlighting.' },
+      { title: 'Fix errors if any', detail: 'If your JSON has syntax errors, the tool highlights the exact line and character where the issue is.' },
+      { title: 'Copy the result', detail: 'Use the Copy button to get the formatted JSON back into your clipboard.' },
+    ],
   },
 
   'base64': {
@@ -53,6 +59,12 @@ export const toolSeoData = {
         q: 'Is Base64 encoding the same as encryption?',
         a: 'No. Base64 is an encoding scheme, not encryption. Anyone can decode a Base64 string, so it should never be used to protect sensitive information.',
       },
+    ],
+    howToSteps: [
+      { title: 'Select Encode or Decode', detail: 'Choose whether you want to convert plain text to Base64 or decode a Base64 string back to text.' },
+      { title: 'Paste your input', detail: 'Enter the text or Base64 string you want to convert.' },
+      { title: 'See the result instantly', detail: 'The output appears immediately as you type.' },
+      { title: 'Copy the output', detail: 'Click Copy to grab the result for use in your code or API request.' },
     ],
   },
 
@@ -82,6 +94,11 @@ export const toolSeoData = {
         a: 'A JWT contains three parts: a header (algorithm and token type), a payload (claims like user ID, roles, and expiration), and a signature used to verify authenticity.',
       },
     ],
+    howToSteps: [
+      { title: 'Paste your JWT token', detail: 'Copy the full JWT string (starting with eyJ...) and paste it into the input field.' },
+      { title: 'View decoded sections', detail: 'The tool splits and decodes the header, payload, and signature sections automatically.' },
+      { title: 'Check claims and expiry', detail: 'Review the payload for claims like exp (expiration), iat (issued at), and any custom claims.' },
+    ],
   },
 
   'uuid-generator': {
@@ -110,6 +127,12 @@ export const toolSeoData = {
         a: 'Version 4 UUIDs are generated using a cryptographically secure random number generator. The probability of a collision is astronomically low — around 1 in 5.3 × 10^36.',
       },
     ],
+    howToSteps: [
+      { title: 'Choose UUID version', detail: 'Select v1 (time-based) or v4 (random) depending on your use case.' },
+      { title: 'Set quantity', detail: 'Enter how many UUIDs you need — generate 1 to 100 at a time.' },
+      { title: 'Click Generate', detail: 'UUIDs are generated instantly using your browser\'s secure random number generator.' },
+      { title: 'Copy the results', detail: 'Copy individual UUIDs or all at once with the Copy All button.' },
+    ],
   },
 
   'timestamp-converter': {
@@ -136,6 +159,11 @@ export const toolSeoData = {
         q: 'Does this tool support millisecond timestamps?',
         a: 'Yes. The converter automatically detects whether your timestamp is in seconds or milliseconds and converts it accordingly.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter a Unix timestamp', detail: 'Paste a Unix timestamp (seconds or milliseconds since epoch) into the input field.' },
+      { title: 'See the human-readable date', detail: 'The tool converts it to a readable date and time in your local timezone and UTC.' },
+      { title: 'Or convert a date to timestamp', detail: 'Pick a date and time using the date picker to get the equivalent Unix timestamp.' },
     ],
   },
 
@@ -164,6 +192,11 @@ export const toolSeoData = {
         q: 'When do I need to URL-encode a string?',
         a: 'Whenever you include user input, file names, or special characters in a URL query string or path segment. Encoding prevents broken links and ensures servers interpret the URL correctly.',
       },
+    ],
+    howToSteps: [
+      { title: 'Paste your URL or text', detail: 'Enter the full URL or just the query string value you want to encode or decode.' },
+      { title: 'Choose Encode or Decode', detail: 'Select encode to make the text URL-safe, or decode to restore the original characters.' },
+      { title: 'Copy the result', detail: 'The encoded or decoded output is ready to paste into your code or browser address bar.' },
     ],
   },
 
@@ -194,6 +227,11 @@ export const toolSeoData = {
         a: 'Yes. Each template is fully editable. Replace the placeholder text with your company details and employee information before copying or downloading.',
       },
     ],
+    howToSteps: [
+      { title: 'Choose a template type', detail: 'Select from templates for job offers, interview invitations, rejections, onboarding, and more.' },
+      { title: 'Fill in the placeholders', detail: 'Enter the candidate name, position, date, and other relevant details.' },
+      { title: 'Copy the email', detail: 'Copy the completed template and paste it into your email client.' },
+    ],
   },
 
   'interview-question-generator': {
@@ -222,6 +260,12 @@ export const toolSeoData = {
         a: 'Absolutely. The tool generates behavioral questions using the STAR format, helping you assess how candidates have handled real situations in the past.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter the job role', detail: 'Type the position you are interviewing for (e.g., "Marketing Manager" or "React Developer").' },
+      { title: 'Choose question types', detail: 'Select from behavioral, technical, situational, or culture-fit questions.' },
+      { title: 'Generate questions', detail: 'The tool produces a tailored set of interview questions for the role.' },
+      { title: 'Export or copy', detail: 'Copy individual questions or export the full list.' },
+    ],
   },
 
   'notice-period-calculator': {
@@ -248,6 +292,11 @@ export const toolSeoData = {
         q: 'Does this calculator account for weekends and holidays?',
         a: 'The calculator computes calendar days by default, as most Indian employment contracts define notice periods in calendar days rather than working days.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter the resignation date', detail: 'Select the date you submitted or plan to submit your resignation.' },
+      { title: 'Enter notice period duration', detail: 'Enter the notice period in days as specified in your employment contract.' },
+      { title: 'View last working day', detail: 'The tool calculates your last working day, excluding weekends and optional holidays.' },
     ],
   },
 
@@ -277,6 +326,12 @@ export const toolSeoData = {
         a: 'Yes. The generator follows Indian payroll conventions including PF, ESI, professional tax, and HRA components commonly used across Indian organizations.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter employee details', detail: 'Fill in the employee name, designation, department, and employee ID.' },
+      { title: 'Enter CTC and components', detail: 'Input the salary components — basic pay, HRA, allowances, PF, and deductions.' },
+      { title: 'Select the month and year', detail: 'Choose which month this salary slip is for.' },
+      { title: 'Download PDF', detail: 'Generate a professional salary slip ready to share with the employee.' },
+    ],
   },
 
   'offer-letter-generator': {
@@ -305,6 +360,12 @@ export const toolSeoData = {
         a: 'The generated letter follows standard Indian corporate formats. However, we recommend having your legal team review it before sending, as specific clauses may vary by organization and jurisdiction.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter company and candidate details', detail: 'Fill in the company name, candidate name, job title, joining date, and CTC.' },
+      { title: 'Customize the terms', detail: 'Add any specific terms, probation period, or custom clauses.' },
+      { title: 'Preview the letter', detail: 'Review the formatted offer letter before downloading.' },
+      { title: 'Download as PDF', detail: 'Save the offer letter as a professional PDF ready to send.' },
+    ],
   },
 
   'experience-letter-generator': {
@@ -331,6 +392,11 @@ export const toolSeoData = {
         q: 'Is an experience letter mandatory in India?',
         a: 'While not legally mandatory, experience letters are a standard practice in India and are almost always required by new employers as proof of previous employment during the hiring process.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter employee details', detail: 'Fill in the employee name, designation, joining date, and last working day.' },
+      { title: 'Add performance note', detail: 'Optionally add a sentence about the employee\'s performance or conduct.' },
+      { title: 'Download the letter', detail: 'Generate and download the experience/relieving letter as a PDF.' },
     ],
   },
 
@@ -360,6 +426,11 @@ export const toolSeoData = {
         a: 'Yes. The generator lets you choose between formal, appreciative, and concise tones so the letter matches your relationship with the employer.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter your details', detail: 'Fill in your name, current position, company name, and notice period.' },
+      { title: 'Select the tone', detail: 'Choose a formal, grateful, or immediate resignation tone based on your situation.' },
+      { title: 'Download or copy', detail: 'Download the resignation letter as a PDF or copy it to paste into an email.' },
+    ],
   },
 
   'ctc-breakup-calculator': {
@@ -388,6 +459,12 @@ export const toolSeoData = {
         a: 'Yes. It uses standard Indian payroll components including basic salary, HRA, PF (both employee and employer), professional tax, and income tax deductions under both old and new regimes.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter your CTC', detail: 'Type your total annual CTC (Cost to Company) in rupees.' },
+      { title: 'View the breakup', detail: 'The tool calculates Basic, HRA, PF (employer and employee), gratuity, and net in-hand salary.' },
+      { title: 'Adjust components', detail: 'Modify the percentages to match your actual salary structure.' },
+      { title: 'See monthly take-home', detail: 'View both annual and monthly in-hand salary after deductions.' },
+    ],
   },
 
   'candidate-screener': {
@@ -415,6 +492,11 @@ export const toolSeoData = {
         q: 'Is my candidate data kept private?',
         a: 'Yes. All processing happens locally in your browser. No candidate information is uploaded to any server, ensuring complete privacy and compliance.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter the job requirements', detail: 'List the must-have skills, experience level, and qualifications for the role.' },
+      { title: 'Paste the candidate\'s resume or info', detail: 'Enter the candidate details you want to screen.' },
+      { title: 'View the screening result', detail: 'See which requirements are met and which are missing.' },
     ],
   },
 
@@ -445,6 +527,12 @@ export const toolSeoData = {
         a: 'No. The entire merge process runs locally in your browser using JavaScript. Your files never leave your device, ensuring complete privacy.',
       },
     ],
+    howToSteps: [
+      { title: 'Upload your PDF files', detail: 'Click the upload area or drag and drop multiple PDF files you want to combine.' },
+      { title: 'Arrange the order', detail: 'Drag to reorder the files so they appear in the right sequence in the final document.' },
+      { title: 'Click Merge', detail: 'The tool combines all PDFs into a single file in your browser.' },
+      { title: 'Download the merged PDF', detail: 'Save the combined PDF to your device.' },
+    ],
   },
 
   'pdf-splitter': {
@@ -473,6 +561,12 @@ export const toolSeoData = {
         a: 'Yes, it is completely free with no watermarks, no page limits, and no signup required. The tool runs entirely in your browser.',
       },
     ],
+    howToSteps: [
+      { title: 'Upload your PDF', detail: 'Select the PDF file you want to split.' },
+      { title: 'Enter page ranges', detail: 'Specify which pages or page ranges to extract (e.g., "1-3, 5, 7-10").' },
+      { title: 'Click Split', detail: 'The tool extracts the specified pages into a new PDF.' },
+      { title: 'Download the result', detail: 'Save the split PDF file to your device.' },
+    ],
   },
 
   'pdf-to-text': {
@@ -500,6 +594,11 @@ export const toolSeoData = {
         a: 'The tool extracts raw text content. While paragraph structure is generally maintained, complex formatting like tables and columns may not be perfectly preserved.',
       },
     ],
+    howToSteps: [
+      { title: 'Upload a PDF', detail: 'Select any PDF file to extract text from.' },
+      { title: 'View extracted text', detail: 'The tool reads the text layer of the PDF and displays it in a plain text editor.' },
+      { title: 'Copy or download', detail: 'Copy the extracted text or download it as a .txt file.' },
+    ],
   },
 
   'pdf-metadata-viewer': {
@@ -526,6 +625,10 @@ export const toolSeoData = {
         q: 'Is my PDF uploaded to a server?',
         a: 'No. The metadata is read entirely within your browser using client-side JavaScript. Your file stays on your device and is never uploaded anywhere.',
       },
+    ],
+    howToSteps: [
+      { title: 'Upload a PDF', detail: 'Select the PDF file you want to inspect.' },
+      { title: 'View metadata', detail: 'See the document title, author, subject, creator application, creation date, modification date, and page count.' },
     ],
   },
 
@@ -556,6 +659,12 @@ export const toolSeoData = {
         a: 'Incorporate the missing keywords naturally into your resume, especially in your skills section, work experience bullet points, and summary. Avoid keyword stuffing — the language should still read naturally.',
       },
     ],
+    howToSteps: [
+      { title: 'Paste the job description', detail: 'Copy the full job posting text into the Job Description field.' },
+      { title: 'Paste your resume', detail: 'Copy your resume text into the Resume field.' },
+      { title: 'View keyword matches', detail: 'The tool highlights keywords from the job description that appear and are missing in your resume.' },
+      { title: 'Update your resume', detail: 'Add missing keywords naturally into your resume to improve your ATS match score.' },
+    ],
   },
 
   'resume-character-counter': {
@@ -583,6 +692,11 @@ export const toolSeoData = {
         a: 'Many job application portals and ATS systems impose character limits on text fields. Knowing your exact character count helps you stay within these limits without losing important content.',
       },
     ],
+    howToSteps: [
+      { title: 'Paste your resume section', detail: 'Enter a bullet point, summary, or any resume section into the text area.' },
+      { title: 'Check character and word count', detail: 'See the live count to ensure you stay within platform limits like LinkedIn (2,000 chars for summary) or job board character limits.' },
+      { title: 'Trim if needed', detail: 'Edit your text until it fits within the required length.' },
+    ],
   },
 
   'cover-letter-filler-checker': {
@@ -609,6 +723,11 @@ export const toolSeoData = {
         q: 'Does this tool check grammar too?',
         a: 'This tool focuses specifically on identifying filler words, clichés, and weak phrases. For full grammar checking, consider pairing it with a dedicated grammar tool.',
       },
+    ],
+    howToSteps: [
+      { title: 'Paste your cover letter', detail: 'Enter your full cover letter text into the input area.' },
+      { title: 'Review flagged phrases', detail: 'Clichés and weak phrases like "I am a team player" or "passionate about" are highlighted.' },
+      { title: 'Rewrite flagged sections', detail: 'Replace generic phrases with specific examples and achievements to make your letter stand out.' },
     ],
   },
 
@@ -638,6 +757,11 @@ export const toolSeoData = {
         a: 'Enter a generic phrase like "responsible for managing" and the tool suggests stronger alternatives such as "directed," "orchestrated," or "oversaw" that better convey your role and impact.',
       },
     ],
+    howToSteps: [
+      { title: 'Choose a category', detail: 'Select the type of action — leadership, analysis, communication, technical, etc.' },
+      { title: 'Browse suggested verbs', detail: 'The tool shows strong action verbs suited for resume bullet points in that category.' },
+      { title: 'Copy and use', detail: 'Click any verb to copy it and use it to start a resume bullet point.' },
+    ],
   },
 
   'job-application-tracker': {
@@ -666,6 +790,11 @@ export const toolSeoData = {
         a: 'Yes. You can export your tracked applications as a file for backup or to transfer to another device, ensuring you never lose your progress.',
       },
     ],
+    howToSteps: [
+      { title: 'Add a job application', detail: 'Enter the company name, job title, application date, and current status.' },
+      { title: 'Update status as you progress', detail: 'Change the status from Applied → Interview → Offer → Rejected as things move forward.' },
+      { title: 'Track your pipeline', detail: 'See all your applications in one view and never miss a follow-up.' },
+    ],
   },
 
   'cover-letter-generator': {
@@ -693,6 +822,12 @@ export const toolSeoData = {
         q: 'Can I download the cover letter as a PDF?',
         a: 'Yes. The tool lets you export your finished cover letter in both PDF and Word formats, ready to attach to your job application.',
       },
+    ],
+    howToSteps: [
+      { title: 'Fill in your details', detail: 'Enter your name, the job title, company name, your key skills, and a relevant achievement.' },
+      { title: 'Optionally paste the job description', detail: 'The Smart Mode extracts keywords from the job description and weaves them into your letter.' },
+      { title: 'Choose tone and length', detail: 'Select professional, conversational, or confident tone, and short or standard length.' },
+      { title: 'Generate and download', detail: 'Click Generate to see your cover letter, then download as PDF or Word document.' },
     ],
   },
 
@@ -723,6 +858,11 @@ export const toolSeoData = {
         a: 'Absolutely. The real-time word and character count makes it easy to write to a specific length requirement for essays, assignments, social media posts, or any content with a word limit.',
       },
     ],
+    howToSteps: [
+      { title: 'Paste or type your text', detail: 'Enter any text — an essay, article, email, or resume — into the text area.' },
+      { title: 'See live stats', detail: 'Word count, character count, sentence count, paragraph count, and estimated reading time update instantly.' },
+      { title: 'Use for any purpose', detail: 'Ideal for checking essay word limits, Twitter character counts, or LinkedIn post lengths.' },
+    ],
   },
 
   'lorem-ipsum': {
@@ -749,6 +889,12 @@ export const toolSeoData = {
         q: 'Can I generate a specific number of words or paragraphs?',
         a: 'Yes. You can specify exactly how many paragraphs, sentences, or words you need, giving you precise control over the amount of placeholder text generated.',
       },
+    ],
+    howToSteps: [
+      { title: 'Choose output type', detail: 'Select whether you want paragraphs, sentences, or words of Lorem Ipsum text.' },
+      { title: 'Set the quantity', detail: 'Enter how many paragraphs, sentences, or words you need.' },
+      { title: 'Click Generate', detail: 'Placeholder text is generated instantly.' },
+      { title: 'Copy and use', detail: 'Click Copy to grab the Lorem Ipsum text for your design or development project.' },
     ],
   },
 
@@ -778,6 +924,11 @@ export const toolSeoData = {
         a: 'Yes. The previewer supports standard Markdown syntax including tables, task lists, code blocks with syntax highlighting, and other GitHub-flavored Markdown extensions.',
       },
     ],
+    howToSteps: [
+      { title: 'Write or paste Markdown', detail: 'Enter your Markdown-formatted text in the left editor panel.' },
+      { title: 'See the live HTML preview', detail: 'The rendered HTML output updates in real time on the right as you type.' },
+      { title: 'Use for README files or docs', detail: 'Perfect for previewing GitHub README files, blog posts, or documentation before publishing.' },
+    ],
   },
 
   'case-converter': {
@@ -805,6 +956,11 @@ export const toolSeoData = {
         q: 'Can I convert programming variable names between cases?',
         a: 'Yes. The tool can convert between camelCase, PascalCase, snake_case, and kebab-case, making it useful for developers who need to transform variable or function names between naming conventions.',
       },
+    ],
+    howToSteps: [
+      { title: 'Paste your text', detail: 'Enter the text you want to convert into the input field.' },
+      { title: 'Choose a case format', detail: 'Select from UPPER CASE, lower case, Title Case, Sentence case, camelCase, snake_case, or kebab-case.' },
+      { title: 'Copy the result', detail: 'The converted text appears instantly. Click Copy to use it.' },
     ],
   },
 
@@ -834,6 +990,11 @@ export const toolSeoData = {
         a: 'Yes, it performs the same function as the Unix diff command but with a visual, color-coded interface that makes differences much easier to spot and understand.',
       },
     ],
+    howToSteps: [
+      { title: 'Paste original text on the left', detail: 'Enter the original version of your text in the left panel.' },
+      { title: 'Paste modified text on the right', detail: 'Enter the updated or changed version in the right panel.' },
+      { title: 'View the differences', detail: 'Added lines are highlighted in green, removed lines in red. Changed words within lines are highlighted inline.' },
+    ],
   },
 
   'filler-word-remover': {
@@ -861,6 +1022,11 @@ export const toolSeoData = {
         q: 'Should I remove all filler words?',
         a: 'Not necessarily. Some filler words serve a purpose in casual or conversational writing. The tool highlights them so you can make an informed decision about which ones weaken your text and which ones are intentional.',
       },
+    ],
+    howToSteps: [
+      { title: 'Paste your text', detail: 'Enter a cover letter, essay, email, or any writing you want to improve.' },
+      { title: 'See highlighted filler words', detail: 'Weak phrases like "just", "very", "basically", and "in order to" are highlighted in the output.' },
+      { title: 'Rewrite flagged phrases', detail: 'Use the suggestions to replace filler words with stronger, more direct language.' },
     ],
   },
 
@@ -891,6 +1057,12 @@ export const toolSeoData = {
         a: 'Yes. The calculator shows a month-by-month breakdown of principal and interest components, so you can see exactly how your loan balance reduces over time.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter the loan amount', detail: 'Type the principal loan amount in rupees (e.g., 5000000 for ₹50 lakhs).' },
+      { title: 'Enter the interest rate', detail: 'Type the annual interest rate offered by your bank (e.g., 8.5%).' },
+      { title: 'Enter the loan tenure', detail: 'Set the loan duration in months or years.' },
+      { title: 'View EMI and amortization', detail: 'See your monthly EMI, total interest payable, and a month-by-month repayment schedule.' },
+    ],
   },
 
   'income-tax-calculator': {
@@ -918,6 +1090,12 @@ export const toolSeoData = {
         q: 'What are the income tax slabs for the new regime?',
         a: 'The new tax regime features revised slabs with lower rates but fewer deductions. The calculator uses the latest applicable slab rates to compute your tax accurately.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter your annual income', detail: 'Type your gross annual salary or income.' },
+      { title: 'Enter deductions', detail: 'Add your Section 80C, 80D, HRA, and other deductions.' },
+      { title: 'Compare old vs new regime', detail: 'The tool calculates your tax liability under both regimes side by side.' },
+      { title: 'Choose the better regime', detail: 'See which regime saves you more tax based on your specific deductions.' },
     ],
   },
 
@@ -947,6 +1125,12 @@ export const toolSeoData = {
         a: 'Historically, Indian equity mutual funds have delivered 10-12% annual returns over long periods. For conservative estimates, use 10% for equity and 7-8% for debt fund SIPs.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter monthly SIP amount', detail: 'Type how much you want to invest every month.' },
+      { title: 'Enter expected annual return', detail: 'Enter the expected annual return rate (e.g., 12% for equity mutual funds).' },
+      { title: 'Enter investment duration', detail: 'Set how many years you plan to invest.' },
+      { title: 'View projected corpus', detail: 'See the total invested amount, estimated returns, and final corpus with a growth chart.' },
+    ],
   },
 
   'gst-calculator': {
@@ -974,6 +1158,12 @@ export const toolSeoData = {
         q: 'How do I calculate the original price from a GST-inclusive amount?',
         a: 'Select "GST Inclusive" mode, enter the total amount, and choose the GST rate. The calculator will reverse-calculate the base price and the GST component.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter the base amount', detail: 'Type the price of goods or services before GST.' },
+      { title: 'Select the GST rate', detail: 'Choose the applicable GST slab — 5%, 12%, 18%, or 28%.' },
+      { title: 'View GST breakdown', detail: 'See CGST and SGST (for intra-state) or IGST (for inter-state) amounts and the total price with GST.' },
+      { title: 'Or reverse calculate', detail: 'Enter a GST-inclusive price to extract the base amount and tax component.' },
     ],
   },
 
@@ -1003,6 +1193,13 @@ export const toolSeoData = {
         a: 'No. HRA exemption under Section 10(13A) is available only under the old tax regime. If you opt for the new regime, you cannot claim this exemption.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter basic salary', detail: 'Type your monthly basic salary.' },
+      { title: 'Enter HRA received', detail: 'Type the HRA component in your salary.' },
+      { title: 'Enter rent paid', detail: 'Type the actual rent you pay per month.' },
+      { title: 'Select city type', detail: 'Choose metro (Delhi, Mumbai, Kolkata, Chennai) or non-metro city.' },
+      { title: 'View HRA exemption', detail: 'The tool calculates the HRA exemption under Section 10(13A) and your taxable HRA.' },
+    ],
   },
 
   'gratuity-calculator': {
@@ -1030,6 +1227,11 @@ export const toolSeoData = {
         q: 'Is gratuity taxable in India?',
         a: 'Gratuity is tax-exempt up to Rs 20 lakh for employees covered under the Act. For government employees, the entire gratuity is tax-free. Any amount exceeding the limit is taxed as per your income tax slab.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter your last drawn salary', detail: 'Type your last basic salary + dearness allowance in rupees.' },
+      { title: 'Enter years of service', detail: 'Enter the number of completed years you worked with the employer.' },
+      { title: 'View gratuity amount', detail: 'The tool calculates gratuity as per the Payment of Gratuity Act (15/26 × salary × years).' },
     ],
   },
 
@@ -1059,6 +1261,11 @@ export const toolSeoData = {
         a: 'Always compare both. A higher CTC does not always mean higher take-home pay, as the increase might go into PF, gratuity, or variable pay. Use the CTC breakup calculator alongside this tool for a complete picture.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter current salary', detail: 'Type your current monthly or annual salary.' },
+      { title: 'Enter the hike percentage', detail: 'Type the percentage hike offered (e.g., 15 for 15%).' },
+      { title: 'View new salary', detail: 'See your new salary amount and the absolute increase in rupees.' },
+    ],
   },
 
   'fd-rd-calculator': {
@@ -1086,6 +1293,12 @@ export const toolSeoData = {
         q: 'Is FD interest taxable in India?',
         a: 'Yes. FD interest is fully taxable as per your income tax slab. Banks deduct TDS at 10% if annual interest exceeds Rs 40,000 (Rs 50,000 for senior citizens).',
       },
+    ],
+    howToSteps: [
+      { title: 'Choose FD or RD', detail: 'Select Fixed Deposit for a lump-sum deposit or Recurring Deposit for monthly contributions.' },
+      { title: 'Enter the principal and rate', detail: 'Type the deposit amount and the annual interest rate offered by your bank.' },
+      { title: 'Set the tenure', detail: 'Enter the investment period in months or years.' },
+      { title: 'View maturity amount', detail: 'See the maturity amount and total interest earned, with quarterly or annual compounding.' },
     ],
   },
 
@@ -1116,6 +1329,12 @@ export const toolSeoData = {
         a: 'No. All compression happens locally in your browser using client-side JavaScript. Your images are never uploaded to any server, ensuring complete privacy.',
       },
     ],
+    howToSteps: [
+      { title: 'Upload an image', detail: 'Select a JPG, PNG, or WebP image from your device.' },
+      { title: 'Adjust quality', detail: 'Use the quality slider to balance file size and image quality.' },
+      { title: 'Preview and compare', detail: 'See the compressed image alongside the original and check the file size reduction.' },
+      { title: 'Download', detail: 'Save the compressed image to your device.' },
+    ],
   },
 
   'image-resizer': {
@@ -1144,6 +1363,12 @@ export const toolSeoData = {
         a: 'Enlarging an image beyond its original dimensions may reduce sharpness. Reducing size generally maintains quality. The tool uses browser-native algorithms for the best results.',
       },
     ],
+    howToSteps: [
+      { title: 'Upload an image', detail: 'Select the image you want to resize.' },
+      { title: 'Set new dimensions', detail: 'Enter the target width and height in pixels, or use a percentage scale.' },
+      { title: 'Maintain aspect ratio', detail: 'Toggle "Lock aspect ratio" to prevent distortion when resizing.' },
+      { title: 'Download', detail: 'Save the resized image.' },
+    ],
   },
 
   'image-to-base64': {
@@ -1170,6 +1395,11 @@ export const toolSeoData = {
         q: 'Does Base64 encoding increase image file size?',
         a: 'Yes. Base64 encoding increases the data size by approximately 33%. It is best used for small images (under 10 KB) where the overhead is negligible compared to the saved HTTP request.',
       },
+    ],
+    howToSteps: [
+      { title: 'Upload an image', detail: 'Select any image file (JPG, PNG, GIF, WebP, SVG).' },
+      { title: 'Copy the Base64 string', detail: 'The tool converts the image to a Base64 data URI instantly.' },
+      { title: 'Use in CSS or HTML', detail: 'Paste the data URI as the src of an img tag or as a CSS background-image to embed the image without an external file.' },
     ],
   },
 
@@ -1199,6 +1429,11 @@ export const toolSeoData = {
         a: 'Yes. The tool supports conversion between all common web image formats including WebP to JPEG, WebP to PNG, and vice versa.',
       },
     ],
+    howToSteps: [
+      { title: 'Upload your image', detail: 'Select the source image in any supported format (JPG, PNG, WebP, GIF).' },
+      { title: 'Choose output format', detail: 'Select the target format you want to convert to.' },
+      { title: 'Download the converted image', detail: 'Save the converted image in the new format.' },
+    ],
   },
 
   'image-color-picker': {
@@ -1227,6 +1462,11 @@ export const toolSeoData = {
         a: 'Yes. Click on different areas of the image to extract as many colors as you need. This is great for building a color palette from a photograph or design mockup.',
       },
     ],
+    howToSteps: [
+      { title: 'Upload an image', detail: 'Select any image you want to pick colors from.' },
+      { title: 'Click or hover on the image', detail: 'Move your cursor over the image to sample any pixel\'s color.' },
+      { title: 'Copy the color code', detail: 'Get the HEX, RGB, and HSL values for the selected color and copy them to use in your design.' },
+    ],
   },
 
   'image-metadata-viewer': {
@@ -1254,6 +1494,11 @@ export const toolSeoData = {
         q: 'Is my image uploaded to a server?',
         a: 'No. The metadata is read entirely in your browser. Your image never leaves your device, so your photos and any embedded location data remain completely private.',
       },
+    ],
+    howToSteps: [
+      { title: 'Upload an image', detail: 'Select a JPG, PNG, or other image file.' },
+      { title: 'View EXIF metadata', detail: 'See camera make and model, focal length, aperture, shutter speed, ISO, GPS coordinates, and more.' },
+      { title: 'Use for photography or privacy', detail: 'Verify your camera settings or check whether your image contains GPS location data before sharing it.' },
     ],
   },
 
@@ -1284,6 +1529,11 @@ export const toolSeoData = {
         a: 'Keep meta descriptions between 150-160 characters. Google typically truncates descriptions longer than 160 characters in search results, so the most important information should come first.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter your page details', detail: 'Fill in the page title, description, URL, and Open Graph image URL.' },
+      { title: 'Select meta tag types', detail: 'Choose which tags to generate — basic SEO, Open Graph, Twitter Card, or all three.' },
+      { title: 'Copy the HTML', detail: 'Copy the generated meta tag HTML and paste it into the <head> of your webpage.' },
+    ],
   },
 
   'title-tag-checker': {
@@ -1311,6 +1561,11 @@ export const toolSeoData = {
         q: 'What makes a good SEO title tag?',
         a: 'A good title tag includes your primary keyword near the beginning, is under 60 characters, accurately describes the page content, and is compelling enough to encourage clicks from search results.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter your page title', detail: 'Type or paste the title tag you\'ve written for your webpage.' },
+      { title: 'Check length and SERP preview', detail: 'See if the title is within the 50-60 character ideal range and preview how it will appear in Google search results.' },
+      { title: 'Adjust and optimize', detail: 'Edit the title to fit within the recommended length while including your target keyword.' },
     ],
   },
 
@@ -1340,6 +1595,11 @@ export const toolSeoData = {
         a: 'Missing or incorrect Open Graph tags cause social platforms to guess your content, often showing the wrong image or description. Use this tool to verify your OG tags are set correctly before sharing.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter your Open Graph details', detail: 'Fill in the og:title, og:description, og:image URL, and og:url.' },
+      { title: 'Preview across platforms', detail: 'See how your link will appear when shared on Facebook, Twitter/X, and LinkedIn.' },
+      { title: 'Copy the OG tags', detail: 'Copy the generated HTML meta tags and add them to your page\'s <head> section.' },
+    ],
   },
 
   'robots-txt-generator': {
@@ -1368,6 +1628,11 @@ export const toolSeoData = {
         a: 'Robots.txt prevents crawling, but blocked pages can still appear in search results if other pages link to them. To fully remove a page from search results, use a "noindex" meta tag instead.',
       },
     ],
+    howToSteps: [
+      { title: 'Add crawl rules', detail: 'Specify which user agents (Googlebot, all bots) and which paths to allow or disallow.' },
+      { title: 'Add your sitemap URL', detail: 'Enter your sitemap URL to help crawlers discover all your pages.' },
+      { title: 'Preview and download', detail: 'Preview the robots.txt content and download it to place in your website\'s root directory.' },
+    ],
   },
 
   'keyword-density-checker': {
@@ -1395,6 +1660,11 @@ export const toolSeoData = {
         q: 'How do I check the keyword density of my content?',
         a: 'Paste your text into the tool and it analyzes every word and phrase, showing you the frequency and density percentage for single words (unigrams), two-word phrases (bigrams), and three-word phrases (trigrams).',
       },
+    ],
+    howToSteps: [
+      { title: 'Paste your content', detail: 'Enter an article, blog post, or any text you want to analyze.' },
+      { title: 'View keyword density', detail: 'See a ranked list of the most frequent words and phrases with their density percentages.' },
+      { title: 'Optimize for SEO', detail: 'Ensure your target keyword appears at 1-3% density. Above 5% may be seen as keyword stuffing by Google.' },
     ],
   },
 
@@ -1429,6 +1699,12 @@ export const toolSeoData = {
         a: 'No. All processing happens locally in your browser. Your business and client details are never sent to any server, ensuring complete privacy.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter your business details', detail: 'Fill in your company name, address, and GSTIN if applicable.' },
+      { title: 'Add client details', detail: 'Enter the client name, address, and contact information.' },
+      { title: 'Add line items', detail: 'Enter each product or service with quantity, rate, and GST rate.' },
+      { title: 'Download PDF invoice', detail: 'Generate a professional GST invoice ready to email to your client.' },
+    ],
   },
 
   'tax-saving-optimizer': {
@@ -1461,6 +1737,12 @@ export const toolSeoData = {
         q: 'Is the tax calculation here accurate?',
         a: 'The tool uses official FY 2024-25 slab rates, standard deduction amounts, and section limits for a close estimate. It includes the 4% health & education cess and Section 87A rebate. For filing returns, always verify with a CA or the Income Tax portal.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter your annual income', detail: 'Type your gross annual salary.' },
+      { title: 'Enter current 80C investments', detail: 'Add your EPF, PPF, ELSS, LIC premium, and other Section 80C investments.' },
+      { title: 'Enter 80D and NPS contributions', detail: 'Add health insurance premium and NPS contributions.' },
+      { title: 'View optimization suggestions', detail: 'See how much of your 80C limit remains and which investments can save you the most tax.' },
     ],
   },
 
@@ -1495,6 +1777,12 @@ export const toolSeoData = {
         a: 'QR codes can technically store up to 4,296 alphanumeric characters, but codes with more than 500-1000 characters become very dense and harder to scan reliably. The tool warns you at 2000 characters.',
       },
     ],
+    howToSteps: [
+      { title: 'Enter your URL or text', detail: 'Type or paste the URL, phone number, email address, or any text you want to encode in the QR code.' },
+      { title: 'Customize appearance', detail: 'Choose foreground and background colors, set the output size, and pick an error correction level.' },
+      { title: 'Preview the QR code', detail: 'The QR code updates live as you type and change settings.' },
+      { title: 'Download as PNG', detail: 'Click Download to save the QR code image to your device.' },
+    ],
   },
 
   'resume-builder': {
@@ -1514,6 +1802,12 @@ export const toolSeoData = {
       { q: 'Can I download my resume as a PDF?', a: 'Yes. Click "Download PDF" to get a clean, ATS-friendly PDF of your resume. The PDF is generated locally in your browser so your data never leaves your device.' },
       { q: 'Is my resume data saved?', a: 'Your data is only in memory while you\'re on the page. We recommend downloading your PDF or copying your content before leaving. Nothing is stored on any server.' },
       { q: 'What should I write in my resume summary?', a: 'A good summary is 2-4 sentences covering your years of experience, key skills, and what makes you a strong candidate. Keep it specific and tailored to the role you\'re applying for.' },
+    ],
+    howToSteps: [
+      { title: 'Fill in your personal details', detail: 'Enter your name, contact info, job title, and professional summary.' },
+      { title: 'Add work experience', detail: 'List your previous roles with company names, dates, and bullet-point achievements.' },
+      { title: 'Add education and skills', detail: 'Enter your educational background and key skills.' },
+      { title: 'Preview and download PDF', detail: 'See a live preview of your resume and download it as a professional PDF.' },
     ],
   },
 
@@ -1549,6 +1843,12 @@ export const toolSeoData = {
         a: 'Reading time is estimated at 200 words per minute, which is an average silent reading speed for adults. For example, a 1,000-word article would have an estimated reading time of 5 minutes.',
       },
     ],
+    howToSteps: [
+      { title: 'Paste your text', detail: 'Enter an article, blog post, email, or any writing you want to analyze.' },
+      { title: 'View readability scores', detail: 'The tool calculates Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, and more.' },
+      { title: 'Interpret the results', detail: 'A Flesch score above 60 is easy to read. Below 30 is very difficult. Aim for a grade level matching your target audience.' },
+      { title: 'Improve your writing', detail: 'Shorten sentences and use simpler words to raise your readability score.' },
+    ],
   },
 
   // ── SEO ──────────────────────────────────────────────────────────────────
@@ -1583,6 +1883,12 @@ export const toolSeoData = {
         a: 'Yes. After copying the generated JSON-LD, you can paste it into Google\'s Rich Results Test (search.google.com/test/rich-results) or Schema.org Validator to check for errors and preview how it might appear in search results.',
       },
     ],
+    howToSteps: [
+      { title: 'Choose schema type', detail: 'Select the schema type that fits your content — Article, FAQ, Product, LocalBusiness, Event, HowTo, or BreadcrumbList.' },
+      { title: 'Fill in the details', detail: 'Enter the required fields for that schema type (name, description, URL, price, etc.).' },
+      { title: 'Copy the JSON-LD', detail: 'Copy the generated JSON-LD script tag.' },
+      { title: 'Add to your webpage', detail: 'Paste the script tag inside your page\'s <head> or at the end of the <body> section.' },
+    ],
   },
 
   'privacy-policy-generator': {
@@ -1615,6 +1921,12 @@ export const toolSeoData = {
         q: 'Can I customise the generated policy after downloading?',
         a: 'Absolutely. The .txt file or copied text is fully editable. You can open it in any text editor, word processor, or CMS and tailor the language, add your specific data practices, or have a lawyer review and modify it before publishing.',
       },
+    ],
+    howToSteps: [
+      { title: 'Enter your website details', detail: 'Fill in your website name, URL, company name, and contact email.' },
+      { title: 'Select data collection types', detail: 'Check which types of data your website collects — cookies, analytics, email subscriptions, user accounts, payments, etc.' },
+      { title: 'Generate the policy', detail: 'Click Generate to create a comprehensive privacy policy tailored to your selections.' },
+      { title: 'Copy or download', detail: 'Copy the policy text or download it as a text file to publish on your website.' },
     ],
   },
 }

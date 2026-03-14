@@ -5,6 +5,7 @@ import { getCategoryBySlug } from '../data/tools'
 import { usePageTitle } from '../hooks/usePageTitle'
 import SEO from '../components/SEO'
 import ToolCard from '../components/ToolCard'
+import CategorySeoContent from '../components/CategorySeoContent'
 
 function CategoryIcon({ name, className }) {
   const Icon = getIcon(name)
@@ -85,6 +86,8 @@ export default function CategoryPage() {
           <ToolCard key={tool.id} tool={tool} categoryColor={category.color} showCategory={false} />
         ))}
       </div>
+
+      <CategorySeoContent slug={category.slug} />
     </div>
   )
 }

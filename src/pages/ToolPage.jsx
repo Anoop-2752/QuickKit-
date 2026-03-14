@@ -9,6 +9,7 @@ import SEO from '../components/SEO'
 import JsonLd from '../components/JsonLd'
 import FaqAccordion from '../components/FaqAccordion'
 import RelatedTools from '../components/RelatedTools'
+import HowToSteps from '../components/HowToSteps'
 
 // Lazy-loaded tool components — each becomes its own JS chunk
 const JsonFormatter     = lazy(() => import('../tools/developer/JsonFormatter'))
@@ -239,6 +240,9 @@ export default function ToolPage() {
       ) : (
         <ComingSoon toolName={tool.name} />
       )}
+
+      {/* How to Use section */}
+      <HowToSteps steps={seoData?.howToSteps} />
 
       {/* FAQ section */}
       {seoData?.faqs && <FaqAccordion faqs={seoData.faqs} />}
