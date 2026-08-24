@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet-async'
 
-const BASE_URL = 'https://quickkit.dev'
-const DEFAULT_TITLE = 'QuickKit — Every Developer Tool You Need'
-const DEFAULT_DESC = 'Free online developer tools. JSON formatter, Base64 encoder, JWT decoder, UUID generator, word counter and more — all free, all client-side, no signup required.'
-const DEFAULT_KEYWORDS = 'developer tools, online tools, free tools, JSON formatter, Base64 encoder, JWT decoder, UUID generator, word counter, markdown previewer'
+const BASE_URL = 'https://www.quickkit.dev'
+const DEFAULT_TITLE = 'QuickKit — Free Online Tools for Developer, HR, Finance, PDF & More'
+const DEFAULT_DESC = 'Free online tools for developers, HR, finance, career, SEO, image, PDF and text — EMI calculator, GST calculator, salary slip generator, PDF merger, JSON formatter and more. No signup, runs entirely in your browser.'
+const DEFAULT_KEYWORDS = 'free online tools, EMI calculator, GST calculator, income tax calculator, salary slip generator, PDF merger, ATS keyword checker, HR tools, developer tools, word counter, JSON formatter'
 
-export default function SEO({ title, description, keywords, path }) {
+export default function SEO({ title, description, keywords, path, noindex = false }) {
   const fullTitle = title ? `${title} | QuickKit` : DEFAULT_TITLE
   const desc = description || DEFAULT_DESC
   const kw = keywords || DEFAULT_KEYWORDS
@@ -21,8 +21,8 @@ export default function SEO({ title, description, keywords, path }) {
       <link rel="canonical" href={canonical} />
 
       {/* Crawlers */}
-      <meta name="robots" content="index, follow" />
-      <meta name="googlebot" content="index, follow" />
+      <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+      <meta name="googlebot" content={noindex ? 'noindex, follow' : 'index, follow'} />
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
@@ -31,6 +31,10 @@ export default function SEO({ title, description, keywords, path }) {
       <meta property="og:url" content={canonical} />
       <meta property="og:site_name" content="QuickKit" />
       <meta property="og:image" content={`${BASE_URL}/og-image.png`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="QuickKit — free online tools" />
+      <meta property="og:locale" content="en_IN" />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />

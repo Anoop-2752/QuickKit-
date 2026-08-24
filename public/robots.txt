@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://quickkit.dev/sitemap.xml
+Sitemap: https://www.quickkit.dev/sitemap.xml

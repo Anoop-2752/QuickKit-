@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 
-const BASE_URL = 'https://quickkit.dev'
+const BASE_URL = 'https://www.quickkit.dev'
 
 const appCategoryMap = {
   developer: 'DeveloperApplication',

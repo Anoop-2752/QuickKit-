@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ArrowRight, getIcon } from '../lib/icons'
 import { getColors } from '../lib/colors'
 
@@ -10,15 +10,14 @@ function CategoryIcon({ name, className }) {
 }
 
 export default function CategoryCard({ category }) {
-  const navigate = useNavigate()
   const colors = getColors(category.color)
   const previewTools = category.tools.slice(0, 4)
 
   return (
-    <button
-      onClick={() => navigate(`/${category.slug}`)}
+    <Link
+      to={`/${category.slug}`}
       className={[
-        'group w-full text-left rounded-2xl bg-[#111] p-5',
+        'group block w-full text-left rounded-2xl bg-[#111] p-5',
         'border border-[#1e1e1e] border-t-[#282828]',
         'transition-all duration-300 cursor-pointer',
         colors.hoverBorder,
@@ -66,6 +65,6 @@ export default function CategoryCard({ category }) {
         <span>Open Laboratory</span>
         <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
       </div>
-    </button>
+    </Link>
   )
 }

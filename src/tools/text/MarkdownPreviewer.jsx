@@ -14,7 +14,7 @@ Write **Markdown** on the left, see the live *preview* on the right.
 ## Features
 
 - **Bold**, *italic*, \`inline code\`
-- [Links](https://quickkit.dev)
+- [Links](https://www.quickkit.dev)
 - Tables, blockquotes, code blocks
 
 ## Code Example

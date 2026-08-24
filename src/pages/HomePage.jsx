@@ -1,25 +1,10 @@
 import { useState } from 'react'
-import { Helmet } from 'react-helmet-async'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { categories, allTools, getCategoryBySlug } from '../data/tools'
 import { Search, Braces, Binary, CreditCard, Percent, Receipt, ScanSearch, Combine, AlignLeft } from '../lib/icons'
-import { usePageTitle } from '../hooks/usePageTitle'
 import SEO from '../components/SEO'
 import CategoryCard from '../components/CategoryCard'
 import ToolCard from '../components/ToolCard'
-
-const STRUCTURED_DATA = JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'QuickKit',
-  url: 'https://quickkit.dev',
-  description: 'Free online tools for developers, HR professionals, finance, career, and more.',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://quickkit.dev/?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
-})
 
 const POPULAR_PILLS = [
   { label: 'JSON Formatter',    category: 'developer', slug: 'json-formatter',      Icon: Braces   },
@@ -43,9 +28,6 @@ const HOT_COMMANDS = [
 export default function HomePage() {
   const [query, setQuery]       = useState('')
   const [activeTab, setActiveTab] = useState('all')
-  const navigate = useNavigate()
-  usePageTitle(null)
-
   const trimmed    = query.trim().toLowerCase()
   const isSearching = trimmed.length > 0
   const results    = isSearching
@@ -66,9 +48,6 @@ export default function HomePage() {
         keywords="free online tools, EMI calculator, GST calculator, salary slip generator, PDF merger, ATS keyword checker, income tax calculator, HR tools, developer tools"
         path="/"
       />
-      <Helmet>
-        <script type="application/ld+json">{STRUCTURED_DATA}</script>
-      </Helmet>
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="pb-10 pt-14 text-center">
@@ -123,13 +102,13 @@ export default function HomePage() {
           <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
             <span className="text-xs text-zinc-700">Try:</span>
             {HOT_COMMANDS.map((cmd) => (
-              <button
+              <Link
                 key={cmd.slug}
-                onClick={() => navigate(`/${cmd.category}/${cmd.slug}`)}
+                to={`/${cmd.category}/${cmd.slug}`}
                 className="rounded-full border border-[#2a2a2a] bg-[#141414] px-3 py-1 text-xs text-zinc-500 transition-colors hover:border-green-500/30 hover:text-green-400"
               >
                 {cmd.label}
-              </button>
+              </Link>
             ))}
           </div>
         )}
@@ -176,14 +155,14 @@ export default function HomePage() {
               {POPULAR_PILLS.map(({ label, category, slug, Icon: PillIcon }) => {
                 const Ic = PillIcon
                 return (
-                  <button
+                  <Link
                     key={slug}
-                    onClick={() => navigate(`/${category}/${slug}`)}
+                    to={`/${category}/${slug}`}
                     className="group flex shrink-0 items-center gap-2 rounded-full border border-[#2a2a2a] bg-[#141414] px-4 py-2 text-sm text-zinc-400 transition-all hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-400"
                   >
                     <Ic size={13} className="text-zinc-600 transition-colors group-hover:text-green-400" />
                     {label}
-                  </button>
+                  </Link>
                 )
               })}
             </div>

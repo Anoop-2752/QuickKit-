@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { ArrowRight, getIcon } from '../lib/icons'
 import { getColors } from '../lib/colors'
 import { getCategoryBySlug } from '../data/tools'
@@ -11,15 +11,14 @@ function ToolIcon({ name, className }) {
 }
 
 export default function ToolCard({ tool, categoryColor = 'blue', showCategory = true }) {
-  const navigate = useNavigate()
   const colors = getColors(categoryColor)
   const cat = getCategoryBySlug(tool.category)
 
   return (
-    <button
-      onClick={() => navigate(`/${tool.category}/${tool.slug}`)}
+    <Link
+      to={`/${tool.category}/${tool.slug}`}
       className={[
-        'group w-full text-left rounded-xl bg-[#111] p-4',
+        'group block w-full text-left rounded-xl bg-[#111] p-4',
         'border border-[#1e1e1e] border-t-[#282828]',
         'transition-all duration-300 cursor-pointer',
         colors.hoverBorder,
@@ -54,6 +53,6 @@ export default function ToolCard({ tool, categoryColor = 'blue', showCategory = 
         <span>Open</span>
         <ArrowRight size={10} className="transition-transform duration-200 group-hover:translate-x-0.5" />
       </div>
-    </button>
+    </Link>
   )
 }

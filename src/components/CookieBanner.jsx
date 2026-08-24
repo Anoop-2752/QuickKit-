@@ -1,17 +1,49 @@
-import { useState } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 
 const STORAGE_KEY = 'quickkit_cookie_consent'
 
-export default function CookieBanner() {
-  const [visible, setVisible] = useState(() => !localStorage.getItem(STORAGE_KEY))
+const listeners = new Set()
+function subscribe(onChange) {
+  listeners.add(onChange)
+  return () => listeners.delete(onChange)
+}
+function emit() {
+  for (const onChange of listeners) onChange()
+}
 
-  function accept() {
-    localStorage.setItem(STORAGE_KEY, 'accepted')
-    setVisible(false)
+// Set when localStorage is unavailable (private windows, blocked site data) so
+// dismissing still works for the current session even if it can't persist.
+let sessionAccepted = false
+
+function getSnapshot() {
+  if (sessionAccepted) return 'accepted'
+  try {
+    return localStorage.getItem(STORAGE_KEY) ? 'accepted' : 'pending'
+  } catch {
+    return 'pending'
   }
+}
 
-  if (!visible) return null
+// Prerendered HTML must never contain the banner — whether this visitor has
+// already accepted is only knowable in their browser.
+function getServerSnapshot() {
+  return 'accepted'
+}
+
+export default function CookieBanner() {
+  const consent = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+
+  const accept = useCallback(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, 'accepted')
+    } catch {
+      sessionAccepted = true
+    }
+    emit()
+  }, [])
+
+  if (consent === 'accepted') return null
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#2a2a2a] bg-[#111111]/95 backdrop-blur-md">

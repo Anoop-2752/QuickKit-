@@ -1,9 +1,9 @@
 import { lazy, Suspense, useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { ChevronRight, Construction, getIcon } from '../lib/icons'
 import { getColors } from '../lib/colors'
 import { getToolBySlug, getCategoryBySlug } from '../data/tools'
-import { usePageTitle } from '../hooks/usePageTitle'
+import { getPreloadedSeo, setPreloadedSeo } from '../data/seo/preload'
 import SEO from '../components/SEO'
 import JsonLd from '../components/JsonLd'
 import FaqAccordion from '../components/FaqAccordion'
@@ -139,6 +139,7 @@ function ToolIcon({ name, className }) {
 function NotFound({ onBack }) {
   return (
     <div className="mx-auto max-w-7xl px-6 py-24 text-center">
+      <SEO title="Tool Not Found" noindex />
       <p className="mb-2 text-4xl">🔍</p>
       <h1 className="mb-3 text-2xl font-semibold text-white">Tool not found</h1>
       <p className="mb-8 text-sm text-zinc-500">
@@ -183,15 +184,37 @@ export default function ToolPage() {
   const tool     = getToolBySlug(categorySlug, toolSlug)
   const category = getCategoryBySlug(categorySlug)
 
-  const [seoData, setSeoData] = useState(null)
+  // Prerendered pages inline their SEO data, so the very first render already
+  // has it; every other navigation falls back to fetching the category chunk.
+  const [seoData, setSeoData] = useState(
+    () => getPreloadedSeo(categorySlug, toolSlug) ?? null
+  )
 
   useEffect(() => {
-    import(`../data/seo/${categorySlug}.js`)
-      .then(m => setSeoData(m.default[tool?.slug] ?? null))
-      .catch(() => setSeoData(null))
-  }, [categorySlug, tool?.slug])
+    const preloaded = getPreloadedSeo(categorySlug, tool?.slug)
+    if (preloaded !== undefined) {
+      setSeoData(preloaded)
+      return
+    }
 
-  usePageTitle(tool?.name)
+    // Clear first: without this the previous tool's FAQs and How-To steps stay
+    // on screen under the new tool's heading until the chunk resolves.
+    setSeoData(null)
+
+    let cancelled = false
+    import(`../data/seo/${categorySlug}.js`)
+      .then((m) => {
+        if (cancelled) return
+        setPreloadedSeo(categorySlug, m.default)
+        setSeoData(m.default[tool?.slug] ?? null)
+      })
+      .catch(() => {
+        if (!cancelled) setSeoData(null)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [categorySlug, toolSlug, tool?.slug])
 
   if (!tool || !category) {
     return <NotFound onBack={() => navigate(categorySlug ? `/${categorySlug}` : '/')} />
@@ -217,13 +240,13 @@ export default function ToolPage() {
 
       {/* Breadcrumb */}
       <nav className="mb-6 flex items-center gap-1.5 text-xs text-zinc-600">
-        <button onClick={() => navigate('/')} className="transition-colors hover:text-zinc-300">
+        <Link to="/" className="transition-colors hover:text-zinc-300">
           Home
-        </button>
+        </Link>
         <ChevronRight size={11} className="text-zinc-700" />
-        <button onClick={() => navigate(`/${category.slug}`)} className="transition-colors hover:text-zinc-300">
+        <Link to={`/${category.slug}`} className="transition-colors hover:text-zinc-300">
           {category.name}
-        </button>
+        </Link>
         <ChevronRight size={11} className="text-zinc-700" />
         <span className="text-zinc-400">{tool.name}</span>
       </nav>
@@ -239,7 +262,9 @@ export default function ToolPage() {
       </header>
 
       {/* Tool content */}
-      {ToolComponent ? (
+      {import.meta.env.SSR ? (
+        <ToolSkeleton />
+      ) : ToolComponent ? (
         <Suspense fallback={<ToolSkeleton />}>
           <ToolComponent />
         </Suspense>
