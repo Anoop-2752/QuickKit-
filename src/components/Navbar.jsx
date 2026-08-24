@@ -36,9 +36,12 @@ export default function Navbar() {
             {/* Search button */}
             <button
               onClick={() => setSearchOpen(true)}
+              aria-label="Search tools"
+              aria-haspopup="dialog"
+              aria-expanded={searchOpen}
               className="flex items-center gap-2 rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-1.5 text-xs text-zinc-500 transition-colors hover:border-green-500/40 hover:text-green-400"
             >
-              <Search size={12} />
+              <Search size={12} aria-hidden="true" />
               <span className="hidden sm:block">Search</span>
               <kbd className="hidden rounded border border-[#3a3a3a] bg-[#111] px-1 py-0.5 text-xs text-zinc-700 sm:block">⌘K</kbd>
             </button>

@@ -4,6 +4,7 @@ import { ChevronRight, Construction, getIcon } from '../lib/icons'
 import { getColors } from '../lib/colors'
 import { getToolBySlug, getCategoryBySlug } from '../data/tools'
 import { getPreloadedSeo, setPreloadedSeo } from '../data/seo/preload'
+import { useIsClient } from '../hooks/useIsClient'
 import SEO from '../components/SEO'
 import JsonLd from '../components/JsonLd'
 import FaqAccordion from '../components/FaqAccordion'
@@ -183,6 +184,7 @@ export default function ToolPage() {
 
   const tool     = getToolBySlug(categorySlug, toolSlug)
   const category = getCategoryBySlug(categorySlug)
+  const isClient = useIsClient()
 
   // Prerendered pages inline their SEO data, so the very first render already
   // has it; every other navigation falls back to fetching the category chunk.
@@ -261,8 +263,10 @@ export default function ToolPage() {
         <p className="text-sm text-zinc-500">{tool.description}</p>
       </header>
 
-      {/* Tool content */}
-      {import.meta.env.SSR ? (
+      {/* Tool content — the interactive tool mounts after hydration, so the
+          prerendered HTML and the hydration pass render the same skeleton and
+          browser-only libraries stay out of the server bundle. */}
+      {!isClient ? (
         <ToolSkeleton />
       ) : ToolComponent ? (
         <Suspense fallback={<ToolSkeleton />}>

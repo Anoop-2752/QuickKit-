@@ -89,9 +89,10 @@ export default function HomePage() {
             {query && (
               <button
                 onClick={() => setQuery('')}
+                aria-label="Clear search"
                 className="text-xs text-zinc-600 hover:text-zinc-400"
               >
-                ✕
+                <span aria-hidden="true">✕</span>
               </button>
             )}
           </div>

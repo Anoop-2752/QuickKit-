@@ -5,10 +5,16 @@ import { HelmetProvider } from 'react-helmet-async'
 import { AppRoutes } from './App.jsx'
 import { setPreloadedSeo } from './data/seo/preload.js'
 
-// React 19 hoists <title>/<meta>/<link>/<script type="application/ld+json">
-// into <head> in the browser. Server-side they are emitted inline, so we lift
-// them out of the body markup and hand them back for the <head> of the file.
-const HEAD_TAG = /<title[^>]*>[\s\S]*?<\/title>|<meta\b[^>]*?\/?>|<link\b[^>]*?\/?>|<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/g
+// React 19 hoists <title>, <meta> and <link> into <head> in the browser, so the
+// server has to put them there too or hydration won't line up. Server-side they
+// are emitted inline, hence this lift.
+//
+// JSON-LD scripts are deliberately NOT lifted: React only hoists *async*
+// scripts, so on the client they stay where they are rendered, in the body.
+// Moving them into <head> here would make the server markup structurally
+// different from the client's first render and break hydration. Schema.org
+// data is valid anywhere in the document.
+const HEAD_TAG = /<title[^>]*>[\s\S]*?<\/title>|<meta\b[^>]*?\/?>|<link\b[^>]*?\/?>/g
 
 function extractHead(html) {
   const tags = []
