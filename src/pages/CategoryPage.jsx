@@ -1,8 +1,7 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { ChevronRight, getIcon } from '../lib/icons'
 import { getColors } from '../lib/colors'
 import { getCategoryBySlug } from '../data/tools'
-import { usePageTitle } from '../hooks/usePageTitle'
 import SEO from '../components/SEO'
 import ToolCard from '../components/ToolCard'
 import CategorySeoContent from '../components/CategorySeoContent'
@@ -17,6 +16,7 @@ function CategoryIcon({ name, className }) {
 function NotFound({ onBack }) {
   return (
     <div className="mx-auto max-w-7xl px-6 py-24 text-center">
+      <SEO title="Category Not Found" noindex />
       <p className="mb-2 text-4xl">🔍</p>
       <h1 className="mb-3 text-2xl font-semibold text-white">Category not found</h1>
       <p className="mb-8 text-sm text-zinc-500">
@@ -38,8 +38,6 @@ export default function CategoryPage() {
   const category = getCategoryBySlug(slug)
   const colors = getColors(category?.color)
 
-  usePageTitle(category?.name)
-
   if (!category) return <NotFound onBack={() => navigate('/')} />
 
   return (
@@ -53,9 +51,9 @@ export default function CategoryPage() {
 
       {/* Breadcrumb */}
       <nav className="mb-6 flex items-center gap-1.5 text-xs text-zinc-600">
-        <button onClick={() => navigate('/')} className="transition-colors hover:text-zinc-300">
+        <Link to="/" className="transition-colors hover:text-zinc-300">
           Home
-        </button>
+        </Link>
         <ChevronRight size={11} className="text-zinc-700" />
         <span className="text-zinc-400">{category.name}</span>
       </nav>

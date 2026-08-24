@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { usePageTitle } from '../hooks/usePageTitle'
 import SEO from '../components/SEO'
 
 function Section({ title, children }) {
@@ -13,8 +12,6 @@ function Section({ title, children }) {
 
 export default function CookiePolicy() {
   const navigate = useNavigate()
-  usePageTitle('Cookie Policy')
-
   return (
     <div className="mx-auto max-w-3xl px-6 pb-24 pt-12">
       <SEO

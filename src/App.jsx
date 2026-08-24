@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import ScrollToTop from './components/ScrollToTop'
+import Analytics from './components/Analytics'
 import LoadingSpinner from './components/LoadingSpinner'
 
 // Lazy-load every page — each becomes its own JS chunk
@@ -13,10 +14,11 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const TermsOfService= lazy(() => import('./pages/TermsOfService'))
 const CookiePolicy  = lazy(() => import('./pages/CookiePolicy'))
 
-export default function App() {
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
+      <Analytics />
       <Suspense fallback={<LoadingSpinner fullScreen />}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -30,6 +32,14 @@ export default function App() {
           </Route>
         </Routes>
       </Suspense>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   )
 }
