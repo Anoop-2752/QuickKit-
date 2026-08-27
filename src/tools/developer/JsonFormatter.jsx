@@ -175,12 +175,12 @@ export default function JsonFormatter() {
       {/* ── LEFT: Input panel ─────────────────────────────────────────────── */}
       <div className="flex flex-1 flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">
             Input JSON
           </label>
           <button
             onClick={handleSample}
-            className="text-xs text-zinc-600 transition-colors hover:text-indigo-400"
+            className="text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--accent)]"
           >
             Load sample
           </button>
@@ -193,7 +193,7 @@ export default function JsonFormatter() {
           onPaste={handlePaste}
           spellCheck={false}
           placeholder={'Paste your JSON here…\n\n{\n  "name": "QuickKit",\n  "type": "tool"\n}'}
-          className="h-80 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 font-mono text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30 lg:h-96"
+          className="h-80 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 font-mono text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)] lg:h-96"
         />
 
         {/* Action buttons */}
@@ -202,7 +202,7 @@ export default function JsonFormatter() {
             onClick={handleFormat}
             disabled={isProcessing}
             title="Format (Ctrl+Enter)"
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500 active:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)] active:bg-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isProcessing ? 'Processing…' : 'Format'}
           </button>
@@ -215,7 +215,7 @@ export default function JsonFormatter() {
               key={label}
               onClick={action}
               disabled={isProcessing}
-              className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-[#3a3a3a] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2 text-sm font-medium text-[var(--ink-strong)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--ink)] disabled:cursor-not-allowed disabled:opacity-50"
             >
               {label}
             </button>
@@ -223,31 +223,31 @@ export default function JsonFormatter() {
 
           <button
             onClick={handleClear}
-            className="ml-auto rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-zinc-500 transition-colors hover:border-red-900/60 hover:text-red-400"
+            className="ml-auto rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2 text-sm font-medium text-[var(--ink-body)] transition-colors hover:border-red-300 hover:text-red-700"
           >
             Clear
           </button>
         </div>
 
-        <p className="text-xs text-zinc-700">Tip: press Ctrl+Enter to format</p>
+        <p className="text-xs text-[var(--ink-faint)]">Tip: press Ctrl+Enter to format</p>
       </div>
 
       {/* ── RIGHT: Output panel ───────────────────────────────────────────── */}
       <div className="flex flex-1 flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">
             Output
           </label>
 
           {isValid && (
-            <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            <span className="flex items-center gap-1.5 rounded-full bg-emerald-600 px-2.5 py-1 text-xs font-medium text-emerald-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-600" />
               Valid JSON
             </span>
           )}
           {isError && (
-            <span className="flex items-center gap-1.5 rounded-full bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
+            <span className="flex items-center gap-1.5 rounded-full bg-red-600 px-2.5 py-1 text-xs font-medium text-red-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
               Invalid JSON
             </span>
           )}
@@ -256,18 +256,18 @@ export default function JsonFormatter() {
         {/* Output box */}
         <div
           className={[
-            'relative flex h-80 w-full flex-col rounded-xl border bg-[#0d0d0d] lg:h-96',
+            'relative flex h-80 w-full flex-col rounded-xl border bg-[var(--surface-sunk)] lg:h-96',
             isError
-              ? 'border-red-500/40'
+              ? 'border-red-300'
               : isValid
-              ? 'border-emerald-500/20'
-              : 'border-[#2a2a2a]',
+              ? 'border-emerald-300'
+              : 'border-[var(--line)]',
           ].join(' ')}
         >
           {output && (
             <button
               onClick={handleCopy}
-              className="absolute right-3 top-3 z-10 rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs font-medium text-zinc-400 transition-all hover:border-[#3a3a3a] hover:text-white"
+              className="absolute right-3 top-3 z-10 rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs font-medium text-[var(--ink-body)] transition-all hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
             >
               {copied ? '✓ Copied!' : 'Copy'}
             </button>
@@ -276,26 +276,26 @@ export default function JsonFormatter() {
           <div className="flex-1 overflow-auto p-4 pt-3">
             {isError ? (
               <div className="flex flex-col gap-2">
-                <p className="font-mono text-xs font-semibold uppercase tracking-wider text-red-500">
+                <p className="font-mono text-xs font-semibold uppercase tracking-wider text-red-700">
                   Parse Error
                 </p>
-                <p className="font-mono text-sm text-red-400">{errorMsg}</p>
+                <p className="font-mono text-sm text-red-700">{errorMsg}</p>
               </div>
             ) : output ? (
-              <pre className="whitespace-pre-wrap break-all font-mono text-sm leading-relaxed text-zinc-200">
+              <pre className="whitespace-pre-wrap break-all font-mono text-sm leading-relaxed text-[var(--ink-strong)]">
                 {output}
               </pre>
             ) : (
-              <p className="font-mono text-sm text-zinc-700">Output will appear here…</p>
+              <p className="font-mono text-sm text-[var(--ink-faint)]">Output will appear here…</p>
             )}
           </div>
 
           {output && !isError && (
-            <div className="flex items-center gap-4 border-t border-[#1e1e1e] px-4 py-2">
-              <span className="text-xs text-zinc-600">
+            <div className="flex items-center gap-4 border-t border-[var(--line-subtle)] px-4 py-2">
+              <span className="text-xs text-[var(--ink-muted)]">
                 {outputLines.toLocaleString()} {outputLines === 1 ? 'line' : 'lines'}
               </span>
-              <span className="text-xs text-zinc-600">
+              <span className="text-xs text-[var(--ink-muted)]">
                 {outputChars.toLocaleString()} chars
               </span>
             </div>

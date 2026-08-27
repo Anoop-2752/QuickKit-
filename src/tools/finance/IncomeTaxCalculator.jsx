@@ -86,7 +86,7 @@ export default function IncomeTaxCalculator() {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-xs text-zinc-600">FY 2024-25 · Includes 4% Health & Education Cess and surcharge where applicable.</p>
+      <p className="text-xs text-[var(--ink-muted)]">FY 2024-25 · Includes 4% Health & Education Cess and surcharge where applicable.</p>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {[
@@ -97,13 +97,13 @@ export default function IncomeTaxCalculator() {
           ['Other Deductions (₹) — Old Regime', otherDeductions, setOther, 'e.g. 25000'],
         ].map(([label, val, setter, placeholder]) => (
           <div key={label} className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-500">{label}</label>
+            <label className="text-xs text-[var(--ink-body)]">{label}</label>
             <input
               type="number"
               value={val}
               onChange={(e) => setter(e.target.value)}
               placeholder={placeholder}
-              className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-amber-500/50 focus:outline-none"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[var(--accent)] focus:outline-none"
             />
           </div>
         ))}
@@ -114,15 +114,15 @@ export default function IncomeTaxCalculator() {
           {/* Recommendation banner */}
           <div className={`rounded-xl border px-5 py-4 ${
             result.betterRegime === 'new'
-              ? 'border-amber-500/30 bg-amber-500/5'
-              : 'border-blue-500/30 bg-blue-500/5'
+              ? 'border-[var(--accent)] bg-[var(--accent)]'
+              : 'border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)]'
           }`}>
-            <p className={`text-sm font-semibold ${result.betterRegime === 'new' ? 'text-amber-400' : 'text-blue-400'}`}>
+            <p className={`text-sm font-semibold ${result.betterRegime === 'new' ? 'text-[var(--accent)]' : 'text-[var(--accent)]'}`}>
               {result.betterRegime === 'equal'
                 ? 'Both regimes result in the same tax.'
                 : `${result.betterRegime === 'new' ? 'New Regime' : 'Old Regime'} saves you ₹ ${cur(Math.abs(result.saving))} per year`}
             </p>
-            <p className="mt-0.5 text-xs text-zinc-500">
+            <p className="mt-0.5 text-xs text-[var(--ink-body)]">
               {result.betterRegime === 'equal' ? '' : `Choose the ${result.betterRegime} regime for lower tax outgo.`}
             </p>
           </div>
@@ -133,10 +133,10 @@ export default function IncomeTaxCalculator() {
               { label: 'Old Regime', taxable: result.oldTaxable, total: result.oldTotal, monthly: result.oldMonthly, best: result.betterRegime === 'old' },
               { label: 'New Regime', taxable: result.newTaxable, total: result.newTotal, monthly: result.newMonthly, best: result.betterRegime === 'new' },
             ].map(({ label, taxable, total, monthly, best }) => (
-              <div key={label} className={`rounded-xl border p-5 flex flex-col gap-3 ${best ? 'border-amber-500/40 bg-amber-500/5' : 'border-[#2a2a2a] bg-[#141414]'}`}>
+              <div key={label} className={`rounded-xl border p-5 flex flex-col gap-3 ${best ? 'border-[var(--accent)] bg-[var(--accent)]' : 'border-[var(--line)] bg-[var(--surface-alt)]'}`}>
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-zinc-300">{label}</p>
-                  {best && <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-xs text-amber-400">Recommended</span>}
+                  <p className="text-sm font-medium text-[var(--ink-strong)]">{label}</p>
+                  {best && <span className="rounded-full bg-[var(--accent)] px-2 py-0.5 text-xs text-[var(--accent-on)]">Recommended</span>}
                 </div>
                 <div className="flex flex-col gap-2">
                   {[
@@ -146,8 +146,8 @@ export default function IncomeTaxCalculator() {
                     ['Effective Rate', `${total > 0 ? ((total / result.gross) * 100).toFixed(2) : 0}%`],
                   ].map(([k, v]) => (
                     <div key={k} className="flex justify-between text-xs">
-                      <span className="text-zinc-500">{k}</span>
-                      <span className={`font-medium ${best ? 'text-amber-300' : 'text-zinc-300'}`}>{v}</span>
+                      <span className="text-[var(--ink-body)]">{k}</span>
+                      <span className={`font-medium ${best ? 'text-[var(--accent)]' : 'text-[var(--ink-strong)]'}`}>{v}</span>
                     </div>
                   ))}
                 </div>
@@ -156,23 +156,23 @@ export default function IncomeTaxCalculator() {
           </div>
 
           {/* Slab table */}
-          <div className="rounded-xl border border-[#2a2a2a] overflow-hidden">
-            <div className="border-b border-[#2a2a2a] bg-[#141414] px-4 py-3">
-              <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">New Regime Tax Slabs — FY 2024-25</p>
+          <div className="rounded-xl border border-[var(--line)] overflow-hidden">
+            <div className="border-b border-[var(--line)] bg-[var(--surface-alt)] px-4 py-3">
+              <p className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">New Regime Tax Slabs — FY 2024-25</p>
             </div>
             <table className="w-full text-xs">
-              <thead><tr className="border-b border-[#1e1e1e]">
-                <th className="px-4 py-2 text-left font-normal text-zinc-600">Income Range</th>
-                <th className="px-4 py-2 text-right font-normal text-zinc-600">Rate</th>
+              <thead><tr className="border-b border-[var(--line-subtle)]">
+                <th className="px-4 py-2 text-left font-normal text-[var(--ink-muted)]">Income Range</th>
+                <th className="px-4 py-2 text-right font-normal text-[var(--ink-muted)]">Rate</th>
               </tr></thead>
               <tbody>
                 {[
                   ['Up to ₹ 3,00,000','Nil'],['₹ 3L – ₹ 7L','5%'],['₹ 7L – ₹ 10L','10%'],
                   ['₹ 10L – ₹ 12L','15%'],['₹ 12L – ₹ 15L','20%'],['Above ₹ 15L','30%'],
                 ].map(([range, rate]) => (
-                  <tr key={range} className="border-b border-[#1a1a1a]">
-                    <td className="px-4 py-2 text-zinc-400">{range}</td>
-                    <td className="px-4 py-2 text-right text-zinc-300">{rate}</td>
+                  <tr key={range} className="border-b border-[var(--surface-tint)]">
+                    <td className="px-4 py-2 text-[var(--ink-body)]">{range}</td>
+                    <td className="px-4 py-2 text-right text-[var(--ink-strong)]">{rate}</td>
                   </tr>
                 ))}
               </tbody>
@@ -182,7 +182,7 @@ export default function IncomeTaxCalculator() {
       )}
 
       {!result && (
-        <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-[#2a2a2a] text-sm text-zinc-600">
+        <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-[var(--line)] text-sm text-[var(--ink-muted)]">
           Enter your gross income above to compare tax regimes
         </div>
       )}

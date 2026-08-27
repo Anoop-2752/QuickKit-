@@ -49,43 +49,43 @@ export default function EmiCalculator() {
       {/* Inputs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs text-zinc-500">Loan Amount (₹)</label>
+          <label className="text-xs text-[var(--ink-body)]">Loan Amount (₹)</label>
           <input
             type="number"
             value={principal}
             onChange={(e) => setPrincipal(e.target.value)}
             placeholder="e.g. 5000000"
-            className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-amber-500/50 focus:outline-none"
+            className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[var(--accent)] focus:outline-none"
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs text-zinc-500">Annual Interest Rate (%)</label>
+          <label className="text-xs text-[var(--ink-body)]">Annual Interest Rate (%)</label>
           <input
             type="number"
             value={rate}
             onChange={(e) => setRate(e.target.value)}
             placeholder="e.g. 8.5"
             step="0.1"
-            className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-amber-500/50 focus:outline-none"
+            className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[var(--accent)] focus:outline-none"
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs text-zinc-500">Loan Tenure</label>
+          <label className="text-xs text-[var(--ink-body)]">Loan Tenure</label>
           <div className="flex gap-2">
             <input
               type="number"
               value={tenure}
               onChange={(e) => setTenure(e.target.value)}
               placeholder="e.g. 20"
-              className="flex-1 rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-amber-500/50 focus:outline-none"
+              className="flex-1 rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[var(--accent)] focus:outline-none"
             />
-            <div className="flex rounded-lg border border-[#2a2a2a] overflow-hidden">
+            <div className="flex rounded-lg border border-[var(--line)] overflow-hidden">
               {['years','months'].map((t) => (
                 <button
                   key={t}
                   onClick={() => setTenureType(t)}
                   className={`px-3 py-2 text-xs font-medium transition-colors ${
-                    tenureType === t ? 'bg-amber-500/20 text-amber-400' : 'text-zinc-500 hover:text-zinc-300'
+                    tenureType === t ? 'bg-[var(--accent)] text-[var(--accent-on)]' : 'text-[var(--ink-body)] hover:text-[var(--ink-strong)]'
                   }`}
                 >
                   {t === 'years' ? 'Yr' : 'Mo'}
@@ -106,57 +106,57 @@ export default function EmiCalculator() {
               { label: 'Total Interest',   value: `₹ ${cur(result.totalInterest)}` },
               { label: 'Total Payment',    value: `₹ ${cur(result.totalPayment)}` },
             ].map(({ label, value, highlight }) => (
-              <div key={label} className={`rounded-xl border p-4 ${highlight ? 'border-amber-500/30 bg-amber-500/5' : 'border-[#2a2a2a] bg-[#141414]'}`}>
-                <p className="mb-1 text-xs text-zinc-500">{label}</p>
-                <p className={`text-base font-semibold ${highlight ? 'text-amber-400' : 'text-zinc-200'}`}>{value}</p>
+              <div key={label} className={`rounded-xl border p-4 ${highlight ? 'border-[var(--accent)] bg-[var(--accent)]' : 'border-[var(--line)] bg-[var(--surface-alt)]'}`}>
+                <p className="mb-1 text-xs text-[var(--ink-body)]">{label}</p>
+                <p className={`text-base font-semibold ${highlight ? 'text-[var(--accent)]' : 'text-[var(--ink-strong)]'}`}>{value}</p>
               </div>
             ))}
           </div>
 
           {/* Visual bar */}
           <div className="flex flex-col gap-2">
-            <div className="flex justify-between text-xs text-zinc-600">
+            <div className="flex justify-between text-xs text-[var(--ink-muted)]">
               <span>Principal ({(100 - parseFloat(interestPct)).toFixed(1)}%)</span>
               <span>Interest ({interestPct}%)</span>
             </div>
-            <div className="h-3 w-full overflow-hidden rounded-full bg-[#1a1a1a]">
+            <div className="h-3 w-full overflow-hidden rounded-full bg-[var(--accent-weak)]">
               <div
-                className="h-full rounded-full bg-amber-500"
+                className="h-full rounded-full bg-[var(--accent)]"
                 style={{ width: `${100 - parseFloat(interestPct)}%` }}
               />
             </div>
-            <div className="flex gap-4 text-xs text-zinc-600">
-              <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-amber-500" />Principal</span>
-              <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-[#1a1a1a] border border-zinc-700" />Interest</span>
+            <div className="flex gap-4 text-xs text-[var(--ink-muted)]">
+              <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-[var(--accent)]" />Principal</span>
+              <span className="flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-[var(--accent-weak)]" />Interest</span>
             </div>
           </div>
 
           {/* Amortization toggle */}
           <button
             onClick={() => setShowTable(!showTable)}
-            className="w-full rounded-lg border border-[#2a2a2a] py-2.5 text-sm text-zinc-400 transition-colors hover:border-amber-500/40 hover:text-amber-400"
+            className="w-full rounded-lg border border-[var(--line)] py-2.5 text-sm text-[var(--ink-body)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
           >
             {showTable ? 'Hide' : 'Show'} Full Amortization Schedule ({result.months} months)
           </button>
 
           {showTable && (
-            <div className="overflow-auto rounded-xl border border-[#2a2a2a]">
+            <div className="overflow-auto rounded-xl border border-[var(--line)]">
               <table className="w-full text-xs">
-                <thead className="border-b border-[#2a2a2a] bg-[#141414]">
+                <thead className="border-b border-[var(--line)] bg-[var(--surface-alt)]">
                   <tr>
                     {['Month','EMI (₹)','Principal (₹)','Interest (₹)','Balance (₹)'].map((h) => (
-                      <th key={h} className="px-4 py-2.5 text-left font-medium text-zinc-500">{h}</th>
+                      <th key={h} className="px-4 py-2.5 text-left font-medium text-[var(--ink-body)]">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {result.schedule.map((row) => (
-                    <tr key={row.month} className="border-b border-[#1a1a1a] hover:bg-[#141414]">
-                      <td className="px-4 py-2 text-zinc-500">{row.month}</td>
-                      <td className="px-4 py-2 text-zinc-300">{cur(row.emi)}</td>
-                      <td className="px-4 py-2 text-amber-400">{cur(row.principal)}</td>
-                      <td className="px-4 py-2 text-zinc-400">{cur(row.interest)}</td>
-                      <td className="px-4 py-2 text-zinc-300">{cur(row.balance)}</td>
+                    <tr key={row.month} className="border-b border-[var(--surface-tint)] hover:bg-[var(--surface-alt)]">
+                      <td className="px-4 py-2 text-[var(--ink-body)]">{row.month}</td>
+                      <td className="px-4 py-2 text-[var(--ink-strong)]">{cur(row.emi)}</td>
+                      <td className="px-4 py-2 text-[var(--accent)]">{cur(row.principal)}</td>
+                      <td className="px-4 py-2 text-[var(--ink-body)]">{cur(row.interest)}</td>
+                      <td className="px-4 py-2 text-[var(--ink-strong)]">{cur(row.balance)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -167,7 +167,7 @@ export default function EmiCalculator() {
       )}
 
       {!result && (
-        <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-[#2a2a2a] text-sm text-zinc-600">
+        <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-[var(--line)] text-sm text-[var(--ink-muted)]">
           Enter loan details above to calculate EMI
         </div>
       )}

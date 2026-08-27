@@ -74,25 +74,25 @@ export default function NoticePeriodCalculator() {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-xs text-zinc-600">
+      <p className="text-xs text-[var(--ink-muted)]">
         Enter your resignation date and notice period to calculate your last working day.
       </p>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Resignation date */}
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-medium text-zinc-500">Resignation / Notice Start Date</label>
+          <label className="text-xs font-medium text-[var(--ink-body)]">Resignation / Notice Start Date</label>
           <input
             type="date"
             value={resignDate}
             onChange={(e) => setResignDate(e.target.value)}
-            className="rounded-xl border border-[#2a2a2a] bg-[#141414] px-4 py-2.5 text-sm text-zinc-200 focus:border-rose-500/50 focus:outline-none focus:ring-1 focus:ring-rose-500/30"
+            className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-4 py-2.5 text-sm text-[var(--ink-strong)] focus:border-rose-300 focus:outline-none focus:ring-1 focus:ring-rose-300"
           />
         </div>
 
         {/* Notice period */}
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-medium text-zinc-500">Notice Period</label>
+          <label className="text-xs font-medium text-[var(--ink-body)]">Notice Period</label>
           <div className="flex gap-2">
             <input
               type="number"
@@ -100,12 +100,12 @@ export default function NoticePeriodCalculator() {
               value={noticeValue}
               onChange={(e) => setNoticeValue(e.target.value)}
               placeholder="e.g. 1"
-              className="w-24 rounded-xl border border-[#2a2a2a] bg-[#141414] px-3 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none focus:ring-1 focus:ring-rose-500/30"
+              className="w-24 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2.5 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none focus:ring-1 focus:ring-rose-300"
             />
             <select
               value={noticeUnit}
               onChange={(e) => setNoticeUnit(e.target.value)}
-              className="flex-1 rounded-xl border border-[#2a2a2a] bg-[#141414] px-3 py-2.5 text-sm text-zinc-200 focus:border-rose-500/50 focus:outline-none"
+              className="flex-1 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2.5 text-sm text-[var(--ink-strong)] focus:border-rose-300 focus:outline-none"
             >
               <option value="days">Days</option>
               <option value="weeks">Weeks</option>
@@ -124,19 +124,19 @@ export default function NoticePeriodCalculator() {
             onChange={(e) => setSkipWeekends(e.target.checked)}
             className="sr-only"
           />
-          <div className={`h-5 w-9 rounded-full transition-colors ${skipWeekends ? 'bg-rose-500' : 'bg-[#2a2a2a]'}`} />
+          <div className={`h-5 w-9 rounded-full transition-colors ${skipWeekends ? 'bg-rose-600' : 'bg-[var(--line)]'}`} />
           <div className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-transform ${skipWeekends ? 'translate-x-4' : 'translate-x-0.5'}`} />
         </div>
-        <span className="text-sm text-zinc-400">Count working days only (exclude weekends)</span>
+        <span className="text-sm text-[var(--ink-body)]">Count working days only (exclude weekends)</span>
       </label>
 
       {/* Result */}
       {result && (
         <div className="flex flex-col gap-4">
-          <div className={`rounded-xl border p-6 text-center ${isWeekend ? 'border-amber-500/30 bg-amber-500/5' : 'border-rose-500/20 bg-rose-500/5'}`}>
-            <p className="text-xs text-zinc-600 mb-2">Your last working day</p>
-            <p className="text-3xl font-bold text-white">{formatDate(result.lastDay)}</p>
-            <p className={`mt-1 text-sm font-medium ${isWeekend ? 'text-amber-400' : 'text-rose-400'}`}>
+          <div className={`rounded-xl border p-6 text-center ${isWeekend ? 'border-[var(--accent)] bg-[var(--accent)]' : 'border-rose-300 bg-rose-600'}`}>
+            <p className="text-xs text-[var(--ink-muted)] mb-2">Your last working day</p>
+            <p className="text-3xl font-bold text-[var(--ink)]">{formatDate(result.lastDay)}</p>
+            <p className={`mt-1 text-sm font-medium ${isWeekend ? 'text-[var(--accent)]' : 'text-rose-700'}`}>
               {dayOfWeek}{isWeekend && ' — falls on a weekend, check with HR'}
             </p>
           </div>
@@ -147,14 +147,14 @@ export default function NoticePeriodCalculator() {
               { label: 'Working Days', value: result.workingDays },
               { label: 'Weekends', value: result.totalDays - result.workingDays },
             ].map(({ label, value }) => (
-              <div key={label} className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-3 text-center">
-                <div className="text-xl font-bold text-white">{value}</div>
-                <div className="text-xs text-zinc-600 mt-0.5">{label}</div>
+              <div key={label} className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-3 text-center">
+                <div className="text-xl font-bold text-[var(--ink)]">{value}</div>
+                <div className="text-xs text-[var(--ink-muted)] mt-0.5">{label}</div>
               </div>
             ))}
           </div>
 
-          <p className="text-xs text-zinc-700">
+          <p className="text-xs text-[var(--ink-faint)]">
             Note: This does not account for public holidays. Confirm your exact last day with your HR department.
           </p>
         </div>

@@ -73,7 +73,7 @@ ${f.companyAddress || ''}`
   function handlePrint() {
     const win = window.open('', '_blank')
     win.document.write(`<html><head><title>Experience Letter</title><style>
-      body{font-family:Arial,sans-serif;font-size:13px;color:#111;margin:40px;line-height:1.7}
+      body{font-family:Arial,sans-serif;font-size:13px;color:var(--surface);margin:40px;line-height:1.7}
       pre{font-family:inherit;white-space:pre-wrap;margin:0}
     </style></head><body><pre>${escapeHtml(letter)}</pre></body></html>`)
     win.document.close()
@@ -90,39 +90,39 @@ ${f.companyAddress || ''}`
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
       <div className="flex flex-col gap-3">
-        <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Fill in Details</label>
+        <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Fill in Details</label>
 
         {textFields.map(([key, label]) => (
           <div key={key} className="flex flex-col gap-1">
-            <span className="text-xs text-zinc-600">{label}</span>
+            <span className="text-xs text-[var(--ink-muted)]">{label}</span>
             <input
               type="text"
               value={f[key]}
               onChange={(e) => field(key, e.target.value)}
               placeholder={label}
-              className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none"
             />
           </div>
         ))}
 
         {[['joiningDate','Date of Joining'],['lastWorkingDate','Last Working Date'],['letterDate','Letter Date']].map(([key, label]) => (
           <div key={key} className="flex flex-col gap-1">
-            <span className="text-xs text-zinc-600">{label}</span>
+            <span className="text-xs text-[var(--ink-muted)]">{label}</span>
             <input
               type="date"
               value={f[key]}
               onChange={(e) => field(key, e.target.value)}
-              className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:border-rose-500/50 focus:outline-none"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:border-rose-300 focus:outline-none"
             />
           </div>
         ))}
 
         <div className="flex flex-col gap-1">
-          <span className="text-xs text-zinc-600">Employee Conduct</span>
+          <span className="text-xs text-[var(--ink-muted)]">Employee Conduct</span>
           <select
             value={f.conduct}
             onChange={(e) => field('conduct', e.target.value)}
-            className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:border-rose-500/50 focus:outline-none"
+            className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:border-rose-300 focus:outline-none"
           >
             <option value="good">Good</option>
             <option value="excellent">Excellent</option>
@@ -133,15 +133,15 @@ ${f.companyAddress || ''}`
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Preview</label>
-          <button onClick={handleCopy} className="text-xs text-zinc-600 hover:text-rose-400 transition-colors">
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Preview</label>
+          <button onClick={handleCopy} className="text-xs text-[var(--ink-muted)] hover:text-rose-700 transition-colors">
             {copied ? '✓ Copied' : 'Copy'}
           </button>
         </div>
-        <pre className="flex-1 min-h-96 overflow-auto rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-4 font-sans text-xs leading-relaxed text-zinc-300 whitespace-pre-wrap">
+        <pre className="flex-1 min-h-96 overflow-auto rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-4 font-sans text-xs leading-relaxed text-[var(--ink-strong)] whitespace-pre-wrap">
           {letter}
         </pre>
-        <button onClick={handlePrint} className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-rose-500">
+        <button onClick={handlePrint} className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-rose-600">
           Print / Download
         </button>
       </div>

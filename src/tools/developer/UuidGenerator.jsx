@@ -66,7 +66,7 @@ export default function UuidGenerator() {
 
         {/* Count pills */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-zinc-500">Count</span>
+          <span className="text-xs text-[var(--ink-body)]">Count</span>
           <div className="flex gap-1">
             {COUNT_OPTIONS.map((n) => (
               <button
@@ -75,8 +75,8 @@ export default function UuidGenerator() {
                 className={[
                   'rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
                   count === n
-                    ? 'bg-indigo-600 text-white'
-                    : 'border border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white',
+                    ? 'bg-[var(--accent)] text-[var(--ink)]'
+                    : 'border border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]',
                 ].join(' ')}
               >
                 {n}
@@ -87,8 +87,8 @@ export default function UuidGenerator() {
 
         {/* Case toggle */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-zinc-500">Format</span>
-          <div className="flex overflow-hidden rounded-lg border border-[#2a2a2a]">
+          <span className="text-xs text-[var(--ink-body)]">Format</span>
+          <div className="flex overflow-hidden rounded-lg border border-[var(--line)]">
             {[
               { label: 'lowercase', value: false },
               { label: 'UPPERCASE', value: true  },
@@ -99,8 +99,8 @@ export default function UuidGenerator() {
                 className={[
                   'px-3 py-1.5 font-mono text-xs font-medium transition-colors',
                   uppercase === value
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-[#1a1a1a] text-zinc-400 hover:text-white',
+                    ? 'bg-[var(--accent)] text-[var(--ink)]'
+                    : 'bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]',
                 ].join(' ')}
               >
                 {label}
@@ -113,13 +113,13 @@ export default function UuidGenerator() {
         <div className="ml-auto flex gap-2">
           <button
             onClick={copyAll}
-            className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-[#3a3a3a] hover:text-white"
+            className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2 text-sm font-medium text-[var(--ink-strong)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
           >
             {copiedAll ? '✓ Copied all!' : 'Copy All'}
           </button>
           <button
             onClick={handleGenerate}
-            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500 active:bg-indigo-700"
+            className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)] active:bg-[var(--accent)]"
           >
             Generate
           </button>
@@ -127,19 +127,19 @@ export default function UuidGenerator() {
       </div>
 
       {/* ── UUID list ──────────────────────────────────────────────────────── */}
-      <div className="overflow-hidden rounded-xl border border-[#2a2a2a] bg-[#0d0d0d]">
+      <div className="overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)]">
         {uuids.map((uuid, idx) => (
           <div
             key={idx}
             className={[
-              'group flex items-center justify-between px-4 py-3 transition-colors hover:bg-[#141414]',
-              idx !== 0 ? 'border-t border-[#1a1a1a]' : '',
+              'group flex items-center justify-between px-4 py-3 transition-colors hover:bg-[var(--surface-alt)]',
+              idx !== 0 ? 'border-t border-[var(--surface-tint)]' : '',
             ].join(' ')}
           >
-            <span className="select-all font-mono text-sm text-zinc-300">{uuid}</span>
+            <span className="select-all font-mono text-sm text-[var(--ink-strong)]">{uuid}</span>
             <button
               onClick={() => copyOne(uuid, idx)}
-              className="ml-4 shrink-0 rounded px-2.5 py-1 text-xs font-medium text-zinc-600 opacity-0 transition-all group-hover:opacity-100 hover:text-zinc-300"
+              className="ml-4 shrink-0 rounded px-2.5 py-1 text-xs font-medium text-[var(--ink-muted)] opacity-0 transition-all group-hover:opacity-100 hover:text-[var(--ink-strong)]"
             >
               {copiedIdx === idx ? '✓' : 'Copy'}
             </button>
@@ -147,8 +147,8 @@ export default function UuidGenerator() {
         ))}
       </div>
 
-      <p className="text-xs text-zinc-700">
-        Uses <span className="font-mono text-zinc-600">crypto.randomUUID()</span> — cryptographically secure UUID v4, generated entirely in your browser.
+      <p className="text-xs text-[var(--ink-faint)]">
+        Uses <span className="font-mono text-[var(--ink-muted)]">crypto.randomUUID()</span> — cryptographically secure UUID v4, generated entirely in your browser.
       </p>
 
     </div>

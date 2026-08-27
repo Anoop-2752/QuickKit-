@@ -30,30 +30,30 @@ function usdCents(n) {
 }
 
 const inputClass =
-  'rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-teal-500/50 focus:outline-none'
+  'rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none'
 
 function Field({ label, hint, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs text-zinc-500">{label}</label>
+      <label className="text-xs text-[var(--ink-body)]">{label}</label>
       {children}
-      {hint && <p className="text-[11px] leading-relaxed text-zinc-700">{hint}</p>}
+      {hint && <p className="text-[11px] leading-relaxed text-[var(--ink-faint)]">{hint}</p>}
     </div>
   )
 }
 
 function Row({ label, value, tone = 'default', note }) {
   const toneClass = {
-    default: 'text-zinc-300',
-    deduction: 'text-rose-400',
-    muted: 'text-zinc-500',
+    default: 'text-[var(--ink-strong)]',
+    deduction: 'text-rose-700',
+    muted: 'text-[var(--ink-body)]',
   }[tone]
 
   return (
     <div className="flex items-baseline justify-between gap-4 py-2">
-      <span className="text-sm text-zinc-500">
+      <span className="text-sm text-[var(--ink-body)]">
         {label}
-        {note && <span className="ml-1.5 text-[11px] text-zinc-700">{note}</span>}
+        {note && <span className="ml-1.5 text-[11px] text-[var(--ink-faint)]">{note}</span>}
       </span>
       <span className={`text-sm font-medium tabular-nums ${toneClass}`}>{value}</span>
     </div>
@@ -207,8 +207,8 @@ export default function PaycheckCalculator() {
 
       {/* ── Results ─────────────────────────────────────────────────────── */}
       {!result ? (
-        <div className="rounded-xl border border-dashed border-[#2a2a2a] bg-[#0d0d0d] py-14 text-center">
-          <p className="text-sm text-zinc-600">
+        <div className="rounded-xl border border-dashed border-[var(--line)] bg-[var(--surface-sunk)] py-14 text-center">
+          <p className="text-sm text-[var(--ink-muted)]">
             Enter your annual salary to see your take-home pay.
           </p>
         </div>
@@ -216,43 +216,43 @@ export default function PaycheckCalculator() {
         <>
           {/* Headline */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <div className="rounded-xl border border-teal-500/20 bg-teal-500/5 p-4">
-              <p className="mb-1 text-xs text-zinc-500">Take-home per paycheck</p>
-              <p className="text-2xl font-bold tabular-nums text-teal-300">
+            <div className="rounded-xl border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] p-4">
+              <p className="mb-1 text-xs text-[var(--ink-body)]">Take-home per paycheck</p>
+              <p className="text-2xl font-bold tabular-nums text-[var(--accent)]">
                 {usdCents(result.perPeriod)}
               </p>
-              <p className="mt-1 text-[11px] text-zinc-600">
+              <p className="mt-1 text-[11px] text-[var(--ink-muted)]">
                 {result.periods}× per year
               </p>
             </div>
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#111] p-4">
-              <p className="mb-1 text-xs text-zinc-500">Annual take-home</p>
-              <p className="text-2xl font-bold tabular-nums text-white">
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4">
+              <p className="mb-1 text-xs text-[var(--ink-body)]">Annual take-home</p>
+              <p className="text-2xl font-bold tabular-nums text-[var(--ink)]">
                 {usd(result.takeHome)}
               </p>
-              <p className="mt-1 text-[11px] text-zinc-600">
+              <p className="mt-1 text-[11px] text-[var(--ink-muted)]">
                 after taxes and deductions
               </p>
             </div>
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#111] p-4">
-              <p className="mb-1 text-xs text-zinc-500">Effective tax rate</p>
-              <p className="text-2xl font-bold tabular-nums text-white">
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-4">
+              <p className="mb-1 text-xs text-[var(--ink-body)]">Effective tax rate</p>
+              <p className="text-2xl font-bold tabular-nums text-[var(--ink)]">
                 {result.effectiveRate.toFixed(1)}%
               </p>
-              <p className="mt-1 text-[11px] text-zinc-600">
+              <p className="mt-1 text-[11px] text-[var(--ink-muted)]">
                 {usd(result.totalTax)} total tax
               </p>
             </div>
           </div>
 
           {/* Breakdown */}
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#111] p-5">
-            <h3 className="mb-1 text-sm font-semibold text-white">
+          <div className="rounded-xl border border-[var(--line)] bg-[var(--surface)] p-5">
+            <h3 className="mb-1 text-sm font-semibold text-[var(--ink)]">
               Annual breakdown
             </h3>
-            <p className="mb-3 text-xs text-zinc-600">Tax year {TAX_YEAR}</p>
+            <p className="mb-3 text-xs text-[var(--ink-muted)]">Tax year {TAX_YEAR}</p>
 
-            <div className="divide-y divide-[#1e1e1e]">
+            <div className="divide-y divide-[var(--line-subtle)]">
               <Row label="Gross salary" value={usd(result.gross)} />
 
               {result.preTaxTotal > 0 && (
@@ -304,19 +304,19 @@ export default function PaycheckCalculator() {
               />
             </div>
 
-            <div className="mt-3 flex items-baseline justify-between border-t border-[#2a2a2a] pt-3">
-              <span className="text-sm font-medium text-white">
+            <div className="mt-3 flex items-baseline justify-between border-t border-[var(--line)] pt-3">
+              <span className="text-sm font-medium text-[var(--ink)]">
                 Annual take-home pay
               </span>
-              <span className="text-lg font-bold tabular-nums text-teal-300">
+              <span className="text-lg font-bold tabular-nums text-[var(--accent)]">
                 {usd(result.takeHome)}
               </span>
             </div>
           </div>
 
           {result.stateEstimated && (
-            <p className="text-xs leading-relaxed text-zinc-600">
-              <span className="text-zinc-500">Note:</span> {stateName} uses
+            <p className="text-xs leading-relaxed text-[var(--ink-muted)]">
+              <span className="text-[var(--ink-body)]">Note:</span> {stateName} uses
               graduated tax brackets. The state figure above is an approximation
               based on a typical effective rate, so your actual state withholding
               will differ. Federal, Social Security and Medicare amounts use full
@@ -324,7 +324,7 @@ export default function PaycheckCalculator() {
             </p>
           )}
 
-          <p className="text-xs leading-relaxed text-zinc-700">
+          <p className="text-xs leading-relaxed text-[var(--ink-faint)]">
             This is an estimate for planning purposes, not tax advice. It assumes
             the standard deduction and does not account for credits, local or
             city taxes, additional withholding elected on your Form W-4, or

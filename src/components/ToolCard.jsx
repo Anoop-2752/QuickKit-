@@ -18,8 +18,8 @@ export default function ToolCard({ tool, categoryColor = 'blue', showCategory = 
     <Link
       to={`/${tool.category}/${tool.slug}`}
       className={[
-        'group block w-full text-left rounded-xl bg-[#111] p-4',
-        'border border-[#1e1e1e] border-t-[#282828]',
+        'group block w-full text-left rounded-xl bg-[var(--surface)] p-4',
+        'border border-[var(--line-subtle)] border-t-[var(--line-subtle)]',
         'transition-all duration-300 cursor-pointer',
         colors.hoverBorder,
         colors.hoverGlowSm,
@@ -43,13 +43,13 @@ export default function ToolCard({ tool, categoryColor = 'blue', showCategory = 
       </div>
 
       {/* Name */}
-      <h3 className="mb-1 text-sm font-semibold text-white">{tool.name}</h3>
+      <h3 className="mb-1 text-sm font-semibold text-[var(--ink)]">{tool.name}</h3>
 
       {/* Description */}
-      <p className="line-clamp-2 text-xs leading-relaxed text-zinc-600">{tool.description}</p>
+      <p className="line-clamp-2 text-xs leading-relaxed text-[var(--ink-muted)]">{tool.description}</p>
 
       {/* Hover arrow */}
-      <div className="mt-3 flex items-center gap-1 text-xs text-zinc-700 opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:text-green-400">
+      <div className="mt-3 flex items-center gap-1 text-xs text-[var(--ink-faint)] opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:text-[var(--accent)]">
         <span>Open</span>
         <ArrowRight size={10} className="transition-transform duration-200 group-hover:translate-x-0.5" />
       </div>

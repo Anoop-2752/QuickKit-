@@ -82,13 +82,13 @@ export default function ImageColorPicker() {
       {/* Drop zone */}
       {!imageUrl && (
         <div
-          className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[#2a2a2a] bg-[#141414] py-12 transition-colors hover:border-violet-500/40"
+          className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[var(--line)] bg-[var(--surface-alt)] py-12 transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)]"
           onClick={() => inputRef.current?.click()}
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
         >
-          <p className="text-sm text-zinc-400">Drop an image here or <span className="text-violet-400">browse</span></p>
-          <p className="text-xs text-zinc-600">JPEG · PNG · WebP · GIF</p>
+          <p className="text-sm text-[var(--ink-body)]">Drop an image here or <span className="text-[var(--accent)]">browse</span></p>
+          <p className="text-xs text-[var(--ink-muted)]">JPEG · PNG · WebP · GIF</p>
           <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) => handleFile(e.target.files[0])} />
         </div>
       )}
@@ -96,17 +96,17 @@ export default function ImageColorPicker() {
       {imageUrl && (
         <>
           <div className="flex items-center justify-between">
-            <p className="text-xs text-zinc-500">Click anywhere on the image to pick a color</p>
+            <p className="text-xs text-[var(--ink-body)]">Click anywhere on the image to pick a color</p>
             <button
               onClick={() => { setImageUrl(null); setColor(null); setHistory([]) }}
-              className="text-xs text-zinc-500 underline hover:text-zinc-300"
+              className="text-xs text-[var(--ink-body)] underline hover:text-[var(--ink-strong)]"
             >
               Change image
             </button>
           </div>
 
           {/* Canvas */}
-          <div className="overflow-hidden rounded-xl border border-[#2a2a2a]">
+          <div className="overflow-hidden rounded-xl border border-[var(--line)]">
             <canvas
               ref={canvasRef}
               onClick={pickColor}
@@ -117,10 +117,10 @@ export default function ImageColorPicker() {
 
           {/* Current color */}
           {color && (
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
               <div className="flex items-center gap-4">
                 <div
-                  className="h-16 w-16 flex-shrink-0 rounded-xl border border-[#2a2a2a]"
+                  className="h-16 w-16 flex-shrink-0 rounded-xl border border-[var(--line)]"
                   style={{ backgroundColor: color.hex }}
                 />
                 <div className="flex flex-1 flex-col gap-2">
@@ -131,12 +131,12 @@ export default function ImageColorPicker() {
                   ].map(({ label, value }) => (
                     <div key={label} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="w-8 text-xs text-zinc-600">{label}</span>
-                        <span className="font-mono text-sm text-zinc-300">{value}</span>
+                        <span className="w-8 text-xs text-[var(--ink-muted)]">{label}</span>
+                        <span className="font-mono text-sm text-[var(--ink-strong)]">{value}</span>
                       </div>
                       <button
                         onClick={() => handleCopy(value)}
-                        className="text-xs text-zinc-500 transition-colors hover:text-violet-400"
+                        className="text-xs text-[var(--ink-body)] transition-colors hover:text-[var(--accent)]"
                       >
                         {copied === value ? 'Copied!' : 'Copy'}
                       </button>
@@ -150,14 +150,14 @@ export default function ImageColorPicker() {
           {/* History */}
           {history.length > 0 && (
             <div>
-              <p className="mb-2 text-xs text-zinc-500">Picked colors</p>
+              <p className="mb-2 text-xs text-[var(--ink-body)]">Picked colors</p>
               <div className="flex flex-wrap gap-2">
                 {history.map((c, i) => (
                   <button
                     key={i}
                     title={c.hex}
                     onClick={() => handleCopy(c.hex)}
-                    className="h-8 w-8 rounded-lg border border-[#2a2a2a] transition-transform hover:scale-110"
+                    className="h-8 w-8 rounded-lg border border-[var(--line)] transition-transform hover:scale-110"
                     style={{ backgroundColor: c.hex }}
                   />
                 ))}

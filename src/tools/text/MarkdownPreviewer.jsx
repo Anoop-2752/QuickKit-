@@ -82,8 +82,8 @@ export default function MarkdownPreviewer() {
               className={[
                 'rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
                 view === v
-                  ? 'bg-indigo-600 text-white'
-                  : 'border border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white',
+                  ? 'bg-[var(--accent)] text-[var(--ink)]'
+                  : 'border border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]',
               ].join(' ')}
             >
               {label}
@@ -92,16 +92,16 @@ export default function MarkdownPreviewer() {
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="text-xs text-zinc-600">{lineCount} lines · {wordCount} words</span>
+          <span className="text-xs text-[var(--ink-muted)]">{lineCount} lines · {wordCount} words</span>
           <button
             onClick={() => { setMarkdown('') }}
-            className="text-xs text-zinc-600 transition-colors hover:text-red-400"
+            className="text-xs text-[var(--ink-muted)] transition-colors hover:text-red-700"
           >
             Clear
           </button>
           <button
             onClick={handleCopy}
-            className="rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs font-medium text-zinc-400 transition-all hover:border-[#3a3a3a] hover:text-white"
+            className="rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs font-medium text-[var(--ink-body)] transition-all hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
           >
             {copied ? '✓ Copied!' : 'Copy Markdown'}
           </button>
@@ -114,12 +114,12 @@ export default function MarkdownPreviewer() {
         {/* Editor */}
         {showEditor && (
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">Markdown</span>
+            <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Markdown</span>
             <textarea
               value={markdown}
               onChange={(e) => setMarkdown(e.target.value)}
               spellCheck={false}
-              className="h-[32rem] w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 font-mono text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+              className="h-[32rem] w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 font-mono text-sm leading-relaxed text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
             />
           </div>
         )}
@@ -127,15 +127,15 @@ export default function MarkdownPreviewer() {
         {/* Preview */}
         {showPreview && (
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">Preview</span>
-            <div className="h-[32rem] overflow-auto rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-6">
+            <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Preview</span>
+            <div className="h-[32rem] overflow-auto rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-6">
               {markdown.trim() ? (
                 <div
                   className="md-preview"
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
               ) : (
-                <p className="text-sm text-zinc-700">Start typing to see the preview…</p>
+                <p className="text-sm text-[var(--ink-faint)]">Start typing to see the preview…</p>
               )}
             </div>
           </div>

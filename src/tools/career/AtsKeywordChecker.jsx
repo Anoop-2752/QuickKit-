@@ -230,21 +230,21 @@ export default function AtsKeywordChecker() {
 
   const scoreColor =
     !result ? ''
-    : result.score >= 70 ? 'text-emerald-400'
-    : result.score >= 40 ? 'text-amber-400'
-    : 'text-red-400'
+    : result.score >= 70 ? 'text-emerald-700'
+    : result.score >= 40 ? 'text-amber-700'
+    : 'text-red-700'
 
   return (
     <div className="flex flex-col gap-6">
 
       {/* Top action bar */}
       <div className="flex items-center justify-between">
-        <p className="text-xs text-zinc-600">Paste a job description and your resume text to see keyword matches.</p>
+        <p className="text-xs text-[var(--ink-muted)]">Paste a job description and your resume text to see keyword matches.</p>
         <div className="flex gap-3">
-          <button onClick={handleSample} className="text-xs text-zinc-600 transition-colors hover:text-indigo-400">
+          <button onClick={handleSample} className="text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--accent)]">
             Load sample
           </button>
-          <button onClick={handleClear} className="text-xs text-zinc-600 transition-colors hover:text-red-400">
+          <button onClick={handleClear} className="text-xs text-[var(--ink-muted)] transition-colors hover:text-red-700">
             Clear
           </button>
         </div>
@@ -253,7 +253,7 @@ export default function AtsKeywordChecker() {
       {/* Two input panels */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">
             Job Description
           </label>
           <textarea
@@ -261,17 +261,17 @@ export default function AtsKeywordChecker() {
             onChange={(e) => setJobDesc(e.target.value)}
             placeholder="Paste the job description here…"
             spellCheck={false}
-            className="h-56 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+            className="h-56 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
           />
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+            <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">
               Your Resume
             </label>
             <div className="flex items-center gap-2">
               {fileLoading && (
-                <span className="text-xs text-zinc-600">Reading file…</span>
+                <span className="text-xs text-[var(--ink-muted)]">Reading file…</span>
               )}
               <input
                 ref={fileInputRef}
@@ -283,7 +283,7 @@ export default function AtsKeywordChecker() {
               <button
                 onClick={() => fileInputRef.current?.click()}
                 disabled={fileLoading}
-                className="rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs text-zinc-500 transition-colors hover:border-indigo-500/40 hover:text-indigo-400 disabled:opacity-40"
+                className="rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs text-[var(--ink-body)] transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:text-[var(--accent)] disabled:opacity-40"
               >
                 Upload .txt / .pdf
               </button>
@@ -294,12 +294,12 @@ export default function AtsKeywordChecker() {
             onChange={(e) => setResume(e.target.value)}
             placeholder="Paste your resume text here, or upload a .txt / .pdf file above…"
             spellCheck={false}
-            className="h-56 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+            className="h-56 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
           />
           {fileError && (
-            <p className="text-xs text-red-400">{fileError}</p>
+            <p className="text-xs text-red-700">{fileError}</p>
           )}
-          <p className="text-xs text-zinc-700">
+          <p className="text-xs text-[var(--ink-faint)]">
             🔒 Your file is read locally — never uploaded to any server.
           </p>
         </div>
@@ -308,7 +308,7 @@ export default function AtsKeywordChecker() {
       <button
         onClick={handleCheck}
         disabled={!jobDesc.trim() || !resume.trim()}
-        className="w-full rounded-lg bg-indigo-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-40"
+        className="w-full rounded-lg bg-[var(--accent)] py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
       >
         Check Keywords
       </button>
@@ -318,28 +318,28 @@ export default function AtsKeywordChecker() {
         <div className="flex flex-col gap-4">
 
           {/* Score + Verdict */}
-          <div className="flex items-center gap-5 rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
+          <div className="flex items-center gap-5 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
             <div className="flex flex-col items-center gap-1">
               <span className={`text-4xl font-bold ${scoreColor}`}>{result.score}%</span>
-              <span className="text-xs text-zinc-600">match score</span>
+              <span className="text-xs text-[var(--ink-muted)]">match score</span>
             </div>
-            <div className="h-14 w-px bg-[#2a2a2a]" />
+            <div className="h-14 w-px bg-[var(--line)]" />
             <div className="flex flex-col gap-1.5">
               <span className={`text-sm font-semibold ${scoreColor}`}>{result.verdict.label}</span>
-              <p className="text-xs text-zinc-500 leading-relaxed">{result.verdict.tip}</p>
+              <p className="text-xs text-[var(--ink-body)] leading-relaxed">{result.verdict.tip}</p>
               <div className="flex gap-5 text-sm mt-0.5">
-                <span><span className="font-semibold text-emerald-400">{result.matched.length}</span><span className="ml-1 text-zinc-600">matched</span></span>
-                <span><span className="font-semibold text-red-400">{result.missing.length}</span><span className="ml-1 text-zinc-600">missing</span></span>
-                <span><span className="font-semibold text-zinc-300">{result.total}</span><span className="ml-1 text-zinc-600">total</span></span>
+                <span><span className="font-semibold text-emerald-700">{result.matched.length}</span><span className="ml-1 text-[var(--ink-muted)]">matched</span></span>
+                <span><span className="font-semibold text-red-700">{result.missing.length}</span><span className="ml-1 text-[var(--ink-muted)]">missing</span></span>
+                <span><span className="font-semibold text-[var(--ink-strong)]">{result.total}</span><span className="ml-1 text-[var(--ink-muted)]">total</span></span>
               </div>
             </div>
           </div>
 
           {/* Score bar */}
-          <div className="h-2 w-full overflow-hidden rounded-full bg-[#1e1e1e]">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--line-subtle)]">
             <div
               className={`h-full rounded-full transition-all duration-500 ${
-                result.score >= 70 ? 'bg-emerald-500' : result.score >= 40 ? 'bg-amber-500' : 'bg-red-500'
+                result.score >= 70 ? 'bg-emerald-600' : result.score >= 40 ? 'bg-amber-600' : 'bg-red-600'
               }`}
               style={{ width: `${result.score}%` }}
             />
@@ -347,14 +347,14 @@ export default function AtsKeywordChecker() {
 
           {/* Improvement tips */}
           {result.improvements.length > 0 && (
-            <div className="rounded-xl border border-indigo-500/20 bg-[#141414] p-4">
-              <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-indigo-400">
+            <div className="rounded-xl border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[var(--surface-alt)] p-4">
+              <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-[var(--accent)]">
                 Top Improvements
               </h3>
               <ul className="flex flex-col gap-2">
                 {result.improvements.map((tip, i) => (
-                  <li key={i} className="flex items-start gap-2 text-xs text-zinc-400">
-                    <span className="mt-0.5 text-indigo-500">→</span>
+                  <li key={i} className="flex items-start gap-2 text-xs text-[var(--ink-body)]">
+                    <span className="mt-0.5 text-[var(--accent)]">→</span>
                     {tip}
                   </li>
                 ))}
@@ -365,13 +365,13 @@ export default function AtsKeywordChecker() {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {/* Missing keywords */}
             {result.missing.length > 0 && (
-              <div className="rounded-xl border border-red-500/20 bg-[#141414] p-4">
-                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-red-400">
+              <div className="rounded-xl border border-red-300 bg-[var(--surface-alt)] p-4">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-red-700">
                   Missing Keywords ({result.missing.length})
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {result.missing.map((kw) => (
-                    <span key={kw} className="rounded-md bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-400">
+                    <span key={kw} className="rounded-md bg-red-600 px-2.5 py-1 text-xs font-medium text-red-700">
                       {kw}
                     </span>
                   ))}
@@ -381,13 +381,13 @@ export default function AtsKeywordChecker() {
 
             {/* Matched keywords */}
             {result.matched.length > 0 && (
-              <div className="rounded-xl border border-emerald-500/20 bg-[#141414] p-4">
-                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+              <div className="rounded-xl border border-emerald-300 bg-[var(--surface-alt)] p-4">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-700">
                   Matched Keywords ({result.matched.length})
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {result.matched.map((kw) => (
-                    <span key={kw} className="rounded-md bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400">
+                    <span key={kw} className="rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-medium text-emerald-700">
                       {kw}
                     </span>
                   ))}
@@ -396,7 +396,7 @@ export default function AtsKeywordChecker() {
             )}
           </div>
 
-          <p className="text-xs text-zinc-700">
+          <p className="text-xs text-[var(--ink-faint)]">
             Aim for 70%+ match. Add missing keywords naturally — only where your actual experience supports it.
           </p>
         </div>

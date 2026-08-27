@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const inputCls = 'w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors'
+const inputCls = 'w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors'
 
 const PLATFORMS = ['Facebook', 'Twitter / X', 'LinkedIn']
 
@@ -68,29 +68,29 @@ export default function OgPreview() {
   return (
     <div className="flex flex-col gap-6">
       {/* Form */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Open Graph Fields</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Open Graph Fields</p>
         <div className="flex flex-col gap-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-zinc-400">Title</label>
+              <label className="text-xs text-[var(--ink-body)]">Title</label>
               <input className={inputCls} placeholder="My Page Title" value={f.title} onChange={set('title')} />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-zinc-400">Site Name</label>
+              <label className="text-xs text-[var(--ink-body)]">Site Name</label>
               <input className={inputCls} placeholder="My Brand" value={f.siteName} onChange={set('siteName')} />
             </div>
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Description</label>
+            <label className="text-xs text-[var(--ink-body)]">Description</label>
             <textarea className={`${inputCls} resize-none`} rows={2} placeholder="A short description for social sharing." value={f.description} onChange={set('description')} />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Image URL <span className="text-zinc-600">(1200×630 recommended)</span></label>
+            <label className="text-xs text-[var(--ink-body)]">Image URL <span className="text-[var(--ink-muted)]">(1200×630 recommended)</span></label>
             <input className={inputCls} placeholder="https://example.com/og-image.jpg" value={f.image} onChange={set('image')} />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Page URL</label>
+            <label className="text-xs text-[var(--ink-body)]">Page URL</label>
             <input className={inputCls} placeholder="https://example.com/page" value={f.url} onChange={set('url')} />
           </div>
         </div>
@@ -104,8 +104,8 @@ export default function OgPreview() {
             onClick={() => setActive(p)}
             className={`rounded-lg border px-3 py-1.5 text-xs transition-colors ${
               active === p
-                ? 'border-cyan-500/40 bg-cyan-500/10 text-cyan-400'
-                : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:border-[#3a3a3a]'
+                ? 'border-[color-mix(in_srgb,var(--accent)_40%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]'
+                : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:border-[var(--line-strong)]'
             }`}
           >
             {p}
@@ -114,12 +114,12 @@ export default function OgPreview() {
       </div>
 
       {/* Preview */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">{active} Preview</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">{active} Preview</p>
         <div className="mx-auto max-w-sm">
           <Card title={f.title} description={f.description} image={f.image} siteName={f.siteName} url={f.url} />
         </div>
-        <p className="mt-3 text-xs text-zinc-600 text-center">Preview is approximate — actual rendering varies by platform.</p>
+        <p className="mt-3 text-xs text-[var(--ink-muted)] text-center">Preview is approximate — actual rendering varies by platform.</p>
       </div>
     </div>
   )

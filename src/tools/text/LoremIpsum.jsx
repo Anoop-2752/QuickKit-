@@ -114,8 +114,8 @@ export default function LoremIpsum() {
               className={[
                 'rounded-lg px-4 py-2 text-sm font-medium capitalize transition-colors',
                 mode === m
-                  ? 'bg-indigo-600 text-white'
-                  : 'border border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white',
+                  ? 'bg-[var(--accent)] text-[var(--ink)]'
+                  : 'border border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]',
               ].join(' ')}
             >
               {m}
@@ -125,7 +125,7 @@ export default function LoremIpsum() {
 
         {/* Count */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-zinc-500">Count</span>
+          <span className="text-xs text-[var(--ink-body)]">Count</span>
           <input
             type="number"
             min={1}
@@ -133,12 +133,12 @@ export default function LoremIpsum() {
             value={count}
             onChange={(e) => setCount(Number(e.target.value))}
             onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
-            className="w-20 rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-center text-sm text-zinc-200 focus:border-indigo-500/50 focus:outline-none"
+            className="w-20 rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-center text-sm text-[var(--ink-strong)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none"
           />
         </div>
 
         {/* Start with Lorem ipsum */}
-        <label className="flex cursor-pointer items-center gap-2 text-sm text-zinc-400">
+        <label className="flex cursor-pointer items-center gap-2 text-sm text-[var(--ink-body)]">
           <input
             type="checkbox"
             checked={startClassic}
@@ -150,7 +150,7 @@ export default function LoremIpsum() {
 
         <button
           onClick={handleGenerate}
-          className="ml-auto rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+          className="ml-auto rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
         >
           Generate
         </button>
@@ -159,12 +159,12 @@ export default function LoremIpsum() {
       {/* ── Output ───────────────────────────────────────────────────────────── */}
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Output</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Output</label>
           <div className="flex items-center gap-3">
-            <span className="text-xs text-zinc-600">{wordCount.toLocaleString()} words</span>
+            <span className="text-xs text-[var(--ink-muted)]">{wordCount.toLocaleString()} words</span>
             <button
               onClick={handleCopy}
-              className="rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs font-medium text-zinc-400 transition-all hover:border-[#3a3a3a] hover:text-white"
+              className="rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs font-medium text-[var(--ink-body)] transition-all hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
             >
               {copied ? '✓ Copied!' : 'Copy'}
             </button>
@@ -174,7 +174,7 @@ export default function LoremIpsum() {
         <textarea
           readOnly
           value={output}
-          className="h-80 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-4 text-sm leading-relaxed text-zinc-200 focus:outline-none lg:h-96"
+          className="h-80 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-4 text-sm leading-relaxed text-[var(--ink-strong)] focus:outline-none lg:h-96"
         />
       </div>
 

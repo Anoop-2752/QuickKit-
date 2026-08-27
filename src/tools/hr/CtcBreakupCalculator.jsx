@@ -58,19 +58,19 @@ export default function CtcBreakupCalculator() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {/* CTC */}
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs text-zinc-500">Annual CTC (₹)</label>
+          <label className="text-xs text-[var(--ink-body)]">Annual CTC (₹)</label>
           <input
             type="number"
             value={ctc}
             onChange={(e) => setCtc(e.target.value)}
             placeholder="e.g. 1200000"
-            className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none"
+            className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none"
           />
         </div>
 
         {/* Basic % */}
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs text-zinc-500">Basic Salary %</label>
+          <label className="text-xs text-[var(--ink-body)]">Basic Salary %</label>
           <div className="flex items-center gap-2">
             <input
               type="range"
@@ -79,18 +79,18 @@ export default function CtcBreakupCalculator() {
               onChange={(e) => setBasicPct(Number(e.target.value))}
               className="flex-1 accent-rose-500"
             />
-            <span className="w-10 text-right text-sm text-zinc-300">{basicPct}%</span>
+            <span className="w-10 text-right text-sm text-[var(--ink-strong)]">{basicPct}%</span>
           </div>
         </div>
 
         {/* Professional Tax */}
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs text-zinc-500">Professional Tax (₹/month)</label>
+          <label className="text-xs text-[var(--ink-body)]">Professional Tax (₹/month)</label>
           <input
             type="number"
             value={profTax}
             onChange={(e) => setProfTax(Number(e.target.value))}
-            className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:border-rose-500/50 focus:outline-none"
+            className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:border-rose-300 focus:outline-none"
           />
         </div>
       </div>
@@ -107,8 +107,8 @@ export default function CtcBreakupCalculator() {
             onClick={() => setter(!val)}
             className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-all ${
               val
-                ? 'border-rose-500/40 bg-rose-500/10 text-rose-400'
-                : 'border-[#2a2a2a] text-zinc-500 hover:text-zinc-300'
+                ? 'border-rose-300 bg-rose-600 text-rose-700'
+                : 'border-[var(--line)] text-[var(--ink-body)] hover:text-[var(--ink-strong)]'
             }`}
           >
             {val ? onLabel : offLabel}
@@ -127,10 +127,10 @@ export default function CtcBreakupCalculator() {
           ].map(({ label, value, highlight }) => (
             <div
               key={label}
-              className={`rounded-xl border p-4 ${highlight ? 'border-rose-500/30 bg-rose-500/5' : 'border-[#2a2a2a] bg-[#141414]'}`}
+              className={`rounded-xl border p-4 ${highlight ? 'border-rose-300 bg-rose-600' : 'border-[var(--line)] bg-[var(--surface-alt)]'}`}
             >
-              <p className="mb-1 text-xs text-zinc-500">{label}</p>
-              <p className={`text-base font-semibold ${highlight ? 'text-rose-400' : 'text-zinc-200'}`}>{value}</p>
+              <p className="mb-1 text-xs text-[var(--ink-body)]">{label}</p>
+              <p className={`text-base font-semibold ${highlight ? 'text-rose-700' : 'text-[var(--ink-strong)]'}`}>{value}</p>
             </div>
           ))}
         </div>
@@ -153,12 +153,12 @@ export default function CtcBreakupCalculator() {
       )}
 
       {!hasCtc && (
-        <div className="flex h-40 items-center justify-center rounded-xl border border-dashed border-[#2a2a2a] text-sm text-zinc-600">
+        <div className="flex h-40 items-center justify-center rounded-xl border border-dashed border-[var(--line)] text-sm text-[var(--ink-muted)]">
           Enter your Annual CTC above to see the breakup
         </div>
       )}
 
-      <p className="text-xs text-zinc-700">
+      <p className="text-xs text-[var(--ink-faint)]">
         Calculations are indicative and based on standard Indian payroll structure. Actual figures may vary by company and state.
       </p>
     </div>
@@ -167,40 +167,40 @@ export default function CtcBreakupCalculator() {
 
 function BreakupTable({ title, rows, total, note, accent }) {
   return (
-    <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] overflow-hidden">
-      <div className="border-b border-[#2a2a2a] px-4 py-3">
-        <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">{title}</p>
-        {note && <p className="mt-0.5 text-xs text-zinc-700">{note}</p>}
+    <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] overflow-hidden">
+      <div className="border-b border-[var(--line)] px-4 py-3">
+        <p className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">{title}</p>
+        {note && <p className="mt-0.5 text-xs text-[var(--ink-faint)]">{note}</p>}
       </div>
       <table className="w-full text-xs">
         <thead>
-          <tr className="border-b border-[#1e1e1e]">
-            <th className="px-4 py-2 text-left text-zinc-600 font-normal">Component</th>
-            <th className="px-4 py-2 text-right text-zinc-600 font-normal">Monthly</th>
-            <th className="px-4 py-2 text-right text-zinc-600 font-normal">Annual</th>
+          <tr className="border-b border-[var(--line-subtle)]">
+            <th className="px-4 py-2 text-left text-[var(--ink-muted)] font-normal">Component</th>
+            <th className="px-4 py-2 text-right text-[var(--ink-muted)] font-normal">Monthly</th>
+            <th className="px-4 py-2 text-right text-[var(--ink-muted)] font-normal">Annual</th>
           </tr>
         </thead>
         <tbody>
           {rows.map(({ label, annual, note: rowNote }) => (
-            <tr key={label} className="border-b border-[#1a1a1a]">
-              <td className="px-4 py-2.5 text-zinc-400">
+            <tr key={label} className="border-b border-[var(--surface-tint)]">
+              <td className="px-4 py-2.5 text-[var(--ink-body)]">
                 {label}
-                {rowNote && <span className="ml-1 text-zinc-700">({rowNote})</span>}
+                {rowNote && <span className="ml-1 text-[var(--ink-faint)]">({rowNote})</span>}
               </td>
-              <td className="px-4 py-2.5 text-right text-zinc-300">₹ {cur(Math.round(annual / 12))}</td>
-              <td className="px-4 py-2.5 text-right text-zinc-300">₹ {cur(annual)}</td>
+              <td className="px-4 py-2.5 text-right text-[var(--ink-strong)]">₹ {cur(Math.round(annual / 12))}</td>
+              <td className="px-4 py-2.5 text-right text-[var(--ink-strong)]">₹ {cur(annual)}</td>
             </tr>
           ))}
         </tbody>
         <tfoot>
-          <tr className={`border-t border-[#2a2a2a] ${accent === 'red' ? 'bg-red-500/5' : 'bg-rose-500/5'}`}>
-            <td className={`px-4 py-2.5 font-medium ${accent === 'red' ? 'text-red-400' : 'text-rose-400'}`}>
+          <tr className={`border-t border-[var(--line)] ${accent === 'red' ? 'bg-red-600' : 'bg-rose-600'}`}>
+            <td className={`px-4 py-2.5 font-medium ${accent === 'red' ? 'text-red-700' : 'text-rose-700'}`}>
               Total
             </td>
-            <td className={`px-4 py-2.5 text-right font-medium ${accent === 'red' ? 'text-red-400' : 'text-rose-400'}`}>
+            <td className={`px-4 py-2.5 text-right font-medium ${accent === 'red' ? 'text-red-700' : 'text-rose-700'}`}>
               ₹ {cur(Math.round(total / 12))}
             </td>
-            <td className={`px-4 py-2.5 text-right font-medium ${accent === 'red' ? 'text-red-400' : 'text-rose-400'}`}>
+            <td className={`px-4 py-2.5 text-right font-medium ${accent === 'red' ? 'text-red-700' : 'text-rose-700'}`}>
               ₹ {cur(total)}
             </td>
           </tr>

@@ -14,10 +14,10 @@ const blankEdu = () => ({
 
 // ---------- styles ----------
 const inputCls =
-  'w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-indigo-500/50 transition-colors'
+  'w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors'
 
-const sectionCard = 'rounded-xl border border-[#2a2a2a] bg-[#141414] p-5'
-const sectionHeader = 'text-xs font-semibold uppercase tracking-wider text-zinc-600 mb-4'
+const sectionCard = 'rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5'
+const sectionHeader = 'text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)] mb-4'
 
 // ---------- icon helpers (inline SVG) ----------
 function PlusIcon() {
@@ -38,7 +38,7 @@ function TrashIcon() {
 
 function CheckIcon() {
   return (
-    <svg className="h-3.5 w-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+    <svg className="h-3.5 w-3.5 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
   )
@@ -46,7 +46,7 @@ function CheckIcon() {
 
 function XIcon() {
   return (
-    <svg className="h-3.5 w-3.5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+    <svg className="h-3.5 w-3.5 text-[var(--ink-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   )
@@ -54,7 +54,7 @@ function XIcon() {
 
 function WarnIcon() {
   return (
-    <svg className="h-3.5 w-3.5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+    <svg className="h-3.5 w-3.5 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
     </svg>
   )
@@ -65,10 +65,10 @@ function Field({ label, required, hint, children }) {
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-baseline gap-1">
-        <label className="text-xs text-zinc-400">
-          {label}{required && <span className="ml-0.5 text-rose-400">*</span>}
+        <label className="text-xs text-[var(--ink-body)]">
+          {label}{required && <span className="ml-0.5 text-rose-700">*</span>}
         </label>
-        {hint && <span className="text-xs text-zinc-600">— {hint}</span>}
+        {hint && <span className="text-xs text-[var(--ink-muted)]">— {hint}</span>}
       </div>
       {children}
     </div>
@@ -142,21 +142,21 @@ function StrengthCard({ form }) {
   const color = pct >= 80 ? 'green' : pct >= 50 ? 'yellow' : 'red'
 
   const colorMap = {
-    green: 'text-green-400 bg-green-500/10 border-green-500/20',
-    yellow: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20',
-    red: 'text-red-400 bg-red-500/10 border-red-500/20',
+    green: 'text-[var(--accent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]',
+    yellow: 'text-[var(--accent-on)] bg-[var(--accent)] border-[var(--accent)]',
+    red: 'text-red-700 bg-red-600 border-red-300',
   }
-  const barMap = { green: 'bg-green-500', yellow: 'bg-yellow-500', red: 'bg-red-500' }
+  const barMap = { green: 'bg-[var(--accent)]', yellow: 'bg-[var(--accent)]', red: 'bg-red-600' }
 
   return (
-    <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+    <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
       <div className="mb-3 flex items-center justify-between">
-        <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Resume Strength</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-body)]">Resume Strength</p>
         <span className={`rounded-md border px-2 py-0.5 text-xs font-bold ${colorMap[color]}`}>
           {score}/{total}
         </span>
       </div>
-      <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-[#1a1a1a]">
+      <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-[var(--surface-tint)]">
         <div
           className={`h-full rounded-full transition-all duration-500 ${barMap[color]}`}
           style={{ width: `${pct}%` }}
@@ -169,8 +169,8 @@ function StrengthCard({ form }) {
               {c.met ? <CheckIcon /> : c.warn ? <WarnIcon /> : <XIcon />}
             </span>
             <div className="min-w-0">
-              <p className={`text-xs ${c.met ? 'text-zinc-300' : 'text-zinc-500'}`}>{c.label}</p>
-              {!c.met && c.tip && <p className="text-xs text-zinc-600">{c.tip}</p>}
+              <p className={`text-xs ${c.met ? 'text-[var(--ink-strong)]' : 'text-[var(--ink-body)]'}`}>{c.label}</p>
+              {!c.met && c.tip && <p className="text-xs text-[var(--ink-muted)]">{c.tip}</p>}
             </div>
           </div>
         ))}
@@ -187,13 +187,13 @@ function ResumePreview({ form }) {
   const contactParts = [form.email, form.phone, form.location, form.linkedin].filter(Boolean)
 
   return (
-    <div className="max-h-[680px] overflow-auto rounded-xl border border-[#2a2a2a] bg-white shadow-xl shadow-black/30">
+    <div className="max-h-[680px] overflow-auto rounded-xl border border-[var(--line)] bg-white shadow-xl shadow-black/30">
       {/* Paper content */}
-      <div className="p-8 text-[#1a1a1a] font-[Georgia,serif]" style={{ minWidth: 0 }}>
+      <div className="p-8 text-[var(--surface-tint)] font-[Georgia,serif]" style={{ minWidth: 0 }}>
 
         {/* Header */}
         <div className="mb-4 text-center">
-          <h1 className="text-2xl font-bold tracking-tight text-[#111]">
+          <h1 className="text-2xl font-bold tracking-tight text-[var(--surface)]">
             {form.fullName || <span className="text-gray-300">Your Name</span>}
           </h1>
           {form.jobTitle && (
@@ -233,7 +233,7 @@ function ResumePreview({ form }) {
               return (
                 <div key={exp.id} className="mb-3">
                   <div className="flex items-baseline justify-between">
-                    <p className="text-sm font-bold text-[#111]">
+                    <p className="text-sm font-bold text-[var(--surface)]">
                       {exp.role || <span className="text-gray-400">Role</span>}
                       {exp.company && <span className="font-normal text-gray-600"> · {exp.company}</span>}
                     </p>
@@ -266,7 +266,7 @@ function ResumePreview({ form }) {
               return (
                 <div key={edu.id} className="mb-2">
                   <div className="flex items-baseline justify-between">
-                    <p className="text-sm font-bold text-[#111]">
+                    <p className="text-sm font-bold text-[var(--surface)]">
                       {[edu.degree, edu.field].filter(Boolean).join(', ') || <span className="text-gray-400">Degree</span>}
                     </p>
                     {years && <p className="text-xs text-gray-500 shrink-0 ml-2">{years}</p>}
@@ -583,13 +583,13 @@ export default function ResumeBuilder() {
     <div className="flex flex-col gap-6">
       {/* Progress bar */}
       <div className="flex items-center gap-3">
-        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#1a1a1a]">
+        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[var(--surface-tint)]">
           <div
-            className="h-full rounded-full bg-indigo-500 transition-all duration-300"
+            className="h-full rounded-full bg-[var(--accent)] transition-all duration-300"
             style={{ width: `${(progressSections / 5) * 100}%` }}
           />
         </div>
-        <span className="text-xs text-zinc-600">{progressSections}/5 sections</span>
+        <span className="text-xs text-[var(--ink-muted)]">{progressSections}/5 sections</span>
       </div>
 
       {/* Contact Info */}
@@ -627,7 +627,7 @@ export default function ResumeBuilder() {
           value={form.summary}
           onChange={setField('summary')}
         />
-        <p className="mt-1.5 text-xs text-zinc-600">
+        <p className="mt-1.5 text-xs text-[var(--ink-muted)]">
           {form.summary.trim().split(/\s+/).filter(Boolean).length} words — aim for 30+
         </p>
       </div>
@@ -637,13 +637,13 @@ export default function ResumeBuilder() {
         <p className={sectionHeader}>Work Experience</p>
         <div className="flex flex-col gap-6">
           {form.experience.map((exp, idx) => (
-            <div key={exp.id} className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-4">
+            <div key={exp.id} className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-4">
               <div className="mb-3 flex items-center justify-between">
-                <p className="text-xs text-zinc-500">Entry {idx + 1}</p>
+                <p className="text-xs text-[var(--ink-body)]">Entry {idx + 1}</p>
                 {form.experience.length > 1 && (
                   <button
                     onClick={() => removeExp(exp.id)}
-                    className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-zinc-600 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                    className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-[var(--ink-muted)] transition-colors hover:bg-red-600 hover:text-red-700"
                   >
                     <TrashIcon />
                     Remove
@@ -683,7 +683,7 @@ export default function ResumeBuilder() {
                   onChange={e => updateExp(exp.id, 'current', e.target.checked)}
                   className="h-3.5 w-3.5 rounded accent-indigo-500"
                 />
-                <label htmlFor={`current-${exp.id}`} className="text-xs text-zinc-500 cursor-pointer">
+                <label htmlFor={`current-${exp.id}`} className="text-xs text-[var(--ink-body)] cursor-pointer">
                   I currently work here
                 </label>
               </div>
@@ -703,7 +703,7 @@ export default function ResumeBuilder() {
         </div>
         <button
           onClick={addExp}
-          className="mt-4 flex items-center gap-1.5 rounded-lg border border-dashed border-[#2a2a2a] px-3 py-2 text-xs text-zinc-500 transition-colors hover:border-indigo-500/40 hover:text-indigo-400"
+          className="mt-4 flex items-center gap-1.5 rounded-lg border border-dashed border-[var(--line)] px-3 py-2 text-xs text-[var(--ink-body)] transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:text-[var(--accent)]"
         >
           <PlusIcon />
           Add another experience
@@ -715,13 +715,13 @@ export default function ResumeBuilder() {
         <p className={sectionHeader}>Education</p>
         <div className="flex flex-col gap-4">
           {form.education.map((edu, idx) => (
-            <div key={edu.id} className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-4">
+            <div key={edu.id} className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-4">
               <div className="mb-3 flex items-center justify-between">
-                <p className="text-xs text-zinc-500">Entry {idx + 1}</p>
+                <p className="text-xs text-[var(--ink-body)]">Entry {idx + 1}</p>
                 {form.education.length > 1 && (
                   <button
                     onClick={() => removeEdu(edu.id)}
-                    className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-zinc-600 transition-colors hover:bg-red-500/10 hover:text-red-400"
+                    className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-[var(--ink-muted)] transition-colors hover:bg-red-600 hover:text-red-700"
                   >
                     <TrashIcon />
                     Remove
@@ -752,7 +752,7 @@ export default function ResumeBuilder() {
         </div>
         <button
           onClick={addEdu}
-          className="mt-4 flex items-center gap-1.5 rounded-lg border border-dashed border-[#2a2a2a] px-3 py-2 text-xs text-zinc-500 transition-colors hover:border-indigo-500/40 hover:text-indigo-400"
+          className="mt-4 flex items-center gap-1.5 rounded-lg border border-dashed border-[var(--line)] px-3 py-2 text-xs text-[var(--ink-body)] transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:text-[var(--accent)]"
         >
           <PlusIcon />
           Add another education entry
@@ -773,7 +773,7 @@ export default function ResumeBuilder() {
         {form.skills.trim() && (
           <div className="mt-2 flex flex-wrap gap-1.5">
             {form.skills.split(',').map(s => s.trim()).filter(Boolean).map((s, i) => (
-              <span key={i} className="rounded-md border border-indigo-500/20 bg-indigo-500/5 px-2 py-0.5 text-xs text-indigo-300">
+              <span key={i} className="rounded-md border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] px-2 py-0.5 text-xs text-[var(--accent)]">
                 {s}
               </span>
             ))}
@@ -783,7 +783,7 @@ export default function ResumeBuilder() {
 
       {/* Certifications */}
       <div className={sectionCard}>
-        <p className={sectionHeader}>Certifications <span className="normal-case font-normal tracking-normal text-zinc-700">(optional)</span></p>
+        <p className={sectionHeader}>Certifications <span className="normal-case font-normal tracking-normal text-[var(--ink-faint)]">(optional)</span></p>
         <Field label="Certifications" hint="one per line">
           <textarea
             className={`${inputCls} resize-none`}
@@ -799,7 +799,7 @@ export default function ResumeBuilder() {
       <div className="lg:hidden">
         <button
           onClick={handleMobilePreview}
-          className="w-full rounded-lg bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-500"
+          className="w-full rounded-lg bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
         >
           Preview Resume
         </button>
@@ -822,7 +822,7 @@ export default function ResumeBuilder() {
             <StrengthCard form={form} />
             <button
               onClick={() => downloadPdf(form)}
-              className="w-full rounded-lg bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-500"
+              className="w-full rounded-lg bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
             >
               Download PDF
             </button>
@@ -833,9 +833,9 @@ export default function ResumeBuilder() {
       {/* Mobile: preview + strength below form */}
       {mobileShowPreview && (
         <div ref={previewRef} className="lg:hidden flex flex-col gap-4">
-          <div className="flex items-center justify-between rounded-xl border border-indigo-500/20 bg-indigo-500/5 px-4 py-3">
-            <p className="text-sm font-medium text-indigo-400">Resume Preview</p>
-            <button onClick={() => setMobileShowPreview(false)} className="text-xs text-zinc-500 underline hover:text-zinc-300">
+          <div className="flex items-center justify-between rounded-xl border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] px-4 py-3">
+            <p className="text-sm font-medium text-[var(--accent)]">Resume Preview</p>
+            <button onClick={() => setMobileShowPreview(false)} className="text-xs text-[var(--ink-body)] underline hover:text-[var(--ink-strong)]">
               Hide
             </button>
           </div>
@@ -843,7 +843,7 @@ export default function ResumeBuilder() {
           <StrengthCard form={form} />
           <button
             onClick={() => downloadPdf(form)}
-            className="w-full rounded-lg bg-indigo-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-500"
+            className="w-full rounded-lg bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
           >
             Download PDF
           </button>

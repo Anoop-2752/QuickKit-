@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
-const inputCls = 'w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors'
+const inputCls = 'w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors'
 
 function CharBar({ value, max }) {
   const len = value.length
   const pct = Math.min((len / max) * 100, 100)
-  const color = len > max ? 'bg-red-500' : len > max * 0.85 ? 'bg-amber-500' : 'bg-cyan-500'
-  const textColor = len > max ? 'text-red-400' : len > max * 0.85 ? 'text-amber-400' : 'text-zinc-500'
+  const color = len > max ? 'bg-red-600' : len > max * 0.85 ? 'bg-[var(--accent)]' : 'bg-[var(--accent)]'
+  const textColor = len > max ? 'text-red-700' : len > max * 0.85 ? 'text-[var(--accent)]' : 'text-[var(--ink-body)]'
   return (
     <div className="flex items-center gap-2 mt-1">
-      <div className="h-1 flex-1 overflow-hidden rounded-full bg-[#2a2a2a]">
+      <div className="h-1 flex-1 overflow-hidden rounded-full bg-[var(--line)]">
         <div className={`h-full rounded-full transition-all ${color}`} style={{ width: `${pct}%` }} />
       </div>
       <span className={`text-xs tabular-nums ${textColor}`}>{len}/{max}</span>
@@ -20,7 +20,7 @@ function CharBar({ value, max }) {
 function Field({ label, children }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-xs text-zinc-400">{label}</label>
+      <label className="text-xs text-[var(--ink-body)]">{label}</label>
       {children}
     </div>
   )
@@ -75,8 +75,8 @@ export default function MetaTagGenerator() {
   return (
     <div className="flex flex-col gap-6">
       {/* Basic */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Basic SEO</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Basic SEO</p>
         <div className="flex flex-col gap-4">
           <Field label="Page Title">
             <input className={inputCls} placeholder="My Awesome Page — Brand Name" value={f.title} onChange={set('title')} />
@@ -101,8 +101,8 @@ export default function MetaTagGenerator() {
       </div>
 
       {/* Open Graph */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Open Graph (Social Sharing)</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Open Graph (Social Sharing)</p>
         <div className="flex flex-col gap-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="OG Title (defaults to Page Title)">
@@ -122,8 +122,8 @@ export default function MetaTagGenerator() {
       </div>
 
       {/* Twitter */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Twitter / X Card</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Twitter / X Card</p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Twitter Handle">
             <input className={inputCls} placeholder="@yourbrand" value={f.twitterHandle} onChange={set('twitterHandle')} />
@@ -138,14 +138,14 @@ export default function MetaTagGenerator() {
       </div>
 
       {/* Output */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414]">
-        <div className="flex items-center justify-between border-b border-[#1e1e1e] px-4 py-3">
-          <p className="text-xs text-zinc-500">Generated HTML — paste into your <code className="text-cyan-400">&lt;head&gt;</code></p>
-          <button onClick={handleCopy} className="rounded-lg bg-cyan-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-cyan-500">
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)]">
+        <div className="flex items-center justify-between border-b border-[var(--line-subtle)] px-4 py-3">
+          <p className="text-xs text-[var(--ink-body)]">Generated HTML — paste into your <code className="text-[var(--accent)]">&lt;head&gt;</code></p>
+          <button onClick={handleCopy} className="rounded-lg bg-[var(--accent)] px-3 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)]">
             {copied ? '✓ Copied!' : 'Copy All'}
           </button>
         </div>
-        <pre className="overflow-x-auto p-4 text-xs leading-relaxed text-zinc-400 whitespace-pre-wrap">{output}</pre>
+        <pre className="overflow-x-auto p-4 text-xs leading-relaxed text-[var(--ink-body)] whitespace-pre-wrap">{output}</pre>
       </div>
     </div>
   )

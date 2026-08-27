@@ -7,7 +7,7 @@ export default function Layout() {
   const { pathname } = useLocation()
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#0a0a0a] text-white">
+    <div className="flex min-h-screen flex-col bg-[var(--page)] text-[var(--ink)]">
       <Navbar />
       {/* key re-mounts the wrapper on each route change, triggering the CSS animation */}
       <main id="main-content" key={pathname} className="flex-1 page-enter">

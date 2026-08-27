@@ -4,8 +4,8 @@
   "description": "Free browser-based tools for developers, HR, finance, career, PDF, image, and text. No signup required.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f0f0f",
-  "theme_color": "#22c55e",
+  "background_color": "#fbfaf7",
+  "theme_color": "#1c5d4a",
   "icons": [
     {
       "src": "/favicon-192.png",

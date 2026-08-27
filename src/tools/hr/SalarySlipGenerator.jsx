@@ -54,10 +54,10 @@ export default function SalarySlipGenerator() {
     const content = printRef.current.innerHTML
     const win = window.open('', '_blank')
     win.document.write(`<html><head><title>Salary Slip</title><style>
-      body{font-family:Arial,sans-serif;font-size:13px;color:#111;margin:0;padding:24px}
+      body{font-family:Arial,sans-serif;font-size:13px;color:var(--surface);margin:0;padding:24px}
       h2{text-align:center;margin:0 0 4px}
       .center{text-align:center}
-      .header{border-bottom:2px solid #111;padding-bottom:12px;margin-bottom:12px}
+      .header{border-bottom:2px solid var(--surface);padding-bottom:12px;margin-bottom:12px}
       table{width:100%;border-collapse:collapse;margin-bottom:12px}
       td,th{border:1px solid #ccc;padding:6px 10px;font-size:12px}
       th{background:#f5f5f5;font-weight:600}
@@ -75,37 +75,37 @@ export default function SalarySlipGenerator() {
       {/* Form */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Company info */}
-        <div className="flex flex-col gap-3 rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Company Info</p>
+        <div className="flex flex-col gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--ink-body)]">Company Info</p>
           {[
             ['companyName', 'Company Name'],
             ['companyAddress', 'Company Address'],
           ].map(([key, label]) => (
             <div key={key} className="flex flex-col gap-1">
-              <span className="text-xs text-zinc-600">{label}</span>
+              <span className="text-xs text-[var(--ink-muted)]">{label}</span>
               <input value={info[key]} onChange={(e) => setField(key, e.target.value)} placeholder={label}
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none" />
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none" />
             </div>
           ))}
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col gap-1">
-              <span className="text-xs text-zinc-600">Month</span>
+              <span className="text-xs text-[var(--ink-muted)]">Month</span>
               <select value={info.month} onChange={(e) => setField('month', e.target.value)}
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:outline-none">
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:outline-none">
                 {MONTHS.map((m) => <option key={m}>{m}</option>)}
               </select>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-xs text-zinc-600">Year</span>
+              <span className="text-xs text-[var(--ink-muted)]">Year</span>
               <input value={info.year} onChange={(e) => setField('year', e.target.value)} placeholder="2025"
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none" />
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:outline-none" />
             </div>
           </div>
         </div>
 
         {/* Employee info */}
-        <div className="flex flex-col gap-3 rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-          <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Employee Info</p>
+        <div className="flex flex-col gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--ink-body)]">Employee Info</p>
           {[
             ['employeeName','Employee Name'],['employeeId','Employee ID'],
             ['designation','Designation'],['department','Department'],
@@ -113,17 +113,17 @@ export default function SalarySlipGenerator() {
             ['panNo','PAN Number'],
           ].map(([key, label]) => (
             <div key={key} className="flex flex-col gap-1">
-              <span className="text-xs text-zinc-600">{label}</span>
+              <span className="text-xs text-[var(--ink-muted)]">{label}</span>
               <input value={info[key]} onChange={(e) => setField(key, e.target.value)} placeholder={label}
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none" />
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none" />
             </div>
           ))}
           <div className="grid grid-cols-2 gap-2">
             {[['workingDays','Working Days'],['presentDays','Days Present']].map(([key, label]) => (
               <div key={key} className="flex flex-col gap-1">
-                <span className="text-xs text-zinc-600">{label}</span>
+                <span className="text-xs text-[var(--ink-muted)]">{label}</span>
                 <input type="number" value={info[key]} onChange={(e) => setField(key, e.target.value)}
-                  className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:outline-none" />
+                  className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:outline-none" />
               </div>
             ))}
           </div>
@@ -133,57 +133,57 @@ export default function SalarySlipGenerator() {
       {/* Earnings & Deductions */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Earnings */}
-        <div className="flex flex-col gap-3 rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+        <div className="flex flex-col gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold uppercase tracking-widest text-emerald-500">Earnings</p>
-            <button onClick={addEarning} className="text-xs text-zinc-600 hover:text-emerald-400">+ Add</button>
+            <p className="text-xs font-semibold uppercase tracking-widest text-emerald-700">Earnings</p>
+            <button onClick={addEarning} className="text-xs text-[var(--ink-muted)] hover:text-emerald-700">+ Add</button>
           </div>
           {earnings.map((e, i) => (
             <div key={i} className="flex gap-2">
               <input value={e.label} onChange={(ev) => updateEarning(i, 'label', ev.target.value)} placeholder="Component"
-                className="flex-1 rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none" />
+                className="flex-1 rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:outline-none" />
               <input type="number" value={e.amount} onChange={(ev) => updateEarning(i, 'amount', ev.target.value)} placeholder="0"
-                className="w-24 rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:outline-none" />
-              <button onClick={() => removeEarning(i)} className="text-zinc-700 hover:text-red-400 text-xs px-1">✕</button>
+                className="w-24 rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:outline-none" />
+              <button onClick={() => removeEarning(i)} className="text-[var(--ink-faint)] hover:text-red-700 text-xs px-1">✕</button>
             </div>
           ))}
-          <div className="flex justify-between border-t border-[#2a2a2a] pt-2 text-sm font-semibold">
-            <span className="text-zinc-400">Total Earnings</span>
-            <span className="text-emerald-400">₹ {currency(totalEarnings)}</span>
+          <div className="flex justify-between border-t border-[var(--line)] pt-2 text-sm font-semibold">
+            <span className="text-[var(--ink-body)]">Total Earnings</span>
+            <span className="text-emerald-700">₹ {currency(totalEarnings)}</span>
           </div>
         </div>
 
         {/* Deductions */}
-        <div className="flex flex-col gap-3 rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+        <div className="flex flex-col gap-3 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold uppercase tracking-widest text-red-500">Deductions</p>
-            <button onClick={addDeduction} className="text-xs text-zinc-600 hover:text-red-400">+ Add</button>
+            <p className="text-xs font-semibold uppercase tracking-widest text-red-700">Deductions</p>
+            <button onClick={addDeduction} className="text-xs text-[var(--ink-muted)] hover:text-red-700">+ Add</button>
           </div>
           {deductions.map((d, i) => (
             <div key={i} className="flex gap-2">
               <input value={d.label} onChange={(ev) => updateDeduction(i, 'label', ev.target.value)} placeholder="Deduction"
-                className="flex-1 rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none" />
+                className="flex-1 rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:outline-none" />
               <input type="number" value={d.amount} onChange={(ev) => updateDeduction(i, 'amount', ev.target.value)} placeholder="0"
-                className="w-24 rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:outline-none" />
-              <button onClick={() => removeDeduction(i)} className="text-zinc-700 hover:text-red-400 text-xs px-1">✕</button>
+                className="w-24 rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:outline-none" />
+              <button onClick={() => removeDeduction(i)} className="text-[var(--ink-faint)] hover:text-red-700 text-xs px-1">✕</button>
             </div>
           ))}
-          <div className="flex justify-between border-t border-[#2a2a2a] pt-2 text-sm font-semibold">
-            <span className="text-zinc-400">Total Deductions</span>
-            <span className="text-red-400">₹ {currency(totalDeductions)}</span>
+          <div className="flex justify-between border-t border-[var(--line)] pt-2 text-sm font-semibold">
+            <span className="text-[var(--ink-body)]">Total Deductions</span>
+            <span className="text-red-700">₹ {currency(totalDeductions)}</span>
           </div>
         </div>
       </div>
 
       {/* Net salary summary */}
-      <div className="flex items-center justify-between rounded-xl border border-rose-500/20 bg-rose-500/5 px-5 py-4">
-        <span className="text-sm font-semibold text-zinc-300">Net Salary (Take Home)</span>
-        <span className="text-2xl font-bold text-rose-400">₹ {currency(netSalary)}</span>
+      <div className="flex items-center justify-between rounded-xl border border-rose-300 bg-rose-600 px-5 py-4">
+        <span className="text-sm font-semibold text-[var(--ink-strong)]">Net Salary (Take Home)</span>
+        <span className="text-2xl font-bold text-rose-700">₹ {currency(netSalary)}</span>
       </div>
 
       <button
         onClick={handlePrint}
-        className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-rose-500"
+        className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-rose-600"
       >
         Print / Download Salary Slip
       </button>

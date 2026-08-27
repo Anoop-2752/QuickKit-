@@ -68,11 +68,11 @@ export default function FillerWordRemover() {
       {/* ── Left: input ───────────────────────────────────────────────────────── */}
       <div className="flex flex-1 flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Input</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Input</label>
           {input && (
             <button
               onClick={() => setInput('')}
-              className="text-xs text-zinc-600 transition-colors hover:text-red-400"
+              className="text-xs text-[var(--ink-muted)] transition-colors hover:text-red-700"
             >
               Clear
             </button>
@@ -83,28 +83,28 @@ export default function FillerWordRemover() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder={'Paste your text here and filler words will be highlighted automatically…\n\nExample: "I basically just, um, wanted to literally say that…"'}
-          className="h-72 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30 lg:h-80"
+          className="h-72 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm leading-relaxed text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)] lg:h-80"
         />
 
         {/* Stats */}
         {input && (
           <div className="flex flex-wrap gap-3">
-            <div className="rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-center">
-              <p className="text-lg font-bold text-red-400">{fillerCount}</p>
-              <p className="text-xs text-zinc-500">fillers found</p>
+            <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-center">
+              <p className="text-lg font-bold text-red-700">{fillerCount}</p>
+              <p className="text-xs text-[var(--ink-body)]">fillers found</p>
             </div>
-            <div className="rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-center">
-              <p className="text-lg font-bold text-white">{wordsBefore}</p>
-              <p className="text-xs text-zinc-500">words before</p>
+            <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-center">
+              <p className="text-lg font-bold text-[var(--ink)]">{wordsBefore}</p>
+              <p className="text-xs text-[var(--ink-body)]">words before</p>
             </div>
-            <div className="rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-center">
-              <p className="text-lg font-bold text-emerald-400">{wordsAfter}</p>
-              <p className="text-xs text-zinc-500">words after</p>
+            <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-center">
+              <p className="text-lg font-bold text-emerald-700">{wordsAfter}</p>
+              <p className="text-xs text-[var(--ink-body)]">words after</p>
             </div>
             {reduction > 0 && (
-              <div className="rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-center">
-                <p className="text-lg font-bold text-indigo-400">{reduction}%</p>
-                <p className="text-xs text-zinc-500">reduction</p>
+              <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-center">
+                <p className="text-lg font-bold text-[var(--accent)]">{reduction}%</p>
+                <p className="text-xs text-[var(--ink-body)]">reduction</p>
               </div>
             )}
           </div>
@@ -114,7 +114,7 @@ export default function FillerWordRemover() {
         {uniqueFillers.length > 0 && (
           <div className="flex flex-wrap gap-1.5">
             {uniqueFillers.map((w) => (
-              <span key={w} className="rounded-full bg-red-500/10 px-2.5 py-1 font-mono text-xs text-red-400">
+              <span key={w} className="rounded-full bg-red-600 px-2.5 py-1 font-mono text-xs text-red-700">
                 {w}
               </span>
             ))}
@@ -125,10 +125,10 @@ export default function FillerWordRemover() {
       {/* ── Right: output ─────────────────────────────────────────────────────── */}
       <div className="flex flex-1 flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Output</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Output</label>
           <div className="flex items-center gap-2">
             {/* View toggle */}
-            <div className="flex overflow-hidden rounded-lg border border-[#2a2a2a]">
+            <div className="flex overflow-hidden rounded-lg border border-[var(--line)]">
               {['highlight', 'cleaned'].map((v) => (
                 <button
                   key={v}
@@ -136,8 +136,8 @@ export default function FillerWordRemover() {
                   className={[
                     'px-3 py-1 text-xs font-medium capitalize transition-colors',
                     view === v
-                      ? 'bg-indigo-600 text-white'
-                      : 'bg-[#1a1a1a] text-zinc-400 hover:text-white',
+                      ? 'bg-[var(--accent)] text-[var(--ink)]'
+                      : 'bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]',
                   ].join(' ')}
                 >
                   {v}
@@ -147,7 +147,7 @@ export default function FillerWordRemover() {
             {view === 'cleaned' && cleanedText && (
               <button
                 onClick={handleCopy}
-                className="rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs font-medium text-zinc-400 transition-all hover:border-[#3a3a3a] hover:text-white"
+                className="rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs font-medium text-[var(--ink-body)] transition-all hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
               >
                 {copied ? '✓ Copied!' : 'Copy'}
               </button>
@@ -155,15 +155,15 @@ export default function FillerWordRemover() {
           </div>
         </div>
 
-        <div className="min-h-72 rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-4 lg:min-h-80">
+        <div className="min-h-72 rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-4 lg:min-h-80">
           {!input ? (
-            <p className="text-sm text-zinc-700">Output will appear here…</p>
+            <p className="text-sm text-[var(--ink-faint)]">Output will appear here…</p>
           ) : view === 'highlight' ? (
             /* Highlight mode: show filler words struck through */
-            <p className="text-sm leading-relaxed text-zinc-200">
+            <p className="text-sm leading-relaxed text-[var(--ink-strong)]">
               {tokens.map((token, i) =>
                 token.isFiller ? (
-                  <span key={i} className="rounded bg-red-500/15 px-0.5 text-red-400 line-through decoration-red-500">
+                  <span key={i} className="rounded bg-red-600 px-0.5 text-red-700 line-through decoration-red-500">
                     {token.raw}
                   </span>
                 ) : (
@@ -173,12 +173,12 @@ export default function FillerWordRemover() {
             </p>
           ) : (
             /* Cleaned mode: filler words removed */
-            <p className="text-sm leading-relaxed text-zinc-200 whitespace-pre-wrap">{cleanedText}</p>
+            <p className="text-sm leading-relaxed text-[var(--ink-strong)] whitespace-pre-wrap">{cleanedText}</p>
           )}
         </div>
 
-        <p className="text-xs text-zinc-700">
-          Removes common filler words. Switch to <span className="text-zinc-600">Highlight</span> to preview before copying.
+        <p className="text-xs text-[var(--ink-faint)]">
+          Removes common filler words. Switch to <span className="text-[var(--ink-muted)]">Highlight</span> to preview before copying.
         </p>
       </div>
 

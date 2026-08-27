@@ -50,13 +50,13 @@ export default function ImageToBase64() {
     <div className="flex flex-col gap-6">
       {/* Drop zone */}
       <div
-        className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[#2a2a2a] bg-[#141414] py-12 transition-colors hover:border-violet-500/40"
+        className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[var(--line)] bg-[var(--surface-alt)] py-12 transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)]"
         onClick={() => inputRef.current?.click()}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
       >
-        <p className="text-sm text-zinc-400">Drop an image here or <span className="text-violet-400">browse</span></p>
-        <p className="text-xs text-zinc-600">JPEG · PNG · WebP · GIF · SVG</p>
+        <p className="text-sm text-[var(--ink-body)]">Drop an image here or <span className="text-[var(--accent)]">browse</span></p>
+        <p className="text-xs text-[var(--ink-muted)]">JPEG · PNG · WebP · GIF · SVG</p>
         <input
           ref={inputRef}
           type="file"
@@ -69,13 +69,13 @@ export default function ImageToBase64() {
       {preview && (
         <>
           {/* Image preview + meta */}
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+          <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
             <div className="flex items-start gap-4">
               <img src={preview.url} alt="preview" className="h-16 w-16 rounded-lg object-cover" />
               <div className="flex flex-col gap-1">
-                <p className="text-sm text-white">{preview.name}</p>
-                <p className="text-xs text-zinc-500">{preview.type} · {formatBytes(preview.size)}</p>
-                {b64Size && <p className="text-xs text-zinc-500">Base64 output: {b64Size}</p>}
+                <p className="text-sm text-[var(--ink)]">{preview.name}</p>
+                <p className="text-xs text-[var(--ink-body)]">{preview.type} · {formatBytes(preview.size)}</p>
+                {b64Size && <p className="text-xs text-[var(--ink-body)]">Base64 output: {b64Size}</p>}
               </div>
             </div>
           </div>
@@ -88,8 +88,8 @@ export default function ImageToBase64() {
                 onClick={() => setFormat(f)}
                 className={`rounded-lg border px-3 py-1.5 text-xs transition-colors ${
                   format === f
-                    ? 'border-violet-500/40 bg-violet-500/10 text-violet-400'
-                    : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:border-[#3a3a3a]'
+                    ? 'border-[color-mix(in_srgb,var(--accent)_40%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]'
+                    : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:border-[var(--line-strong)]'
                 }`}
               >
                 {f === 'datauri' ? 'Data URI (with prefix)' : 'Raw Base64'}
@@ -103,7 +103,7 @@ export default function ImageToBase64() {
               readOnly
               value={output}
               rows={6}
-              className="w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 font-mono text-xs text-zinc-400 outline-none"
+              className="w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 font-mono text-xs text-[var(--ink-body)] outline-none"
             />
           </div>
 
@@ -111,13 +111,13 @@ export default function ImageToBase64() {
           <div className="flex gap-3">
             <button
               onClick={handleCopy}
-              className="flex-1 rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-violet-500"
+              className="flex-1 rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
             >
               {copied ? 'Copied!' : 'Copy to Clipboard'}
             </button>
             <button
               onClick={handleDownload}
-              className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2.5 text-sm text-zinc-300 transition-colors hover:border-[#3a3a3a] hover:text-white"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2.5 text-sm text-[var(--ink-strong)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
             >
               Download .txt
             </button>

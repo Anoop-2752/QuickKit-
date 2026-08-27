@@ -36,14 +36,14 @@ const VERB_DATA = {
 }
 
 const COLOR_MAP = {
-  blue:    { bg: 'bg-blue-500/10',    text: 'text-blue-300',    badge: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
-  emerald: { bg: 'bg-emerald-500/10', text: 'text-emerald-300', badge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
-  purple:  { bg: 'bg-purple-500/10',  text: 'text-purple-300',  badge: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
-  orange:  { bg: 'bg-orange-500/10',  text: 'text-orange-300',  badge: 'bg-orange-500/10 text-orange-400 border-orange-500/20' },
-  cyan:    { bg: 'bg-cyan-500/10',    text: 'text-cyan-300',    badge: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' },
-  pink:    { bg: 'bg-pink-500/10',    text: 'text-pink-300',    badge: 'bg-pink-500/10 text-pink-400 border-pink-500/20' },
-  amber:   { bg: 'bg-amber-500/10',   text: 'text-amber-300',   badge: 'bg-amber-500/10 text-amber-400 border-amber-500/20' },
-  green:   { bg: 'bg-green-500/10',   text: 'text-green-300',   badge: 'bg-green-500/10 text-green-400 border-green-500/20' },
+  blue:    { bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]',    text: 'text-[var(--accent)]',    badge: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
+  emerald: { bg: 'bg-emerald-600', text: 'text-emerald-700', badge: 'bg-emerald-600 text-emerald-700 border-emerald-300' },
+  purple:  { bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]',  text: 'text-[var(--accent)]',  badge: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
+  orange:  { bg: 'bg-orange-600',  text: 'text-orange-700',  badge: 'bg-orange-600 text-orange-700 border-orange-300' },
+  cyan:    { bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]',    text: 'text-[var(--accent)]',    badge: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
+  pink:    { bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]',    text: 'text-[var(--accent)]',    badge: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
+  amber:   { bg: 'bg-amber-600',   text: 'text-amber-700',   badge: 'bg-amber-600 text-amber-700 border-amber-300' },
+  green:   { bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]',   text: 'text-[var(--accent)]',   badge: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
 }
 
 const WEAK_VERBS = ['did', 'made', 'worked', 'helped', 'handled', 'was responsible for', 'assisted with', 'involved in', 'participated in', 'contributed to', 'responsible for', 'dealt with', 'took care of', 'worked on', 'did work']
@@ -74,16 +74,16 @@ export default function ActionVerbSuggester() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
-        <p className="text-xs text-zinc-600 leading-relaxed">
+        <p className="text-xs text-[var(--ink-muted)] leading-relaxed">
           Click any verb to copy it. Use strong action verbs to start every resume bullet — they show impact and impress ATS systems.
         </p>
 
         {/* Weak verbs reference */}
-        <div className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-4 py-3">
-          <p className="mb-2 text-xs font-medium text-zinc-600 uppercase tracking-wider">Replace these weak verbs:</p>
+        <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-4 py-3">
+          <p className="mb-2 text-xs font-medium text-[var(--ink-muted)] uppercase tracking-wider">Replace these weak verbs:</p>
           <div className="flex flex-wrap gap-2">
             {WEAK_VERBS.map((v) => (
-              <span key={v} className="rounded bg-red-500/10 px-2 py-0.5 text-xs font-mono text-red-400">{v}</span>
+              <span key={v} className="rounded bg-red-600 px-2 py-0.5 text-xs font-mono text-red-700">{v}</span>
             ))}
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function ActionVerbSuggester() {
           value={search}
           onChange={(e) => { setSearch(e.target.value); setActiveCategory(null) }}
           placeholder="Search verbs… e.g. 'lead', 'build', 'improve'"
-          className="w-full rounded-xl border border-[#2a2a2a] bg-[#141414] px-4 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+          className="w-full rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-4 py-2.5 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
         />
 
         {!search && (
@@ -109,7 +109,7 @@ export default function ActionVerbSuggester() {
                   key={cat}
                   onClick={() => setActiveCategory(isActive ? null : cat)}
                   className={`rounded-full border px-3 py-1 text-xs font-medium transition-all ${
-                    isActive ? colors.badge : 'border-[#2a2a2a] text-zinc-500 hover:text-zinc-300'
+                    isActive ? colors.badge : 'border-[var(--line)] text-[var(--ink-body)] hover:text-[var(--ink-strong)]'
                   }`}
                 >
                   {cat}
@@ -125,7 +125,7 @@ export default function ActionVerbSuggester() {
         {Object.entries(filteredData).map(([category, data]) => {
           const colors = COLOR_MAP[data.color]
           return (
-            <div key={category} className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+            <div key={category} className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
               <h3 className={`mb-3 text-xs font-semibold uppercase tracking-widest ${colors.text}`}>
                 {category}
               </h3>
@@ -137,8 +137,8 @@ export default function ActionVerbSuggester() {
                     title="Click to copy"
                     className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
                       copied === verb
-                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-400'
-                        : `border-[#2a2a2a] text-zinc-300 hover:border-[#3a3a3a] hover:${colors.text} ${colors.bg}`
+                        ? 'border-emerald-300 bg-emerald-600 text-emerald-700'
+                        : `border-[var(--line)] text-[var(--ink-strong)] hover:border-[var(--line-strong)] hover:${colors.text} ${colors.bg}`
                     }`}
                   >
                     {copied === verb ? '✓ Copied' : verb}
@@ -150,13 +150,13 @@ export default function ActionVerbSuggester() {
         })}
 
         {Object.keys(filteredData).length === 0 && (
-          <div className="rounded-xl border border-dashed border-[#2a2a2a] py-10 text-center">
-            <p className="text-sm text-zinc-600">No verbs match "{search}"</p>
+          <div className="rounded-xl border border-dashed border-[var(--line)] py-10 text-center">
+            <p className="text-sm text-[var(--ink-muted)]">No verbs match "{search}"</p>
           </div>
         )}
       </div>
 
-      <p className="text-xs text-zinc-700">
+      <p className="text-xs text-[var(--ink-faint)]">
         Tip: always start each resume bullet with a past-tense action verb (Led, Built, Increased…).
       </p>
     </div>

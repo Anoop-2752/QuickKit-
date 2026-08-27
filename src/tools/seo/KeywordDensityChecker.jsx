@@ -48,27 +48,27 @@ export default function KeywordDensityChecker() {
     const parts = content.split(new RegExp(`(${escapeRegex(keyword.trim())})`, 'gi'))
     return parts.map((part, i) =>
       part.toLowerCase() === keyword.trim().toLowerCase()
-        ? <mark key={i} className="rounded bg-cyan-500/20 text-cyan-300 px-0.5">{part}</mark>
+        ? <mark key={i} className="rounded bg-[color-mix(in_srgb,var(--accent)_20%,transparent)] text-[var(--accent)] px-0.5">{part}</mark>
         : part
     )
   }, [content, keyword])
 
   const densityColor = analysis?.density
-    ? Number(analysis.density) > 5 ? 'text-red-400'
-    : Number(analysis.density) > 3 ? 'text-amber-400'
-    : Number(analysis.density) > 0 ? 'text-cyan-400'
-    : 'text-zinc-500'
-    : 'text-zinc-500'
+    ? Number(analysis.density) > 5 ? 'text-red-700'
+    : Number(analysis.density) > 3 ? 'text-[var(--accent)]'
+    : Number(analysis.density) > 0 ? 'text-[var(--accent)]'
+    : 'text-[var(--ink-body)]'
+    : 'text-[var(--ink-body)]'
 
   return (
     <div className="flex flex-col gap-6">
       {/* Inputs */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Content / Page Text</label>
+            <label className="text-xs text-[var(--ink-body)]">Content / Page Text</label>
             <textarea
-              className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-3 text-sm leading-relaxed text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-3 text-sm leading-relaxed text-[var(--ink-strong)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               rows={10}
               placeholder="Paste your article, blog post, or page content here…"
               value={content}
@@ -76,9 +76,9 @@ export default function KeywordDensityChecker() {
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Target Keyword <span className="text-zinc-600">(single word)</span></label>
+            <label className="text-xs text-[var(--ink-body)]">Target Keyword <span className="text-[var(--ink-muted)]">(single word)</span></label>
             <input
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               placeholder="e.g. seo"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
@@ -97,9 +97,9 @@ export default function KeywordDensityChecker() {
               { label: 'Keyword Hits', value: keyword.trim() ? analysis.kwCount : '—' },
               { label: 'Density',      value: analysis.density ? `${analysis.density}%` : '—', color: densityColor },
             ].map(({ label, value, color }) => (
-              <div key={label} className="flex flex-col items-center rounded-xl border border-[#2a2a2a] bg-[#141414] py-4">
-                <span className={`text-2xl font-bold ${color || 'text-white'}`}>{value}</span>
-                <span className="mt-1 text-xs text-zinc-500">{label}</span>
+              <div key={label} className="flex flex-col items-center rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] py-4">
+                <span className={`text-2xl font-bold ${color || 'text-[var(--ink)]'}`}>{value}</span>
+                <span className="mt-1 text-xs text-[var(--ink-body)]">{label}</span>
               </div>
             ))}
           </div>
@@ -108,12 +108,12 @@ export default function KeywordDensityChecker() {
           {analysis.density !== null && (
             <div className={`rounded-xl border p-4 text-sm ${
               Number(analysis.density) > 5
-                ? 'border-red-500/20 bg-red-500/5 text-red-400'
+                ? 'border-red-300 bg-red-600 text-red-700'
                 : Number(analysis.density) > 3
-                  ? 'border-amber-500/20 bg-amber-500/5 text-amber-400'
+                  ? 'border-[var(--accent)] bg-[var(--accent)] text-[var(--accent-on)]'
                   : Number(analysis.density) > 0
-                    ? 'border-cyan-500/20 bg-cyan-500/5 text-cyan-400'
-                    : 'border-[#2a2a2a] bg-[#141414] text-zinc-500'
+                    ? 'border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] text-[var(--accent)]'
+                    : 'border-[var(--line)] bg-[var(--surface-alt)] text-[var(--ink-body)]'
             }`}>
               {Number(analysis.density) > 5
                 ? `Keyword density is ${analysis.density}% — too high. Over 5% may be seen as keyword stuffing.`
@@ -126,19 +126,19 @@ export default function KeywordDensityChecker() {
           )}
 
           {/* Top words */}
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-600">Top 10 Words (excluding stop words)</p>
+          <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Top 10 Words (excluding stop words)</p>
             <div className="flex flex-col gap-2">
               {analysis.topWords.map(([word, count], i) => {
                 const pct = Math.round((count / analysis.topWords[0][1]) * 100)
                 return (
                   <div key={word} className="flex items-center gap-3">
-                    <span className="w-4 text-xs text-zinc-600 text-right">{i + 1}</span>
-                    <span className="w-28 text-sm text-zinc-300">{word}</span>
-                    <div className="flex-1 h-1.5 overflow-hidden rounded-full bg-[#2a2a2a]">
-                      <div className="h-full rounded-full bg-cyan-500/60" style={{ width: `${pct}%` }} />
+                    <span className="w-4 text-xs text-[var(--ink-muted)] text-right">{i + 1}</span>
+                    <span className="w-28 text-sm text-[var(--ink-strong)]">{word}</span>
+                    <div className="flex-1 h-1.5 overflow-hidden rounded-full bg-[var(--line)]">
+                      <div className="h-full rounded-full bg-[color-mix(in_srgb,var(--accent)_60%,transparent)]" style={{ width: `${pct}%` }} />
                     </div>
-                    <span className="w-6 text-right text-xs text-zinc-500">{count}</span>
+                    <span className="w-6 text-right text-xs text-[var(--ink-body)]">{count}</span>
                   </div>
                 )
               })}
@@ -147,11 +147,11 @@ export default function KeywordDensityChecker() {
 
           {/* Highlighted preview */}
           {keyword.trim() && analysis.kwCount > 0 && (
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-600">
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">
                 Keyword Highlights ({analysis.kwCount} occurrence{analysis.kwCount !== 1 ? 's' : ''})
               </p>
-              <p className="text-sm leading-relaxed text-zinc-400 whitespace-pre-wrap">{highlighted}</p>
+              <p className="text-sm leading-relaxed text-[var(--ink-body)] whitespace-pre-wrap">{highlighted}</p>
             </div>
           )}
         </>

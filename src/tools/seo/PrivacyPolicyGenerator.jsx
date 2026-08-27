@@ -244,56 +244,56 @@ export default function PrivacyPolicyGenerator() {
   return (
     <div className="flex flex-col gap-6">
       {/* Disclaimer */}
-      <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs text-amber-300">
+      <div className="rounded-xl border border-[var(--accent)] bg-[var(--accent)] p-4 text-xs text-[var(--accent-on)]">
         <span className="font-semibold">Disclaimer: </span>
         This is a template for informational purposes only. Consult a legal professional for advice specific to your situation. This tool does not constitute legal advice.
       </div>
 
       {/* Form */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Your Details</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Your Details</p>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Website / App Name</label>
+            <label className="text-xs text-[var(--ink-body)]">Website / App Name</label>
             <input
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               placeholder="My Awesome App"
               value={form.name}
               onChange={f('name')}
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Website URL</label>
+            <label className="text-xs text-[var(--ink-body)]">Website URL</label>
             <input
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               placeholder="https://example.com"
               value={form.url}
               onChange={f('url')}
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Company / Owner Name</label>
+            <label className="text-xs text-[var(--ink-body)]">Company / Owner Name</label>
             <input
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               placeholder="Acme Corp"
               value={form.company}
               onChange={f('company')}
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Contact Email</label>
+            <label className="text-xs text-[var(--ink-body)]">Contact Email</label>
             <input
               type="email"
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               placeholder="privacy@example.com"
               value={form.email}
               onChange={f('email')}
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Country / Jurisdiction</label>
+            <label className="text-xs text-[var(--ink-body)]">Country / Jurisdiction</label>
             <select
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               value={form.country}
               onChange={f('country')}
             >
@@ -301,10 +301,10 @@ export default function PrivacyPolicyGenerator() {
             </select>
           </div>
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Effective Date</label>
+            <label className="text-xs text-[var(--ink-body)]">Effective Date</label>
             <input
               type="date"
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               value={form.effectiveDate}
               onChange={f('effectiveDate')}
             />
@@ -313,44 +313,44 @@ export default function PrivacyPolicyGenerator() {
       </div>
 
       {/* Data collection options */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">What data does your site collect?</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">What data does your site collect?</p>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {DATA_OPTIONS.map(({ id, label }) => (
-            <label key={id} className="flex cursor-pointer items-center gap-3 rounded-lg border border-[#2a2a2a] px-3 py-2.5 hover:border-[#3a3a3a] transition-colors">
+            <label key={id} className="flex cursor-pointer items-center gap-3 rounded-lg border border-[var(--line)] px-3 py-2.5 hover:border-[var(--line-strong)] transition-colors">
               <input
                 type="checkbox"
                 checked={dataOptions[id]}
                 onChange={() => toggleOption(id)}
                 className="h-4 w-4 accent-cyan-500 cursor-pointer"
               />
-              <span className="text-sm text-zinc-300">{label}</span>
+              <span className="text-sm text-[var(--ink-strong)]">{label}</span>
             </label>
           ))}
         </div>
       </div>
 
       {/* Output */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
         <div className="mb-3 flex items-center justify-between gap-3 flex-wrap">
           <div className="flex items-center gap-3">
-            <p className="text-xs font-semibold uppercase tracking-wider text-zinc-600">Generated Privacy Policy</p>
-            <span className="rounded-full bg-[#2a2a2a] px-2 py-0.5 text-xs text-zinc-500">{wordCount} words</span>
+            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Generated Privacy Policy</p>
+            <span className="rounded-full bg-[var(--line)] px-2 py-0.5 text-xs text-[var(--ink-body)]">{wordCount} words</span>
           </div>
           <div className="flex items-center gap-2">
             <button
               onClick={handleCopy}
               className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
                 copied
-                  ? 'border-green-500/40 bg-green-500/10 text-green-400'
-                  : 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20'
+                  ? 'border-[color-mix(in_srgb,var(--accent)_40%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]'
+                  : 'border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)] hover:bg-[color-mix(in_srgb,var(--accent)_20%,transparent)]'
               }`}
             >
               {copied ? 'Copied!' : 'Copy'}
             </button>
             <button
               onClick={handleDownload}
-              className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-1.5 text-xs font-medium text-zinc-400 hover:border-[#3a3a3a] hover:text-zinc-200 transition-colors"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-1.5 text-xs font-medium text-[var(--ink-body)] hover:border-[var(--line-strong)] hover:text-[var(--ink-strong)] transition-colors"
             >
               Download .txt
             </button>
@@ -358,7 +358,7 @@ export default function PrivacyPolicyGenerator() {
         </div>
         <textarea
           readOnly
-          className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#0f0f0f] p-4 font-mono text-xs leading-relaxed text-zinc-300 outline-none"
+          className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--page)] p-4 font-mono text-xs leading-relaxed text-[var(--ink-strong)] outline-none"
           rows={28}
           value={policy}
         />

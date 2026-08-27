@@ -20,16 +20,16 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-[#1a1a1a] bg-[#0a0a0a]/95 backdrop-blur-md">
+      <header className="sticky top-0 z-50 border-b border-[var(--surface-tint)] bg-[var(--page)]/95 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex items-center justify-between py-3.5">
             {/* Logo */}
             <Link to="/" className="group flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-500/10 ring-1 ring-green-500/30 transition-all group-hover:bg-green-500/20 group-hover:ring-green-500/50">
-                <Wrench size={17} className="text-green-400" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] ring-1 ring-[color-mix(in_srgb,var(--accent)_30%,transparent)] transition-all group-hover:bg-[color-mix(in_srgb,var(--accent)_20%,transparent)] group-hover:ring-[color-mix(in_srgb,var(--accent)_50%,transparent)]">
+                <Wrench size={17} className="text-[var(--accent)]" />
               </div>
-              <span className="text-2xl font-black tracking-tight text-white">
-                Quick<span className="text-green-400">Kit</span>
+              <span className="text-2xl font-black tracking-tight text-[var(--ink)]">
+                Quick<span className="text-[var(--accent)]">Kit</span>
               </span>
             </Link>
 
@@ -39,11 +39,11 @@ export default function Navbar() {
               aria-label="Search tools"
               aria-haspopup="dialog"
               aria-expanded={searchOpen}
-              className="flex items-center gap-2 rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-1.5 text-xs text-zinc-500 transition-colors hover:border-green-500/40 hover:text-green-400"
+              className="flex items-center gap-2 rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-1.5 text-xs text-[var(--ink-body)] transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:text-[var(--accent)]"
             >
               <Search size={12} aria-hidden="true" />
               <span className="hidden sm:block">Search</span>
-              <kbd className="hidden rounded border border-[#3a3a3a] bg-[#111] px-1 py-0.5 text-xs text-zinc-700 sm:block">⌘K</kbd>
+              <kbd className="hidden rounded border border-[var(--line-strong)] bg-[var(--surface)] px-1 py-0.5 text-xs text-[var(--ink-faint)] sm:block">⌘K</kbd>
             </button>
           </div>
         </div>

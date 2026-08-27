@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { Download, AlertTriangle } from 'lucide-react'
 
 const inputCls =
-  'w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-blue-500/50 transition-colors'
+  'w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors'
 
 const SIZES = [128, 256, 512]
 const EC_LEVELS = ['L', 'M', 'Q', 'H']
@@ -66,10 +66,10 @@ export default function QrCodeGenerator() {
       <div className="flex flex-col gap-5">
 
         {/* Text input */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
           <div className="mb-1 flex items-center justify-between">
-            <label className="text-sm font-semibold text-white">Text / URL</label>
-            <span className={`text-xs ${overLimit ? 'text-red-400' : 'text-zinc-600'}`}>
+            <label className="text-sm font-semibold text-[var(--ink)]">Text / URL</label>
+            <span className={`text-xs ${overLimit ? 'text-red-700' : 'text-[var(--ink-muted)]'}`}>
               {charCount} / 2000
             </span>
           </div>
@@ -81,7 +81,7 @@ export default function QrCodeGenerator() {
             onChange={(e) => setText(e.target.value)}
           />
           {overLimit && (
-            <div className="mt-2 flex items-center gap-1.5 text-xs text-red-400">
+            <div className="mt-2 flex items-center gap-1.5 text-xs text-red-700">
               <AlertTriangle size={12} />
               Over 2000 characters — QR code may not scan reliably.
             </div>
@@ -89,8 +89,8 @@ export default function QrCodeGenerator() {
         </section>
 
         {/* Size */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <label className="mb-3 block text-sm font-semibold text-white">Size</label>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <label className="mb-3 block text-sm font-semibold text-[var(--ink)]">Size</label>
           <div className="flex gap-2">
             {SIZES.map((s) => (
               <button
@@ -98,8 +98,8 @@ export default function QrCodeGenerator() {
                 onClick={() => setSize(s)}
                 className={`flex-1 rounded-lg border py-2 text-sm font-medium transition-colors ${
                   size === s
-                    ? 'border-blue-500/50 bg-blue-500/10 text-blue-400'
-                    : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white'
+                    ? 'border-[color-mix(in_srgb,var(--accent)_50%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]'
+                    : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]'
                 }`}
               >
                 {s}px
@@ -109,17 +109,17 @@ export default function QrCodeGenerator() {
         </section>
 
         {/* Colors */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <label className="mb-3 block text-sm font-semibold text-white">Colors</label>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <label className="mb-3 block text-sm font-semibold text-[var(--ink)]">Colors</label>
           <div className="flex gap-4">
             <div className="flex flex-1 flex-col gap-1.5">
-              <label className="text-xs text-zinc-500">Foreground</label>
+              <label className="text-xs text-[var(--ink-body)]">Foreground</label>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
                   value={fgColor}
                   onChange={(e) => setFgColor(e.target.value)}
-                  className="h-9 w-12 cursor-pointer rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-1"
+                  className="h-9 w-12 cursor-pointer rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-1"
                 />
                 <input
                   type="text"
@@ -131,13 +131,13 @@ export default function QrCodeGenerator() {
               </div>
             </div>
             <div className="flex flex-1 flex-col gap-1.5">
-              <label className="text-xs text-zinc-500">Background</label>
+              <label className="text-xs text-[var(--ink-body)]">Background</label>
               <div className="flex items-center gap-2">
                 <input
                   type="color"
                   value={bgColor}
                   onChange={(e) => setBgColor(e.target.value)}
-                  className="h-9 w-12 cursor-pointer rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-1"
+                  className="h-9 w-12 cursor-pointer rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-1"
                 />
                 <input
                   type="text"
@@ -152,8 +152,8 @@ export default function QrCodeGenerator() {
         </section>
 
         {/* Error correction */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <label className="mb-3 block text-sm font-semibold text-white">Error Correction</label>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <label className="mb-3 block text-sm font-semibold text-[var(--ink)]">Error Correction</label>
           <div className="flex gap-2">
             {EC_LEVELS.map((level) => (
               <button
@@ -161,15 +161,15 @@ export default function QrCodeGenerator() {
                 onClick={() => setEcLevel(level)}
                 className={`flex-1 rounded-lg border py-2 text-sm font-medium transition-colors ${
                   ecLevel === level
-                    ? 'border-blue-500/50 bg-blue-500/10 text-blue-400'
-                    : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white'
+                    ? 'border-[color-mix(in_srgb,var(--accent)_50%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]'
+                    : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]'
                 }`}
               >
                 {level}
               </button>
             ))}
           </div>
-          <p className="mt-2 text-xs text-zinc-600">
+          <p className="mt-2 text-xs text-[var(--ink-muted)]">
             L = 7% recovery · M = 15% · Q = 25% · H = 30% — Higher = more data, larger QR.
           </p>
         </section>
@@ -177,11 +177,11 @@ export default function QrCodeGenerator() {
 
       {/* ── RIGHT: Preview & Download ── */}
       <div className="flex flex-col items-center gap-5">
-        <div className="w-full rounded-xl border border-[#2a2a2a] bg-[#141414] p-6 flex flex-col items-center gap-5">
-          <p className="self-start text-sm font-semibold text-white">Preview</p>
+        <div className="w-full rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-6 flex flex-col items-center gap-5">
+          <p className="self-start text-sm font-semibold text-[var(--ink)]">Preview</p>
 
           <div
-            className="flex items-center justify-center rounded-xl border border-[#2a2a2a] p-4"
+            className="flex items-center justify-center rounded-xl border border-[var(--line)] p-4"
             style={{ background: bgColor || '#ffffff' }}
           >
             <canvas
@@ -193,29 +193,29 @@ export default function QrCodeGenerator() {
           </div>
 
           {error && (
-            <div className="flex items-center gap-2 rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2 text-xs text-red-400">
+            <div className="flex items-center gap-2 rounded-lg border border-red-300 bg-red-600 px-3 py-2 text-xs text-red-700">
               <AlertTriangle size={12} />
               {error}
             </div>
           )}
 
           {!text.trim() && (
-            <p className="text-xs text-zinc-600">Enter text or a URL to generate your QR code.</p>
+            <p className="text-xs text-[var(--ink-muted)]">Enter text or a URL to generate your QR code.</p>
           )}
 
           <button
             onClick={handleDownload}
             disabled={!ready}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)] disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <Download size={15} />
             Download PNG
           </button>
         </div>
 
-        <div className="w-full rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-          <p className="mb-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">Tips</p>
-          <ul className="flex flex-col gap-1.5 text-xs text-zinc-600">
+        <div className="w-full rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+          <p className="mb-2 text-xs font-semibold text-[var(--ink-body)] uppercase tracking-wider">Tips</p>
+          <ul className="flex flex-col gap-1.5 text-xs text-[var(--ink-muted)]">
             <li>• Use Error Correction H for QR codes printed on uneven surfaces.</li>
             <li>• High contrast foreground/background gives better scannability.</li>
             <li>• URLs should start with https:// for immediate redirect on scan.</li>

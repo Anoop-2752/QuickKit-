@@ -59,12 +59,12 @@ const QUESTION_BANK = {
 
 const LEVEL_LABELS = { junior: 'Junior', mid: 'Mid-level', senior: 'Senior' }
 const COLOR_MAP = {
-  rose:   'border-rose-500/20 bg-rose-500/10 text-rose-400',
-  blue:   'border-blue-500/20 bg-blue-500/10 text-blue-400',
-  purple: 'border-purple-500/20 bg-purple-500/10 text-purple-400',
-  green:  'border-emerald-500/20 bg-emerald-500/10 text-emerald-400',
-  amber:  'border-amber-500/20 bg-amber-500/10 text-amber-400',
-  cyan:   'border-cyan-500/20 bg-cyan-500/10 text-cyan-400',
+  rose:   'border-rose-300 bg-rose-600 text-rose-700',
+  blue:   'border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]',
+  purple: 'border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]',
+  green:  'border-emerald-300 bg-emerald-600 text-emerald-700',
+  amber:  'border-amber-300 bg-amber-600 text-amber-700',
+  cyan:   'border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]',
 }
 
 export default function InterviewQuestionGenerator() {
@@ -90,13 +90,13 @@ export default function InterviewQuestionGenerator() {
 
   return (
     <div className="flex flex-col gap-5">
-      <p className="text-xs text-zinc-600">
+      <p className="text-xs text-[var(--ink-muted)]">
         Select a job category and seniority level to get curated interview questions.
       </p>
 
       {/* Category selector */}
       <div className="flex flex-col gap-2">
-        <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Job Category</label>
+        <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Job Category</label>
         <div className="flex flex-wrap gap-2">
           {Object.entries(QUESTION_BANK).map(([key, val]) => {
             const colorClass = COLOR_MAP[val.color] || COLOR_MAP.rose
@@ -105,7 +105,7 @@ export default function InterviewQuestionGenerator() {
                 key={key}
                 onClick={() => setCategory(key)}
                 className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-all ${
-                  category === key ? colorClass : 'border-[#2a2a2a] text-zinc-500 hover:text-zinc-300'
+                  category === key ? colorClass : 'border-[var(--line)] text-[var(--ink-body)] hover:text-[var(--ink-strong)]'
                 }`}
               >
                 {val.label}
@@ -117,7 +117,7 @@ export default function InterviewQuestionGenerator() {
 
       {/* Level selector */}
       <div className="flex flex-col gap-2">
-        <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Seniority Level</label>
+        <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Seniority Level</label>
         <div className="flex gap-2">
           {Object.entries(LEVEL_LABELS).map(([key, label]) => (
             <button
@@ -125,8 +125,8 @@ export default function InterviewQuestionGenerator() {
               onClick={() => setLevel(key)}
               className={`rounded-lg border px-4 py-2 text-sm font-medium transition-all ${
                 level === key
-                  ? 'border-rose-500/40 bg-rose-500/10 text-rose-400'
-                  : 'border-[#2a2a2a] text-zinc-500 hover:text-zinc-300'
+                  ? 'border-rose-300 bg-rose-600 text-rose-700'
+                  : 'border-[var(--line)] text-[var(--ink-body)] hover:text-[var(--ink-strong)]'
               }`}
             >
               {label}
@@ -138,12 +138,12 @@ export default function InterviewQuestionGenerator() {
       {/* Questions */}
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+          <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">
             {questions.length} Questions — {QUESTION_BANK[category].label} · {LEVEL_LABELS[level]}
           </span>
           <button
             onClick={handleCopyAll}
-            className="text-xs text-zinc-600 hover:text-rose-400 transition-colors"
+            className="text-xs text-[var(--ink-muted)] hover:text-rose-700 transition-colors"
           >
             {copied === 'all' ? '✓ Copied all' : 'Copy all'}
           </button>
@@ -153,13 +153,13 @@ export default function InterviewQuestionGenerator() {
           {questions.map((q, i) => (
             <div
               key={i}
-              className="flex items-start gap-3 rounded-lg border border-[#2a2a2a] bg-[#141414] px-4 py-3 group"
+              className="flex items-start gap-3 rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-4 py-3 group"
             >
-              <span className="mt-0.5 min-w-[1.5rem] text-xs font-mono font-medium text-zinc-700">{i + 1}.</span>
-              <span className="flex-1 text-sm text-zinc-300">{q}</span>
+              <span className="mt-0.5 min-w-[1.5rem] text-xs font-mono font-medium text-[var(--ink-faint)]">{i + 1}.</span>
+              <span className="flex-1 text-sm text-[var(--ink-strong)]">{q}</span>
               <button
                 onClick={() => handleCopy(q, i)}
-                className="shrink-0 text-xs text-zinc-700 opacity-0 group-hover:opacity-100 hover:text-rose-400 transition-all"
+                className="shrink-0 text-xs text-[var(--ink-faint)] opacity-0 group-hover:opacity-100 hover:text-rose-700 transition-all"
               >
                 {copied === i ? '✓' : 'Copy'}
               </button>

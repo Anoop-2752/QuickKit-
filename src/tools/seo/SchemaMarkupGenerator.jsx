@@ -13,10 +13,10 @@ const AVAILABILITY = ['InStock', 'OutOfStock', 'PreOrder', 'Discontinued']
 function Input({ label, value, onChange, placeholder, type = 'text' }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs text-zinc-400">{label}</label>
+      <label className="text-xs text-[var(--ink-body)]">{label}</label>
       <input
         type={type}
-        className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+        className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
         placeholder={placeholder}
         value={value}
         onChange={e => onChange(e.target.value)}
@@ -28,9 +28,9 @@ function Input({ label, value, onChange, placeholder, type = 'text' }) {
 function Select({ label, value, onChange, options }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs text-zinc-400">{label}</label>
+      <label className="text-xs text-[var(--ink-body)]">{label}</label>
       <select
-        className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none focus:border-cyan-500/50 transition-colors"
+        className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
         value={value}
         onChange={e => onChange(e.target.value)}
       >
@@ -55,9 +55,9 @@ function ArticleForm({ data, setData }) {
       <Input label="Publisher Name" value={data.publisher} onChange={f('publisher')} placeholder="My Blog" />
       <Input label="Image URL" value={data.image} onChange={f('image')} placeholder="https://example.com/image.jpg" />
       <div className="sm:col-span-2 flex flex-col gap-1.5">
-        <label className="text-xs text-zinc-400">Description</label>
+        <label className="text-xs text-[var(--ink-body)]">Description</label>
         <textarea
-          className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+          className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
           rows={3}
           placeholder="Brief description of the article"
           value={data.description}
@@ -78,21 +78,21 @@ function FaqForm({ data, setData }) {
   return (
     <div className="flex flex-col gap-4">
       {data.pairs.map((pair, i) => (
-        <div key={i} className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-4 flex flex-col gap-3">
+        <div key={i} className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-4 flex flex-col gap-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-zinc-500 font-medium">Q&A #{i + 1}</span>
+            <span className="text-xs text-[var(--ink-body)] font-medium">Q&A #{i + 1}</span>
             {data.pairs.length > 1 && (
-              <button onClick={() => removePair(i)} className="text-xs text-red-400 hover:text-red-300 transition-colors">Remove</button>
+              <button onClick={() => removePair(i)} className="text-xs text-red-700 hover:text-red-700 transition-colors">Remove</button>
             )}
           </div>
           <input
-            className="w-full rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+            className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
             placeholder="Question"
             value={pair.q}
             onChange={e => updatePair(i, 'q', e.target.value)}
           />
           <textarea
-            className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+            className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-sm text-[var(--ink-strong)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
             rows={3}
             placeholder="Answer"
             value={pair.a}
@@ -102,7 +102,7 @@ function FaqForm({ data, setData }) {
       ))}
       <button
         onClick={addPair}
-        className="self-start rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400 hover:bg-cyan-500/20 transition-colors"
+        className="self-start rounded-lg border border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-4 py-2 text-sm text-[var(--accent)] hover:bg-[color-mix(in_srgb,var(--accent)_20%,transparent)] transition-colors"
       >
         + Add Q&A Pair
       </button>
@@ -124,9 +124,9 @@ function HowToForm({ data, setData }) {
         <Input label="How-To Name" value={data.name} onChange={f('name')} placeholder="How to bake a chocolate cake" />
         <Input label="Total Time (minutes)" value={data.totalTime} onChange={f('totalTime')} placeholder="60" type="number" />
         <div className="sm:col-span-2 flex flex-col gap-1.5">
-          <label className="text-xs text-zinc-400">Description</label>
+          <label className="text-xs text-[var(--ink-body)]">Description</label>
           <textarea
-            className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+            className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
             rows={2}
             placeholder="Brief description"
             value={data.description}
@@ -134,23 +134,23 @@ function HowToForm({ data, setData }) {
           />
         </div>
       </div>
-      <p className="text-xs text-zinc-500 font-medium uppercase tracking-wider">Steps</p>
+      <p className="text-xs text-[var(--ink-body)] font-medium uppercase tracking-wider">Steps</p>
       {data.steps.map((step, i) => (
-        <div key={i} className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-4 flex flex-col gap-3">
+        <div key={i} className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-4 flex flex-col gap-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-zinc-500">Step {i + 1}</span>
+            <span className="text-xs text-[var(--ink-body)]">Step {i + 1}</span>
             {data.steps.length > 1 && (
-              <button onClick={() => removeStep(i)} className="text-xs text-red-400 hover:text-red-300 transition-colors">Remove</button>
+              <button onClick={() => removeStep(i)} className="text-xs text-red-700 hover:text-red-700 transition-colors">Remove</button>
             )}
           </div>
           <input
-            className="w-full rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+            className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
             placeholder="Step name"
             value={step.name}
             onChange={e => updateStep(i, 'name', e.target.value)}
           />
           <textarea
-            className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-sm text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+            className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-sm text-[var(--ink-strong)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
             rows={2}
             placeholder="Step instructions"
             value={step.text}
@@ -160,7 +160,7 @@ function HowToForm({ data, setData }) {
       ))}
       <button
         onClick={addStep}
-        className="self-start rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400 hover:bg-cyan-500/20 transition-colors"
+        className="self-start rounded-lg border border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-4 py-2 text-sm text-[var(--accent)] hover:bg-[color-mix(in_srgb,var(--accent)_20%,transparent)] transition-colors"
       >
         + Add Step
       </button>
@@ -195,9 +195,9 @@ function ProductForm({ data, setData }) {
       <Input label="Rating (0–5)" value={data.rating} onChange={f('rating')} placeholder="4.5" type="number" />
       <Input label="Review Count" value={data.reviewCount} onChange={f('reviewCount')} placeholder="142" type="number" />
       <div className="sm:col-span-2 flex flex-col gap-1.5">
-        <label className="text-xs text-zinc-400">Description</label>
+        <label className="text-xs text-[var(--ink-body)]">Description</label>
         <textarea
-          className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+          className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
           rows={2}
           placeholder="Product description"
           value={data.description}
@@ -218,9 +218,9 @@ function PersonForm({ data, setData }) {
       <Input label="Website" value={data.website} onChange={f('website')} placeholder="https://johnsmith.com" />
       <Input label="LinkedIn URL" value={data.linkedin} onChange={f('linkedin')} placeholder="https://linkedin.com/in/johnsmith" />
       <div className="sm:col-span-2 flex flex-col gap-1.5">
-        <label className="text-xs text-zinc-400">Description</label>
+        <label className="text-xs text-[var(--ink-body)]">Description</label>
         <textarea
-          className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+          className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
           rows={2}
           placeholder="Short bio"
           value={data.description}
@@ -241,21 +241,21 @@ function BreadcrumbForm({ data, setData }) {
   return (
     <div className="flex flex-col gap-4">
       {data.items.map((item, i) => (
-        <div key={i} className="grid grid-cols-1 gap-3 rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-4 sm:grid-cols-2">
+        <div key={i} className="grid grid-cols-1 gap-3 rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-4 sm:grid-cols-2">
           <div className="flex items-center gap-2 sm:col-span-2 justify-between">
-            <span className="text-xs text-zinc-500">Breadcrumb #{i + 1}</span>
+            <span className="text-xs text-[var(--ink-body)]">Breadcrumb #{i + 1}</span>
             {data.items.length > 1 && (
-              <button onClick={() => removeItem(i)} className="text-xs text-red-400 hover:text-red-300 transition-colors">Remove</button>
+              <button onClick={() => removeItem(i)} className="text-xs text-red-700 hover:text-red-700 transition-colors">Remove</button>
             )}
           </div>
           <input
-            className="w-full rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+            className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
             placeholder="Name (e.g. Home)"
             value={item.name}
             onChange={e => updateItem(i, 'name', e.target.value)}
           />
           <input
-            className="w-full rounded-lg border border-[#2a2a2a] bg-[#141414] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+            className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
             placeholder="URL (e.g. https://example.com)"
             value={item.url}
             onChange={e => updateItem(i, 'url', e.target.value)}
@@ -264,7 +264,7 @@ function BreadcrumbForm({ data, setData }) {
       ))}
       <button
         onClick={addItem}
-        className="self-start rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-sm text-cyan-400 hover:bg-cyan-500/20 transition-colors"
+        className="self-start rounded-lg border border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-4 py-2 text-sm text-[var(--accent)] hover:bg-[color-mix(in_srgb,var(--accent)_20%,transparent)] transition-colors"
       >
         + Add Breadcrumb
       </button>
@@ -380,17 +380,17 @@ function SyntaxHighlight({ json }) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+-]?\d+)?)/g, (match) => {
-      let cls = 'text-cyan-300' // number
+      let cls = 'text-[var(--accent)]' // number
       if (/^"/.test(match)) {
         if (/:$/.test(match)) {
-          cls = 'text-purple-300' // key
+          cls = 'text-[var(--accent)]' // key
         } else {
-          cls = 'text-emerald-300' // string
+          cls = 'text-emerald-700' // string
         }
       } else if (/true|false/.test(match)) {
-        cls = 'text-yellow-300'
+        cls = 'text-yellow-700'
       } else if (/null/.test(match)) {
-        cls = 'text-zinc-500'
+        cls = 'text-[var(--ink-body)]'
       }
       return `<span class="${cls}">${match}</span>`
     })
@@ -440,8 +440,8 @@ export default function SchemaMarkupGenerator() {
             onClick={() => setActiveType(type)}
             className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
               activeType === type
-                ? 'border-cyan-500/50 bg-cyan-500/10 text-cyan-400'
-                : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:border-[#3a3a3a] hover:text-zinc-200'
+                ? 'border-[color-mix(in_srgb,var(--accent)_50%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]'
+                : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:border-[var(--line-strong)] hover:text-[var(--ink-strong)]'
             }`}
           >
             {type}
@@ -451,8 +451,8 @@ export default function SchemaMarkupGenerator() {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Form */}
-        <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">{activeType} Details</p>
+        <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">{activeType} Details</p>
           {activeType === 'Article' && <ArticleForm data={formData.Article} setData={setCurrentData} />}
           {activeType === 'FAQ' && <FaqForm data={formData.FAQ} setData={setCurrentData} />}
           {activeType === 'HowTo' && <HowToForm data={formData.HowTo} setData={setCurrentData} />}
@@ -464,32 +464,32 @@ export default function SchemaMarkupGenerator() {
 
         {/* Output */}
         <div className="flex flex-col gap-3">
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5 flex flex-col gap-3">
+          <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5 flex flex-col gap-3">
             <div className="flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase tracking-wider text-zinc-600">JSON-LD Output</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">JSON-LD Output</p>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-zinc-600">{jsonString.length} chars</span>
+                <span className="text-xs text-[var(--ink-muted)]">{jsonString.length} chars</span>
                 <button
                   onClick={handleCopy}
                   className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
                     copied
-                      ? 'border-green-500/40 bg-green-500/10 text-green-400'
-                      : 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20'
+                      ? 'border-[color-mix(in_srgb,var(--accent)_40%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)]'
+                      : 'border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-[var(--accent)] hover:bg-[color-mix(in_srgb,var(--accent)_20%,transparent)]'
                   }`}
                 >
                   {copied ? 'Copied!' : 'Copy Script Tag'}
                 </button>
               </div>
             </div>
-            <div className="overflow-auto rounded-lg border border-[#2a2a2a] bg-[#0f0f0f] p-4 font-mono max-h-[500px]">
+            <div className="overflow-auto rounded-lg border border-[var(--line)] bg-[var(--page)] p-4 font-mono max-h-[500px]">
               <SyntaxHighlight json={jsonString} />
             </div>
           </div>
 
           {/* Instruction */}
-          <div className="rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4 text-xs text-cyan-300">
+          <div className="rounded-xl border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] p-4 text-xs text-[var(--accent)]">
             <p className="font-semibold mb-1">How to add to your page</p>
-            <p className="text-zinc-400">Copy the script tag and paste it inside the <code className="text-cyan-300">&lt;head&gt;</code> section of your HTML page. The &quot;Copy Script Tag&quot; button wraps the JSON-LD in the required <code className="text-cyan-300">&lt;script type=&quot;application/ld+json&quot;&gt;</code> tags automatically.</p>
+            <p className="text-[var(--ink-body)]">Copy the script tag and paste it inside the <code className="text-[var(--accent)]">&lt;head&gt;</code> section of your HTML page. The &quot;Copy Script Tag&quot; button wraps the JSON-LD in the required <code className="text-[var(--accent)]">&lt;script type=&quot;application/ld+json&quot;&gt;</code> tags automatically.</p>
           </div>
         </div>
       </div>

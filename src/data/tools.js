@@ -344,7 +344,7 @@ export const categories = [
     id: 'finance',
     name: 'Finance Tools',
     slug: 'finance',
-    description: 'Free Indian finance calculators — EMI, SIP, tax, GST, HRA, and more. No signup, no ads.',
+    description: 'Free Indian finance calculators — EMI, SIP, tax, GST, HRA, and more. No signup, nothing uploaded.',
     icon: 'IndianRupee',
     color: 'amber',
     tools: [

@@ -13,10 +13,10 @@ export default function FaqAccordion({ faqs }) {
 
   return (
     <div className="mt-10">
-      <h2 className="text-lg font-semibold text-white mb-4">
+      <h2 className="text-lg font-semibold text-[var(--ink)] mb-4">
         Frequently Asked Questions
       </h2>
-      <div className="divide-y divide-[#2a2a2a]">
+      <div className="divide-y divide-[var(--line)]">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index
           const panelId = `${baseId}-panel-${index}`
@@ -31,12 +31,12 @@ export default function FaqAccordion({ faqs }) {
                   aria-controls={panelId}
                   className="flex w-full items-center justify-between py-4 text-left"
                 >
-                  <span className="text-sm font-medium text-zinc-300">
+                  <span className="text-sm font-medium text-[var(--ink-strong)]">
                     {faq.q}
                   </span>
                   <ChevronDown
                     aria-hidden="true"
-                    className={`h-4 w-4 shrink-0 text-zinc-500 transition-transform duration-200 ${
+                    className={`h-4 w-4 shrink-0 text-[var(--ink-body)] transition-transform duration-200 ${
                       isOpen ? 'rotate-180' : ''
                     }`}
                   />
@@ -51,7 +51,7 @@ export default function FaqAccordion({ faqs }) {
                 }`}
               >
                 <div className="overflow-hidden">
-                  <p className="pb-4 text-sm text-zinc-500">{faq.a}</p>
+                  <p className="pb-4 text-sm text-[var(--ink-body)]">{faq.a}</p>
                 </div>
               </div>
             </div>

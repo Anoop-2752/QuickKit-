@@ -29,9 +29,9 @@ function formatDate(d) {
 
 function Row({ label, value }) {
   return (
-    <div className="flex items-start gap-4 border-b border-[#1e1e1e] py-3 last:border-0">
-      <span className="w-36 shrink-0 text-xs font-medium text-zinc-600">{label}</span>
-      <span className="flex-1 break-words text-sm text-zinc-300">{value || '—'}</span>
+    <div className="flex items-start gap-4 border-b border-[var(--line-subtle)] py-3 last:border-0">
+      <span className="w-36 shrink-0 text-xs font-medium text-[var(--ink-muted)]">{label}</span>
+      <span className="flex-1 break-words text-sm text-[var(--ink-strong)]">{value || '—'}</span>
     </div>
   )
 }
@@ -94,7 +94,7 @@ export default function PdfMetadataViewer() {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-xs text-zinc-600">
+      <p className="text-xs text-[var(--ink-muted)]">
         Upload any PDF to inspect its metadata — title, author, creator, page count, file size, and more.
       </p>
 
@@ -105,17 +105,17 @@ export default function PdfMetadataViewer() {
         onDrop={handleDrop}
         onClick={() => document.getElementById('pdf-meta-input').click()}
         className={`flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed py-12 cursor-pointer transition-colors ${
-          dragOver ? 'border-orange-500/60 bg-orange-500/5' : 'border-[#2a2a2a] hover:border-[#3a3a3a]'
+          dragOver ? 'border-[var(--accent)] bg-[var(--accent)]' : 'border-[var(--line)] hover:border-[var(--line-strong)]'
         }`}
       >
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10">
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent)]">
           <span className="text-2xl">🔍</span>
         </div>
         <div className="text-center">
-          <p className="text-sm font-medium text-zinc-300">
+          <p className="text-sm font-medium text-[var(--ink-strong)]">
             {fileName || 'Drop a PDF here'}
           </p>
-          <p className="text-xs text-zinc-600 mt-1">or click to browse</p>
+          <p className="text-xs text-[var(--ink-muted)] mt-1">or click to browse</p>
         </div>
         <input
           id="pdf-meta-input"
@@ -126,12 +126,12 @@ export default function PdfMetadataViewer() {
         />
       </div>
 
-      {error && <p className="text-xs text-red-400">{error}</p>}
+      {error && <p className="text-xs text-red-700">{error}</p>}
 
       {loading && (
         <div className="flex items-center justify-center gap-2 py-6">
-          <div className="h-5 w-5 animate-spin rounded-full border-2 border-[#2a2a2a] border-t-orange-500" />
-          <span className="text-xs text-zinc-600">Reading metadata…</span>
+          <div className="h-5 w-5 animate-spin rounded-full border-2 border-[var(--line)] border-t-orange-500" />
+          <span className="text-xs text-[var(--ink-muted)]">Reading metadata…</span>
         </div>
       )}
 
@@ -146,15 +146,15 @@ export default function PdfMetadataViewer() {
               { label: 'Page Size', value: meta.pageSize },
               { label: 'Version',   value: meta.pdfVersion ? `PDF ${meta.pdfVersion}` : '—' },
             ].map(({ label, value }) => (
-              <div key={label} className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-3">
-                <div className="text-lg font-bold text-orange-400">{value}</div>
-                <div className="text-xs text-zinc-600 mt-0.5">{label}</div>
+              <div key={label} className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-3">
+                <div className="text-lg font-bold text-[var(--accent)]">{value}</div>
+                <div className="text-xs text-[var(--ink-muted)] mt-0.5">{label}</div>
               </div>
             ))}
           </div>
 
           {/* Full metadata */}
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] px-4">
+          <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-4">
             <Row label="File Name"  value={meta.fileName} />
             <Row label="Title"      value={meta.title} />
             <Row label="Author"     value={meta.author} />
@@ -167,7 +167,7 @@ export default function PdfMetadataViewer() {
         </div>
       )}
 
-      <p className="text-xs text-zinc-700">
+      <p className="text-xs text-[var(--ink-faint)]">
         Files are processed entirely in your browser — nothing is uploaded to any server.
       </p>
     </div>
