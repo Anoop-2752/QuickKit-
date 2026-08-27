@@ -271,21 +271,21 @@ function Field({ label, required, hint, children }) {
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-baseline gap-1">
-        <label className="text-xs text-zinc-400">
-          {label}{required && <span className="ml-0.5 text-rose-400">*</span>}
+        <label className="text-xs text-[var(--ink-body)]">
+          {label}{required && <span className="ml-0.5 text-rose-700">*</span>}
         </label>
-        {hint && <span className="text-xs text-zinc-600">— {hint}</span>}
+        {hint && <span className="text-xs text-[var(--ink-muted)]">— {hint}</span>}
       </div>
       {children}
     </div>
   )
 }
 
-const inputCls = 'rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-green-500/50 transition-colors'
+const inputCls = 'rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors'
 
 function CheckIcon() {
   return (
-    <svg className="h-3.5 w-3.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+    <svg className="h-3.5 w-3.5 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
     </svg>
   )
@@ -293,7 +293,7 @@ function CheckIcon() {
 
 function XIcon() {
   return (
-    <svg className="h-3.5 w-3.5 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+    <svg className="h-3.5 w-3.5 text-[var(--ink-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
     </svg>
   )
@@ -301,7 +301,7 @@ function XIcon() {
 
 function WarnIcon() {
   return (
-    <svg className="h-3.5 w-3.5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+    <svg className="h-3.5 w-3.5 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
     </svg>
   )
@@ -312,25 +312,25 @@ function StrengthCard({ form, letterText }) {
   const pct = Math.round((score / total) * 100)
   const color = pct >= 80 ? 'green' : pct >= 50 ? 'yellow' : 'red'
   const colorMap = {
-    green: 'text-green-400 bg-green-500/10 border-green-500/20',
-    yellow: 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20',
-    red: 'text-red-400 bg-red-500/10 border-red-500/20',
+    green: 'text-[var(--accent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]',
+    yellow: 'text-[var(--accent-on)] bg-[var(--accent)] border-[var(--accent)]',
+    red: 'text-red-700 bg-red-600 border-red-300',
   }
   const barColor = {
-    green: 'bg-green-500',
-    yellow: 'bg-yellow-500',
-    red: 'bg-red-500',
+    green: 'bg-[var(--accent)]',
+    yellow: 'bg-[var(--accent)]',
+    red: 'bg-red-600',
   }
 
   return (
-    <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+    <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
       <div className="mb-3 flex items-center justify-between">
-        <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Letter Strength</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-body)]">Letter Strength</p>
         <span className={`rounded-md border px-2 py-0.5 text-xs font-bold ${colorMap[color]}`}>
           {score}/{total}
         </span>
       </div>
-      <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-[#1a1a1a]">
+      <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-[var(--surface-tint)]">
         <div
           className={`h-full rounded-full transition-all duration-500 ${barColor[color]}`}
           style={{ width: `${pct}%` }}
@@ -343,8 +343,8 @@ function StrengthCard({ form, letterText }) {
               {c.met ? <CheckIcon /> : c.warn ? <WarnIcon /> : <XIcon />}
             </span>
             <div className="min-w-0">
-              <p className={`text-xs ${c.met ? 'text-zinc-300' : 'text-zinc-500'}`}>{c.label}</p>
-              {!c.met && c.tip && <p className="text-xs text-zinc-600">{c.tip}</p>}
+              <p className={`text-xs ${c.met ? 'text-[var(--ink-strong)]' : 'text-[var(--ink-body)]'}`}>{c.label}</p>
+              {!c.met && c.tip && <p className="text-xs text-[var(--ink-muted)]">{c.tip}</p>}
             </div>
           </div>
         ))}
@@ -359,16 +359,16 @@ function LivePreview({ letterText, form, onCopy, copied, onDownloadPdf, onDownlo
   return (
     <div className="flex flex-col gap-4">
       {/* Paper preview */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#1e1e1e] shadow-xl shadow-black/20">
-        <div className="border-b border-[#2a2a2a] px-5 py-3 flex items-center justify-between">
-          <p className="text-xs text-zinc-500">Live Preview</p>
-          <p className="text-xs text-zinc-600">{wordCount} words</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--line-subtle)] shadow-xl shadow-black/20">
+        <div className="border-b border-[var(--line)] px-5 py-3 flex items-center justify-between">
+          <p className="text-xs text-[var(--ink-body)]">Live Preview</p>
+          <p className="text-xs text-[var(--ink-muted)]">{wordCount} words</p>
         </div>
         <textarea
           value={letterText}
           onChange={(e) => onLetterChange(e.target.value)}
           rows={20}
-          className="w-full resize-none bg-transparent p-5 text-sm leading-7 text-zinc-200 outline-none font-[system-ui]"
+          className="w-full resize-none bg-transparent p-5 text-sm leading-7 text-[var(--ink-strong)] outline-none font-[system-ui]"
           placeholder="Fill in the form fields to see your cover letter build here in real time..."
         />
       </div>
@@ -380,19 +380,19 @@ function LivePreview({ letterText, form, onCopy, copied, onDownloadPdf, onDownlo
       <div className="flex flex-wrap gap-2">
         <button
           onClick={onCopy}
-          className="flex-1 rounded-lg bg-green-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-green-500"
+          className="flex-1 rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
         >
           {copied ? 'Copied!' : 'Copy'}
         </button>
         <button
           onClick={onDownloadPdf}
-          className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-rose-500/40 hover:text-rose-400"
+          className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2.5 text-sm text-[var(--ink-strong)] transition-colors hover:border-rose-300 hover:text-rose-700"
         >
           PDF
         </button>
         <button
           onClick={onDownloadDocx}
-          className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-blue-500/40 hover:text-blue-400"
+          className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2.5 text-sm text-[var(--ink-strong)] transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:text-[var(--accent)]"
         >
           Word
         </button>
@@ -584,39 +584,39 @@ export default function CoverLetterGenerator() {
     <div className="flex flex-col gap-6">
       {/* Progress hint */}
       <div className="flex items-center gap-3">
-        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#1a1a1a]">
+        <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[var(--surface-tint)]">
           <div
-            className="h-full rounded-full bg-green-500 transition-all duration-300"
+            className="h-full rounded-full bg-[var(--accent)] transition-all duration-300"
             style={{ width: `${(filledCount / totalFields) * 100}%` }}
           />
         </div>
-        <span className="text-xs text-zinc-600">{filledCount}/{totalFields} fields</span>
+        <span className="text-xs text-[var(--ink-muted)]">{filledCount}/{totalFields} fields</span>
       </div>
 
       {/* Smart Mode: Job Description */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414]">
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)]">
         <button
           onClick={() => setJdOpen(!jdOpen)}
           className="flex w-full items-center justify-between p-5"
         >
           <div className="flex items-center gap-2">
-            <span className="flex h-5 w-5 items-center justify-center rounded bg-green-500/10 text-xs text-green-400">
+            <span className="flex h-5 w-5 items-center justify-center rounded bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] text-xs text-[var(--accent)]">
               <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Smart Mode</span>
-            <span className="text-xs text-zinc-600">— Paste a job description to extract keywords</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-body)]">Smart Mode</span>
+            <span className="text-xs text-[var(--ink-muted)]">— Paste a job description to extract keywords</span>
           </div>
           <svg
-            className={`h-4 w-4 text-zinc-500 transition-transform ${jdOpen ? 'rotate-180' : ''}`}
+            className={`h-4 w-4 text-[var(--ink-body)] transition-transform ${jdOpen ? 'rotate-180' : ''}`}
             fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
         {jdOpen && (
-          <div className="border-t border-[#2a2a2a] p-5 pt-4">
+          <div className="border-t border-[var(--line)] p-5 pt-4">
             <textarea
               className={`${inputCls} w-full resize-none`}
               rows={5}
@@ -626,8 +626,8 @@ export default function CoverLetterGenerator() {
             />
             {extractedKeywords.length > 0 && (
               <div className="mt-3">
-                <p className="mb-2 text-xs text-zinc-500">
-                  Extracted keywords — click <span className="text-green-400">+</span> to add to skills:
+                <p className="mb-2 text-xs text-[var(--ink-body)]">
+                  Extracted keywords — click <span className="text-[var(--accent)]">+</span> to add to skills:
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {extractedKeywords.map((kw, i) => {
@@ -639,17 +639,17 @@ export default function CoverLetterGenerator() {
                         disabled={alreadyAdded}
                         className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 text-xs transition-colors ${
                           alreadyAdded
-                            ? 'border-green-500/20 bg-green-500/5 text-green-400/60 cursor-default'
-                            : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-300 hover:border-green-500/40 hover:text-green-400'
+                            ? 'border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] text-[color-mix(in_srgb,var(--accent)_60%,transparent)] cursor-default'
+                            : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-strong)] hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:text-[var(--accent)]'
                         }`}
                       >
                         {kw}
                         {alreadyAdded ? (
-                          <svg className="h-3 w-3 text-green-500/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                          <svg className="h-3 w-3 text-[color-mix(in_srgb,var(--accent)_50%,transparent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
                         ) : (
-                          <svg className="h-3 w-3 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <svg className="h-3 w-3 text-[var(--accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                           </svg>
                         )}
@@ -660,15 +660,15 @@ export default function CoverLetterGenerator() {
               </div>
             )}
             {jobDescription.trim().length > 0 && jobDescription.trim().length <= 30 && (
-              <p className="mt-2 text-xs text-zinc-600">Keep pasting — need more text to extract keywords.</p>
+              <p className="mt-2 text-xs text-[var(--ink-muted)]">Keep pasting — need more text to extract keywords.</p>
             )}
           </div>
         )}
       </div>
 
       {/* Personal info */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Your Details</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Your Details</p>
         <div className="grid gap-4 sm:grid-cols-3">
           <Field label="Full Name" required>
             <input className={inputCls} placeholder="John Williams" value={form.fullName} onChange={set('fullName')} />
@@ -683,8 +683,8 @@ export default function CoverLetterGenerator() {
       </div>
 
       {/* Job info */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Job Details</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Job Details</p>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Job Title Applying For" required>
             <input className={inputCls} placeholder="Frontend Developer" value={form.jobTitle} onChange={set('jobTitle')} />
@@ -707,8 +707,8 @@ export default function CoverLetterGenerator() {
       </div>
 
       {/* Highlights */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Highlights</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Highlights</p>
         <div className="flex flex-col gap-4">
           <Field label="Key Skills" hint="one per line">
             <textarea
@@ -739,8 +739,8 @@ export default function CoverLetterGenerator() {
       </div>
 
       {/* Tone */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-600">Tone</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Tone</p>
         <div className="grid gap-2 sm:grid-cols-3">
           {TONES.map((t) => (
             <button
@@ -748,12 +748,12 @@ export default function CoverLetterGenerator() {
               onClick={() => setForm((f) => ({ ...f, tone: t.value }))}
               className={`rounded-lg border p-3 text-left transition-colors ${
                 form.tone === t.value
-                  ? 'border-green-500/40 bg-green-500/10'
-                  : 'border-[#2a2a2a] bg-[#1a1a1a] hover:border-[#3a3a3a]'
+                  ? 'border-[color-mix(in_srgb,var(--accent)_40%,transparent)] bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]'
+                  : 'border-[var(--line)] bg-[var(--surface-tint)] hover:border-[var(--line-strong)]'
               }`}
             >
-              <p className={`text-sm font-medium ${form.tone === t.value ? 'text-green-400' : 'text-zinc-300'}`}>{t.label}</p>
-              <p className="mt-0.5 text-xs text-zinc-600">{t.desc}</p>
+              <p className={`text-sm font-medium ${form.tone === t.value ? 'text-[var(--accent)]' : 'text-[var(--ink-strong)]'}`}>{t.label}</p>
+              <p className="mt-0.5 text-xs text-[var(--ink-muted)]">{t.desc}</p>
             </button>
           ))}
         </div>
@@ -764,7 +764,7 @@ export default function CoverLetterGenerator() {
         <button
           onClick={handleMobileGenerate}
           disabled={!canGenerate}
-          className="w-full rounded-lg bg-green-600 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-green-500 disabled:cursor-not-allowed disabled:opacity-40"
+          className="w-full rounded-lg bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
         >
           {canGenerate ? 'Generate Cover Letter' : 'Fill in Name, Job Title & Company to generate'}
         </button>
@@ -775,26 +775,26 @@ export default function CoverLetterGenerator() {
   // --- PREVIEW PLACEHOLDER for desktop when form not ready ---
   const desktopPreviewPlaceholder = (
     <div className="flex flex-col gap-4">
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#1e1e1e] shadow-xl shadow-black/20">
-        <div className="border-b border-[#2a2a2a] px-5 py-3">
-          <p className="text-xs text-zinc-500">Live Preview</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--line-subtle)] shadow-xl shadow-black/20">
+        <div className="border-b border-[var(--line)] px-5 py-3">
+          <p className="text-xs text-[var(--ink-body)]">Live Preview</p>
         </div>
         <div className="p-5 min-h-[400px]">
-          <p className="text-sm leading-7 text-zinc-600">
-            <span className="text-zinc-500">[Date]</span>
+          <p className="text-sm leading-7 text-[var(--ink-muted)]">
+            <span className="text-[var(--ink-body)]">[Date]</span>
           </p>
-          <p className="mt-4 text-sm leading-7 text-zinc-600">Dear Hiring Manager,</p>
-          <p className="mt-4 text-sm leading-7 text-zinc-600">
-            Fill in <span className="text-green-500/60">Full Name</span>, <span className="text-green-500/60">Job Title</span>, and <span className="text-green-500/60">Company Name</span> to see your cover letter build here in real time.
+          <p className="mt-4 text-sm leading-7 text-[var(--ink-muted)]">Dear Hiring Manager,</p>
+          <p className="mt-4 text-sm leading-7 text-[var(--ink-muted)]">
+            Fill in <span className="text-[color-mix(in_srgb,var(--accent)_60%,transparent)]">Full Name</span>, <span className="text-[color-mix(in_srgb,var(--accent)_60%,transparent)]">Job Title</span>, and <span className="text-[color-mix(in_srgb,var(--accent)_60%,transparent)]">Company Name</span> to see your cover letter build here in real time.
           </p>
-          <p className="mt-6 text-sm leading-7 text-zinc-600">Your letter will appear as you type, with a strength score below to help you improve it.</p>
-          <p className="mt-8 text-sm leading-7 text-zinc-600">Sincerely,</p>
-          <p className="text-sm leading-7 text-zinc-600"><span className="text-zinc-500">[Your Name]</span></p>
+          <p className="mt-6 text-sm leading-7 text-[var(--ink-muted)]">Your letter will appear as you type, with a strength score below to help you improve it.</p>
+          <p className="mt-8 text-sm leading-7 text-[var(--ink-muted)]">Sincerely,</p>
+          <p className="text-sm leading-7 text-[var(--ink-muted)]"><span className="text-[var(--ink-body)]">[Your Name]</span></p>
         </div>
       </div>
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-zinc-600">Letter Strength</p>
-        <p className="mt-2 text-xs text-zinc-600">Complete the required fields to see your score.</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+        <p className="text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Letter Strength</p>
+        <p className="mt-2 text-xs text-[var(--ink-muted)]">Complete the required fields to see your score.</p>
       </div>
     </div>
   )
@@ -832,12 +832,12 @@ export default function CoverLetterGenerator() {
       {mobileShowPreview && (letter || liveLetter) && (
         <div ref={mobilePreviewRef} className="lg:hidden flex flex-col gap-4">
           {/* Header bar */}
-          <div className="flex items-center justify-between rounded-xl border border-green-500/20 bg-green-500/5 px-4 py-3">
+          <div className="flex items-center justify-between rounded-xl border border-[color-mix(in_srgb,var(--accent)_20%,transparent)] bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] px-4 py-3">
             <div>
-              <p className="text-sm font-medium text-green-400">Cover letter ready</p>
-              <p className="text-xs text-zinc-500">{form.jobTitle} at {form.companyName} · {TONES.find(t => t.value === form.tone)?.label} tone</p>
+              <p className="text-sm font-medium text-[var(--accent)]">Cover letter ready</p>
+              <p className="text-xs text-[var(--ink-body)]">{form.jobTitle} at {form.companyName} · {TONES.find(t => t.value === form.tone)?.label} tone</p>
             </div>
-            <button onClick={() => setMobileShowPreview(false)} className="text-xs text-zinc-500 underline hover:text-zinc-300">
+            <button onClick={() => setMobileShowPreview(false)} className="text-xs text-[var(--ink-body)] underline hover:text-[var(--ink-strong)]">
               Hide Preview
             </button>
           </div>

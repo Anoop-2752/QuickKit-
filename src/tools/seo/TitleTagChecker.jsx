@@ -19,15 +19,15 @@ function StatusBadge({ px, max, label }) {
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center justify-between text-xs">
-        <span className="text-zinc-500">{label}</span>
-        <span className={over ? 'text-red-400' : warn ? 'text-amber-400' : 'text-cyan-400'}>
+        <span className="text-[var(--ink-body)]">{label}</span>
+        <span className={over ? 'text-red-700' : warn ? 'text-[var(--accent)]' : 'text-[var(--accent)]'}>
           ~{Math.round(px)}px / {max}px
           {over ? ' — Too long' : warn ? ' — Close to limit' : ' — Good'}
         </span>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-[#2a2a2a]">
+      <div className="h-1.5 overflow-hidden rounded-full bg-[var(--line)]">
         <div
-          className={`h-full rounded-full transition-all ${over ? 'bg-red-500' : warn ? 'bg-amber-500' : 'bg-cyan-500'}`}
+          className={`h-full rounded-full transition-all ${over ? 'bg-red-600' : warn ? 'bg-[var(--accent)]' : 'bg-[var(--accent)]'}`}
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -57,13 +57,13 @@ export default function TitleTagChecker() {
   return (
     <div className="flex flex-col gap-6">
       {/* Inputs */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Page Details</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Page Details</p>
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Page Title</label>
+            <label className="text-xs text-[var(--ink-body)]">Page Title</label>
             <input
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               placeholder="My Awesome Page — Brand Name"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -72,9 +72,9 @@ export default function TitleTagChecker() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Meta Description</label>
+            <label className="text-xs text-[var(--ink-body)]">Meta Description</label>
             <textarea
-              className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               rows={3}
               placeholder="A compelling description that makes users want to click through."
               value={desc}
@@ -84,9 +84,9 @@ export default function TitleTagChecker() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-400">Page URL (for preview)</label>
+            <label className="text-xs text-[var(--ink-body)]">Page URL (for preview)</label>
             <input
-              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors"
+              className="w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
               placeholder="https://example.com/your-page"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
@@ -96,9 +96,9 @@ export default function TitleTagChecker() {
       </div>
 
       {/* SERP Preview */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-600">Google Search Preview</p>
-        <div className="rounded-xl border border-[#1e1e1e] bg-white p-5">
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Google Search Preview</p>
+        <div className="rounded-xl border border-[var(--line-subtle)] bg-white p-5">
           {/* Favicon + URL row */}
           <div className="mb-1 flex items-center gap-2">
             <div className="flex h-5 w-5 items-center justify-center rounded-full bg-gray-200">
@@ -110,7 +110,7 @@ export default function TitleTagChecker() {
             </div>
           </div>
           {/* Title */}
-          <p className="mt-1 text-xl font-medium leading-snug text-blue-700 hover:underline cursor-pointer" style={{ fontFamily: 'arial, sans-serif' }}>
+          <p className="mt-1 text-xl font-medium leading-snug text-[var(--accent)] hover:underline cursor-pointer" style={{ fontFamily: 'arial, sans-serif' }}>
             {displayTitle}
           </p>
           {/* Description */}
@@ -118,12 +118,12 @@ export default function TitleTagChecker() {
             {displayDesc}
           </p>
         </div>
-        <p className="mt-2 text-xs text-zinc-600">Preview is approximate — actual rendering varies by browser and query.</p>
+        <p className="mt-2 text-xs text-[var(--ink-muted)]">Preview is approximate — actual rendering varies by browser and query.</p>
       </div>
 
       {/* Tips */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-600">SEO Tips</p>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">SEO Tips</p>
         <ul className="flex flex-col gap-2">
           {[
             ['Title', 'Keep under 580px (~60 chars). Put the primary keyword near the start.'],
@@ -131,8 +131,8 @@ export default function TitleTagChecker() {
             ['Uniqueness', 'Every page should have a unique title and description.'],
             ['Brand', 'Append your brand name at the end of the title: "Page — Brand".'],
           ].map(([k, v]) => (
-            <li key={k} className="flex gap-2 text-xs text-zinc-500">
-              <span className="font-semibold text-cyan-400 flex-shrink-0">{k}:</span>
+            <li key={k} className="flex gap-2 text-xs text-[var(--ink-body)]">
+              <span className="font-semibold text-[var(--accent)] flex-shrink-0">{k}:</span>
               <span>{v}</span>
             </li>
           ))}

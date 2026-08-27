@@ -17,8 +17,8 @@ export default function CategoryCard({ category }) {
     <Link
       to={`/${category.slug}`}
       className={[
-        'group block w-full text-left rounded-2xl bg-[#111] p-5',
-        'border border-[#1e1e1e] border-t-[#282828]',
+        'group block w-full text-left rounded-2xl bg-[var(--surface)] p-5',
+        'border border-[var(--line-subtle)] border-t-[var(--line-subtle)]',
         'transition-all duration-300 cursor-pointer',
         colors.hoverBorder,
         colors.hoverGlow,
@@ -33,36 +33,36 @@ export default function CategoryCard({ category }) {
           />
         </div>
         <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${colors.badge}`}>
-          {category.tools.length} tools
+          {category.tools.length} {category.tools.length === 1 ? 'tool' : 'tools'}
         </span>
       </div>
 
       {/* Name */}
-      <h2 className="mb-1 text-base font-semibold text-white">{category.name}</h2>
+      <h2 className="mb-1 text-base font-semibold text-[var(--ink)]">{category.name}</h2>
 
       {/* Description */}
-      <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-zinc-500">{category.description}</p>
+      <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-[var(--ink-body)]">{category.description}</p>
 
       {/* Tool name pills */}
       <div className="mb-4 flex flex-wrap gap-1.5">
         {previewTools.map((tool) => (
           <span
             key={tool.id}
-            className="rounded-md border border-[#2a2a2a] bg-[#0d0d0d] px-2 py-0.5 text-xs text-zinc-500"
+            className="rounded-md border border-[var(--line)] bg-[var(--surface-sunk)] px-2 py-0.5 text-xs text-[var(--ink-body)]"
           >
             {tool.name}
           </span>
         ))}
         {category.tools.length > 4 && (
-          <span className="rounded-md border border-[#2a2a2a] bg-[#0d0d0d] px-2 py-0.5 text-xs text-zinc-600">
+          <span className="rounded-md border border-[var(--line)] bg-[var(--surface-sunk)] px-2 py-0.5 text-xs text-[var(--ink-muted)]">
             +{category.tools.length - 4} more
           </span>
         )}
       </div>
 
       {/* Footer CTA */}
-      <div className="flex items-center gap-1 text-xs font-medium text-zinc-600 transition-colors duration-300 group-hover:text-green-400">
-        <span>Open Laboratory</span>
+      <div className="flex items-center gap-1 text-xs font-medium text-[var(--ink-muted)] transition-colors duration-300 group-hover:text-[var(--accent)]">
+        <span>View all {category.tools.length}</span>
         <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
       </div>
     </Link>

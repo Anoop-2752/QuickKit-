@@ -80,13 +80,13 @@ export default function SipCalculator() {
           ['Inflation Rate % (optional)', inflation, setInflation, 'e.g. 6'],
         ].map(([label, val, setter, placeholder]) => (
           <div key={label} className="flex flex-col gap-1.5">
-            <label className="text-xs text-zinc-500">{label}</label>
+            <label className="text-xs text-[var(--ink-body)]">{label}</label>
             <input
               type="number"
               value={val}
               onChange={(e) => setter(e.target.value)}
               placeholder={placeholder}
-              className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-amber-500/50 focus:outline-none"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[var(--accent)] focus:outline-none"
             />
           </div>
         ))}
@@ -102,44 +102,44 @@ export default function SipCalculator() {
               { label: 'Gains',             value: `${result.gainsRatio.toFixed(1)}%` },
               ...(result.realValue ? [{ label: 'Inflation-Adj. Value', value: `₹ ${cur(result.realValue)}` }] : []),
             ].map(({ label, value, highlight }) => (
-              <div key={label} className={`rounded-xl border p-4 ${highlight ? 'border-amber-500/30 bg-amber-500/5' : 'border-[#2a2a2a] bg-[#141414]'}`}>
-                <p className="mb-1 text-xs text-zinc-500">{label}</p>
-                <p className={`text-base font-semibold ${highlight ? 'text-amber-400' : 'text-zinc-200'}`}>{value}</p>
+              <div key={label} className={`rounded-xl border p-4 ${highlight ? 'border-[var(--accent)] bg-[var(--accent)]' : 'border-[var(--line)] bg-[var(--surface-alt)]'}`}>
+                <p className="mb-1 text-xs text-[var(--ink-body)]">{label}</p>
+                <p className={`text-base font-semibold ${highlight ? 'text-[var(--accent)]' : 'text-[var(--ink-strong)]'}`}>{value}</p>
               </div>
             ))}
           </div>
 
           {/* Bar visual */}
           <div className="flex flex-col gap-2">
-            <div className="flex justify-between text-xs text-zinc-600">
+            <div className="flex justify-between text-xs text-[var(--ink-muted)]">
               <span>Invested ({(100 - result.gainsRatio / (1 + result.gainsRatio / 100)).toFixed(0)}%)</span>
               <span>Gains ({result.gainsRatio.toFixed(1)}%)</span>
             </div>
-            <div className="h-3 w-full overflow-hidden rounded-full bg-amber-500/20">
+            <div className="h-3 w-full overflow-hidden rounded-full bg-[var(--accent)]">
               <div
-                className="h-full rounded-full bg-amber-500"
+                className="h-full rounded-full bg-[var(--accent)]"
                 style={{ width: `${(result.invested / result.maturity) * 100}%` }}
               />
             </div>
           </div>
 
           {/* Year-wise table */}
-          <div className="overflow-auto rounded-xl border border-[#2a2a2a]">
+          <div className="overflow-auto rounded-xl border border-[var(--line)]">
             <table className="w-full text-xs">
-              <thead className="border-b border-[#2a2a2a] bg-[#141414]">
+              <thead className="border-b border-[var(--line)] bg-[var(--surface-alt)]">
                 <tr>
                   {['Year','Invested (₹)','Value (₹)','Gains (₹)'].map((h) => (
-                    <th key={h} className="px-4 py-2.5 text-left font-medium text-zinc-500">{h}</th>
+                    <th key={h} className="px-4 py-2.5 text-left font-medium text-[var(--ink-body)]">{h}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {result.yearWise.map((row) => (
-                  <tr key={row.year} className="border-b border-[#1a1a1a] hover:bg-[#141414]">
-                    <td className="px-4 py-2 text-zinc-500">{row.year}</td>
-                    <td className="px-4 py-2 text-zinc-300">{cur(row.invested)}</td>
-                    <td className="px-4 py-2 text-amber-400">{cur(row.value)}</td>
-                    <td className="px-4 py-2 text-zinc-400">{cur(row.gains)}</td>
+                  <tr key={row.year} className="border-b border-[var(--surface-tint)] hover:bg-[var(--surface-alt)]">
+                    <td className="px-4 py-2 text-[var(--ink-body)]">{row.year}</td>
+                    <td className="px-4 py-2 text-[var(--ink-strong)]">{cur(row.invested)}</td>
+                    <td className="px-4 py-2 text-[var(--accent)]">{cur(row.value)}</td>
+                    <td className="px-4 py-2 text-[var(--ink-body)]">{cur(row.gains)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -149,7 +149,7 @@ export default function SipCalculator() {
       )}
 
       {!result && (
-        <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-[#2a2a2a] text-sm text-zinc-600">
+        <div className="flex h-32 items-center justify-center rounded-xl border border-dashed border-[var(--line)] text-sm text-[var(--ink-muted)]">
           Enter SIP details above to see your returns
         </div>
       )}

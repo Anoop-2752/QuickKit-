@@ -1,89 +1,34 @@
-// Shared category color tokens used across CategoryCard, ToolCard, CategoryPage, ToolPage.
-// All class strings are written out fully so Tailwind's scanner picks them up.
+// Category colour tokens.
+//
+// The site previously gave each category its own hue, which meant the brand
+// colour dissolved as soon as you went one level below the homepage. Every
+// category now shares the single accent from src/index.css.
+//
+// getColors() keeps its old signature so callers don't need to change, and the
+// map is kept keyed so a per-category accent can be reintroduced by editing
+// this file alone.
+const accent = {
+  iconBg: 'bg-[var(--accent-soft)]',
+  iconColor: 'text-[var(--accent)]',
+  badge: 'bg-[var(--accent-soft)] text-[var(--accent)]',
+  hoverBorder: 'hover:border-[var(--line-strong)]',
+  hoverGlow: 'hover:shadow-[0_2px_4px_rgba(20,20,15,0.04),0_12px_28px_rgba(20,20,15,0.06)]',
+  hoverGlowSm: 'hover:shadow-[0_1px_3px_rgba(20,20,15,0.04),0_8px_20px_rgba(20,20,15,0.05)]',
+  hoverIcon: 'group-hover:text-[var(--accent-hover)]',
+}
+
 export const colorMap = {
-  blue: {
-    iconBg: 'bg-blue-500/10',
-    iconColor: 'text-blue-400',
-    badge: 'bg-blue-500/10 text-blue-400',
-    hoverBorder: 'hover:border-blue-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(59,130,246,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(59,130,246,0.07)]',
-    hoverIcon: 'group-hover:text-blue-300',
-  },
-  purple: {
-    iconBg: 'bg-purple-500/10',
-    iconColor: 'text-purple-400',
-    badge: 'bg-purple-500/10 text-purple-400',
-    hoverBorder: 'hover:border-purple-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(168,85,247,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(168,85,247,0.07)]',
-    hoverIcon: 'group-hover:text-purple-300',
-  },
-  green: {
-    iconBg: 'bg-emerald-500/10',
-    iconColor: 'text-emerald-400',
-    badge: 'bg-emerald-500/10 text-emerald-400',
-    hoverBorder: 'hover:border-emerald-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(16,185,129,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(16,185,129,0.07)]',
-    hoverIcon: 'group-hover:text-emerald-300',
-  },
-  orange: {
-    iconBg: 'bg-orange-500/10',
-    iconColor: 'text-orange-400',
-    badge: 'bg-orange-500/10 text-orange-400',
-    hoverBorder: 'hover:border-orange-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(249,115,22,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(249,115,22,0.07)]',
-    hoverIcon: 'group-hover:text-orange-300',
-  },
-  rose: {
-    iconBg: 'bg-rose-500/10',
-    iconColor: 'text-rose-400',
-    badge: 'bg-rose-500/10 text-rose-400',
-    hoverBorder: 'hover:border-rose-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(244,63,94,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(244,63,94,0.07)]',
-    hoverIcon: 'group-hover:text-rose-300',
-  },
-  amber: {
-    iconBg: 'bg-amber-500/10',
-    iconColor: 'text-amber-400',
-    badge: 'bg-amber-500/10 text-amber-400',
-    hoverBorder: 'hover:border-amber-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(245,158,11,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(245,158,11,0.07)]',
-    hoverIcon: 'group-hover:text-amber-300',
-  },
-  violet: {
-    iconBg: 'bg-violet-500/10',
-    iconColor: 'text-violet-400',
-    badge: 'bg-violet-500/10 text-violet-400',
-    hoverBorder: 'hover:border-violet-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(139,92,246,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(139,92,246,0.07)]',
-    hoverIcon: 'group-hover:text-violet-300',
-  },
-  teal: {
-    iconBg: 'bg-teal-500/10',
-    iconColor: 'text-teal-400',
-    badge: 'bg-teal-500/10 text-teal-400',
-    hoverBorder: 'hover:border-teal-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(20,184,166,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(20,184,166,0.07)]',
-    hoverIcon: 'group-hover:text-teal-300',
-  },
-  cyan: {
-    iconBg: 'bg-cyan-500/10',
-    iconColor: 'text-cyan-400',
-    badge: 'bg-cyan-500/10 text-cyan-400',
-    hoverBorder: 'hover:border-cyan-500/40',
-    hoverGlow: 'hover:shadow-[0_0_40px_rgba(6,182,212,0.07)]',
-    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(6,182,212,0.07)]',
-    hoverIcon: 'group-hover:text-cyan-300',
-  },
+  blue: accent,
+  purple: accent,
+  green: accent,
+  orange: accent,
+  rose: accent,
+  amber: accent,
+  violet: accent,
+  cyan: accent,
+  teal: accent,
 }
 
 export function getColors(color) {
-  return colorMap[color] ?? colorMap.blue
+  return colorMap[color] ?? accent
 }

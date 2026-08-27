@@ -74,31 +74,31 @@ function analyzeText(text) {
 }
 
 function getFleschLabel(score) {
-  if (score >= 90) return { label: 'Very Easy', grade: '5th grade', color: 'text-emerald-400', bg: 'bg-emerald-500/10 border-emerald-500/20' }
-  if (score >= 70) return { label: 'Easy', grade: '6th grade', color: 'text-green-400', bg: 'bg-green-500/10 border-green-500/20' }
-  if (score >= 60) return { label: 'Standard', grade: '7th–8th grade', color: 'text-lime-400', bg: 'bg-lime-500/10 border-lime-500/20' }
-  if (score >= 50) return { label: 'Fairly Difficult', grade: 'High school', color: 'text-yellow-400', bg: 'bg-yellow-500/10 border-yellow-500/20' }
-  if (score >= 30) return { label: 'Difficult', grade: 'College', color: 'text-orange-400', bg: 'bg-orange-500/10 border-orange-500/20' }
-  return { label: 'Very Confusing', grade: 'Professional', color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/20' }
+  if (score >= 90) return { label: 'Very Easy', grade: '5th grade', color: 'text-emerald-700', bg: 'bg-emerald-600 border-emerald-300' }
+  if (score >= 70) return { label: 'Easy', grade: '6th grade', color: 'text-[var(--accent)]', bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' }
+  if (score >= 60) return { label: 'Standard', grade: '7th–8th grade', color: 'text-[var(--accent)]', bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' }
+  if (score >= 50) return { label: 'Fairly Difficult', grade: 'High school', color: 'text-yellow-700', bg: 'bg-yellow-600 border-yellow-300' }
+  if (score >= 30) return { label: 'Difficult', grade: 'College', color: 'text-orange-700', bg: 'bg-orange-600 border-orange-300' }
+  return { label: 'Very Confusing', grade: 'Professional', color: 'text-red-700', bg: 'bg-red-600 border-red-300' }
 }
 
 function getGradeColor(grade) {
-  if (grade <= 6) return 'text-emerald-400'
-  if (grade <= 8) return 'text-green-400'
-  if (grade <= 10) return 'text-yellow-400'
-  if (grade <= 12) return 'text-orange-400'
-  return 'text-red-400'
+  if (grade <= 6) return 'text-emerald-700'
+  if (grade <= 8) return 'text-[var(--accent)]'
+  if (grade <= 10) return 'text-yellow-700'
+  if (grade <= 12) return 'text-orange-700'
+  return 'text-red-700'
 }
 
 function ScoreCard({ title, score, subtitle, color, bg, description }) {
   return (
     <div className={`rounded-xl border p-4 ${bg}`}>
-      <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-zinc-500">{title}</p>
+      <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--ink-body)]">{title}</p>
       <div className="flex items-baseline gap-2">
         <span className={`text-3xl font-bold ${color}`}>{typeof score === 'number' ? score.toFixed(1) : score}</span>
-        {subtitle && <span className="text-xs text-zinc-500">{subtitle}</span>}
+        {subtitle && <span className="text-xs text-[var(--ink-body)]">{subtitle}</span>}
       </div>
-      {description && <p className="mt-1.5 text-xs text-zinc-400">{description}</p>}
+      {description && <p className="mt-1.5 text-xs text-[var(--ink-body)]">{description}</p>}
     </div>
   )
 }
@@ -113,10 +113,10 @@ export default function ReadabilityChecker() {
   return (
     <div className="flex flex-col gap-6">
       {/* Input */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-        <label className="mb-2 block text-xs text-zinc-400">Paste your text below</label>
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+        <label className="mb-2 block text-xs text-[var(--ink-body)]">Paste your text below</label>
         <textarea
-          className="w-full resize-none rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] p-3 text-sm leading-relaxed text-zinc-200 outline-none placeholder:text-zinc-600 focus:border-purple-500/50 transition-colors"
+          className="w-full resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] p-3 text-sm leading-relaxed text-[var(--ink-strong)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] transition-colors"
           rows={10}
           placeholder="Paste an article, essay, email, or any text here to analyse its readability…"
           value={text}
@@ -135,9 +135,9 @@ export default function ReadabilityChecker() {
               { label: 'Avg Words/Sentence', value: result.avgWordsPerSentence },
               { label: 'Reading Time', value: result.readingTime, wide: true },
             ].map(({ label, value }) => (
-              <div key={label} className="flex flex-col items-center rounded-xl border border-[#2a2a2a] bg-[#141414] py-4 px-2 text-center">
-                <span className="text-2xl font-bold text-white">{value}</span>
-                <span className="mt-1 text-xs text-zinc-500">{label}</span>
+              <div key={label} className="flex flex-col items-center rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] py-4 px-2 text-center">
+                <span className="text-2xl font-bold text-[var(--ink)]">{value}</span>
+                <span className="mt-1 text-xs text-[var(--ink-body)]">{label}</span>
               </div>
             ))}
           </div>
@@ -146,25 +146,25 @@ export default function ReadabilityChecker() {
           <div className={`rounded-xl border p-5 ${flesch.bg}`}>
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div>
-                <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-zinc-500">Flesch Reading Ease</p>
+                <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--ink-body)]">Flesch Reading Ease</p>
                 <div className="flex items-baseline gap-3">
                   <span className={`text-5xl font-bold ${flesch.color}`}>{result.fleschEase.toFixed(1)}</span>
                   <div>
                     <p className={`text-lg font-semibold ${flesch.color}`}>{flesch.label}</p>
-                    <p className="text-xs text-zinc-500">{flesch.grade}</p>
+                    <p className="text-xs text-[var(--ink-body)]">{flesch.grade}</p>
                   </div>
                 </div>
               </div>
-              <div className="text-xs text-zinc-500 max-w-xs">
+              <div className="text-xs text-[var(--ink-body)] max-w-xs">
                 Scale: 0 (hardest) → 100 (easiest). Score of 60+ is considered comfortable for most readers.
               </div>
             </div>
             {/* Progress bar */}
-            <div className="mt-4 h-2 overflow-hidden rounded-full bg-[#2a2a2a]">
+            <div className="mt-4 h-2 overflow-hidden rounded-full bg-[var(--line)]">
               <div
                 className={`h-full rounded-full transition-all duration-500 ${
-                  result.fleschEase >= 70 ? 'bg-green-500' :
-                  result.fleschEase >= 50 ? 'bg-yellow-500' : 'bg-red-500'
+                  result.fleschEase >= 70 ? 'bg-[var(--accent)]' :
+                  result.fleschEase >= 50 ? 'bg-yellow-600' : 'bg-red-600'
                 }`}
                 style={{ width: `${Math.max(2, result.fleschEase)}%` }}
               />
@@ -178,7 +178,7 @@ export default function ReadabilityChecker() {
               score={result.fkGrade}
               subtitle="grade"
               color={getGradeColor(result.fkGrade)}
-              bg="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4"
+              bg="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4"
               description={`Equivalent to US grade ${result.fkGrade.toFixed(1)} reading level`}
             />
             <ScoreCard
@@ -186,7 +186,7 @@ export default function ReadabilityChecker() {
               score={result.fogIndex}
               subtitle="grade"
               color={getGradeColor(result.fogIndex)}
-              bg="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4"
+              bg="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4"
               description={`${result.fogIndex <= 8 ? 'Easy to read' : result.fogIndex <= 12 ? 'Acceptable' : 'Consider simplifying'}`}
             />
             <ScoreCard
@@ -194,34 +194,34 @@ export default function ReadabilityChecker() {
               score={result.ari}
               subtitle="grade"
               color={getGradeColor(result.ari)}
-              bg="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4"
+              bg="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4"
               description={`${result.ari <= 6 ? 'Elementary level' : result.ari <= 12 ? 'High school level' : 'College / professional'}`}
             />
           </div>
 
           {/* Score interpretation */}
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-zinc-600">Flesch Reading Ease Scale</p>
+          <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">Flesch Reading Ease Scale</p>
             <div className="flex flex-col gap-1.5">
               {[
-                { range: '90–100', label: 'Very Easy', grade: '5th grade', color: 'text-emerald-400' },
-                { range: '70–90', label: 'Easy', grade: '6th grade', color: 'text-green-400' },
-                { range: '60–70', label: 'Standard', grade: '7th–8th grade', color: 'text-lime-400' },
-                { range: '50–60', label: 'Fairly Difficult', grade: 'High school', color: 'text-yellow-400' },
-                { range: '30–50', label: 'Difficult', grade: 'College', color: 'text-orange-400' },
-                { range: '0–30', label: 'Very Confusing', grade: 'Professional', color: 'text-red-400' },
+                { range: '90–100', label: 'Very Easy', grade: '5th grade', color: 'text-emerald-700' },
+                { range: '70–90', label: 'Easy', grade: '6th grade', color: 'text-[var(--accent)]' },
+                { range: '60–70', label: 'Standard', grade: '7th–8th grade', color: 'text-[var(--accent)]' },
+                { range: '50–60', label: 'Fairly Difficult', grade: 'High school', color: 'text-yellow-700' },
+                { range: '30–50', label: 'Difficult', grade: 'College', color: 'text-orange-700' },
+                { range: '0–30', label: 'Very Confusing', grade: 'Professional', color: 'text-red-700' },
               ].map(({ range, label, grade, color }) => (
                 <div
                   key={range}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm ${
                     result.fleschEase >= parseInt(range) && result.fleschEase < (parseInt(range.split('–')[1]) + 1)
-                      ? 'bg-purple-500/10 border border-purple-500/20'
+                      ? 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] border border-[color-mix(in_srgb,var(--accent)_20%,transparent)]'
                       : ''
                   }`}
                 >
-                  <span className="w-14 text-xs font-mono text-zinc-600">{range}</span>
+                  <span className="w-14 text-xs font-mono text-[var(--ink-muted)]">{range}</span>
                   <span className={`w-32 font-medium ${color}`}>{label}</span>
-                  <span className="text-xs text-zinc-500">{grade}</span>
+                  <span className="text-xs text-[var(--ink-body)]">{grade}</span>
                 </div>
               ))}
             </div>

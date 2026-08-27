@@ -15,7 +15,7 @@ export default function RelatedTools({ category, currentToolSlug }) {
 
   return (
     <div className="mt-10">
-      <h2 className="text-lg font-semibold text-white mb-4">
+      <h2 className="text-lg font-semibold text-[var(--ink)] mb-4">
         More in {category.name}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -25,7 +25,7 @@ export default function RelatedTools({ category, currentToolSlug }) {
             <Link
               key={tool.id}
               to={`/${category.slug}/${tool.slug}`}
-              className="group bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-4 hover:border-[#3a3a3a] transition"
+              className="group bg-[var(--surface-tint)] border border-[var(--line)] rounded-xl p-4 hover:border-[var(--line-strong)] transition"
             >
               <div className="flex items-center gap-3 mb-2">
                 {Icon && (
@@ -33,9 +33,9 @@ export default function RelatedTools({ category, currentToolSlug }) {
                     <Icon className={`h-4 w-4 ${colors.iconColor}`} />
                   </div>
                 )}
-                <h3 className="text-sm font-medium text-white">{tool.name}</h3>
+                <h3 className="text-sm font-medium text-[var(--ink)]">{tool.name}</h3>
               </div>
-              <p className="text-sm text-zinc-500 line-clamp-2">
+              <p className="text-sm text-[var(--ink-body)] line-clamp-2">
                 {tool.description}
               </p>
             </Link>

@@ -46,16 +46,16 @@ function JsonPanel({ title, data, extra }) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">{title}</span>
+        <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">{title}</span>
         <div className="flex items-center gap-2">
           {extra}
-          <button onClick={copy} className="text-xs text-zinc-600 transition-colors hover:text-zinc-400">
+          <button onClick={copy} className="text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--ink-body)]">
             {copied ? '✓ Copied' : 'Copy'}
           </button>
         </div>
       </div>
-      <div className="max-h-72 overflow-auto rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-4">
-        <pre className="whitespace-pre font-mono text-sm text-zinc-200">{json}</pre>
+      <div className="max-h-72 overflow-auto rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-4">
+        <pre className="whitespace-pre font-mono text-sm text-[var(--ink-strong)]">{json}</pre>
       </div>
     </div>
   )
@@ -94,16 +94,16 @@ export default function JwtDecoder() {
       {/* ── Input ────────────────────────────────────────────────────────────── */}
       <div className="flex flex-col gap-3">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">JWT Token</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">JWT Token</label>
           {decoded && (
             <div className="flex flex-wrap items-center gap-2">
               {alg && (
-                <span className="rounded-full bg-zinc-800 px-2.5 py-1 font-mono text-xs font-medium text-zinc-300">
+                <span className="rounded-full bg-[var(--surface-tint)] px-2.5 py-1 font-mono text-xs font-medium text-[var(--ink-strong)]">
                   {alg}
                 </span>
               )}
               {exp && (
-                <span className={`rounded-full px-2.5 py-1 text-xs font-medium ${isExpired ? 'bg-red-500/10 text-red-400' : 'bg-emerald-500/10 text-emerald-400'}`}>
+                <span className={`rounded-full px-2.5 py-1 text-xs font-medium ${isExpired ? 'bg-red-600 text-red-700' : 'bg-emerald-600 text-emerald-700'}`}>
                   {isExpired ? `Expired · ${fmtUnix(exp)}` : `Valid · expires ${fmtUnix(exp)}`}
                 </span>
               )}
@@ -116,12 +116,12 @@ export default function JwtDecoder() {
           onChange={(e) => handleChange(e.target.value)}
           spellCheck={false}
           placeholder="Paste your JWT here — decoded automatically as you type…&#10;&#10;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U"
-          className="h-28 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 font-mono text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+          className="h-28 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 font-mono text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
         />
 
         {error && (
-          <p className="flex items-center gap-2 font-mono text-sm text-red-400">
-            <span className="h-1.5 w-1.5 rounded-full bg-red-400 shrink-0" />{error}
+          <p className="flex items-center gap-2 font-mono text-sm text-red-700">
+            <span className="h-1.5 w-1.5 rounded-full bg-red-600 shrink-0" />{error}
           </p>
         )}
       </div>
@@ -137,25 +137,25 @@ export default function JwtDecoder() {
           {/* Signature */}
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">Signature</span>
-              <span className="rounded-full bg-amber-500/10 px-2.5 py-1 text-xs text-amber-500">
+              <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Signature</span>
+              <span className="rounded-full bg-amber-600 px-2.5 py-1 text-xs text-amber-700">
                 Not verified — requires secret
               </span>
             </div>
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-4">
-              <p className="break-all font-mono text-sm text-zinc-500">{decoded.signature}</p>
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-4">
+              <p className="break-all font-mono text-sm text-[var(--ink-body)]">{decoded.signature}</p>
             </div>
           </div>
 
           {/* Standard claims */}
           {stdClaims.length > 0 && (
             <div className="flex flex-col gap-3">
-              <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">Standard Claims</span>
+              <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Standard Claims</span>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {stdClaims.map(({ key, label, fmt }) => (
-                  <div key={key} className="flex items-start gap-3 rounded-lg border border-[#2a2a2a] bg-[#141414] px-4 py-3">
-                    <span className="w-20 shrink-0 text-xs text-zinc-500">{label}</span>
-                    <span className="truncate font-mono text-xs text-zinc-300">{fmt(decoded.payload[key])}</span>
+                  <div key={key} className="flex items-start gap-3 rounded-lg border border-[var(--line)] bg-[var(--surface-alt)] px-4 py-3">
+                    <span className="w-20 shrink-0 text-xs text-[var(--ink-body)]">{label}</span>
+                    <span className="truncate font-mono text-xs text-[var(--ink-strong)]">{fmt(decoded.payload[key])}</span>
                   </div>
                 ))}
               </div>
@@ -163,8 +163,8 @@ export default function JwtDecoder() {
           )}
         </>
       ) : !error && (
-        <div className="rounded-xl border border-dashed border-[#2a2a2a] py-14 text-center">
-          <p className="text-sm text-zinc-600">Paste a JWT token above to see it decoded</p>
+        <div className="rounded-xl border border-dashed border-[var(--line)] py-14 text-center">
+          <p className="text-sm text-[var(--ink-muted)]">Paste a JWT token above to see it decoded</p>
         </div>
       )}
 

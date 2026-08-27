@@ -85,7 +85,7 @@ export default function PdfToText() {
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-xs text-zinc-600">
+      <p className="text-xs text-[var(--ink-muted)]">
         Upload a PDF to extract all readable text. Works best with text-based PDFs. Scanned/image PDFs won't have extractable text.
       </p>
 
@@ -96,17 +96,17 @@ export default function PdfToText() {
         onDrop={handleDrop}
         onClick={() => document.getElementById('pdf-text-input').click()}
         className={`flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed py-12 cursor-pointer transition-colors ${
-          dragOver ? 'border-orange-500/60 bg-orange-500/5' : 'border-[#2a2a2a] hover:border-[#3a3a3a]'
+          dragOver ? 'border-[var(--accent)] bg-[var(--accent)]' : 'border-[var(--line)] hover:border-[var(--line-strong)]'
         }`}
       >
-        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10">
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--accent)]">
           <span className="text-2xl">📝</span>
         </div>
         <div className="text-center">
-          <p className="text-sm font-medium text-zinc-300">
+          <p className="text-sm font-medium text-[var(--ink-strong)]">
             {file ? file.name : 'Drop a PDF here'}
           </p>
-          <p className="text-xs text-zinc-600 mt-1">
+          <p className="text-xs text-[var(--ink-muted)] mt-1">
             {file ? formatSize(file.size) : 'or click to browse'}
           </p>
         </div>
@@ -119,18 +119,18 @@ export default function PdfToText() {
         />
       </div>
 
-      {error && <p className="text-xs text-red-400">{error}</p>}
+      {error && <p className="text-xs text-red-700">{error}</p>}
 
       {/* Progress bar */}
       {loading && (
         <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between text-xs text-zinc-600">
+          <div className="flex items-center justify-between text-xs text-[var(--ink-muted)]">
             <span>Extracting text…</span>
             <span>{progress}%</span>
           </div>
-          <div className="h-1.5 w-full overflow-hidden rounded-full bg-[#1e1e1e]">
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--line-subtle)]">
             <div
-              className="h-full rounded-full bg-orange-500 transition-all duration-300"
+              className="h-full rounded-full bg-[var(--accent)] transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -142,21 +142,21 @@ export default function PdfToText() {
         <div className="flex flex-col gap-3">
           {/* Stats + actions */}
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <div className="flex gap-4 text-xs text-zinc-600">
-              <span><span className="font-medium text-zinc-400">{pageCount}</span> pages</span>
-              <span><span className="font-medium text-zinc-400">{wordCount.toLocaleString()}</span> words</span>
-              <span><span className="font-medium text-zinc-400">{charCount.toLocaleString()}</span> chars</span>
+            <div className="flex gap-4 text-xs text-[var(--ink-muted)]">
+              <span><span className="font-medium text-[var(--ink-body)]">{pageCount}</span> pages</span>
+              <span><span className="font-medium text-[var(--ink-body)]">{wordCount.toLocaleString()}</span> words</span>
+              <span><span className="font-medium text-[var(--ink-body)]">{charCount.toLocaleString()}</span> chars</span>
             </div>
             <div className="flex gap-2">
               <button
                 onClick={handleCopy}
-                className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-1.5 text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-1.5 text-xs font-medium text-[var(--ink-body)] transition-colors hover:text-[var(--ink)]"
               >
                 {copied ? '✓ Copied' : 'Copy'}
               </button>
               <button
                 onClick={handleDownload}
-                className="rounded-lg bg-orange-600 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-orange-500"
+                className="rounded-lg bg-[var(--accent)] px-3 py-1.5 text-xs font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
               >
                 Download .txt
               </button>
@@ -166,12 +166,12 @@ export default function PdfToText() {
           <textarea
             readOnly
             value={text}
-            className="h-96 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-4 font-mono text-xs leading-relaxed text-zinc-300 focus:outline-none"
+            className="h-96 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-4 font-mono text-xs leading-relaxed text-[var(--ink-strong)] focus:outline-none"
           />
         </div>
       )}
 
-      <p className="text-xs text-zinc-700">
+      <p className="text-xs text-[var(--ink-faint)]">
         Files are processed entirely in your browser — nothing is uploaded to any server.
       </p>
     </div>

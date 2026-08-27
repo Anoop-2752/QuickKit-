@@ -18,13 +18,13 @@ function NotFound({ onBack }) {
     <div className="mx-auto max-w-7xl px-6 py-24 text-center">
       <SEO title="Category Not Found" noindex />
       <p className="mb-2 text-4xl">🔍</p>
-      <h1 className="mb-3 text-2xl font-semibold text-white">Category not found</h1>
-      <p className="mb-8 text-sm text-zinc-500">
+      <h1 className="mb-3 text-2xl font-semibold text-[var(--ink)]">Category not found</h1>
+      <p className="mb-8 text-sm text-[var(--ink-body)]">
         The category you're looking for doesn't exist or may have moved.
       </p>
       <button
         onClick={onBack}
-        className="inline-flex items-center gap-2 rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-[#3a3a3a] hover:text-white"
+        className="inline-flex items-center gap-2 rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2 text-sm text-[var(--ink-strong)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
       >
         ← Back to home
       </button>
@@ -50,12 +50,12 @@ export default function CategoryPage() {
       />
 
       {/* Breadcrumb */}
-      <nav className="mb-6 flex items-center gap-1.5 text-xs text-zinc-600">
-        <Link to="/" className="transition-colors hover:text-zinc-300">
+      <nav className="mb-6 flex items-center gap-1.5 text-xs text-[var(--ink-muted)]">
+        <Link to="/" className="transition-colors hover:text-[var(--ink-strong)]">
           Home
         </Link>
-        <ChevronRight size={11} className="text-zinc-700" />
-        <span className="text-zinc-400">{category.name}</span>
+        <ChevronRight size={11} className="text-[var(--ink-faint)]" />
+        <span className="text-[var(--ink-body)]">{category.name}</span>
       </nav>
 
       {/* Category header — compact */}
@@ -65,17 +65,17 @@ export default function CategoryPage() {
             <CategoryIcon name={category.icon} className={colors.iconColor} />
           </div>
           <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${colors.badge}`}>
-            {category.tools.length} tools
+            {category.tools.length} {category.tools.length === 1 ? 'tool' : 'tools'}
           </span>
         </div>
-        <h1 className="mb-1.5 text-3xl font-bold tracking-tight text-white">{category.name}</h1>
-        <p className="text-sm text-zinc-500">{category.description}</p>
+        <h1 className="font-display mb-1.5 text-[42px] leading-[1.1] tracking-tight text-[var(--ink)]">{category.name}</h1>
+        <p className="text-sm text-[var(--ink-body)]">{category.description}</p>
       </header>
 
       {/* Divider */}
       <div className="mb-6 flex items-center gap-3">
-        <span className="text-xs font-medium uppercase tracking-widest text-zinc-700">Tools</span>
-        <div className="h-px flex-1 bg-[#1a1a1a]" />
+        <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-faint)]">Tools</span>
+        <div className="h-px flex-1 bg-[var(--surface-tint)]" />
       </div>
 
       {/* Tools grid */}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { categories, allTools, getCategoryBySlug } from '../data/tools'
-import { Search, Braces, Binary, CreditCard, Percent, Receipt, ScanSearch, Combine, AlignLeft } from '../lib/icons'
+import { Search, Braces, Binary, CreditCard, Percent, Receipt, ScanSearch, Combine, AlignLeft, ShieldCheck, Check, Sparkles } from '../lib/icons'
 import SEO from '../components/SEO'
 import CategoryCard from '../components/CategoryCard'
 import ToolCard from '../components/ToolCard'
@@ -51,46 +51,33 @@ export default function HomePage() {
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="pb-10 pt-14 text-center">
-        {/* Ambient glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-green-500/5 blur-3xl"
-        />
-
-        {/* Badge */}
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/5 px-3 py-1">
-          <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
-          <span className="text-xs font-medium text-green-300">
-            {allTools.length}+ FREE BROWSER TOOLS — NO SIGNUP
-          </span>
-        </div>
 
         {/* Headline */}
-        <h1 className="mt-2 text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl">
-          Every Tool You Need,{' '}
-          <em className="not-italic text-green-400">One Place.</em>
+        <h1 className="font-display mt-2 text-5xl leading-[1.05] tracking-tight text-[var(--ink)] sm:text-[68px]">
+          Every calculation you need,{' '}
+          <em className="italic text-[var(--accent)]">in one place.</em>
         </h1>
 
-        <p className="mx-auto mt-4 max-w-xl text-base text-zinc-400 sm:text-lg">
+        <p className="mx-auto mt-4 max-w-xl text-base text-[var(--ink-body)] sm:text-lg">
           Free tools for developers, HR, finance, career, SEO, and more — all in your browser. No account, no ads, no cost.
         </p>
 
         {/* Search bar */}
         <div className="mx-auto mt-7 max-w-lg">
-          <div className="relative flex items-center gap-2 rounded-xl border border-[#2a2a2a] bg-[#111] px-3 py-2.5 transition-all focus-within:border-green-500/40 focus-within:ring-1 focus-within:ring-green-500/20">
-            <Search size={14} className="shrink-0 text-zinc-600" />
+          <div className="relative flex items-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 py-2.5 transition-all focus-within:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] focus-within:ring-1 focus-within:ring-[color-mix(in_srgb,var(--accent)_20%,transparent)]">
+            <Search size={14} className="shrink-0 text-[var(--ink-muted)]" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search tools… JSON, Base64, UUID, EMI…"
-              className="flex-1 bg-transparent text-sm text-zinc-200 placeholder:text-zinc-600 focus:outline-none"
+              className="flex-1 bg-transparent text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-muted)] focus:outline-none"
             />
             {query && (
               <button
                 onClick={() => setQuery('')}
                 aria-label="Clear search"
-                className="text-xs text-zinc-600 hover:text-zinc-400"
+                className="text-xs text-[var(--ink-muted)] hover:text-[var(--ink-body)]"
               >
                 <span aria-hidden="true">✕</span>
               </button>
@@ -101,16 +88,35 @@ export default function HomePage() {
         {/* Hot commands */}
         {!isSearching && (
           <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-            <span className="text-xs text-zinc-700">Try:</span>
+            <span className="text-xs text-[var(--ink-faint)]">Try:</span>
             {HOT_COMMANDS.map((cmd) => (
               <Link
                 key={cmd.slug}
                 to={`/${cmd.category}/${cmd.slug}`}
-                className="rounded-full border border-[#2a2a2a] bg-[#141414] px-3 py-1 text-xs text-zinc-500 transition-colors hover:border-green-500/30 hover:text-green-400"
+                className="rounded-full border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-1 text-xs text-[var(--ink-body)] transition-colors hover:border-[color-mix(in_srgb,var(--accent)_30%,transparent)] hover:text-[var(--accent)]"
               >
                 {cmd.label}
               </Link>
             ))}
+          </div>
+        )}
+
+        {/* Trust line — the reason to use a salary or tax tool here rather
+            than one that uploads what you type. */}
+        {!isSearching && (
+          <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-[var(--line-subtle)] pt-7 text-sm text-[var(--ink-body)]">
+            <span className="flex items-center gap-2">
+              <ShieldCheck size={16} className="text-[var(--accent)]" />
+              Nothing you enter leaves your browser
+            </span>
+            <span className="flex items-center gap-2">
+              <Check size={16} className="text-[var(--accent)]" />
+              No account, no upload, no install
+            </span>
+            <span className="flex items-center gap-2">
+              <Sparkles size={16} className="text-[var(--accent)]" />
+              Free — every tool, every time
+            </span>
           </div>
         )}
       </section>
@@ -119,12 +125,12 @@ export default function HomePage() {
       {isSearching ? (
         <section>
           <div className="mb-5 flex items-center gap-3">
-            <h2 className="text-xs font-medium uppercase tracking-widest text-zinc-600">
+            <h2 className="text-xs font-medium uppercase tracking-widest text-[var(--ink-muted)]">
               {results.length > 0
                 ? `${results.length} result${results.length === 1 ? '' : 's'} for "${query.trim()}"`
                 : `No results for "${query.trim()}"`}
             </h2>
-            <div className="h-px flex-1 bg-[#1e1e1e]" />
+            <div className="h-px flex-1 bg-[var(--line-subtle)]" />
           </div>
 
           {results.length > 0 ? (
@@ -137,8 +143,8 @@ export default function HomePage() {
               })}
             </div>
           ) : (
-            <div className="rounded-xl border border-dashed border-[#2a2a2a] py-14 text-center">
-              <p className="text-sm text-zinc-600">
+            <div className="rounded-xl border border-dashed border-[var(--line)] py-14 text-center">
+              <p className="text-sm text-[var(--ink-muted)]">
                 Try "EMI", "GST", "Salary Slip", or "PDF".
               </p>
             </div>
@@ -149,8 +155,8 @@ export default function HomePage() {
           {/* ── Popular Tools pill strip ──────────────────────────────────── */}
           <section className="mb-12">
             <div className="mb-4 flex items-center gap-3">
-              <h2 className="text-xs font-medium uppercase tracking-widest text-zinc-600">Popular Right Now</h2>
-              <div className="h-px flex-1 bg-[#1e1e1e]" />
+              <h2 className="font-display text-xl text-[var(--ink)]">Popular right now</h2>
+              <div className="h-px flex-1 bg-[var(--line-subtle)]" />
             </div>
             <div className="flex gap-2 overflow-x-auto pb-1 pr-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {POPULAR_PILLS.map(({ label, category, slug, Icon: PillIcon }) => {
@@ -159,9 +165,9 @@ export default function HomePage() {
                   <Link
                     key={slug}
                     to={`/${category}/${slug}`}
-                    className="group flex shrink-0 items-center gap-2 rounded-full border border-[#2a2a2a] bg-[#141414] px-4 py-2 text-sm text-zinc-400 transition-all hover:border-green-500/40 hover:bg-green-500/5 hover:text-green-400"
+                    className="group flex shrink-0 items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--surface-alt)] px-4 py-2 text-sm text-[var(--ink-body)] transition-all hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:bg-[color-mix(in_srgb,var(--accent)_5%,transparent)] hover:text-[var(--accent)]"
                   >
-                    <Ic size={13} className="text-zinc-600 transition-colors group-hover:text-green-400" />
+                    <Ic size={13} className="text-[var(--ink-muted)] transition-colors group-hover:text-[var(--accent)]" />
                     {label}
                   </Link>
                 )
@@ -169,11 +175,11 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* ── Browse Labs ──────────────────────────────────────────────── */}
+          {/* ── Browse by category ───────────────────────────────────────── */}
           <section>
             <div className="mb-5 flex items-center gap-3">
-              <h2 className="text-xs font-medium uppercase tracking-widest text-zinc-600">Browse Labs</h2>
-              <div className="h-px flex-1 bg-[#1e1e1e]" />
+              <h2 className="font-display text-2xl text-[var(--ink)]">Browse by category</h2>
+              <div className="h-px flex-1 bg-[var(--line-subtle)]" />
             </div>
 
             {/* Category tabs */}
@@ -183,8 +189,8 @@ export default function HomePage() {
                 className={[
                   'shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors',
                   activeTab === 'all'
-                    ? 'bg-green-500/15 text-green-400'
-                    : 'text-zinc-600 hover:text-zinc-300',
+                    ? 'bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]'
+                    : 'text-[var(--ink-muted)] hover:text-[var(--ink-strong)]',
                 ].join(' ')}
               >
                 All
@@ -196,8 +202,8 @@ export default function HomePage() {
                   className={[
                     'shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-colors',
                     activeTab === cat.slug
-                      ? 'bg-green-500/15 text-green-400'
-                      : 'text-zinc-600 hover:text-zinc-300',
+                      ? 'bg-[color-mix(in_srgb,var(--accent)_15%,transparent)] text-[var(--accent)]'
+                      : 'text-[var(--ink-muted)] hover:text-[var(--ink-strong)]',
                   ].join(' ')}
                 >
                   {cat.name}
@@ -213,16 +219,16 @@ export default function HomePage() {
           </section>
 
           {/* ── CTA ─────────────────────────────────────────────────────── */}
-          <section className="mt-16 rounded-2xl border border-[#1e1e1e] bg-[#0d0d0d] px-6 py-10 text-center">
-            <h2 className="mb-2 text-xl font-semibold text-white">Missing a tool?</h2>
-            <p className="mb-5 text-sm text-zinc-500">
-              Tell us what you need — we read every suggestion and build the most-requested tools.
+          <section className="mt-16 rounded-2xl bg-[var(--accent)] px-6 py-12 text-center">
+            <h2 className="font-display mb-2 text-3xl text-[var(--accent-on)]">Missing a tool?</h2>
+            <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-[color-mix(in_srgb,var(--accent-on)_75%,transparent)]">
+              Tell us what you need — we read every suggestion and build the most-requested tools first.
             </p>
             <a
               href="https://forms.gle/qrPLgu6MvQEnoSUL9"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-green-500 px-5 py-2.5 text-sm font-semibold text-black transition-colors hover:bg-green-400"
+              className="inline-flex items-center gap-2 rounded-lg bg-[var(--accent-on)] px-6 py-3 text-sm font-semibold text-[var(--accent-hover)] transition-opacity hover:opacity-90"
             >
               Request a tool →
             </a>

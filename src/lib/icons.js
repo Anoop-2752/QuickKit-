@@ -1,7 +1,7 @@
 // Registry of all Lucide icons used across the app.
 // Import only what we need — avoids pulling in the entire lucide-react bundle.
 import {
-  Code2, Type, Github, DollarSign, Banknote,
+  Code2, Type, Github, Check, Sparkles, DollarSign, Banknote,
   Braces, Binary, KeyRound, Fingerprint, Clock, Link,
   AlignLeft, FileText, Eye, CaseSensitive, GitCompare, Eraser,
   ArrowRight, Wrench, ChevronRight, ChevronDown, Construction, Search,
@@ -35,12 +35,13 @@ export {
   Globe2, Tag, Bot, BarChart2,
   LayoutTemplate,
   FileSpreadsheet, Wallet, QrCode,
-  BookOpen, ShieldCheck,
+  BookOpen, ShieldCheck, Check, Sparkles,
 }
 
 // Resolve a Lucide icon component by its string name.
 // Used in card components to keep data clean (string-based icon names).
 const iconMap = {
+  Check, Sparkles,
   DollarSign, Banknote,
   Code2, Type, Github,
   Braces, Binary, KeyRound, Fingerprint, Clock, Link,

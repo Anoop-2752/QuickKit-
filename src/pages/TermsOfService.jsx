@@ -4,8 +4,8 @@ import SEO from '../components/SEO'
 function Section({ title, children }) {
   return (
     <section className="mb-10">
-      <h2 className="mb-3 text-lg font-semibold text-green-400">{title}</h2>
-      <div className="space-y-3 text-sm leading-relaxed text-zinc-400">{children}</div>
+      <h2 className="mb-3 text-lg font-semibold text-[var(--accent)]">{title}</h2>
+      <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-body)]">{children}</div>
     </section>
   )
 }
@@ -21,13 +21,13 @@ export default function TermsOfService() {
       />
       <button
         onClick={() => navigate(-1)}
-        className="mb-8 text-xs text-zinc-600 transition-colors hover:text-zinc-400"
+        className="mb-8 text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--ink-body)]"
       >
         ← Back
       </button>
 
-      <h1 className="mb-2 text-4xl font-bold tracking-tight text-white">Terms of Service</h1>
-      <p className="mb-12 text-sm text-zinc-600">Last updated: January 2025</p>
+      <h1 className="mb-2 text-4xl font-bold tracking-tight text-[var(--ink)]">Terms of Service</h1>
+      <p className="mb-12 text-sm text-[var(--ink-muted)]">Last updated: January 2025</p>
 
       <Section title="Acceptance of Terms">
         <p>
@@ -44,7 +44,7 @@ export default function TermsOfService() {
           QuickKit is provided free of charge as a collection of browser-based developer and
           text utility tools.
         </p>
-        <ul className="ml-4 list-disc space-y-1.5 marker:text-zinc-600">
+        <ul className="ml-4 list-disc space-y-1.5 marker:text-[var(--ink-muted)]">
           <li>Tools are provided for personal and professional use.</li>
           <li>You may not use QuickKit for any unlawful or prohibited purpose.</li>
           <li>You may not attempt to disrupt, overload, or compromise the Site's operation.</li>
@@ -55,14 +55,14 @@ export default function TermsOfService() {
       <Section title="Disclaimer of Warranties">
         <p>
           QuickKit and all tools are provided{' '}
-          <strong className="font-medium text-zinc-300">"as is"</strong> without any warranty
+          <strong className="font-medium text-[var(--ink-strong)]">"as is"</strong> without any warranty
           of any kind, express or implied, including but not limited to warranties of
           merchantability, fitness for a particular purpose, or non-infringement.
         </p>
         <p>
           Tool outputs are provided for convenience only. We make no guarantee that outputs
           are accurate, complete, or suitable for any specific purpose.{' '}
-          <strong className="font-medium text-zinc-300">
+          <strong className="font-medium text-[var(--ink-strong)]">
             Always verify important outputs independently before relying on them.
           </strong>
         </p>
@@ -129,7 +129,7 @@ export default function TermsOfService() {
           Questions about these terms? Contact us at{' '}
           <a
             href="mailto:helloquickkit@gmail.com"
-            className="text-green-400 underline hover:text-green-300"
+            className="text-[var(--accent)] underline hover:text-[var(--accent)]"
           >
             helloquickkit@gmail.com
           </a>

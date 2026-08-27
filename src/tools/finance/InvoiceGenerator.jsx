@@ -15,7 +15,7 @@ function newItem() {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-amber-500/50 transition-colors'
+  'w-full rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--ink-muted)] focus:border-[var(--accent)] transition-colors'
 
 export default function InvoiceGenerator() {
   // Business info
@@ -241,15 +241,15 @@ export default function InvoiceGenerator() {
       <div className="flex flex-col gap-5">
 
         {/* Business Info */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <h2 className="mb-4 text-sm font-semibold text-white">Your Business</h2>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <h2 className="mb-4 text-sm font-semibold text-[var(--ink)]">Your Business</h2>
           <div className="flex flex-col gap-3">
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Business Name</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Business Name</label>
               <input className={inputCls} placeholder="Acme Pvt Ltd" value={bizName} onChange={(e) => setBizName(e.target.value)} />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Address</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Address</label>
               <textarea
                 className={`${inputCls} resize-none`}
                 rows={2}
@@ -260,31 +260,31 @@ export default function InvoiceGenerator() {
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="mb-1 block text-xs text-zinc-500">Email</label>
+                <label className="mb-1 block text-xs text-[var(--ink-body)]">Email</label>
                 <input className={inputCls} placeholder="you@example.com" value={bizEmail} onChange={(e) => setBizEmail(e.target.value)} />
               </div>
               <div>
-                <label className="mb-1 block text-xs text-zinc-500">Phone</label>
+                <label className="mb-1 block text-xs text-[var(--ink-body)]">Phone</label>
                 <input className={inputCls} placeholder="+91 98765 43210" value={bizPhone} onChange={(e) => setBizPhone(e.target.value)} />
               </div>
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">GST Number (optional)</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">GST Number (optional)</label>
               <input className={inputCls} placeholder="22AAAAA0000A1Z5" value={bizGst} onChange={(e) => setBizGst(e.target.value)} />
             </div>
           </div>
         </section>
 
         {/* Client Info */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <h2 className="mb-4 text-sm font-semibold text-white">Bill To</h2>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <h2 className="mb-4 text-sm font-semibold text-[var(--ink)]">Bill To</h2>
           <div className="flex flex-col gap-3">
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Client Name</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Client Name</label>
               <input className={inputCls} placeholder="Client Name / Company" value={clientName} onChange={(e) => setClientName(e.target.value)} />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Client Address</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Client Address</label>
               <textarea
                 className={`${inputCls} resize-none`}
                 rows={2}
@@ -294,40 +294,40 @@ export default function InvoiceGenerator() {
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Client GST (optional)</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Client GST (optional)</label>
               <input className={inputCls} placeholder="27BBBBB1111B1Z5" value={clientGst} onChange={(e) => setClientGst(e.target.value)} />
             </div>
           </div>
         </section>
 
         {/* Invoice Details */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <h2 className="mb-4 text-sm font-semibold text-white">Invoice Details</h2>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <h2 className="mb-4 text-sm font-semibold text-[var(--ink)]">Invoice Details</h2>
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Invoice No.</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Invoice No.</label>
               <input className={inputCls} value={invoiceNumber} onChange={(e) => setInvoiceNumber(e.target.value)} />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Invoice Date</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Invoice Date</label>
               <input type="date" className={inputCls} value={invoiceDate} onChange={(e) => setInvoiceDate(e.target.value)} />
             </div>
             <div>
-              <label className="mb-1 block text-xs text-zinc-500">Due Date</label>
+              <label className="mb-1 block text-xs text-[var(--ink-body)]">Due Date</label>
               <input type="date" className={inputCls} value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
             </div>
           </div>
         </section>
 
         {/* Line Items */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <h2 className="mb-4 text-sm font-semibold text-white">Line Items</h2>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <h2 className="mb-4 text-sm font-semibold text-[var(--ink)]">Line Items</h2>
           <div className="flex flex-col gap-2">
             <div className="grid grid-cols-[1fr_64px_96px_80px] gap-2 px-1">
-              <span className="text-xs text-zinc-600">Description</span>
-              <span className="text-xs text-zinc-600">Qty</span>
-              <span className="text-xs text-zinc-600">Rate (₹)</span>
-              <span className="text-xs text-zinc-600 text-right">Amount</span>
+              <span className="text-xs text-[var(--ink-muted)]">Description</span>
+              <span className="text-xs text-[var(--ink-muted)]">Qty</span>
+              <span className="text-xs text-[var(--ink-muted)]">Rate (₹)</span>
+              <span className="text-xs text-[var(--ink-muted)] text-right">Amount</span>
             </div>
             {items.map((item) => {
               const amount = (parseFloat(item.qty) || 0) * (parseFloat(item.rate) || 0)
@@ -356,11 +356,11 @@ export default function InvoiceGenerator() {
                     onChange={(e) => updateItem(item.id, 'rate', e.target.value)}
                   />
                   <div className="flex items-center justify-between gap-1">
-                    <span className="text-xs text-zinc-300">₹{fmt(amount)}</span>
+                    <span className="text-xs text-[var(--ink-strong)]">₹{fmt(amount)}</span>
                     {items.length > 1 && (
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="text-zinc-600 hover:text-red-400 transition-colors"
+                        className="text-[var(--ink-muted)] hover:text-red-700 transition-colors"
                         aria-label="Remove item"
                       >
                         <Trash2 size={14} />
@@ -373,18 +373,18 @@ export default function InvoiceGenerator() {
           </div>
           <button
             onClick={addItem}
-            className="mt-3 flex items-center gap-1.5 text-xs text-amber-500 hover:text-amber-400 transition-colors"
+            className="mt-3 flex items-center gap-1.5 text-xs text-[var(--accent)] hover:text-[var(--accent)] transition-colors"
           >
             <Plus size={14} /> Add Item
           </button>
         </section>
 
         {/* Tax */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <h2 className="mb-4 text-sm font-semibold text-white">Tax</h2>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <h2 className="mb-4 text-sm font-semibold text-[var(--ink)]">Tax</h2>
           <div className="flex flex-wrap items-center gap-4">
             <div>
-              <label className="mb-1.5 block text-xs text-zinc-500">GST Rate</label>
+              <label className="mb-1.5 block text-xs text-[var(--ink-body)]">GST Rate</label>
               <div className="flex gap-1.5">
                 {GST_RATES.map((r) => (
                   <button
@@ -392,8 +392,8 @@ export default function InvoiceGenerator() {
                     onClick={() => setGstRate(r)}
                     className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
                       gstRate === r
-                        ? 'border-amber-500/50 bg-amber-500/10 text-amber-400'
-                        : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white'
+                        ? 'border-[var(--accent)] bg-[var(--accent)] text-[var(--accent-on)]'
+                        : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {r}%
@@ -402,7 +402,7 @@ export default function InvoiceGenerator() {
               </div>
             </div>
             <div>
-              <label className="mb-1.5 block text-xs text-zinc-500">Tax Type</label>
+              <label className="mb-1.5 block text-xs text-[var(--ink-body)]">Tax Type</label>
               <div className="flex gap-1.5">
                 {['CGST + SGST', 'IGST'].map((type) => (
                   <button
@@ -410,8 +410,8 @@ export default function InvoiceGenerator() {
                     onClick={() => setUseIgst(type === 'IGST')}
                     className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
                       (type === 'IGST') === useIgst
-                        ? 'border-amber-500/50 bg-amber-500/10 text-amber-400'
-                        : 'border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white'
+                        ? 'border-[var(--accent)] bg-[var(--accent)] text-[var(--accent-on)]'
+                        : 'border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]'
                     }`}
                   >
                     {type}
@@ -423,8 +423,8 @@ export default function InvoiceGenerator() {
         </section>
 
         {/* Notes */}
-        <section className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-          <h2 className="mb-4 text-sm font-semibold text-white">Notes (optional)</h2>
+        <section className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+          <h2 className="mb-4 text-sm font-semibold text-[var(--ink)]">Notes (optional)</h2>
           <textarea
             className={`${inputCls} resize-none`}
             rows={3}
@@ -437,7 +437,7 @@ export default function InvoiceGenerator() {
         <button
           onClick={handleDownload}
           disabled={downloading}
-          className="flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-amber-400 disabled:opacity-60"
+          className="flex items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-[var(--accent)] disabled:opacity-60"
         >
           <Download size={16} />
           {downloading ? 'Generating PDF…' : 'Download PDF'}
@@ -447,23 +447,23 @@ export default function InvoiceGenerator() {
       {/* ── RIGHT: Preview ── */}
       <div className="hidden lg:block">
         <div className="sticky top-6">
-          <p className="mb-3 text-xs text-zinc-600 uppercase tracking-widest">Preview</p>
+          <p className="mb-3 text-xs text-[var(--ink-muted)] uppercase tracking-widest">Preview</p>
           <div
             ref={previewRef}
-            className="rounded-xl border border-[#2a2a2a] bg-white p-8 text-[#111] shadow-2xl"
+            className="rounded-xl border border-[var(--line)] bg-white p-8 text-[var(--surface)] shadow-2xl"
             style={{ fontFamily: 'sans-serif', minHeight: 600 }}
           >
             {/* Invoice header */}
-            <div className="mb-6 flex items-start justify-between border-b-2 border-amber-400 pb-4">
+            <div className="mb-6 flex items-start justify-between border-b-2 border-[var(--accent)] pb-4">
               <div>
-                <h2 className="text-lg font-bold text-[#111]">{bizName || 'Your Business'}</h2>
+                <h2 className="text-lg font-bold text-[var(--surface)]">{bizName || 'Your Business'}</h2>
                 {bizAddress && <p className="mt-0.5 text-xs text-gray-500 whitespace-pre-line">{bizAddress}</p>}
                 {bizEmail && <p className="text-xs text-gray-500">{bizEmail}</p>}
                 {bizPhone && <p className="text-xs text-gray-500">{bizPhone}</p>}
                 {bizGst && <p className="text-xs text-gray-500">GSTIN: {bizGst}</p>}
               </div>
               <div className="text-right">
-                <p className="text-2xl font-black tracking-wide text-amber-500">INVOICE</p>
+                <p className="text-2xl font-black tracking-wide text-[var(--accent)]">INVOICE</p>
                 <p className="mt-1 text-xs text-gray-500">No: <span className="font-medium text-gray-700">{invoiceNumber}</span></p>
                 <p className="text-xs text-gray-500">Date: <span className="font-medium text-gray-700">{invoiceDate}</span></p>
                 <p className="text-xs text-gray-500">Due: <span className="font-medium text-gray-700">{dueDate}</span></p>
@@ -473,7 +473,7 @@ export default function InvoiceGenerator() {
             {/* Bill to */}
             <div className="mb-5 rounded-lg bg-gray-50 px-4 py-3">
               <p className="mb-1 text-[10px] uppercase tracking-wider text-gray-400">Bill To</p>
-              <p className="font-semibold text-[#111]">{clientName || 'Client Name'}</p>
+              <p className="font-semibold text-[var(--surface)]">{clientName || 'Client Name'}</p>
               {clientAddress && <p className="text-xs text-gray-500 whitespace-pre-line">{clientAddress}</p>}
               {clientGst && <p className="text-xs text-gray-500">GSTIN: {clientGst}</p>}
             </div>
@@ -481,7 +481,7 @@ export default function InvoiceGenerator() {
             {/* Items table */}
             <table className="w-full text-xs mb-4">
               <thead>
-                <tr className="bg-[#111] text-white">
+                <tr className="bg-[var(--surface)] text-[var(--ink)]">
                   <th className="py-2 px-2 text-left font-semibold">Description</th>
                   <th className="py-2 px-2 text-right font-semibold">Qty</th>
                   <th className="py-2 px-2 text-right font-semibold">Rate</th>
@@ -528,8 +528,8 @@ export default function InvoiceGenerator() {
                 </div>
               )}
               <div className="flex justify-between border-t border-gray-300 pt-2 mt-1">
-                <span className="font-bold text-[#111]">Total</span>
-                <span className="font-bold text-amber-600">₹{fmt(total)}</span>
+                <span className="font-bold text-[var(--surface)]">Total</span>
+                <span className="font-bold text-[var(--accent)]">₹{fmt(total)}</span>
               </div>
             </div>
 

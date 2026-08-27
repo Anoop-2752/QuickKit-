@@ -48,11 +48,11 @@ const FILLER_RULES = [
 ]
 
 const CATEGORY_COLORS = {
-  'Weak Opener':   { bg: 'bg-red-500/10',    text: 'text-red-400',    border: 'border-red-500/20' },
-  'Hedge Word':    { bg: 'bg-amber-500/10',  text: 'text-amber-400',  border: 'border-amber-500/20' },
-  'Filler':        { bg: 'bg-orange-500/10', text: 'text-orange-400', border: 'border-orange-500/20' },
-  'Cliché':        { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20' },
-  'Formal Filler': { bg: 'bg-blue-500/10',   text: 'text-blue-400',   border: 'border-blue-500/20' },
+  'Weak Opener':   { bg: 'bg-red-600',    text: 'text-red-700',    border: 'border-red-300' },
+  'Hedge Word':    { bg: 'bg-amber-600',  text: 'text-amber-700',  border: 'border-amber-300' },
+  'Filler':        { bg: 'bg-orange-600', text: 'text-orange-700', border: 'border-orange-300' },
+  'Cliché':        { bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]', text: 'text-[var(--accent)]', border: 'border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
+  'Formal Filler': { bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]',   text: 'text-[var(--accent)]',   border: 'border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
 }
 
 const SAMPLE = `Dear Hiring Manager,
@@ -82,9 +82,9 @@ export default function CoverLetterFillerChecker() {
 
   const scoreColor =
     score === null ? ''
-    : score >= 80 ? 'text-emerald-400'
-    : score >= 50 ? 'text-amber-400'
-    : 'text-red-400'
+    : score >= 80 ? 'text-emerald-700'
+    : score >= 50 ? 'text-amber-700'
+    : 'text-red-700'
 
   const grouped = findings.reduce((acc, f) => {
     acc[f.category] = acc[f.category] || []
@@ -95,19 +95,19 @@ export default function CoverLetterFillerChecker() {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
-        <p className="text-xs text-zinc-600 leading-relaxed max-w-lg">
+        <p className="text-xs text-[var(--ink-muted)] leading-relaxed max-w-lg">
           Paste your cover letter below. We'll flag weak phrases, clichés, and filler words that hurt your chances.
         </p>
         <div className="flex shrink-0 gap-3">
           <button
             onClick={() => { setText(SAMPLE) }}
-            className="text-xs text-zinc-600 transition-colors hover:text-indigo-400"
+            className="text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--accent)]"
           >
             Load sample
           </button>
           <button
             onClick={() => setText('')}
-            className="text-xs text-zinc-600 transition-colors hover:text-red-400"
+            className="text-xs text-[var(--ink-muted)] transition-colors hover:text-red-700"
           >
             Clear
           </button>
@@ -119,25 +119,25 @@ export default function CoverLetterFillerChecker() {
         onChange={(e) => setText(e.target.value)}
         placeholder="Paste your cover letter here…"
         spellCheck={false}
-        className="h-64 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+        className="h-64 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
       />
 
       {text.trim() && (
         <div className="flex flex-col gap-4">
           {/* Score */}
-          <div className="flex items-center gap-4 rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+          <div className="flex items-center gap-4 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
             <div className="flex flex-col items-center min-w-[4rem]">
               <span className={`text-3xl font-bold ${scoreColor}`}>{score}</span>
-              <span className="text-xs text-zinc-600">quality score</span>
+              <span className="text-xs text-[var(--ink-muted)]">quality score</span>
             </div>
-            <div className="h-10 w-px bg-[#2a2a2a]" />
+            <div className="h-10 w-px bg-[var(--line)]" />
             <div>
               {findings.length === 0 ? (
-                <p className="text-sm font-medium text-emerald-400">Excellent! No weak phrases found.</p>
+                <p className="text-sm font-medium text-emerald-700">Excellent! No weak phrases found.</p>
               ) : (
                 <>
-                  <p className="text-sm font-medium text-white">{findings.length} issue{findings.length !== 1 ? 's' : ''} found</p>
-                  <p className="text-xs text-zinc-600 mt-0.5">Fix these to strengthen your cover letter.</p>
+                  <p className="text-sm font-medium text-[var(--ink)]">{findings.length} issue{findings.length !== 1 ? 's' : ''} found</p>
+                  <p className="text-xs text-[var(--ink-muted)] mt-0.5">Fix these to strengthen your cover letter.</p>
                 </>
               )}
             </div>
@@ -147,7 +147,7 @@ export default function CoverLetterFillerChecker() {
           {Object.entries(grouped).map(([category, items]) => {
             const colors = CATEGORY_COLORS[category] || CATEGORY_COLORS['Filler']
             return (
-              <div key={category} className={`rounded-xl border p-4 ${colors.border} bg-[#141414]`}>
+              <div key={category} className={`rounded-xl border p-4 ${colors.border} bg-[var(--surface-alt)]`}>
                 <h3 className={`mb-3 text-xs font-semibold uppercase tracking-widest ${colors.text}`}>
                   {category} ({items.length})
                 </h3>
@@ -159,7 +159,7 @@ export default function CoverLetterFillerChecker() {
                           "{item.phrase}"
                         </span>
                       </div>
-                      <p className="text-xs text-zinc-500 pl-1">{item.tip}</p>
+                      <p className="text-xs text-[var(--ink-body)] pl-1">{item.tip}</p>
                     </div>
                   ))}
                 </div>
@@ -168,9 +168,9 @@ export default function CoverLetterFillerChecker() {
           })}
 
           {findings.length === 0 && (
-            <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-center">
-              <p className="text-sm text-emerald-400 font-medium">Your cover letter is clean!</p>
-              <p className="text-xs text-zinc-600 mt-1">No weak phrases, clichés, or filler words detected.</p>
+            <div className="rounded-xl border border-emerald-300 bg-emerald-600 p-4 text-center">
+              <p className="text-sm text-emerald-700 font-medium">Your cover letter is clean!</p>
+              <p className="text-xs text-[var(--ink-muted)] mt-1">No weak phrases, clichés, or filler words detected.</p>
             </div>
           )}
         </div>

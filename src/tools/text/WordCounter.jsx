@@ -33,10 +33,10 @@ export default function WordCounter() {
         {stats.map(({ label, value }) => (
           <div
             key={label}
-            className="flex flex-col items-center justify-center rounded-xl border border-[#2a2a2a] bg-[#141414] px-3 py-4 text-center"
+            className="flex flex-col items-center justify-center rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-3 py-4 text-center"
           >
-            <span className="text-2xl font-bold tracking-tight text-white">{value}</span>
-            <span className="mt-1 text-xs text-zinc-500">{label}</span>
+            <span className="text-2xl font-bold tracking-tight text-[var(--ink)]">{value}</span>
+            <span className="mt-1 text-xs text-[var(--ink-body)]">{label}</span>
           </div>
         ))}
       </div>
@@ -44,11 +44,11 @@ export default function WordCounter() {
       {/* ── Textarea ───────────────────────────────────────────────────────── */}
       <div className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Text</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Text</label>
           {text && (
             <button
               onClick={() => setText('')}
-              className="text-xs text-zinc-600 transition-colors hover:text-red-400"
+              className="text-xs text-[var(--ink-muted)] transition-colors hover:text-red-700"
             >
               Clear
             </button>
@@ -59,7 +59,7 @@ export default function WordCounter() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Paste or type your text here — stats update live as you type…"
-          className="h-72 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30 lg:h-96"
+          className="h-72 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm leading-relaxed text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)] lg:h-96"
         />
       </div>
 

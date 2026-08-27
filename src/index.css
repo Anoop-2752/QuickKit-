@@ -1,12 +1,56 @@
 @import "tailwindcss";
 
+/* ── Design tokens ────────────────────────────────────────────────────────────
+   The whole palette lives here. Components reference these via Tailwind
+   arbitrary values (bg-[var(--surface)]), so re-theming the site — or adding a
+   dark mode later — is a change to this block and nothing else.
+   ------------------------------------------------------------------------- */
+:root {
+  /* Surfaces */
+  --page:          #fbfaf7;   /* warm off-white page background */
+  --surface:       #ffffff;   /* cards, panels */
+  --surface-sunk:  #fbfaf7;   /* inputs, code blocks, inset areas */
+  --surface-alt:   #f5f3ed;   /* footer, banded sections */
+  --surface-tint:  #f0eee7;   /* icon wells, quiet chips */
+
+  /* Borders, light to heavy */
+  --line-faint:    #f0eee7;
+  --line-subtle:   #e8e5dd;
+  --line:          #ddd9cf;
+  --line-strong:   #ccc7bb;
+
+  /* Ink */
+  --ink:           #14140f;   /* headings */
+  --ink-strong:    #3d3a33;   /* emphasised body */
+  --ink-body:      #5c584e;   /* body copy */
+  --ink-muted:     #8a857a;   /* secondary labels */
+  --ink-faint:     #a8a296;   /* placeholders, meta */
+
+  /* Accent */
+  --accent:        #1c5d4a;   /* deep green — the brand colour */
+  --accent-hover:  #123c30;
+  --accent-soft:   #f0eee7;   /* accent-tinted well */
+  --accent-on:     #f7f5ef;   /* text on accent */
+  --accent-weak:   #c3d3cb;   /* charts, secondary fills */
+
+  /* Type */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system,
+               "Segoe UI", sans-serif;
+}
+
 /* ── Base ─────────────────────────────────────────────────────────────────── */
 body {
-  background-color: #0a0a0a;
-  /* Subtle dot grid */
-  background-image: radial-gradient(circle, #ffffff07 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-color: var(--page);
+  color: var(--ink-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3 { text-wrap: pretty; }
+
+/* Serif display face for page and section headings */
+.font-display { font-family: var(--font-display); font-weight: 400; }
 
 /* Skip-to-main accessibility link */
 .skip-link {
@@ -15,8 +59,8 @@ body {
   top: 0;
   z-index: 9999;
   padding: 0.5rem 1rem;
-  background: #22c55e;
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-on);
   font-size: 0.875rem;
   font-weight: 600;
   border-radius: 0 0 8px 0;
@@ -35,43 +79,43 @@ body {
 }
 
 /* ── Markdown preview typography ─────────────────────────────────────────── */
-.md-preview { color: #d4d4d8; line-height: 1.75; }
+.md-preview { color: var(--ink-body); line-height: 1.75; }
 
 .md-preview h1,.md-preview h2,.md-preview h3,
 .md-preview h4,.md-preview h5,.md-preview h6 {
-  color: #fff; font-weight: 700; line-height: 1.3; margin-top: 1.5em; margin-bottom: 0.5em;
+  color: var(--ink); font-weight: 700; line-height: 1.3; margin-top: 1.5em; margin-bottom: 0.5em;
 }
-.md-preview h1 { font-size: 1.875rem; border-bottom: 1px solid #2a2a2a; padding-bottom: 0.4em; }
-.md-preview h2 { font-size: 1.5rem;   border-bottom: 1px solid #1e1e1e; padding-bottom: 0.3em; }
+.md-preview h1 { font-size: 1.875rem; border-bottom: 1px solid var(--line); padding-bottom: 0.4em; }
+.md-preview h2 { font-size: 1.5rem;   border-bottom: 1px solid var(--line-subtle); padding-bottom: 0.3em; }
 .md-preview h3 { font-size: 1.25rem; }
 .md-preview h4 { font-size: 1.1rem;  }
-.md-preview h5,.md-preview h6 { font-size: 1rem; color: #a1a1aa; }
+.md-preview h5,.md-preview h6 { font-size: 1rem; color: var(--ink-muted); }
 
 .md-preview p  { margin-bottom: 1em; }
 
-.md-preview a  { color: #4ade80; text-decoration: underline; }
-.md-preview a:hover { color: #86efac; }
+.md-preview a  { color: var(--accent); text-decoration: underline; }
+.md-preview a:hover { color: var(--accent-hover); }
 
-.md-preview strong { color: #fff; font-weight: 600; }
+.md-preview strong { color: var(--ink); font-weight: 600; }
 .md-preview em     { font-style: italic; }
 
 .md-preview code {
-  background: #1e1e1e; border: 1px solid #2a2a2a;
+  background: var(--surface-tint); border: 1px solid var(--line-subtle);
   border-radius: 4px; padding: 0.15em 0.4em;
-  font-family: ui-monospace, monospace; font-size: 0.85em; color: #e2e8f0;
+  font-family: ui-monospace, monospace; font-size: 0.85em; color: var(--ink-strong);
 }
 .md-preview pre {
-  background: #0d0d0d; border: 1px solid #2a2a2a; border-radius: 12px;
+  background: var(--surface-alt); border: 1px solid var(--line-subtle); border-radius: 12px;
   padding: 1rem; overflow-x: auto; margin-bottom: 1em;
 }
 .md-preview pre code {
   background: none; border: none; padding: 0;
-  font-size: 0.875rem; color: #e2e8f0;
+  font-size: 0.875rem; color: var(--ink-strong);
 }
 
 .md-preview blockquote {
-  border-left: 3px solid #22c55e; margin: 0 0 1em 0;
-  padding: 0.5em 0 0.5em 1em; color: #a1a1aa; background: #141414;
+  border-left: 3px solid var(--accent); margin: 0 0 1em 0;
+  padding: 0.5em 0 0.5em 1em; color: var(--ink-body); background: var(--surface-alt);
   border-radius: 0 8px 8px 0;
 }
 .md-preview blockquote p { margin: 0; }
@@ -82,12 +126,12 @@ body {
 .md-preview li > ul, .md-preview li > ol { margin-bottom: 0; }
 
 .md-preview hr {
-  border: none; border-top: 1px solid #2a2a2a; margin: 1.5em 0;
+  border: none; border-top: 1px solid var(--line-subtle); margin: 1.5em 0;
 }
 
 .md-preview table { width: 100%; border-collapse: collapse; margin-bottom: 1em; font-size: 0.9em; }
-.md-preview th { background: #1a1a1a; color: #fff; font-weight: 600; padding: 0.6em 1em; text-align: left; border: 1px solid #2a2a2a; }
-.md-preview td { padding: 0.6em 1em; border: 1px solid #2a2a2a; }
-.md-preview tr:nth-child(even) { background: #141414; }
+.md-preview th { background: var(--surface-tint); color: var(--ink); font-weight: 600; padding: 0.6em 1em; text-align: left; border: 1px solid var(--line-subtle); }
+.md-preview td { padding: 0.6em 1em; border: 1px solid var(--line-subtle); }
+.md-preview tr:nth-child(even) { background: var(--surface-alt); }
 
 .md-preview img { max-width: 100%; border-radius: 8px; margin: 0.5em 0; }

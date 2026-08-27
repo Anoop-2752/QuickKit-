@@ -83,8 +83,8 @@ export default function DiffChecker() {
               className={[
                 'rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
                 mode === v
-                  ? 'bg-indigo-600 text-white'
-                  : 'border border-[#2a2a2a] bg-[#1a1a1a] text-zinc-400 hover:text-white',
+                  ? 'bg-[var(--accent)] text-[var(--ink)]'
+                  : 'border border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-body)] hover:text-[var(--ink)]',
               ].join(' ')}
             >
               {label}
@@ -95,13 +95,13 @@ export default function DiffChecker() {
         <div className="flex items-center gap-3">
           <button
             onClick={loadSample}
-            className="text-xs text-zinc-600 transition-colors hover:text-indigo-400"
+            className="text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--accent)]"
           >
             Load sample
           </button>
           <button
             onClick={() => { setOriginal(''); setModified(''); setDiff(null) }}
-            className="text-xs text-zinc-600 transition-colors hover:text-red-400"
+            className="text-xs text-[var(--ink-muted)] transition-colors hover:text-red-700"
           >
             Clear
           </button>
@@ -111,24 +111,24 @@ export default function DiffChecker() {
       {/* ── Input panels ────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">Original</span>
+          <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Original</span>
           <textarea
             value={original}
             onChange={(e) => { setOriginal(e.target.value); setDiff(null) }}
             placeholder="Paste original text here…"
             spellCheck={false}
-            className="h-52 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 font-mono text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+            className="h-52 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 font-mono text-sm leading-relaxed text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">Modified</span>
+          <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Modified</span>
           <textarea
             value={modified}
             onChange={(e) => { setModified(e.target.value); setDiff(null) }}
             placeholder="Paste modified text here…"
             spellCheck={false}
-            className="h-52 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 font-mono text-sm leading-relaxed text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+            className="h-52 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 font-mono text-sm leading-relaxed text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
           />
         </div>
       </div>
@@ -137,7 +137,7 @@ export default function DiffChecker() {
       <button
         onClick={handleCompare}
         disabled={!original && !modified}
-        className="self-start rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-40"
+        className="self-start rounded-xl bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-40"
       >
         Compare
       </button>
@@ -149,18 +149,18 @@ export default function DiffChecker() {
           {/* Stats bar */}
           <div className="flex flex-wrap items-center gap-3">
             {identical ? (
-              <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+              <span className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-emerald-700">
                 Files are identical
               </span>
             ) : (
               <>
-                <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+                <span className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-medium text-emerald-700">
                   +{additions} addition{additions !== 1 ? 's' : ''}
                 </span>
-                <span className="rounded-full bg-red-500/10 px-3 py-1 text-xs font-medium text-red-400">
+                <span className="rounded-full bg-red-600 px-3 py-1 text-xs font-medium text-red-700">
                   -{deletions} deletion{deletions !== 1 ? 's' : ''}
                 </span>
-                <span className="rounded-full bg-zinc-800 px-3 py-1 text-xs font-medium text-zinc-500">
+                <span className="rounded-full bg-[var(--surface-tint)] px-3 py-1 text-xs font-medium text-[var(--ink-body)]">
                   {unchanged} unchanged
                 </span>
               </>
@@ -168,14 +168,14 @@ export default function DiffChecker() {
 
             <button
               onClick={handleCopy}
-              className="ml-auto rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs font-medium text-zinc-400 transition-all hover:border-[#3a3a3a] hover:text-white"
+              className="ml-auto rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs font-medium text-[var(--ink-body)] transition-all hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
             >
               {copied ? '✓ Copied!' : 'Copy diff'}
             </button>
           </div>
 
           {/* Diff output */}
-          <div className="overflow-auto rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] p-4 font-mono text-sm leading-relaxed">
+          <div className="overflow-auto rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] p-4 font-mono text-sm leading-relaxed">
             {mode === 'lines' ? (
               <LineDiff parts={diffResult} />
             ) : (
@@ -203,20 +203,20 @@ function LineDiff({ parts }) {
             key={`${pi}-${li}`}
             className={[
               'flex gap-3 px-2 py-0.5',
-              part.added   ? 'bg-emerald-500/10' :
-              part.removed ? 'bg-red-500/10' : '',
+              part.added   ? 'bg-emerald-600' :
+              part.removed ? 'bg-red-600' : '',
             ].join(' ')}
           >
             <span className={[
               'select-none w-3 shrink-0',
-              part.added   ? 'text-emerald-500' :
-              part.removed ? 'text-red-500' : 'text-zinc-700',
+              part.added   ? 'text-emerald-700' :
+              part.removed ? 'text-red-700' : 'text-[var(--ink-faint)]',
             ].join(' ')}>
               {part.added ? '+' : part.removed ? '-' : ' '}
             </span>
             <span className={
-              part.added   ? 'text-emerald-300' :
-              part.removed ? 'text-red-300' : 'text-zinc-400'
+              part.added   ? 'text-emerald-700' :
+              part.removed ? 'text-red-700' : 'text-[var(--ink-body)]'
             }>
               {line || '\u00A0'}
             </span>
@@ -237,10 +237,10 @@ function WordDiff({ parts }) {
           key={i}
           className={
             part.added
-              ? 'rounded bg-emerald-500/20 text-emerald-300'
+              ? 'rounded bg-emerald-600 text-emerald-700'
               : part.removed
-              ? 'rounded bg-red-500/20 text-red-300 line-through'
-              : 'text-zinc-400'
+              ? 'rounded bg-red-600 text-red-700 line-through'
+              : 'text-[var(--ink-body)]'
           }
         >
           {part.value}

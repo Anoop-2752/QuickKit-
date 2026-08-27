@@ -4,8 +4,8 @@ import SEO from '../components/SEO'
 function Section({ title, children }) {
   return (
     <section className="mb-10">
-      <h2 className="mb-3 text-lg font-semibold text-green-400">{title}</h2>
-      <div className="space-y-3 text-sm leading-relaxed text-zinc-400">{children}</div>
+      <h2 className="mb-3 text-lg font-semibold text-[var(--accent)]">{title}</h2>
+      <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-body)]">{children}</div>
     </section>
   )
 }
@@ -21,13 +21,13 @@ export default function PrivacyPolicy() {
       />
       <button
         onClick={() => navigate(-1)}
-        className="mb-8 text-xs text-zinc-600 transition-colors hover:text-zinc-400"
+        className="mb-8 text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--ink-body)]"
       >
         ← Back
       </button>
 
-      <h1 className="mb-2 text-4xl font-bold tracking-tight text-white">Privacy Policy</h1>
-      <p className="mb-12 text-sm text-zinc-600">Last updated: January 2025</p>
+      <h1 className="mb-2 text-4xl font-bold tracking-tight text-[var(--ink)]">Privacy Policy</h1>
+      <p className="mb-12 text-sm text-[var(--ink-muted)]">Last updated: January 2025</p>
 
       <Section title="Introduction">
         <p>
@@ -43,26 +43,26 @@ export default function PrivacyPolicy() {
 
       <Section title="Information We Collect">
         <p>
-          <strong className="font-medium text-zinc-300">Tool input data:</strong> We do not
+          <strong className="font-medium text-[var(--ink-strong)]">Tool input data:</strong> We do not
           collect, store, or transmit any data you enter into our tools. All processing
           happens client-side in your browser — nothing is sent to our servers.
         </p>
         <p>
-          <strong className="font-medium text-zinc-300">Advertising data:</strong> We use
+          <strong className="font-medium text-[var(--ink-strong)]">Advertising data:</strong> We use
           Google AdSense to display advertisements. Google may collect cookies and usage
           data to serve personalised ads. This is governed by{' '}
           <a
             href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-400 underline hover:text-green-300"
+            className="text-[var(--accent)] underline hover:text-[var(--accent)]"
           >
             Google's Privacy Policy
           </a>
           .
         </p>
         <p>
-          <strong className="font-medium text-zinc-300">Analytics:</strong> We use basic
+          <strong className="font-medium text-[var(--ink-strong)]">Analytics:</strong> We use basic
           analytics (such as page view counts) to understand traffic patterns and improve
           the site. This data is aggregated and not linked to individual users.
         </p>
@@ -79,12 +79,12 @@ export default function PrivacyPolicy() {
             href="https://www.google.com/settings/ads"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-400 underline hover:text-green-300"
+            className="text-[var(--accent)] underline hover:text-[var(--accent)]"
           >
             Google's Ad Settings
           </a>
           . You can also manage cookies in your browser settings. See our{' '}
-          <a href="/cookies" className="text-green-400 underline hover:text-green-300">
+          <a href="/cookies" className="text-[var(--accent)] underline hover:text-[var(--accent)]">
             Cookie Policy
           </a>{' '}
           for full details.
@@ -93,28 +93,28 @@ export default function PrivacyPolicy() {
 
       <Section title="Third-Party Services">
         <p>QuickKit uses the following third-party services:</p>
-        <ul className="ml-4 list-disc space-y-1.5 marker:text-zinc-600">
+        <ul className="ml-4 list-disc space-y-1.5 marker:text-[var(--ink-muted)]">
           <li>
-            <strong className="font-medium text-zinc-300">Google AdSense</strong> — advertising
+            <strong className="font-medium text-[var(--ink-strong)]">Google AdSense</strong> — advertising
             platform. Subject to{' '}
             <a
               href="https://policies.google.com/privacy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-400 underline hover:text-green-300"
+              className="text-[var(--accent)] underline hover:text-[var(--accent)]"
             >
               Google's Privacy Policy
             </a>
             .
           </li>
           <li>
-            <strong className="font-medium text-zinc-300">Vercel</strong> — hosting provider.
+            <strong className="font-medium text-[var(--ink-strong)]">Vercel</strong> — hosting provider.
             Subject to{' '}
             <a
               href="https://vercel.com/legal/privacy-policy"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-400 underline hover:text-green-300"
+              className="text-[var(--accent)] underline hover:text-[var(--accent)]"
             >
               Vercel's Privacy Policy
             </a>
@@ -154,7 +154,7 @@ export default function PrivacyPolicy() {
           For privacy concerns or questions, contact us at{' '}
           <a
             href="mailto:helloquickkit@gmail.com"
-            className="text-green-400 underline hover:text-green-300"
+            className="text-[var(--accent)] underline hover:text-[var(--accent)]"
           >
             helloquickkit@gmail.com
           </a>

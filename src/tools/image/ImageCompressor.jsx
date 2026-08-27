@@ -75,13 +75,13 @@ export default function ImageCompressor() {
     <div className="flex flex-col gap-6">
       {/* Drop zone */}
       <div
-        className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[#2a2a2a] bg-[#141414] py-12 transition-colors hover:border-violet-500/40"
+        className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[var(--line)] bg-[var(--surface-alt)] py-12 transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)]"
         onClick={() => inputRef.current?.click()}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
       >
-        <p className="text-sm text-zinc-400">Drop an image here or <span className="text-violet-400">browse</span></p>
-        <p className="text-xs text-zinc-600">JPEG · PNG · WebP · GIF</p>
+        <p className="text-sm text-[var(--ink-body)]">Drop an image here or <span className="text-[var(--accent)]">browse</span></p>
+        <p className="text-xs text-[var(--ink-muted)]">JPEG · PNG · WebP · GIF</p>
         <input
           ref={inputRef}
           type="file"
@@ -95,28 +95,28 @@ export default function ImageCompressor() {
         <>
           {/* Preview row */}
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-              <p className="mb-2 text-xs text-zinc-500">Original — {formatBytes(original.size)}</p>
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+              <p className="mb-2 text-xs text-[var(--ink-body)]">Original — {formatBytes(original.size)}</p>
               <img src={original.url} alt="original" className="max-h-48 w-full rounded-lg object-contain" />
             </div>
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-              <p className="mb-2 text-xs text-zinc-500">
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+              <p className="mb-2 text-xs text-[var(--ink-body)]">
                 {result
                   ? `Compressed — ${formatBytes(result.size)} (${savings}% smaller)`
                   : 'Compressed — press Compress'}
               </p>
               {result
                 ? <img src={result.url} alt="compressed" className="max-h-48 w-full rounded-lg object-contain" />
-                : <div className="flex h-48 items-center justify-center rounded-lg bg-[#1a1a1a] text-xs text-zinc-600">Preview here</div>
+                : <div className="flex h-48 items-center justify-center rounded-lg bg-[var(--surface-tint)] text-xs text-[var(--ink-muted)]">Preview here</div>
               }
             </div>
           </div>
 
           {/* Quality slider */}
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
+          <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
             <div className="mb-3 flex items-center justify-between">
-              <label className="text-sm text-zinc-400">Quality</label>
-              <span className="text-sm font-semibold text-white">{quality}%</span>
+              <label className="text-sm text-[var(--ink-body)]">Quality</label>
+              <span className="text-sm font-semibold text-[var(--ink)]">{quality}%</span>
             </div>
             <input
               type="range"
@@ -127,7 +127,7 @@ export default function ImageCompressor() {
               onChange={(e) => setQuality(Number(e.target.value))}
               className="w-full accent-violet-500"
             />
-            <div className="mt-1 flex justify-between text-xs text-zinc-600">
+            <div className="mt-1 flex justify-between text-xs text-[var(--ink-muted)]">
               <span>Smaller file</span>
               <span>Better quality</span>
             </div>
@@ -138,14 +138,14 @@ export default function ImageCompressor() {
             <button
               onClick={handleCompress}
               disabled={loading}
-              className="flex-1 rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-violet-500 disabled:opacity-50"
+              className="flex-1 rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)] disabled:opacity-50"
             >
               {loading ? 'Compressing…' : 'Compress'}
             </button>
             {result && (
               <button
                 onClick={handleDownload}
-                className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2.5 text-sm text-zinc-300 transition-colors hover:border-[#3a3a3a] hover:text-white"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2.5 text-sm text-[var(--ink-strong)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
               >
                 Download
               </button>

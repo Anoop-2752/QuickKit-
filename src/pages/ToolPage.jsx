@@ -144,13 +144,13 @@ function NotFound({ onBack }) {
     <div className="mx-auto max-w-7xl px-6 py-24 text-center">
       <SEO title="Tool Not Found" noindex />
       <p className="mb-2 text-4xl">🔍</p>
-      <h1 className="mb-3 text-2xl font-semibold text-white">Tool not found</h1>
-      <p className="mb-8 text-sm text-zinc-500">
+      <h1 className="mb-3 text-2xl font-semibold text-[var(--ink)]">Tool not found</h1>
+      <p className="mb-8 text-sm text-[var(--ink-body)]">
         The tool you're looking for doesn't exist or may have moved.
       </p>
       <button
         onClick={onBack}
-        className="inline-flex items-center gap-2 rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-[#3a3a3a] hover:text-white"
+        className="inline-flex items-center gap-2 rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2 text-sm text-[var(--ink-strong)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
       >
         ← Back
       </button>
@@ -160,12 +160,12 @@ function NotFound({ onBack }) {
 
 function ComingSoon({ toolName }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-[#2a2a2a] bg-[#141414] py-20 text-center">
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-800">
-        <Construction size={20} className="text-zinc-500" />
+    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-[var(--line)] bg-[var(--surface-alt)] py-20 text-center">
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--surface-tint)]">
+        <Construction size={20} className="text-[var(--ink-body)]" />
       </div>
-      <h3 className="mb-2 text-base font-semibold text-white">{toolName} — Coming Soon</h3>
-      <p className="text-sm text-zinc-600">This tool is being built. Check back soon.</p>
+      <h3 className="mb-2 text-base font-semibold text-[var(--ink)]">{toolName} — Coming Soon</h3>
+      <p className="text-sm text-[var(--ink-muted)]">This tool is being built. Check back soon.</p>
     </div>
   )
 }
@@ -173,8 +173,8 @@ function ComingSoon({ toolName }) {
 function ToolSkeleton() {
   return (
     <div className="flex flex-col gap-4 animate-pulse">
-      <div className="h-40 rounded-xl bg-[#1a1a1a]" />
-      <div className="h-8 w-48 rounded-lg bg-[#1a1a1a]" />
+      <div className="h-40 rounded-xl bg-[var(--surface-tint)]" />
+      <div className="h-8 w-48 rounded-lg bg-[var(--surface-tint)]" />
     </div>
   )
 }
@@ -243,16 +243,16 @@ export default function ToolPage() {
       <JsonLd tool={tool} category={category} seoData={seoData} />
 
       {/* Breadcrumb */}
-      <nav className="mb-6 flex items-center gap-1.5 text-xs text-zinc-600">
-        <Link to="/" className="transition-colors hover:text-zinc-300">
+      <nav className="mb-6 flex items-center gap-1.5 text-xs text-[var(--ink-muted)]">
+        <Link to="/" className="transition-colors hover:text-[var(--ink-strong)]">
           Home
         </Link>
-        <ChevronRight size={11} className="text-zinc-700" />
-        <Link to={`/${category.slug}`} className="transition-colors hover:text-zinc-300">
+        <ChevronRight size={11} className="text-[var(--ink-faint)]" />
+        <Link to={`/${category.slug}`} className="transition-colors hover:text-[var(--ink-strong)]">
           {category.name}
         </Link>
-        <ChevronRight size={11} className="text-zinc-700" />
-        <span className="text-zinc-400">{tool.name}</span>
+        <ChevronRight size={11} className="text-[var(--ink-faint)]" />
+        <span className="text-[var(--ink-body)]">{tool.name}</span>
       </nav>
 
       {/* Tool header */}
@@ -260,9 +260,9 @@ export default function ToolPage() {
         <div className={`mb-4 flex h-10 w-10 items-center justify-center rounded-xl ${colors.iconBg}`}>
           <ToolIcon name={tool.icon} className={colors.iconColor} />
         </div>
-        <h1 className="mb-1.5 text-3xl font-bold tracking-tight text-white">{tool.name}</h1>
-        <div className="mb-6 h-px bg-[#1a1a1a]" />
-        <p className="text-sm text-zinc-500">{tool.description}</p>
+        <h1 className="font-display mb-1.5 text-[42px] leading-[1.1] tracking-tight text-[var(--ink)]">{tool.name}</h1>
+        <div className="mb-6 h-px bg-[var(--surface-tint)]" />
+        <p className="text-sm text-[var(--ink-body)]">{tool.description}</p>
       </header>
 
       {/* Tool content — the interactive tool mounts after hydration, so the

@@ -146,17 +146,17 @@ function MetaRow({ label, value }) {
   if (!value && value !== 0) return null
   return (
     <div className="flex items-start justify-between gap-4 py-2.5">
-      <span className="flex-shrink-0 text-xs text-zinc-500">{label}</span>
-      <span className="text-right font-mono text-xs text-zinc-300">{value}</span>
+      <span className="flex-shrink-0 text-xs text-[var(--ink-body)]">{label}</span>
+      <span className="text-right font-mono text-xs text-[var(--ink-strong)]">{value}</span>
     </div>
   )
 }
 
 function Section({ title, children }) {
   return (
-    <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
-      <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-zinc-600">{title}</p>
-      <div className="divide-y divide-[#1e1e1e]">{children}</div>
+    <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
+      <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-[var(--ink-muted)]">{title}</p>
+      <div className="divide-y divide-[var(--line-subtle)]">{children}</div>
     </div>
   )
 }
@@ -213,24 +213,24 @@ export default function ImageMetadataViewer() {
     <div className="flex flex-col gap-6">
       {/* Drop zone */}
       <div
-        className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[#2a2a2a] bg-[#141414] py-12 transition-colors hover:border-violet-500/40"
+        className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-[var(--line)] bg-[var(--surface-alt)] py-12 transition-colors hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)]"
         onClick={() => inputRef.current?.click()}
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
       >
-        <p className="text-sm text-zinc-400">Drop an image here or <span className="text-violet-400">browse</span></p>
-        <p className="text-xs text-zinc-600">JPEG · PNG · WebP · GIF · BMP</p>
+        <p className="text-sm text-[var(--ink-body)]">Drop an image here or <span className="text-[var(--accent)]">browse</span></p>
+        <p className="text-xs text-[var(--ink-muted)]">JPEG · PNG · WebP · GIF · BMP</p>
         <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) => handleFile(e.target.files[0])} />
       </div>
 
       {meta && (
         <>
           {/* Preview */}
-          <div className="flex items-center gap-4 rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
+          <div className="flex items-center gap-4 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
             <img src={preview} alt="preview" className="h-16 w-16 rounded-lg object-cover" />
             <div>
-              <p className="text-sm font-medium text-white">{meta.name}</p>
-              <p className="text-xs text-zinc-500">{meta.type}</p>
+              <p className="text-sm font-medium text-[var(--ink)]">{meta.name}</p>
+              <p className="text-xs text-[var(--ink-body)]">{meta.type}</p>
             </div>
           </div>
 
@@ -266,11 +266,11 @@ export default function ImageMetadataViewer() {
               <MetaRow label="Y Resolution"   value={meta.exif.YResolution ? `${meta.exif.YResolution} dpi` : null} />
             </Section>
           ) : meta.type === 'image/jpeg' || meta.type === 'image/jpg' ? (
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5 text-center text-xs text-zinc-600">
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5 text-center text-xs text-[var(--ink-muted)]">
               No EXIF data found in this JPEG
             </div>
           ) : (
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5 text-center text-xs text-zinc-600">
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5 text-center text-xs text-[var(--ink-muted)]">
               EXIF metadata is only available in JPEG files
             </div>
           )}

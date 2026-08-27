@@ -67,14 +67,14 @@ export default function CookieBanner() {
     <div
       role="region"
       aria-label="Cookie consent"
-      className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#2a2a2a] bg-[#111111]/95 backdrop-blur-md"
+      className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--line)] bg-[var(--surface)]/95 backdrop-blur-md"
     >
       <div className="mx-auto flex max-w-7xl flex-col items-start gap-4 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm leading-relaxed text-zinc-400">
+        <p className="text-sm leading-relaxed text-[var(--ink-body)]">
           We use cookies for ads and analytics. You can accept or decline — see our{' '}
           <Link
             to="/cookies"
-            className="text-green-400 underline-offset-2 hover:underline"
+            className="text-[var(--accent)] underline-offset-2 hover:underline"
           >
             cookie policy
           </Link>
@@ -83,13 +83,13 @@ export default function CookieBanner() {
         <div className="flex shrink-0 items-center gap-3">
           <button
             onClick={() => choose('rejected')}
-            className="rounded-lg border border-[#3a3a3a] px-4 py-1.5 text-xs font-semibold text-zinc-400 transition-colors hover:border-[#4a4a4a] hover:text-zinc-200"
+            className="rounded-lg border border-[var(--line-strong)] px-4 py-1.5 text-xs font-semibold text-[var(--ink-body)] transition-colors hover:border-[#4a4a4a] hover:text-[var(--ink-strong)]"
           >
             Decline
           </button>
           <button
             onClick={() => choose('accepted')}
-            className="rounded-lg bg-green-600 px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-green-500"
+            className="rounded-lg bg-[var(--accent)] px-4 py-1.5 text-xs font-semibold text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
           >
             Accept
           </button>

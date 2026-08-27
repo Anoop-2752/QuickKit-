@@ -29,12 +29,12 @@ function relativeTime(date) {
 
 function OutRow({ label, value, copiedKey, rowKey, onCopy }) {
   return (
-    <div className="group flex items-center gap-3 border-b border-[#1a1a1a] py-2.5 last:border-0">
-      <span className="w-24 shrink-0 text-xs text-zinc-500">{label}</span>
-      <span className="flex-1 truncate font-mono text-sm text-zinc-200">{value}</span>
+    <div className="group flex items-center gap-3 border-b border-[var(--surface-tint)] py-2.5 last:border-0">
+      <span className="w-24 shrink-0 text-xs text-[var(--ink-body)]">{label}</span>
+      <span className="flex-1 truncate font-mono text-sm text-[var(--ink-strong)]">{value}</span>
       <button
         onClick={() => onCopy(value, rowKey)}
-        className="shrink-0 rounded px-2 py-0.5 text-xs text-zinc-600 opacity-0 transition-all group-hover:opacity-100 hover:text-zinc-300"
+        className="shrink-0 rounded px-2 py-0.5 text-xs text-[var(--ink-muted)] opacity-0 transition-all group-hover:opacity-100 hover:text-[var(--ink-strong)]"
       >
         {copiedKey === rowKey ? '✓' : 'Copy'}
       </button>
@@ -121,23 +121,23 @@ export default function TimestampConverter() {
     <div className="flex flex-col gap-6">
 
       {/* ── Live current time ───────────────────────────────────────────────── */}
-      <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5">
+      <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-5">
         <div className="mb-4 flex items-center justify-between">
-          <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">Current Time</span>
-          <span className="flex items-center gap-1.5 text-xs text-zinc-600">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+          <span className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Current Time</span>
+          <span className="flex items-center gap-1.5 text-xs text-[var(--ink-muted)]">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-600" />
             Live
           </span>
         </div>
 
         <div className="mb-4 flex flex-wrap items-baseline gap-3">
-          <span className="font-mono text-3xl font-bold text-white">
+          <span className="font-mono text-3xl font-bold text-[var(--ink)]">
             {Math.floor(now.getTime() / 1000).toLocaleString()}
           </span>
-          <span className="text-xs text-zinc-500">seconds</span>
+          <span className="text-xs text-[var(--ink-body)]">seconds</span>
           <button
             onClick={() => copy(String(Math.floor(now.getTime() / 1000)), 'now_s')}
-            className="rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs font-medium text-zinc-500 transition-colors hover:text-zinc-300"
+            className="rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs font-medium text-[var(--ink-body)] transition-colors hover:text-[var(--ink-strong)]"
           >
             {copiedKey === 'now_s' ? '✓' : 'Copy'}
           </button>
@@ -150,9 +150,9 @@ export default function TimestampConverter() {
             { label: 'Local',   value: now.toLocaleString() },
             { label: 'ISO',     value: now.toISOString() },
           ].map(({ label, value }) => (
-            <div key={label} className="rounded-lg bg-[#0d0d0d] px-3 py-2">
-              <p className="mb-0.5 text-xs text-zinc-600">{label}</p>
-              <p className="truncate font-mono text-xs text-zinc-400">{value}</p>
+            <div key={label} className="rounded-lg bg-[var(--surface-sunk)] px-3 py-2">
+              <p className="mb-0.5 text-xs text-[var(--ink-muted)]">{label}</p>
+              <p className="truncate font-mono text-xs text-[var(--ink-body)]">{value}</p>
             </div>
           ))}
         </div>
@@ -163,7 +163,7 @@ export default function TimestampConverter() {
 
         {/* Unix → Date */}
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">
             Unix Timestamp → Date
           </label>
 
@@ -174,39 +174,39 @@ export default function TimestampConverter() {
               onChange={(e) => { setTsInput(e.target.value); setTsError('') }}
               onKeyDown={(e) => e.key === 'Enter' && handleTsConvert()}
               placeholder="e.g. 1704067200"
-              className="flex-1 rounded-xl border border-[#2a2a2a] bg-[#141414] px-4 py-2.5 font-mono text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+              className="flex-1 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-4 py-2.5 font-mono text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
             />
             <button
               onClick={() => { setTsInput(String(Math.floor(Date.now() / 1000))); setTsError('') }}
-              className="rounded-xl border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2.5 text-xs font-medium text-zinc-400 transition-colors hover:text-white"
+              className="rounded-xl border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-2.5 text-xs font-medium text-[var(--ink-body)] transition-colors hover:text-[var(--ink)]"
               title="Use current timestamp"
             >
               Now
             </button>
             <button
               onClick={handleTsConvert}
-              className="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+              className="rounded-xl bg-[var(--accent)] px-4 py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
             >
               Convert
             </button>
           </div>
 
-          <div className="min-h-[11rem] rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] px-4 py-1">
+          <div className="min-h-[11rem] rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] px-4 py-1">
             {tsError ? (
-              <p className="py-3 font-mono text-sm text-red-400">{tsError}</p>
+              <p className="py-3 font-mono text-sm text-red-700">{tsError}</p>
             ) : tsRows.length ? (
               tsRows.map((r) => (
                 <OutRow key={r.key} {...r} copiedKey={copiedKey} onCopy={copy} />
               ))
             ) : (
-              <p className="py-3 text-sm text-zinc-700">Enter a timestamp and click Convert…</p>
+              <p className="py-3 text-sm text-[var(--ink-faint)]">Enter a timestamp and click Convert…</p>
             )}
           </div>
         </div>
 
         {/* Date → Unix */}
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">
             Date → Unix Timestamp
           </label>
 
@@ -217,33 +217,33 @@ export default function TimestampConverter() {
               onChange={(e) => { setDtInput(e.target.value); setDtError('') }}
               onKeyDown={(e) => e.key === 'Enter' && handleDtConvert()}
               placeholder="e.g. 2024-01-01 or Jan 1 2024 12:00"
-              className="flex-1 rounded-xl border border-[#2a2a2a] bg-[#141414] px-4 py-2.5 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+              className="flex-1 rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] px-4 py-2.5 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
             />
             <button
               onClick={handleDtConvert}
-              className="rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+              className="rounded-xl bg-[var(--accent)] px-4 py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
             >
               Convert
             </button>
           </div>
 
-          <div className="min-h-[11rem] rounded-xl border border-[#2a2a2a] bg-[#0d0d0d] px-4 py-1">
+          <div className="min-h-[11rem] rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)] px-4 py-1">
             {dtError ? (
-              <p className="py-3 font-mono text-sm text-red-400">{dtError}</p>
+              <p className="py-3 font-mono text-sm text-red-700">{dtError}</p>
             ) : dtRows.length ? (
               dtRows.map((r) => (
                 <OutRow key={r.key} {...r} copiedKey={copiedKey} onCopy={copy} />
               ))
             ) : (
-              <p className="py-3 text-sm text-zinc-700">Enter a date string and click Convert…</p>
+              <p className="py-3 text-sm text-[var(--ink-faint)]">Enter a date string and click Convert…</p>
             )}
           </div>
         </div>
 
       </div>
 
-      <p className="text-xs text-zinc-700">
-        Tip: press <span className="font-mono text-zinc-600">Enter</span> to convert. Auto-detects seconds vs milliseconds based on value magnitude.
+      <p className="text-xs text-[var(--ink-faint)]">
+        Tip: press <span className="font-mono text-[var(--ink-muted)]">Enter</span> to convert. Auto-detects seconds vs milliseconds based on value magnitude.
       </p>
 
     </div>

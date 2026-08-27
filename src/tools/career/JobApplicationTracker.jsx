@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 const STORAGE_KEY = 'quickkit_job_tracker'
 
 const STATUSES = [
-  { value: 'applied',    label: 'Applied',    color: 'text-blue-400',    bg: 'bg-blue-500/10',    border: 'border-blue-500/20' },
-  { value: 'interview',  label: 'Interview',  color: 'text-amber-400',   bg: 'bg-amber-500/10',   border: 'border-amber-500/20' },
-  { value: 'offer',      label: 'Offer',      color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
-  { value: 'rejected',   label: 'Rejected',   color: 'text-red-400',     bg: 'bg-red-500/10',     border: 'border-red-500/20' },
-  { value: 'ghosted',    label: 'Ghosted',    color: 'text-zinc-500',    bg: 'bg-zinc-500/10',    border: 'border-zinc-500/20' },
-  { value: 'withdrawn',  label: 'Withdrawn',  color: 'text-zinc-600',    bg: 'bg-zinc-800/50',    border: 'border-zinc-700/30' },
+  { value: 'applied',    label: 'Applied',    color: 'text-[var(--accent)]',    bg: 'bg-[color-mix(in_srgb,var(--accent)_10%,transparent)]',    border: 'border-[color-mix(in_srgb,var(--accent)_20%,transparent)]' },
+  { value: 'interview',  label: 'Interview',  color: 'text-amber-700',   bg: 'bg-amber-600',   border: 'border-amber-300' },
+  { value: 'offer',      label: 'Offer',      color: 'text-emerald-700', bg: 'bg-emerald-600', border: 'border-emerald-300' },
+  { value: 'rejected',   label: 'Rejected',   color: 'text-red-700',     bg: 'bg-red-600',     border: 'border-red-300' },
+  { value: 'ghosted',    label: 'Ghosted',    color: 'text-[var(--ink-body)]',    bg: 'bg-[color-mix(in_srgb,var(--ink-muted)_10%,transparent)]',    border: 'border-[color-mix(in_srgb,var(--ink-muted)_20%,transparent)]' },
+  { value: 'withdrawn',  label: 'Withdrawn',  color: 'text-[var(--ink-muted)]',    bg: 'bg-[color-mix(in_srgb,var(--ink-muted)_50%,transparent)]',    border: 'border-[color-mix(in_srgb,var(--ink-muted)_30%,transparent)]' },
 ]
 
 function getStatusStyle(value) {
@@ -106,11 +106,11 @@ export default function JobApplicationTracker() {
               key={s.value}
               onClick={() => setFilterStatus(filterStatus === s.value ? 'all' : s.value)}
               className={`rounded-lg border p-2.5 text-center transition-all ${
-                filterStatus === s.value ? `${s.border} ${s.bg}` : 'border-[#2a2a2a] bg-[#141414] hover:border-[#3a3a3a]'
+                filterStatus === s.value ? `${s.border} ${s.bg}` : 'border-[var(--line)] bg-[var(--surface-alt)] hover:border-[var(--line-strong)]'
               }`}
             >
               <div className={`text-xl font-bold ${s.color}`}>{counts[s.value] || 0}</div>
-              <div className="text-xs text-zinc-600">{s.label}</div>
+              <div className="text-xs text-[var(--ink-muted)]">{s.label}</div>
             </button>
           ))}
         </div>
@@ -120,7 +120,7 @@ export default function JobApplicationTracker() {
       {!showForm && (
         <button
           onClick={() => { setShowForm(true); setEditId(null); setForm(newJob()) }}
-          className="flex items-center justify-center gap-2 rounded-xl border border-dashed border-[#2a2a2a] py-3 text-sm text-zinc-600 transition-all hover:border-indigo-500/40 hover:text-indigo-400"
+          className="flex items-center justify-center gap-2 rounded-xl border border-dashed border-[var(--line)] py-3 text-sm text-[var(--ink-muted)] transition-all hover:border-[color-mix(in_srgb,var(--accent)_40%,transparent)] hover:text-[var(--accent)]"
         >
           <span className="text-lg leading-none">+</span> Add Application
         </button>
@@ -130,39 +130,39 @@ export default function JobApplicationTracker() {
       {showForm && (
         <form
           onSubmit={handleSubmit}
-          className="rounded-xl border border-indigo-500/30 bg-[#141414] p-5 flex flex-col gap-4"
+          className="rounded-xl border border-[color-mix(in_srgb,var(--accent)_30%,transparent)] bg-[var(--surface-alt)] p-5 flex flex-col gap-4"
         >
-          <h3 className="text-sm font-semibold text-white">
+          <h3 className="text-sm font-semibold text-[var(--ink)]">
             {editId ? 'Edit Application' : 'New Application'}
           </h3>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-zinc-500">Company *</label>
+              <label className="text-xs text-[var(--ink-body)]">Company *</label>
               <input
                 value={form.company}
                 onChange={(e) => setForm((f) => ({ ...f, company: e.target.value }))}
                 placeholder="e.g. Google"
                 required
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none"
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-zinc-500">Role *</label>
+              <label className="text-xs text-[var(--ink-body)]">Role *</label>
               <input
                 value={form.role}
                 onChange={(e) => setForm((f) => ({ ...f, role: e.target.value }))}
                 placeholder="e.g. Frontend Engineer"
                 required
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none"
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-zinc-500">Status</label>
+              <label className="text-xs text-[var(--ink-body)]">Status</label>
               <select
                 value={form.status}
                 onChange={(e) => setForm((f) => ({ ...f, status: e.target.value }))}
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:border-indigo-500/50 focus:outline-none"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none"
               >
                 {STATUSES.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
@@ -170,31 +170,31 @@ export default function JobApplicationTracker() {
               </select>
             </div>
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-zinc-500">Date Applied</label>
+              <label className="text-xs text-[var(--ink-body)]">Date Applied</label>
               <input
                 type="date"
                 value={form.date}
                 onChange={(e) => setForm((f) => ({ ...f, date: e.target.value }))}
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 focus:border-indigo-500/50 focus:outline-none"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none"
               />
             </div>
             <div className="flex flex-col gap-1.5 sm:col-span-2">
-              <label className="text-xs text-zinc-500">Job URL</label>
+              <label className="text-xs text-[var(--ink-body)]">Job URL</label>
               <input
                 value={form.url}
                 onChange={(e) => setForm((f) => ({ ...f, url: e.target.value }))}
                 placeholder="https://…"
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none"
               />
             </div>
             <div className="flex flex-col gap-1.5 sm:col-span-2">
-              <label className="text-xs text-zinc-500">Notes</label>
+              <label className="text-xs text-[var(--ink-body)]">Notes</label>
               <textarea
                 value={form.notes}
                 onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
                 placeholder="Interview notes, contacts, follow-up reminders…"
                 rows={2}
-                className="resize-none rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none"
+                className="resize-none rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none"
               />
             </div>
           </div>
@@ -202,14 +202,14 @@ export default function JobApplicationTracker() {
           <div className="flex gap-2">
             <button
               type="submit"
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-500"
+              className="rounded-lg bg-[var(--accent)] px-4 py-2 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-[var(--accent)]"
             >
               {editId ? 'Save Changes' : 'Add Application'}
             </button>
             <button
               type="button"
               onClick={handleCancel}
-              className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-2 text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+              className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-4 py-2 text-sm font-medium text-[var(--ink-body)] transition-colors hover:text-[var(--ink)]"
             >
               Cancel
             </button>
@@ -222,10 +222,10 @@ export default function JobApplicationTracker() {
         <div className="flex flex-col gap-2">
           {filterStatus !== 'all' && (
             <div className="flex items-center justify-between">
-              <span className="text-xs text-zinc-600">
+              <span className="text-xs text-[var(--ink-muted)]">
                 Showing {filtered.length} {filterStatus} application{filtered.length !== 1 ? 's' : ''}
               </span>
-              <button onClick={() => setFilterStatus('all')} className="text-xs text-indigo-400 hover:text-indigo-300">
+              <button onClick={() => setFilterStatus('all')} className="text-xs text-[var(--accent)] hover:text-[var(--accent)]">
                 Show all
               </button>
             </div>
@@ -234,18 +234,18 @@ export default function JobApplicationTracker() {
             const style    = getStatusStyle(job.status)
             const isExpanded = expandedId === job.id
             return (
-              <div key={job.id} className="rounded-xl border border-[#2a2a2a] bg-[#141414] overflow-hidden">
+              <div key={job.id} className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] overflow-hidden">
                 <div
-                  className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-[#1a1a1a] transition-colors"
+                  className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-[var(--surface-tint)] transition-colors"
                   onClick={() => setExpandedId(isExpanded ? null : job.id)}
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-sm font-medium text-white">{job.company}</span>
-                      <span className="text-zinc-600 text-xs">—</span>
-                      <span className="text-sm text-zinc-400 truncate">{job.role}</span>
+                      <span className="text-sm font-medium text-[var(--ink)]">{job.company}</span>
+                      <span className="text-[var(--ink-muted)] text-xs">—</span>
+                      <span className="text-sm text-[var(--ink-body)] truncate">{job.role}</span>
                     </div>
-                    <div className="mt-0.5 text-xs text-zinc-700">{job.date}</div>
+                    <div className="mt-0.5 text-xs text-[var(--ink-faint)]">{job.date}</div>
                   </div>
 
                   <select
@@ -255,26 +255,26 @@ export default function JobApplicationTracker() {
                     className={`rounded-full border px-2.5 py-1 text-xs font-medium focus:outline-none ${style.border} ${style.bg} ${style.color} bg-transparent`}
                   >
                     {STATUSES.map((s) => (
-                      <option key={s.value} value={s.value} className="bg-[#1a1a1a] text-zinc-200">
+                      <option key={s.value} value={s.value} className="bg-[var(--surface-tint)] text-[var(--ink-strong)]">
                         {s.label}
                       </option>
                     ))}
                   </select>
 
-                  <span className="text-zinc-700 text-xs">{isExpanded ? '▲' : '▼'}</span>
+                  <span className="text-[var(--ink-faint)] text-xs">{isExpanded ? '▲' : '▼'}</span>
                 </div>
 
                 {isExpanded && (
-                  <div className="border-t border-[#1e1e1e] px-4 py-3 flex flex-col gap-3">
+                  <div className="border-t border-[var(--line-subtle)] px-4 py-3 flex flex-col gap-3">
                     {job.notes && (
-                      <p className="text-xs text-zinc-500 whitespace-pre-wrap">{job.notes}</p>
+                      <p className="text-xs text-[var(--ink-body)] whitespace-pre-wrap">{job.notes}</p>
                     )}
                     {job.url && (
                       <a
                         href={job.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-indigo-400 underline hover:text-indigo-300 break-all"
+                        className="text-xs text-[var(--accent)] underline hover:text-[var(--accent)] break-all"
                       >
                         {job.url}
                       </a>
@@ -282,13 +282,13 @@ export default function JobApplicationTracker() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleEdit(job)}
-                        className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-1.5 text-xs text-zinc-400 transition-colors hover:text-white"
+                        className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-1.5 text-xs text-[var(--ink-body)] transition-colors hover:text-[var(--ink)]"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDelete(job.id)}
-                        className="rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-1.5 text-xs text-zinc-600 transition-colors hover:border-red-900/60 hover:text-red-400"
+                        className="rounded-lg border border-[var(--line)] bg-[var(--surface-tint)] px-3 py-1.5 text-xs text-[var(--ink-muted)] transition-colors hover:border-red-300 hover:text-red-700"
                       >
                         Delete
                       </button>
@@ -300,23 +300,23 @@ export default function JobApplicationTracker() {
           })}
         </div>
       ) : jobs.length > 0 ? (
-        <div className="rounded-xl border border-dashed border-[#2a2a2a] py-10 text-center">
-          <p className="text-sm text-zinc-600">No {filterStatus} applications.</p>
-          <button onClick={() => setFilterStatus('all')} className="mt-2 text-xs text-indigo-400 hover:text-indigo-300">
+        <div className="rounded-xl border border-dashed border-[var(--line)] py-10 text-center">
+          <p className="text-sm text-[var(--ink-muted)]">No {filterStatus} applications.</p>
+          <button onClick={() => setFilterStatus('all')} className="mt-2 text-xs text-[var(--accent)] hover:text-[var(--accent)]">
             Show all
           </button>
         </div>
       ) : !showForm ? (
-        <div className="rounded-xl border border-dashed border-[#2a2a2a] py-14 text-center">
-          <p className="text-sm font-medium text-zinc-500">No applications yet</p>
-          <p className="mt-1 text-xs text-zinc-700">
+        <div className="rounded-xl border border-dashed border-[var(--line)] py-14 text-center">
+          <p className="text-sm font-medium text-[var(--ink-body)]">No applications yet</p>
+          <p className="mt-1 text-xs text-[var(--ink-faint)]">
             Add your first application above. Everything is saved in your browser.
           </p>
         </div>
       ) : null}
 
       {jobs.length > 0 && (
-        <p className="text-xs text-zinc-700">
+        <p className="text-xs text-[var(--ink-faint)]">
           All data is stored locally in your browser. Nothing is sent to any server.
         </p>
       )}

@@ -213,9 +213,9 @@ export default function CandidateScreener() {
   }
 
   const verdictStyles = !result ? {} : {
-    emerald: { border: 'border-emerald-500/30', bg: 'bg-emerald-500/10', text: 'text-emerald-400', bar: 'bg-emerald-500' },
-    amber:   { border: 'border-amber-500/30',   bg: 'bg-amber-500/10',   text: 'text-amber-400',   bar: 'bg-amber-500'   },
-    red:     { border: 'border-red-500/30',      bg: 'bg-red-500/10',     text: 'text-red-400',     bar: 'bg-red-500'     },
+    emerald: { border: 'border-emerald-300', bg: 'bg-emerald-600', text: 'text-emerald-700', bar: 'bg-emerald-600' },
+    amber:   { border: 'border-amber-300',   bg: 'bg-amber-600',   text: 'text-amber-700',   bar: 'bg-amber-600'   },
+    red:     { border: 'border-red-300',      bg: 'bg-red-600',     text: 'text-red-700',     bar: 'bg-red-600'     },
   }[result?.verdict?.color] ?? {}
 
   return (
@@ -223,36 +223,36 @@ export default function CandidateScreener() {
 
       {/* Top bar */}
       <div className="flex items-center justify-between">
-        <p className="text-xs text-zinc-600">Paste a job description and candidate resume to screen fit.</p>
+        <p className="text-xs text-[var(--ink-muted)]">Paste a job description and candidate resume to screen fit.</p>
         <div className="flex gap-3">
-          <button onClick={handleSample} className="text-xs text-zinc-600 transition-colors hover:text-rose-400">Load sample</button>
-          <button onClick={handleClear}  className="text-xs text-zinc-600 transition-colors hover:text-red-400">Clear</button>
+          <button onClick={handleSample} className="text-xs text-[var(--ink-muted)] transition-colors hover:text-rose-700">Load sample</button>
+          <button onClick={handleClear}  className="text-xs text-[var(--ink-muted)] transition-colors hover:text-red-700">Clear</button>
         </div>
       </div>
 
       {/* Inputs */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Job Description</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Job Description</label>
           <textarea
             value={jobDesc}
             onChange={e => setJobDesc(e.target.value)}
             placeholder="Paste the job description here…"
             spellCheck={false}
-            className="h-56 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none focus:ring-1 focus:ring-rose-500/30"
+            className="h-56 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none focus:ring-1 focus:ring-rose-300"
           />
         </div>
 
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Candidate Resume</label>
+            <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Candidate Resume</label>
             <div className="flex items-center gap-2">
-              {fileLoading && <span className="text-xs text-zinc-600">Reading file…</span>}
+              {fileLoading && <span className="text-xs text-[var(--ink-muted)]">Reading file…</span>}
               <input ref={fileInputRef} type="file" accept=".txt,.pdf" onChange={handleFileUpload} className="hidden" />
               <button
                 onClick={() => fileInputRef.current?.click()}
                 disabled={fileLoading}
-                className="rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs text-zinc-500 transition-colors hover:border-rose-500/40 hover:text-rose-400 disabled:opacity-40"
+                className="rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs text-[var(--ink-body)] transition-colors hover:border-rose-300 hover:text-rose-700 disabled:opacity-40"
               >
                 Upload .txt / .pdf
               </button>
@@ -263,17 +263,17 @@ export default function CandidateScreener() {
             onChange={e => setResume(e.target.value)}
             placeholder="Paste candidate resume text here, or upload a .txt / .pdf file…"
             spellCheck={false}
-            className="h-56 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none focus:ring-1 focus:ring-rose-500/30"
+            className="h-56 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none focus:ring-1 focus:ring-rose-300"
           />
-          {fileError && <p className="text-xs text-red-400">{fileError}</p>}
-          <p className="text-xs text-zinc-700">🔒 Resume is read locally — never uploaded to any server.</p>
+          {fileError && <p className="text-xs text-red-700">{fileError}</p>}
+          <p className="text-xs text-[var(--ink-faint)]">🔒 Resume is read locally — never uploaded to any server.</p>
         </div>
       </div>
 
       <button
         onClick={handleScreen}
         disabled={!jobDesc.trim() || !resume.trim()}
-        className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-rose-500 disabled:cursor-not-allowed disabled:opacity-40"
+        className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-rose-600 disabled:cursor-not-allowed disabled:opacity-40"
       >
         Screen Candidate
       </button>
@@ -283,74 +283,74 @@ export default function CandidateScreener() {
         <div className="flex flex-col gap-4">
 
           {/* Verdict card */}
-          <div className={`flex items-center gap-5 rounded-xl border p-5 ${verdictStyles.border} bg-[#141414]`}>
+          <div className={`flex items-center gap-5 rounded-xl border p-5 ${verdictStyles.border} bg-[var(--surface-alt)]`}>
             <div className={`flex flex-col items-center justify-center rounded-xl px-5 py-3 ${verdictStyles.bg}`}>
               <span className="text-2xl">{result.verdict.emoji}</span>
               <span className={`mt-1 text-sm font-bold ${verdictStyles.text}`}>{result.verdict.label}</span>
             </div>
-            <div className="h-14 w-px bg-[#2a2a2a]" />
+            <div className="h-14 w-px bg-[var(--line)]" />
             <div className="flex flex-col gap-1.5">
               <div className="flex items-baseline gap-2">
                 <span className={`text-4xl font-bold ${verdictStyles.text}`}>{result.score}%</span>
-                <span className="text-xs text-zinc-600">fit score</span>
+                <span className="text-xs text-[var(--ink-muted)]">fit score</span>
               </div>
               <div className="flex gap-5 text-sm">
-                <span><span className="font-semibold text-emerald-400">{result.matched.length}</span><span className="ml-1 text-zinc-600">matched</span></span>
-                <span><span className="font-semibold text-red-400">{result.missing.length}</span><span className="ml-1 text-zinc-600">missing</span></span>
-                <span><span className="font-semibold text-zinc-300">{result.total}</span><span className="ml-1 text-zinc-600">total</span></span>
+                <span><span className="font-semibold text-emerald-700">{result.matched.length}</span><span className="ml-1 text-[var(--ink-muted)]">matched</span></span>
+                <span><span className="font-semibold text-red-700">{result.missing.length}</span><span className="ml-1 text-[var(--ink-muted)]">missing</span></span>
+                <span><span className="font-semibold text-[var(--ink-strong)]">{result.total}</span><span className="ml-1 text-[var(--ink-muted)]">total</span></span>
               </div>
             </div>
           </div>
 
           {/* Score bar */}
-          <div className="h-2 w-full overflow-hidden rounded-full bg-[#1e1e1e]">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-[var(--line-subtle)]">
             <div className={`h-full rounded-full transition-all duration-500 ${verdictStyles.bar}`} style={{ width: `${result.score}%` }} />
           </div>
 
           {/* Experience level + Interview tip */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">Experience Level</p>
-              <p className="text-sm font-semibold text-white">{result.expLevel.level}</p>
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-[var(--ink-body)]">Experience Level</p>
+              <p className="text-sm font-semibold text-[var(--ink)]">{result.expLevel.level}</p>
               {result.expLevel.years !== null && (
-                <p className="mt-0.5 text-xs text-zinc-600">{result.expLevel.years}+ years detected in resume</p>
+                <p className="mt-0.5 text-xs text-[var(--ink-muted)]">{result.expLevel.years}+ years detected in resume</p>
               )}
             </div>
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-4">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-zinc-500">Interview Recommendation</p>
-              <p className="text-sm text-zinc-300 leading-relaxed">{result.interviewTip}</p>
+            <div className="rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4">
+              <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-[var(--ink-body)]">Interview Recommendation</p>
+              <p className="text-sm text-[var(--ink-strong)] leading-relaxed">{result.interviewTip}</p>
             </div>
           </div>
 
           {/* Skill breakdown */}
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {result.missing.length > 0 && (
-              <div className="rounded-xl border border-red-500/20 bg-[#141414] p-4">
-                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-red-400">
+              <div className="rounded-xl border border-red-300 bg-[var(--surface-alt)] p-4">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-red-700">
                   Missing Skills ({result.missing.length})
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {result.missing.map(kw => (
-                    <span key={kw} className="rounded-md bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-400">{kw}</span>
+                    <span key={kw} className="rounded-md bg-red-600 px-2.5 py-1 text-xs font-medium text-red-700">{kw}</span>
                   ))}
                 </div>
               </div>
             )}
             {result.matched.length > 0 && (
-              <div className="rounded-xl border border-emerald-500/20 bg-[#141414] p-4">
-                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-400">
+              <div className="rounded-xl border border-emerald-300 bg-[var(--surface-alt)] p-4">
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-widest text-emerald-700">
                   Matched Skills ({result.matched.length})
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {result.matched.map(kw => (
-                    <span key={kw} className="rounded-md bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-400">{kw}</span>
+                    <span key={kw} className="rounded-md bg-emerald-600 px-2.5 py-1 text-xs font-medium text-emerald-700">{kw}</span>
                   ))}
                 </div>
               </div>
             )}
           </div>
 
-          <p className="text-xs text-zinc-700">
+          <p className="text-xs text-[var(--ink-faint)]">
             Tip: 70%+ fit → Shortlist · 40–69% → Evaluate further · Below 40% → Likely not a match.
           </p>
         </div>

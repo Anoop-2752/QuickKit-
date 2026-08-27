@@ -196,8 +196,8 @@ export default function HrEmailTemplates() {
             onClick={() => handleSelect(tpl)}
             className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-all ${
               selected.id === tpl.id
-                ? 'border-rose-500/40 bg-rose-500/10 text-rose-400'
-                : 'border-[#2a2a2a] text-zinc-500 hover:text-zinc-300'
+                ? 'border-rose-300 bg-rose-600 text-rose-700'
+                : 'border-[var(--line)] text-[var(--ink-body)] hover:text-[var(--ink-strong)]'
             }`}
           >
             {tpl.label}
@@ -208,15 +208,15 @@ export default function HrEmailTemplates() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         {/* Fields */}
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Fill in Details</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Fill in Details</label>
           {selected.fields.map((key) => (
             <div key={key} className="flex flex-col gap-1">
-              <span className="text-xs text-zinc-600">{FIELD_LABELS[key] || key}</span>
+              <span className="text-xs text-[var(--ink-muted)]">{FIELD_LABELS[key] || key}</span>
               <input
                 value={fields[key] || ''}
                 onChange={(e) => handleField(key, e.target.value)}
                 placeholder={FIELD_LABELS[key] || key}
-                className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-rose-500/50 focus:outline-none"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-rose-300 focus:outline-none"
               />
             </div>
           ))}
@@ -224,20 +224,20 @@ export default function HrEmailTemplates() {
 
         {/* Preview */}
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Preview</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Preview</label>
 
           {/* Subject */}
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-zinc-600">Subject</span>
+              <span className="text-xs text-[var(--ink-muted)]">Subject</span>
               <button
                 onClick={() => handleCopy(subject, 'subject')}
-                className="text-xs text-zinc-600 hover:text-rose-400 transition-colors"
+                className="text-xs text-[var(--ink-muted)] hover:text-rose-700 transition-colors"
               >
                 {copied === 'subject' ? '✓ Copied' : 'Copy'}
               </button>
             </div>
-            <div className="rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] px-3 py-2 text-sm text-zinc-300">
+            <div className="rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] px-3 py-2 text-sm text-[var(--ink-strong)]">
               {subject}
             </div>
           </div>
@@ -245,22 +245,22 @@ export default function HrEmailTemplates() {
           {/* Body */}
           <div className="flex flex-col gap-1.5 flex-1">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-zinc-600">Email Body</span>
+              <span className="text-xs text-[var(--ink-muted)]">Email Body</span>
               <button
                 onClick={() => handleCopy(body, 'body')}
-                className="text-xs text-zinc-600 hover:text-rose-400 transition-colors"
+                className="text-xs text-[var(--ink-muted)] hover:text-rose-700 transition-colors"
               >
                 {copied === 'body' ? '✓ Copied' : 'Copy'}
               </button>
             </div>
-            <pre className="h-72 overflow-auto rounded-lg border border-[#2a2a2a] bg-[#0d0d0d] p-3 font-sans text-xs leading-relaxed text-zinc-300 whitespace-pre-wrap">
+            <pre className="h-72 overflow-auto rounded-lg border border-[var(--line)] bg-[var(--surface-sunk)] p-3 font-sans text-xs leading-relaxed text-[var(--ink-strong)] whitespace-pre-wrap">
               {body}
             </pre>
           </div>
 
           <button
             onClick={() => handleCopy(`Subject: ${subject}\n\n${body}`, 'all')}
-            className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-rose-500"
+            className="w-full rounded-lg bg-rose-600 py-2.5 text-sm font-medium text-[var(--ink)] transition-colors hover:bg-rose-600"
           >
             {copied === 'all' ? '✓ Copied!' : 'Copy Full Email'}
           </button>

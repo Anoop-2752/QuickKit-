@@ -60,13 +60,13 @@ export default function CaseConverter() {
 
       {/* ── Left: input + conversion buttons ──────────────────────────────── */}
       <div className="flex flex-1 flex-col gap-4">
-        <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Input</label>
+        <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Input</label>
 
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type or paste your text here…"
-          className="h-40 w-full resize-none rounded-xl border border-[#2a2a2a] bg-[#141414] p-4 text-sm text-zinc-200 placeholder:text-zinc-700 focus:border-indigo-500/50 focus:outline-none focus:ring-1 focus:ring-indigo-500/30"
+          className="h-40 w-full resize-none rounded-xl border border-[var(--line)] bg-[var(--surface-alt)] p-4 text-sm text-[var(--ink-strong)] placeholder:text-[var(--ink-faint)] focus:border-[color-mix(in_srgb,var(--accent)_50%,transparent)] focus:outline-none focus:ring-1 focus:ring-[color-mix(in_srgb,var(--accent)_30%,transparent)]"
         />
 
         {/* 3×3 button grid */}
@@ -78,8 +78,8 @@ export default function CaseConverter() {
               className={[
                 'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                 activeMode === label
-                  ? 'bg-indigo-600 text-white'
-                  : 'border border-[#2a2a2a] bg-[#1a1a1a] text-zinc-300 hover:border-[#3a3a3a] hover:text-white',
+                  ? 'bg-[var(--accent)] text-[var(--ink)]'
+                  : 'border border-[var(--line)] bg-[var(--surface-tint)] text-[var(--ink-strong)] hover:border-[var(--line-strong)] hover:text-[var(--ink)]',
               ].join(' ')}
             >
               {label}
@@ -91,19 +91,19 @@ export default function CaseConverter() {
       {/* ── Right: output ─────────────────────────────────────────────────── */}
       <div className="flex flex-1 flex-col gap-3">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-medium uppercase tracking-widest text-zinc-500">Output</label>
+          <label className="text-xs font-medium uppercase tracking-widest text-[var(--ink-body)]">Output</label>
           {activeMode && (
-            <span className="rounded-full bg-indigo-500/10 px-2.5 py-1 text-xs font-medium text-indigo-400">
+            <span className="rounded-full bg-[color-mix(in_srgb,var(--accent)_10%,transparent)] px-2.5 py-1 text-xs font-medium text-[var(--accent)]">
               {activeMode}
             </span>
           )}
         </div>
 
-        <div className="relative flex min-h-[13rem] flex-col rounded-xl border border-[#2a2a2a] bg-[#0d0d0d]">
+        <div className="relative flex min-h-[13rem] flex-col rounded-xl border border-[var(--line)] bg-[var(--surface-sunk)]">
           {output && (
             <button
               onClick={handleCopy}
-              className="absolute right-3 top-3 z-10 rounded-md border border-[#2a2a2a] bg-[#1a1a1a] px-2.5 py-1 text-xs font-medium text-zinc-400 transition-all hover:border-[#3a3a3a] hover:text-white"
+              className="absolute right-3 top-3 z-10 rounded-md border border-[var(--line)] bg-[var(--surface-tint)] px-2.5 py-1 text-xs font-medium text-[var(--ink-body)] transition-all hover:border-[var(--line-strong)] hover:text-[var(--ink)]"
             >
               {copied ? '✓ Copied!' : 'Copy'}
             </button>
@@ -111,17 +111,17 @@ export default function CaseConverter() {
 
           <div className="flex-1 p-4">
             {output ? (
-              <p className="whitespace-pre-wrap break-words text-sm leading-relaxed text-zinc-200">
+              <p className="whitespace-pre-wrap break-words text-sm leading-relaxed text-[var(--ink-strong)]">
                 {output}
               </p>
             ) : (
-              <p className="text-sm text-zinc-700">Select a conversion above…</p>
+              <p className="text-sm text-[var(--ink-faint)]">Select a conversion above…</p>
             )}
           </div>
 
           {output && (
-            <div className="border-t border-[#1e1e1e] px-4 py-2">
-              <span className="text-xs text-zinc-600">{output.length.toLocaleString()} chars</span>
+            <div className="border-t border-[var(--line-subtle)] px-4 py-2">
+              <span className="text-xs text-[var(--ink-muted)]">{output.length.toLocaleString()} chars</span>
             </div>
           )}
         </div>

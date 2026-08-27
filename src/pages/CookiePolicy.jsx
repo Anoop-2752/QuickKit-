@@ -4,8 +4,8 @@ import SEO from '../components/SEO'
 function Section({ title, children }) {
   return (
     <section className="mb-10">
-      <h2 className="mb-3 text-lg font-semibold text-green-400">{title}</h2>
-      <div className="space-y-3 text-sm leading-relaxed text-zinc-400">{children}</div>
+      <h2 className="mb-3 text-lg font-semibold text-[var(--accent)]">{title}</h2>
+      <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-body)]">{children}</div>
     </section>
   )
 }
@@ -21,13 +21,13 @@ export default function CookiePolicy() {
       />
       <button
         onClick={() => navigate(-1)}
-        className="mb-8 text-xs text-zinc-600 transition-colors hover:text-zinc-400"
+        className="mb-8 text-xs text-[var(--ink-muted)] transition-colors hover:text-[var(--ink-body)]"
       >
         ← Back
       </button>
 
-      <h1 className="mb-2 text-4xl font-bold tracking-tight text-white">Cookie Policy</h1>
-      <p className="mb-12 text-sm text-zinc-600">Last updated: January 2025</p>
+      <h1 className="mb-2 text-4xl font-bold tracking-tight text-[var(--ink)]">Cookie Policy</h1>
+      <p className="mb-12 text-sm text-[var(--ink-muted)]">Last updated: January 2025</p>
 
       <Section title="What Are Cookies">
         <p>
@@ -45,7 +45,7 @@ export default function CookiePolicy() {
         <p>
           QuickKit itself does not set any first-party cookies for tracking or storing personal
           data. Our tools run entirely in your browser and use{' '}
-          <code className="rounded bg-[#1a1a1a] px-1.5 py-0.5 font-mono text-xs text-zinc-300">
+          <code className="rounded bg-[var(--surface-tint)] px-1.5 py-0.5 font-mono text-xs text-[var(--ink-strong)]">
             localStorage
           </code>{' '}
           only for lightweight UI preferences (such as dismissing the cookie banner).
@@ -57,7 +57,7 @@ export default function CookiePolicy() {
 
       <Section title="Types of Cookies We Use">
         <p>
-          <strong className="font-medium text-zinc-300">Advertising cookies (Google AdSense):</strong>
+          <strong className="font-medium text-[var(--ink-strong)]">Advertising cookies (Google AdSense):</strong>
         </p>
         <p>
           We display ads through Google AdSense. Google uses cookies to serve ads based on
@@ -66,18 +66,18 @@ export default function CookiePolicy() {
         </p>
         <p>
           Google's advertising cookies include{' '}
-          <code className="rounded bg-[#1a1a1a] px-1.5 py-0.5 font-mono text-xs text-zinc-300">
+          <code className="rounded bg-[var(--surface-tint)] px-1.5 py-0.5 font-mono text-xs text-[var(--ink-strong)]">
             _ga
           </code>
           ,{' '}
-          <code className="rounded bg-[#1a1a1a] px-1.5 py-0.5 font-mono text-xs text-zinc-300">
+          <code className="rounded bg-[var(--surface-tint)] px-1.5 py-0.5 font-mono text-xs text-[var(--ink-strong)]">
             _gid
           </code>
           , and similar identifiers. These are persistent cookies typically lasting 30 days to 2 years.
         </p>
 
         <p className="mt-2">
-          <strong className="font-medium text-zinc-300">Analytics cookies:</strong>
+          <strong className="font-medium text-[var(--ink-strong)]">Analytics cookies:</strong>
         </p>
         <p>
           We may use analytics tools to understand how visitors interact with the site
@@ -86,11 +86,11 @@ export default function CookiePolicy() {
         </p>
 
         <p className="mt-2">
-          <strong className="font-medium text-zinc-300">Preference cookies:</strong>
+          <strong className="font-medium text-[var(--ink-strong)]">Preference cookies:</strong>
         </p>
         <p>
           We use{' '}
-          <code className="rounded bg-[#1a1a1a] px-1.5 py-0.5 font-mono text-xs text-zinc-300">
+          <code className="rounded bg-[var(--surface-tint)] px-1.5 py-0.5 font-mono text-xs text-[var(--ink-strong)]">
             localStorage
           </code>{' '}
           (not cookies) to store your cookie banner preference so we don't show it on every visit.
@@ -101,34 +101,34 @@ export default function CookiePolicy() {
         <p>
           You have several options for managing cookies:
         </p>
-        <ul className="ml-4 list-disc space-y-2 marker:text-zinc-600">
+        <ul className="ml-4 list-disc space-y-2 marker:text-[var(--ink-muted)]">
           <li>
-            <strong className="font-medium text-zinc-300">Browser settings:</strong> Most
+            <strong className="font-medium text-[var(--ink-strong)]">Browser settings:</strong> Most
             browsers allow you to block or delete cookies. Refer to your browser's help
             documentation for instructions. Note that blocking cookies may affect site
             functionality.
           </li>
           <li>
-            <strong className="font-medium text-zinc-300">Google Ad Settings:</strong> Opt
+            <strong className="font-medium text-[var(--ink-strong)]">Google Ad Settings:</strong> Opt
             out of personalised Google ads at{' '}
             <a
               href="https://www.google.com/settings/ads"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-400 underline hover:text-green-300"
+              className="text-[var(--accent)] underline hover:text-[var(--accent)]"
             >
               google.com/settings/ads
             </a>
             .
           </li>
           <li>
-            <strong className="font-medium text-zinc-300">NAI Opt-Out:</strong> Opt out of
+            <strong className="font-medium text-[var(--ink-strong)]">NAI Opt-Out:</strong> Opt out of
             interest-based advertising via the{' '}
             <a
               href="https://optout.networkadvertising.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-400 underline hover:text-green-300"
+              className="text-[var(--accent)] underline hover:text-[var(--accent)]"
             >
               Network Advertising Initiative
             </a>
@@ -150,7 +150,7 @@ export default function CookiePolicy() {
           Questions about our cookie usage? Contact us at{' '}
           <a
             href="mailto:helloquickkit@gmail.com"
-            className="text-green-400 underline hover:text-green-300"
+            className="text-[var(--accent)] underline hover:text-[var(--accent)]"
           >
             helloquickkit@gmail.com
           </a>
