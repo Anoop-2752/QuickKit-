@@ -64,6 +64,15 @@ export const colorMap = {
     hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(139,92,246,0.07)]',
     hoverIcon: 'group-hover:text-violet-300',
   },
+  teal: {
+    iconBg: 'bg-teal-500/10',
+    iconColor: 'text-teal-400',
+    badge: 'bg-teal-500/10 text-teal-400',
+    hoverBorder: 'hover:border-teal-500/40',
+    hoverGlow: 'hover:shadow-[0_0_40px_rgba(20,184,166,0.07)]',
+    hoverGlowSm: 'hover:shadow-[0_0_30px_rgba(20,184,166,0.07)]',
+    hoverIcon: 'group-hover:text-teal-300',
+  },
   cyan: {
     iconBg: 'bg-cyan-500/10',
     iconColor: 'text-cyan-400',

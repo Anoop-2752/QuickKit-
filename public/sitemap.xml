@@ -29,6 +29,12 @@
 
   <!-- Category pages -->
   <url>
+    <loc>https://www.quickkit.dev/us</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.quickkit.dev/developer</loc>
     <lastmod>2026-03-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -78,6 +84,12 @@
   </url>
 
   <!-- Tool pages -->
+  <url>
+    <loc>https://www.quickkit.dev/us/paycheck-calculator</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://www.quickkit.dev/developer/json-formatter</loc>
     <lastmod>2026-03-14</lastmod>
