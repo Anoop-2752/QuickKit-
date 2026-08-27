@@ -59,7 +59,7 @@ export default function HomePage() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-xl text-base text-[var(--ink-body)] sm:text-lg">
-          Free tools for developers, HR, finance, career, SEO, and more — all in your browser. No account, no ads, no cost.
+          Free tools for finance, HR, career, developers and more — all running in your browser. No account, no uploads, nothing you type leaves your device.
         </p>
 
         {/* Search bar */}

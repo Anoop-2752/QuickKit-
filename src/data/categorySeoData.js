@@ -55,7 +55,7 @@ export const categorySeoData = {
       'Invoice generator with GST for freelancers and businesses',
       'Tax saving optimizer for 80C, 80D, and NPS deductions',
     ],
-    whyUse: 'No ads, no paywalls, no account required. These calculators give you the same results as the ones your CA uses — for free.',
+    whyUse: 'No paywalls, no account required, and nothing you enter is ever uploaded — every calculation runs on your own device. These calculators give you the same results as the ones your CA uses, for free.',
   },
   career: {
     headline: 'Free Career Tools — Resume Builder, Cover Letter Generator & ATS Checker',
