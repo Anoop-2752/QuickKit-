@@ -69,6 +69,7 @@ const KeywordDensityChecker       = lazy(() => import('../tools/seo/KeywordDensi
 const ReadabilityChecker          = lazy(() => import('../tools/text/ReadabilityChecker'))
 const SchemaMarkupGenerator       = lazy(() => import('../tools/seo/SchemaMarkupGenerator'))
 const PrivacyPolicyGenerator      = lazy(() => import('../tools/seo/PrivacyPolicyGenerator'))
+const PaycheckCalculator          = lazy(() => import('../tools/us/PaycheckCalculator'))
 
 const toolComponents = {
   'json-formatter':           JsonFormatter,
@@ -128,6 +129,7 @@ const toolComponents = {
   'readability-checker':          ReadabilityChecker,
   'schema-markup-generator':      SchemaMarkupGenerator,
   'privacy-policy-generator':     PrivacyPolicyGenerator,
+  'paycheck-calculator':          PaycheckCalculator,
 }
 
 function ToolIcon({ name, className }) {

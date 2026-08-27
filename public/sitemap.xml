@@ -4,7 +4,7 @@
   <!-- Static pages -->
   <url>
     <loc>https://www.quickkit.dev/</loc>
-    <lastmod>2026-03-13</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -29,394 +29,406 @@
 
   <!-- Category pages -->
   <url>
+    <loc>https://www.quickkit.dev/us</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.quickkit.dev/developer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/pdf</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/image</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Tool pages -->
   <url>
+    <loc>https://www.quickkit.dev/us/paycheck-calculator</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.quickkit.dev/developer/json-formatter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/developer/base64</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/developer/jwt-decoder</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/developer/uuid-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/developer/timestamp-converter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/developer/url-encoder</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/developer/qr-code-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/hr-email-templates</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/interview-question-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/notice-period-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/salary-slip-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/offer-letter-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/experience-letter-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/resignation-letter-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/ctc-breakup-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/hr/candidate-screener</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/pdf/pdf-merger</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/pdf/pdf-splitter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/pdf/pdf-to-text</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/pdf/pdf-metadata-viewer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career/ats-keyword-checker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career/resume-character-counter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career/cover-letter-filler-checker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career/action-verb-suggester</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career/job-application-tracker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career/cover-letter-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/career/resume-builder</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text/word-counter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text/lorem-ipsum</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text/markdown-previewer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text/case-converter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text/diff-checker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text/filler-word-remover</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/text/readability-checker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/emi-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/income-tax-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/sip-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/gst-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/hra-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/gratuity-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/salary-hike-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/fd-rd-calculator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/invoice-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/finance/tax-saving-optimizer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/image/image-compressor</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/image/image-resizer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/image/image-to-base64</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/image/image-converter</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/image/image-color-picker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/image/image-metadata-viewer</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo/meta-tag-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo/title-tag-checker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo/og-preview</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo/robots-txt-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo/keyword-density-checker</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo/schema-markup-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.quickkit.dev/seo/privacy-policy-generator</loc>
-    <lastmod>2026-03-14</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -1,4 +1,18 @@
 export const categorySeoData = {
+  us: {
+    headline: 'Free US Salary & Tax Calculators — No Signup Required',
+    intro: 'The QuickKit US tools help you work out what actually lands in your bank account. Estimate take-home pay after federal income tax, Social Security, Medicare and state withholding, factoring in 401(k) contributions and pre-tax deductions. Everything runs in your browser — nothing about your salary is ever sent to a server.',
+    features: [
+      'Estimate take-home pay per paycheck and per year',
+      'Full federal tax bracket calculation by filing status',
+      'Social Security and Medicare, including the additional Medicare surtax',
+      'State income tax for all 50 states and DC',
+      'Model 401(k) contributions against the annual deferral cap',
+      'Account for pre-tax health, HSA and FSA deductions',
+    ],
+    whyUse: 'Most paycheck calculators ask you to sign up or bury the answer under ads. QuickKit gives you the full breakdown instantly, free, and entirely in your browser — your salary details never leave your device.',
+  },
+
   developer: {
     headline: 'Free Developer Tools Online — No Signup Required',
     intro: 'QuickKit\'s developer tools give you instant access to the utilities you use every day — JSON formatting, Base64 encoding, JWT decoding, UUID generation, and more. All tools run 100% in your browser with zero data sent to any server. No login, no install, no cost.',

@@ -1,5 +1,24 @@
 export const categories = [
   {
+    id: 'us',
+    name: 'US Salary & Tax Tools',
+    slug: 'us',
+    description: 'Free US paycheck and salary calculators — federal, FICA and state withholding estimates.',
+    icon: 'DollarSign',
+    color: 'teal',
+    tools: [
+      {
+        id: 'paycheck-calculator',
+        name: 'US Paycheck Calculator',
+        slug: 'paycheck-calculator',
+        description: 'Estimate your US take-home pay after federal, FICA and state taxes.',
+        icon: 'Banknote',
+        category: 'us',
+      },
+    ],
+  },
+
+  {
     id: 'developer',
     name: 'Developer Tools',
     slug: 'developer',

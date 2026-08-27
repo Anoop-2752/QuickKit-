@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 
 function formatBytes(bytes) {
   if (bytes === 0) return '0 B'
