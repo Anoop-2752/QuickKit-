@@ -8,7 +8,7 @@ function hostname(url) {
   try { return new URL(url.startsWith('http') ? url : 'https://' + url).hostname } catch { return url }
 }
 
-function FacebookCard({ title, description, image, siteName, url }) {
+function FacebookCard({ title, description, image, url }) {
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200 bg-white font-sans">
       {image
@@ -40,7 +40,7 @@ function TwitterCard({ title, description, image, url }) {
   )
 }
 
-function LinkedInCard({ title, description, image, siteName, url }) {
+function LinkedInCard({ title, image, siteName, url }) {
   return (
     <div className="overflow-hidden rounded-lg border border-gray-200 bg-white font-sans">
       {image

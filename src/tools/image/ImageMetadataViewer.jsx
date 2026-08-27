@@ -113,7 +113,7 @@ function parseTiffTags(buffer, ifdOffset, littleEndian) {
       Object.assign(tags, nested)
       delete tags.ExifIFD
     }
-  } catch (_) { /* ignore malformed EXIF */ }
+  } catch { /* ignore malformed EXIF */ }
   return tags
 }
 
@@ -126,7 +126,7 @@ function extractExif(buffer, exifInfo) {
     const littleEndian = byteOrder === 0x4949
     const ifdOffset = tiffStart + view.getUint32(tiffStart + 4, littleEndian)
     return parseTiffTags(buffer, ifdOffset, littleEndian)
-  } catch (_) {
+  } catch {
     return null
   }
 }

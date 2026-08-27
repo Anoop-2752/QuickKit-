@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const inputCls = 'w-full rounded-lg border border-[#2a2a2a] bg-[#1a1a1a] px-3 py-2 text-sm text-white outline-none placeholder:text-zinc-600 focus:border-cyan-500/50 transition-colors'
 
-function CharBar({ value, max, label }) {
+function CharBar({ value, max }) {
   const len = value.length
   const pct = Math.min((len / max) * 100, 100)
   const color = len > max ? 'bg-red-500' : len > max * 0.85 ? 'bg-amber-500' : 'bg-cyan-500'

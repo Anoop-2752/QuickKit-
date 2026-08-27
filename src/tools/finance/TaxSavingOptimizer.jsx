@@ -34,6 +34,27 @@ function applyRebate(tax, taxableIncome, regime) {
   return taxableIncome <= limit ? 0 : tax
 }
 
+function oldRegimeRecommendations(raw80c, limit, room, npsAmt, healthSelfAmt, taxable) {
+  const recs = []
+  if (room > 0) recs.push(`You can invest ₹${cur(room)} more under Section 80C (EPF, PPF, ELSS, LIC, etc.) to utilise the full ₹1,50,000 limit.`)
+  if (npsAmt < 50000) recs.push(`Consider contributing ₹${cur(50000 - npsAmt)} more to NPS for an extra deduction under Section 80CCD(1B) — up to ₹50,000 over and above 80C.`)
+  if (healthSelfAmt === 0) recs.push('Invest in a health insurance policy for yourself and family to claim up to ₹25,000 under Section 80D.')
+  if (taxable > 0 && taxable <= 500000) recs.push('Your taxable income is within the ₹5 lakh rebate limit — your tax liability will be ₹0 after Section 87A rebate.')
+  if (taxable > 500000 && taxable <= 700000) recs.push('You are just above the ₹5 lakh rebate limit. Increasing 80C or other deductions could bring your taxable income under ₹5 lakh and make your tax ₹0.')
+  if (recs.length === 0) recs.push('You are utilising your deductions well. Review if switching to the New Regime would save more tax based on your slab.')
+  return recs
+}
+
+function newRegimeRecommendations(taxable) {
+  const recs = [
+    'The New Regime does not allow 80C, 80D, or HRA deductions. It offers lower slab rates instead.',
+    'The New Regime has a standard deduction of ₹75,000 for salaried individuals.',
+  ]
+  if (taxable <= 700000) recs.push('Your taxable income is within ₹7 lakh — you pay zero tax thanks to Section 87A rebate under the new regime.')
+  recs.push('Compare with the Old Regime using the toggle above to see which saves you more overall.')
+  return recs
+}
+
 export default function TaxSavingOptimizer() {
   const [regime, setRegime] = useState('old')
   const [grossIncome, setGrossIncome] = useState('')
@@ -166,26 +187,6 @@ export default function TaxSavingOptimizer() {
     healthSelf, healthParents, parentsSenior, nps, savingsInterest, hraExemption,
   ])
 
-  function oldRegimeRecommendations(raw80c, limit, room, npsAmt, healthSelfAmt, taxable) {
-    const recs = []
-    if (room > 0) recs.push(`You can invest ₹${cur(room)} more under Section 80C (EPF, PPF, ELSS, LIC, etc.) to utilise the full ₹1,50,000 limit.`)
-    if (npsAmt < 50000) recs.push(`Consider contributing ₹${cur(50000 - npsAmt)} more to NPS for an extra deduction under Section 80CCD(1B) — up to ₹50,000 over and above 80C.`)
-    if (healthSelfAmt === 0) recs.push('Invest in a health insurance policy for yourself and family to claim up to ₹25,000 under Section 80D.')
-    if (taxable > 0 && taxable <= 500000) recs.push('Your taxable income is within the ₹5 lakh rebate limit — your tax liability will be ₹0 after Section 87A rebate.')
-    if (taxable > 500000 && taxable <= 700000) recs.push('You are just above the ₹5 lakh rebate limit. Increasing 80C or other deductions could bring your taxable income under ₹5 lakh and make your tax ₹0.')
-    if (recs.length === 0) recs.push('You are utilising your deductions well. Review if switching to the New Regime would save more tax based on your slab.')
-    return recs
-  }
-
-  function newRegimeRecommendations(taxable) {
-    const recs = [
-      'The New Regime does not allow 80C, 80D, or HRA deductions. It offers lower slab rates instead.',
-      'The New Regime has a standard deduction of ₹75,000 for salaried individuals.',
-    ]
-    if (taxable <= 700000) recs.push('Your taxable income is within ₹7 lakh — you pay zero tax thanks to Section 87A rebate under the new regime.')
-    recs.push('Compare with the Old Regime using the toggle above to see which saves you more overall.')
-    return recs
-  }
 
   const pct80c = result ? Math.min(100, (result.sec80c_raw / 150000) * 100) : 0
 

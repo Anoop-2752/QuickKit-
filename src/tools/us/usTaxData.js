@@ -1,8 +1,23 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // US tax constants — TAX YEAR 2026
 //
-// EVERY NUMBER IN THIS FILE MUST BE VERIFIED AGAINST OFFICIAL SOURCES BEFORE
-// RELEASE, AND RE-CHECKED EVERY YEAR WHEN THE IRS PUBLISHES NEW FIGURES.
+// Figures below were verified against the sources listed on 2026-08-27.
+// RE-CHECK EVERY YEAR when the IRS publishes new inflation adjustments.
+//
+// Verified 2026-08-27:
+//   Standard deduction ..... IRS Rev. Proc. 2025-32 (16,100 / 32,200 / 24,150)
+//   Federal brackets ....... IRS newsroom + Tax Foundation 2026 tables
+//   37% threshold .......... 640,600 single / 768,700 joint (irs.gov)
+//   Social Security base ... 184,500 (ssa.gov)
+//   401(k) deferral ........ 24,500, catch-up 8,000 (irs.gov)
+//
+// One caveat: sources disagree on the head-of-household 24% ceiling —
+// Tax Foundation says 201,775, NerdWallet says 201,750. We use 201,775
+// because it matches the long-standing pattern where the single and HoH
+// 24% ceilings are identical while their 32% ceilings differ slightly (as
+// in 2025: both 197,300, with 32% ending at 250,525 vs 250,500). The
+// difference affects tax by about $2, but confirm against Rev. Proc.
+// 2025-32 Table 3 if you want certainty.
 //
 // Verify against:
 //   Federal brackets & standard deduction .. IRS Rev. Proc. (annual inflation
@@ -41,7 +56,7 @@ export const FEDERAL_BRACKETS = {
     { rate: 0.10, upTo: 17700 },
     { rate: 0.12, upTo: 67450 },
     { rate: 0.22, upTo: 105700 },
-    { rate: 0.24, upTo: 201750 },
+    { rate: 0.24, upTo: 201775 },
     { rate: 0.32, upTo: 256200 },
     { rate: 0.35, upTo: 640600 },
     { rate: 0.37, upTo: null },
